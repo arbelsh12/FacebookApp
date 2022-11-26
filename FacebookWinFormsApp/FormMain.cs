@@ -68,6 +68,9 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
             fetchCoverPhoto();
+            fetchAlbums();
+            // To change to picture that says someing like "No album selected" 
+            pictureBoxSelectedAlbum.LoadAsync("http://www.trendycovers.com/covers/Listen_to_your_heart_facebook_cover_1330517429.jpg");
 
             //copied from Guy TODO: delete comment and change the code
             listBoxPages.Items.Clear();
@@ -127,6 +130,41 @@ namespace BasicFacebookFeatures
 
             MessageBox.Show("No cover photo to retrieve :(");
         }
+
+        //copied from Guy TODO: delete comment and change the code
+        private void fetchAlbums()
+        {
+            listBoxAlbums.Items.Clear();
+            listBoxAlbums.DisplayMember = "Name";
+            foreach (Album album in m_LoggedInUser.Albums)
+            {
+                listBoxAlbums.Items.Add(album);
+            }
+
+            if (listBoxAlbums.Items.Count == 0)
+            {
+                MessageBox.Show("No Albums to retrieve :(");
+            }
+        }
+
+        private void displaySelectedAlbum()
+        {
+            if (listBoxAlbums.SelectedItems.Count == 1)
+            {
+                Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+
+                if (selectedAlbum.PictureAlbumURL != null)
+                {
+                    pictureBoxSelectedAlbum.LoadAsync(selectedAlbum.PictureAlbumURL);
+                }
+                else
+                {
+                    pictureBoxProfile.Image = pictureBoxProfile.ErrorImage;
+                }
+            }
+        }
+        /// End copy
+
 
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -188,5 +226,12 @@ namespace BasicFacebookFeatures
         {
 
         }
+
+        //copied from Guy TODO: delete comment and change the code
+        private void listBoxAlbums_SelectedAlbumIndexChanged(object sender, EventArgs e)
+        {
+            displaySelectedAlbum();
+        }
+        /// End copy
     }
 }
