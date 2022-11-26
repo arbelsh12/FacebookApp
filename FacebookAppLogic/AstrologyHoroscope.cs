@@ -11,8 +11,14 @@ namespace FacebookAppLogic
 {
     public class AstrologyHoroscope
     {
+        private const string k_AstrologyJsonHoroscopeKeyPath = "$.description";
+        private const string k_AstrologyJsonZodiacKeyPath = "$.compatibility";
+        private const string k_RapidApiKeyHeader = "X-RapidAPI-Key";
+        private const string k_RapidApiHostHeader = "X-RapidAPI-Host";
+        private const string k_AstrologyApiKey = "9767aa43d4msh47ffc328d7f4776p1a40d0jsnedca44471bf6";
+        private const string k_AstrologyApi = "sameer-kumar-aztro-v1.p.rapidapi.com";
         private readonly Zodiac r_Zodiac;
-
+        
         private class Zodiac
         {
             public Zodiac()
@@ -106,9 +112,11 @@ namespace FacebookAppLogic
         {
             string apiUri = await GetUriByBirthday(i_userBirthDate);
             JObject json = await GetJsonFromApi(apiUri);
-            var astrologyHoroscope = json.SelectToken("$.description");
+            string astrologyHoroscope = json.SelectToken(k_AstrologyJsonHoroscopeKeyPath)?.ToString();
+            string userZodiac = json.SelectToken(k_AstrologyJsonZodiacKeyPath)?.ToString();
+            string astrologyHoroscopePost = $"Hi! My zodiac is {userZodiac} and my horoscope today is {astrologyHoroscope}";
 
-            return astrologyHoroscope?.ToString();
+            return astrologyHoroscopePost;
         }
 
         private async Task<JObject> GetJsonFromApi(string i_uri)
@@ -120,8 +128,8 @@ namespace FacebookAppLogic
                 RequestUri = new Uri(i_uri),
                 Headers =
                    {
-                       { "X-RapidAPI-Key", "9767aa43d4msh47ffc328d7f4776p1a40d0jsnedca44471bf6" },
-                       { "X-RapidAPI-Host", "sameer-kumar-aztro-v1.p.rapidapi.com" },
+                       { k_RapidApiKeyHeader, k_AstrologyApiKey},
+                       { k_RapidApiHostHeader, k_AstrologyApi },
                    },
             };
             using (var response = await client.SendAsync(request))
