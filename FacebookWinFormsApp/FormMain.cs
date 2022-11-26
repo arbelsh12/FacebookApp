@@ -173,7 +173,7 @@ namespace BasicFacebookFeatures
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show($"Posting to feed faile (No permissions)");
             }
             ///
         }
