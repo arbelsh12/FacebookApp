@@ -62,10 +62,12 @@ namespace BasicFacebookFeatures
         private void loadUserInfo()
         {
             string userGender = m_LoggedInUser.Gender == User.eGender.female ? "Female" : "Male";
+
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Email);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
+            fetchCoverPhoto();
 
             //copied from Guy TODO: delete comment and change the code
             listBoxPages.Items.Clear();
@@ -87,7 +89,43 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No liked pages to retrieve :(");
             }
-            ///
+            /// End copy
+
+            //copied from Guy TODO: delete comment and change the code
+            listBoxGroups.Items.Clear();
+            listBoxGroups.DisplayMember = "Name";
+            
+            try
+            {
+                foreach (Group group in m_LoggedInUser.Groups)
+                {
+                    listBoxGroups.Items.Add(group);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (listBoxGroups.Items.Count == 0)
+            {
+                MessageBox.Show("No groups to retrieve :(");
+            }
+            /// End copy
+        }
+
+        private void fetchCoverPhoto()
+        {
+            foreach (Album album in m_LoggedInUser.Albums)
+            {
+                if(album.Name.Equals("Cover photos"))
+                {
+                    pictureBoxCover.LoadAsync(album.Photos[0].PictureNormalURL);
+                    return;
+                }
+            }
+
+            MessageBox.Show("No cover photo to retrieve :(");
         }
 
 
@@ -138,6 +176,17 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"Posting to feed faile (No permissions)");
             }
             ///
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
