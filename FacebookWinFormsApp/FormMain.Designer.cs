@@ -114,9 +114,9 @@
             // 
             this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(1073, 107);
             this.buttonAstrologyHoroscopePost.Name = "buttonAstrologyHoroscopePost";
-            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(125, 60);
+            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(125, 88);
             this.buttonAstrologyHoroscopePost.TabIndex = 59;
-            this.buttonAstrologyHoroscopePost.Text = "Post Astrology Horoscope";
+            this.buttonAstrologyHoroscopePost.Text = "Post Compatibility Astrology Horoscope";
             this.buttonAstrologyHoroscopePost.UseVisualStyleBackColor = true;
             this.buttonAstrologyHoroscopePost.Click += new System.EventHandler(this.buttonAstrologyHoroscopePost_Click);
             // 
