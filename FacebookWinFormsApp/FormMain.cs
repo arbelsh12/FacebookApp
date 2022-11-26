@@ -22,6 +22,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+            m_AstrologyHoroscope = new AstrologyHoroscope();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace BasicFacebookFeatures
             try
             {
                 string astrologyHoroscopePost = await m_AstrologyHoroscope.CreatePost(m_LoggedInUser.Birthday);
-                MessageBox.Show("astrologyHoroscopePost");
+                MessageBox.Show(astrologyHoroscopePost);
                 Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
