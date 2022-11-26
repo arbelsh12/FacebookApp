@@ -163,19 +163,17 @@ namespace BasicFacebookFeatures
 
         private async void buttonAstrologyHoroscopePost_Click(object sender, EventArgs e)
         {
-            //copied from Guy TODO: delete comment and change the code
             try
             {
                 string astrologyHoroscopePost = await m_AstrologyHoroscope.CreatePost(m_LoggedInUser.Birthday);
                 MessageBox.Show(astrologyHoroscopePost);
                 Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
-                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Posting to feed faile (No permissions)");
             }
-            ///
         }
 
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -187,6 +185,19 @@ namespace BasicFacebookFeatures
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonPost_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPost.Text);
+                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Posting to feed faile (No permissions)");
+            }
         }
     }
 }
