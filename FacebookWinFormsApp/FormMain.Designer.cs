@@ -41,8 +41,13 @@
             this.labelGroups = new System.Windows.Forms.Label();
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.buttonPost = new System.Windows.Forms.Button();
+            this.listBoxAlbums = new System.Windows.Forms.ListBox();
+            this.labelAlbums = new System.Windows.Forms.Label();
+            this.pictureBoxSelectedAlbum = new System.Windows.Forms.PictureBox();
+            this.labelSelectedAlbum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -178,6 +183,43 @@
             this.buttonPost.UseVisualStyleBackColor = true;
             this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
+            // listBoxAlbums
+            // 
+            this.listBoxAlbums.FormattingEnabled = true;
+            this.listBoxAlbums.ItemHeight = 16;
+            this.listBoxAlbums.Location = new System.Drawing.Point(608, 259);
+            this.listBoxAlbums.Name = "listBoxAlbums";
+            this.listBoxAlbums.Size = new System.Drawing.Size(267, 132);
+            this.listBoxAlbums.TabIndex = 64;
+            this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedAlbumIndexChanged);
+            // 
+            // labelAlbums
+            // 
+            this.labelAlbums.AutoSize = true;
+            this.labelAlbums.Location = new System.Drawing.Point(608, 238);
+            this.labelAlbums.Name = "labelAlbums";
+            this.labelAlbums.Size = new System.Drawing.Size(52, 16);
+            this.labelAlbums.TabIndex = 65;
+            this.labelAlbums.Text = "Albums";
+            // 
+            // pictureBoxSelectedAlbum
+            // 
+            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(896, 278);
+            this.pictureBoxSelectedAlbum.Name = "pictureBoxSelectedAlbum";
+            this.pictureBoxSelectedAlbum.Size = new System.Drawing.Size(119, 113);
+            this.pictureBoxSelectedAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxSelectedAlbum.TabIndex = 66;
+            this.pictureBoxSelectedAlbum.TabStop = false;
+            // 
+            // labelSelectedAlbum
+            // 
+            this.labelSelectedAlbum.AutoSize = true;
+            this.labelSelectedAlbum.Location = new System.Drawing.Point(893, 259);
+            this.labelSelectedAlbum.Name = "labelSelectedAlbum";
+            this.labelSelectedAlbum.Size = new System.Drawing.Size(102, 16);
+            this.labelSelectedAlbum.TabIndex = 67;
+            this.labelSelectedAlbum.Text = "Selected Album";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -185,6 +227,11 @@
             this.ClientSize = new System.Drawing.Size(1263, 1011);
             this.Controls.Add(this.buttonPost);
             this.Controls.Add(this.textBoxPost);
+            this.ClientSize = new System.Drawing.Size(1123, 809);
+            this.Controls.Add(this.labelSelectedAlbum);
+            this.Controls.Add(this.pictureBoxSelectedAlbum);
+            this.Controls.Add(this.labelAlbums);
+            this.Controls.Add(this.listBoxAlbums);
             this.Controls.Add(this.labelGroups);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.listBoxGroups);
@@ -202,6 +249,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,6 +270,10 @@
         private System.Windows.Forms.Label labelGroups;
         private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.Button buttonPost;
+        private System.Windows.Forms.ListBox listBoxAlbums;
+        private System.Windows.Forms.Label labelAlbums;
+        private System.Windows.Forms.PictureBox pictureBoxSelectedAlbum;
+        private System.Windows.Forms.Label labelSelectedAlbum;
     }
 }
 
