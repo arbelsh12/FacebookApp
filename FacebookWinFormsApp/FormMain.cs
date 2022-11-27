@@ -69,6 +69,7 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(userGender);
             fetchCoverPhoto();
             fetchAlbums();
+            fetchAlbumPhotos();
             // To change to picture that says someing like "No album selected" 
             pictureBoxSelectedAlbum.LoadAsync("http://www.trendycovers.com/covers/Listen_to_your_heart_facebook_cover_1330517429.jpg");
 
@@ -131,6 +132,8 @@ namespace BasicFacebookFeatures
             MessageBox.Show("No cover photo to retrieve :(");
         }
 
+        
+
         //copied from Guy TODO: delete comment and change the code
         private void fetchAlbums()
         {
@@ -159,12 +162,55 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    pictureBoxProfile.Image = pictureBoxProfile.ErrorImage;
+                    // CHANGE to another picture, not profile
+                    pictureBoxSelectedAlbum.Image = pictureBoxProfile.ErrorImage;
                 }
+
+                fetchAlbumPhotos();
             }
         }
         /// End copy
+        /// 
+        private void fetchAlbumPhotos()
+        {
+            if (listBoxAlbums.SelectedItems.Count == 1)
+            {
+                Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
 
+                listBoxAlbumPhotos.Items.Clear();
+                listBoxAlbumPhotos.DisplayMember = "Name";
+                pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
+
+
+                foreach (Photo photo in selectedAlbum.Photos)
+                {
+                    listBoxAlbumPhotos.Items.Add(photo);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No photos to retrieve in selected album :(");
+
+            }
+        }
+
+        private void displaySelectedPhoto()
+        {
+            if (listBoxAlbumPhotos.SelectedItems.Count == 1)
+            {
+                Photo selectedPhoto = listBoxAlbumPhotos.SelectedItem as Photo;
+
+                if (selectedPhoto.PictureNormalURL != null)
+                {
+                    pictureBoxSelectedPhoto.LoadAsync(selectedPhoto.PictureNormalURL);
+                }
+                else
+                {
+                    // CHANGE to another picture, not profile
+                    pictureBoxSelectedPhoto.Image = pictureBoxProfile.ErrorImage;
+                }
+            }
+        }
 
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -229,8 +275,13 @@ namespace BasicFacebookFeatures
         private void listBoxAlbums_SelectedAlbumIndexChanged(object sender, EventArgs e)
         {
             displaySelectedAlbum();
-        }        
+        }
         /// End copy
+        
+        private void listBoxAlbumPhotos_SelectedPhotoChanged(object sender, EventArgs e)
+        {
+            displaySelectedPhoto();
+        }
 
         private void buttonPost_Click(object sender, EventArgs e)
         {
@@ -243,6 +294,11 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show($"Posting to feed faile (No permissions)");
             }
+        }
+
+        private void labelAlbums_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
