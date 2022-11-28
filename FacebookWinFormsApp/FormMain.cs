@@ -253,7 +253,7 @@ namespace BasicFacebookFeatures
             {
                 listBoxPostComments.DataSource = selected.Comments;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("No permissions to show this comment :(");
             }
