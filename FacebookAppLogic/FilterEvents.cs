@@ -9,6 +9,8 @@ namespace FacebookAppLogic
 {
     public class FilterEvents
     {
+        private const int k_NotSelected = -1;
+
         public FilterEvents()
         {
 
@@ -31,23 +33,26 @@ namespace FacebookAppLogic
 
         public ICollection<Event> FilterAndSortByUserSelection(List<Event> i_events, int i_timeSelection, int i_guestsConfirmationsSelection)
         {
-            ICollection<Event> sortedEventsByAttendersAmount = getFilteredListByTime(i_events, i_timeSelection);
+            ICollection<Event> sortedEventsByAttendersAmount = i_timeSelection != k_NotSelected ? getFilteredListByTime(i_events, i_timeSelection) : i_events;
 
-            if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Attending)
+            if (i_guestsConfirmationsSelection != k_NotSelected)
             {
-                sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.AttendingCount).ToArray();
-            }
-            else if(i_guestsConfirmationsSelection == (int)GuestsConfirmations.Interested)
-            {
-                sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.InterestedCount).ToArray();
-            }
-            else if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Declined)
-            {
-                sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.DeclinedCount).ToArray();
-            }
-            else
-            {
-                sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.MaybeCount).ToArray();
+                if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Attending)
+                {
+                    sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.AttendingCount).ToArray();
+                }
+                else if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Interested)
+                {
+                    sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.InterestedCount).ToArray();
+                }
+                else if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Declined)
+                {
+                    sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.DeclinedCount).ToArray();
+                }
+                else
+                {
+                    sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.MaybeCount).ToArray();
+                }
             }
 
             return sortedEventsByAttendersAmount;

@@ -14,15 +14,18 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private const int k_NotSelected = -1;
+        private readonly Astrology r_Astrology;
+        private readonly FilterEvents r_FilterEvents;
         private User m_LoggedInUser;
-        private LoginResult m_LoginResult;
-        private Astrology m_Astrology;
+        private LoginResult m_LoginResult;      
 
         public FormMain()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            m_Astrology = new Astrology();
+            r_Astrology = new Astrology();
+            r_FilterEvents = new FilterEvents();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -68,7 +71,7 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Email);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
-            listBoxAboutInfo.Items.Add(m_Astrology.GetZodiac(m_LoggedInUser.Birthday));
+            listBoxAboutInfo.Items.Add(r_Astrology.GetZodiac(m_LoggedInUser.Birthday));
 
             fetchCoverPhoto();
             fetchAlbums();
@@ -336,7 +339,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                string astrologyHoroscopePost = await m_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
+                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
                 MessageBox.Show(astrologyHoroscopePost);
                 Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
@@ -407,16 +410,22 @@ namespace BasicFacebookFeatures
                     
                     return;
                 }
+                if(comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
+                {
+                    MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
+
+                    return;
+                }
 
                 listBoxEvents.Items.Clear();
-                FilterEvents filterEvents = new FilterEvents();
-                ICollection<Event> sortedAndFilteredEvents = filterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                
+                ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                 listBoxEvents.Items.AddRange((ListBox.ObjectCollection)sortedAndFilteredEvents);
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Failed to Filter Events");
+                MessageBox.Show(ex.Message, "Failed to filter the events");
             }
         }
 
