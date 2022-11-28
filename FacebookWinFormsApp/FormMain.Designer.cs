@@ -49,6 +49,10 @@
             this.pictureBoxSelectedPhoto = new System.Windows.Forms.PictureBox();
             this.labelSelectedPhoto = new System.Windows.Forms.Label();
             this.labelSelectedAlbumPhotos = new System.Windows.Forms.Label();
+            this.listBoxUserPosts = new System.Windows.Forms.ListBox();
+            this.listBoxPostComments = new System.Windows.Forms.ListBox();
+            this.labelUserPosts = new System.Windows.Forms.Label();
+            this.labelPostComments = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -263,15 +267,56 @@
             this.labelSelectedAlbumPhotos.AutoSize = true;
             this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(12, 407);
             this.labelSelectedAlbumPhotos.Name = "labelSelectedAlbumPhotos";
-            this.labelSelectedAlbumPhotos.Size = new System.Drawing.Size(113, 20);
+            this.labelSelectedAlbumPhotos.Size = new System.Drawing.Size(90, 16);
             this.labelSelectedAlbumPhotos.TabIndex = 71;
             this.labelSelectedAlbumPhotos.Text = "Album Photos";
+            // 
+            // listBoxUserPosts
+            // 
+            this.listBoxUserPosts.FormattingEnabled = true;
+            this.listBoxUserPosts.ItemHeight = 16;
+            this.listBoxUserPosts.Location = new System.Drawing.Point(528, 431);
+            this.listBoxUserPosts.Name = "listBoxUserPosts";
+            this.listBoxUserPosts.Size = new System.Drawing.Size(295, 116);
+            this.listBoxUserPosts.TabIndex = 72;
+            this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedPostIndexChanged);
+            // 
+            // listBoxPostComments
+            // 
+            this.listBoxPostComments.FormattingEnabled = true;
+            this.listBoxPostComments.ItemHeight = 16;
+            this.listBoxPostComments.Location = new System.Drawing.Point(851, 431);
+            this.listBoxPostComments.Name = "listBoxPostComments";
+            this.listBoxPostComments.Size = new System.Drawing.Size(141, 116);
+            this.listBoxPostComments.TabIndex = 73;
+            // 
+            // labelUserPosts
+            // 
+            this.labelUserPosts.AutoSize = true;
+            this.labelUserPosts.Location = new System.Drawing.Point(525, 410);
+            this.labelUserPosts.Name = "labelUserPosts";
+            this.labelUserPosts.Size = new System.Drawing.Size(104, 20);
+            this.labelUserPosts.TabIndex = 74;
+            this.labelUserPosts.Text = "User\'s Posts";
+            // 
+            // labelPostComments
+            // 
+            this.labelPostComments.AutoSize = true;
+            this.labelPostComments.Location = new System.Drawing.Point(848, 410);
+            this.labelPostComments.Name = "labelPostComments";
+            this.labelPostComments.Size = new System.Drawing.Size(126, 20);
+            this.labelPostComments.TabIndex = 75;
+            this.labelPostComments.Text = "Post Comments";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 817);
+            this.Controls.Add(this.labelPostComments);
+            this.Controls.Add(this.labelUserPosts);
+            this.Controls.Add(this.listBoxPostComments);
+            this.Controls.Add(this.listBoxUserPosts);
             this.Controls.Add(this.labelSelectedAlbumPhotos);
             this.Controls.Add(this.labelSelectedPhoto);
             this.Controls.Add(this.pictureBoxSelectedPhoto);
@@ -329,6 +374,10 @@
         private System.Windows.Forms.PictureBox pictureBoxSelectedPhoto;
         private System.Windows.Forms.Label labelSelectedPhoto;
         private System.Windows.Forms.Label labelSelectedAlbumPhotos;
+        private System.Windows.Forms.ListBox listBoxUserPosts;
+        private System.Windows.Forms.ListBox listBoxPostComments;
+        private System.Windows.Forms.Label labelUserPosts;
+        private System.Windows.Forms.Label labelPostComments;
     }
 }
 

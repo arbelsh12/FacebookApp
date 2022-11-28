@@ -70,6 +70,7 @@ namespace BasicFacebookFeatures
             fetchCoverPhoto();
             fetchAlbums();
             fetchAlbumPhotos();
+            fetchUserPosts();
             // To change to picture that says someing like "No album selected" 
             pictureBoxSelectedAlbum.LoadAsync("http://www.trendycovers.com/covers/Listen_to_your_heart_facebook_cover_1330517429.jpg");
 
@@ -212,6 +213,52 @@ namespace BasicFacebookFeatures
             }
         }
 
+        //copied from Guy TODO: delete comment and change the code
+        // Changed name, GUY - listBoxPosts MY name - listBoxUserPosts
+        private void fetchUserPosts()
+        {
+            listBoxUserPosts.Items.Clear();
+
+            foreach (Post post in m_LoggedInUser.Posts)
+            {
+                if (post.Message != null)
+                {
+                    listBoxUserPosts.Items.Add(post.Message);
+                }
+                else if (post.Caption != null)
+                {
+                    listBoxUserPosts.Items.Add(post.Caption);
+                }
+                else
+                {
+                    listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type));
+                }
+            }
+
+            if (listBoxUserPosts.Items.Count == 0)
+            {
+                MessageBox.Show("No User Posts to retrieve :(");
+            }
+        }
+
+        /// <summary>
+        /// Fetching all comments *** made by the logged in user ***, to the selected post:
+        /// </summary>
+        private void listBoxUserPosts_SelectedPostIndexChanged(object sender, EventArgs e)
+        {
+            Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
+            listBoxPostComments.DisplayMember = "Message";
+
+            try
+            {
+                listBoxPostComments.DataSource = selected.Comments;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No permissions to show this comment :(");
+            }
+        }
+        /// END COPY
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
@@ -256,7 +303,7 @@ namespace BasicFacebookFeatures
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Posting to feed faile (No permissions)");
+                MessageBox.Show($"Posting to feed failed (No permissions)");
             }
         }
 
