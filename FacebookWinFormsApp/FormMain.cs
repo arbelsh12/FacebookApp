@@ -14,15 +14,18 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private const int k_NotSelected = -1;
+        private readonly Astrology r_Astrology;
+        private readonly FilterEvents r_FilterEvents;
         private User m_LoggedInUser;
-        private LoginResult m_LoginResult;
-        private Astrology m_Astrology;
+        private LoginResult m_LoginResult;      
 
         public FormMain()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            m_Astrology = new Astrology();
+            r_Astrology = new Astrology();
+            r_FilterEvents = new FilterEvents();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -68,7 +71,7 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Email);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
-            listBoxAboutInfo.Items.Add(m_Astrology.GetZodiac(m_LoggedInUser.Birthday));
+            listBoxAboutInfo.Items.Add(r_Astrology.GetZodiac(m_LoggedInUser.Birthday));
 
             fetchCoverPhoto();
             fetchAlbums();
@@ -121,6 +124,22 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("No groups to retrieve :(");
             }
             /// End copy
+            /// 
+            //copied from Guy TODO: delete comment and change the code
+
+            listBoxEvents.Items.Clear();
+            listBoxEvents.DisplayMember = "Name";
+
+            foreach (Event fbEvent in m_LoggedInUser.Events)
+            {
+                listBoxEvents.Items.Add(fbEvent);
+            }
+
+            if (listBoxEvents.Items.Count == 0)
+            {
+                MessageBox.Show("No Events to retrieve :(");
+            }
+            //END COPY
         }
 
         private void fetchCoverPhoto()
@@ -149,7 +168,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("No friends to retrieve :(");
             }
         }
-
 
         //copied from Guy TODO: delete comment and change the code
         private void fetchAlbums()
@@ -321,12 +339,12 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                string astrologyHoroscopePost = await m_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
+                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
                 MessageBox.Show(astrologyHoroscopePost);
                 Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show($"Posting to feed failed (No permissions)");
             }
@@ -356,13 +374,67 @@ namespace BasicFacebookFeatures
                 Status postedStatus = m_LoggedInUser.PostStatus(textBoxPost.Text);
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Posting to feed faile (No permissions)");
+                MessageBox.Show($"Posting to feed failed (No permissions)");
             }
         }
 
         private void labelAlbums_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFilterTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEventsFilter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listBoxEvents.Items.Count == 0)
+                {
+                    MessageBox.Show("No events to filter :(");
+                    
+                    return;
+                }
+                if(comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
+                {
+                    MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
+
+                    return;
+                }
+
+                listBoxEvents.Items.Clear();
+                
+                ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+
+                listBoxEvents.Items.AddRange((ListBox.ObjectCollection)sortedAndFilteredEvents);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Failed to filter the events");
+            }
+        }
+
+        private void comboBoxSortByAttends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelEvents_Click(object sender, EventArgs e)
         {
 
         }
