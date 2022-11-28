@@ -16,13 +16,13 @@ namespace BasicFacebookFeatures
     {
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
-        private AstrologyHoroscope m_AstrologyHoroscope;
+        private Astrology m_Astrology;
 
         public FormMain()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            m_AstrologyHoroscope = new AstrologyHoroscope();
+            m_Astrology = new Astrology();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -68,6 +68,8 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Email);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
+            listBoxAboutInfo.Items.Add(m_Astrology.GetZodiac(m_LoggedInUser.Birthday));
+
             fetchCoverPhoto();
             fetchAlbums();
             fetchAlbumPhotos();
@@ -306,7 +308,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                string astrologyHoroscopePost = await m_AstrologyHoroscope.CreatePost(m_LoggedInUser.Birthday);
+                string astrologyHoroscopePost = await m_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
                 MessageBox.Show(astrologyHoroscopePost);
                 Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");

@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace FacebookAppLogic
 {
-    public class AstrologyHoroscope
+    public class Astrology
     {
         private const string k_AstrologyJsonHoroscopeKeyPath = "$.description";
         private const string k_AstrologyJsonZodiacKeyPath = "$.compatibility";
@@ -103,12 +103,12 @@ namespace FacebookAppLogic
             }
         }
 
-        public AstrologyHoroscope()
+        public Astrology()
         {
             r_Zodiac = new Zodiac();
         }
 
-        public async Task<string> CreatePost(string i_userBirthDate)
+        public async Task<string> CreateHoroscopePost(string i_userBirthDate)
         {
             string apiUri = await GetUriByBirthday(i_userBirthDate);
             JObject json = await GetJsonFromApi(apiUri);
@@ -148,6 +148,11 @@ namespace FacebookAppLogic
             string apiUri = $"https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign={zodiac}&day=today";
 
             return apiUri;
+        }
+
+        public string GetZodiac(string i_userBirthDate)
+        {
+            return r_Zodiac.findZodiac(i_userBirthDate);
         }
     }
 }
