@@ -53,10 +53,12 @@
             this.listBoxPostComments = new System.Windows.Forms.ListBox();
             this.labelUserPosts = new System.Windows.Forms.Label();
             this.labelPostComments = new System.Windows.Forms.Label();
+            this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -153,7 +155,7 @@
             this.listBoxGroups.Name = "listBoxGroups";
             this.listBoxGroups.Size = new System.Drawing.Size(259, 132);
             this.listBoxGroups.TabIndex = 60;
-            this.listBoxGroups.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
+            this.listBoxGroups.SelectedIndexChanged += new System.EventHandler(this.listBoxGroups_SelectedGroupIndexChanged);
             // 
             // pictureBoxCover
             // 
@@ -295,7 +297,7 @@
             this.labelUserPosts.AutoSize = true;
             this.labelUserPosts.Location = new System.Drawing.Point(525, 410);
             this.labelUserPosts.Name = "labelUserPosts";
-            this.labelUserPosts.Size = new System.Drawing.Size(104, 20);
+            this.labelUserPosts.Size = new System.Drawing.Size(83, 16);
             this.labelUserPosts.TabIndex = 74;
             this.labelUserPosts.Text = "User\'s Posts";
             // 
@@ -304,15 +306,25 @@
             this.labelPostComments.AutoSize = true;
             this.labelPostComments.Location = new System.Drawing.Point(848, 410);
             this.labelPostComments.Name = "labelPostComments";
-            this.labelPostComments.Size = new System.Drawing.Size(126, 20);
+            this.labelPostComments.Size = new System.Drawing.Size(101, 16);
             this.labelPostComments.TabIndex = 75;
             this.labelPostComments.Text = "Post Comments";
+            // 
+            // pictureBoxGroup
+            // 
+            this.pictureBoxGroup.Location = new System.Drawing.Point(495, 332);
+            this.pictureBoxGroup.Name = "pictureBoxGroup";
+            this.pictureBoxGroup.Size = new System.Drawing.Size(68, 60);
+            this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxGroup.TabIndex = 76;
+            this.pictureBoxGroup.TabStop = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 817);
+            this.Controls.Add(this.pictureBoxGroup);
             this.Controls.Add(this.labelPostComments);
             this.Controls.Add(this.labelUserPosts);
             this.Controls.Add(this.listBoxPostComments);
@@ -346,6 +358,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,6 +391,7 @@
         private System.Windows.Forms.ListBox listBoxPostComments;
         private System.Windows.Forms.Label labelUserPosts;
         private System.Windows.Forms.Label labelPostComments;
+        private System.Windows.Forms.PictureBox pictureBoxGroup;
     }
 }
 

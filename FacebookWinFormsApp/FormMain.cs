@@ -44,7 +44,8 @@ namespace BasicFacebookFeatures
                     "user_location",
                     "user_photos",
                     "user_posts",
-                    "user_videos");
+                    "user_videos",
+                    "groups_access_member_info");
 
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
@@ -258,6 +259,15 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("No permissions to show this comment :(");
             }
         }
+
+        private void listBoxGroups_SelectedGroupIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxGroups.SelectedItems.Count == 1)
+            {
+                Group selectedGroup = listBoxGroups.SelectedItem as Group;
+                pictureBoxGroup.LoadAsync(selectedGroup.PictureNormalURL);
+            }
+        }
         /// END COPY
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -306,12 +316,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($"Posting to feed failed (No permissions)");
             }
         }
-
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
