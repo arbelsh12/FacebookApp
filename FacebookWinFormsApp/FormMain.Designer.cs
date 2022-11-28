@@ -54,6 +54,8 @@
             this.labelUserPosts = new System.Windows.Forms.Label();
             this.labelPostComments = new System.Windows.Forms.Label();
             this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
+            this.listBoxFriendsList = new System.Windows.Forms.ListBox();
+            this.labelFriends = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -277,7 +279,7 @@
             // 
             this.listBoxUserPosts.FormattingEnabled = true;
             this.listBoxUserPosts.ItemHeight = 16;
-            this.listBoxUserPosts.Location = new System.Drawing.Point(528, 431);
+            this.listBoxUserPosts.Location = new System.Drawing.Point(509, 430);
             this.listBoxUserPosts.Name = "listBoxUserPosts";
             this.listBoxUserPosts.Size = new System.Drawing.Size(295, 116);
             this.listBoxUserPosts.TabIndex = 72;
@@ -287,7 +289,7 @@
             // 
             this.listBoxPostComments.FormattingEnabled = true;
             this.listBoxPostComments.ItemHeight = 16;
-            this.listBoxPostComments.Location = new System.Drawing.Point(851, 431);
+            this.listBoxPostComments.Location = new System.Drawing.Point(832, 430);
             this.listBoxPostComments.Name = "listBoxPostComments";
             this.listBoxPostComments.Size = new System.Drawing.Size(141, 116);
             this.listBoxPostComments.TabIndex = 73;
@@ -295,7 +297,7 @@
             // labelUserPosts
             // 
             this.labelUserPosts.AutoSize = true;
-            this.labelUserPosts.Location = new System.Drawing.Point(525, 410);
+            this.labelUserPosts.Location = new System.Drawing.Point(506, 409);
             this.labelUserPosts.Name = "labelUserPosts";
             this.labelUserPosts.Size = new System.Drawing.Size(83, 16);
             this.labelUserPosts.TabIndex = 74;
@@ -304,7 +306,7 @@
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
-            this.labelPostComments.Location = new System.Drawing.Point(848, 410);
+            this.labelPostComments.Location = new System.Drawing.Point(829, 409);
             this.labelPostComments.Name = "labelPostComments";
             this.labelPostComments.Size = new System.Drawing.Size(101, 16);
             this.labelPostComments.TabIndex = 75;
@@ -319,11 +321,31 @@
             this.pictureBoxGroup.TabIndex = 76;
             this.pictureBoxGroup.TabStop = false;
             // 
+            // listBoxFriendsList
+            // 
+            this.listBoxFriendsList.FormattingEnabled = true;
+            this.listBoxFriendsList.ItemHeight = 16;
+            this.listBoxFriendsList.Location = new System.Drawing.Point(1006, 430);
+            this.listBoxFriendsList.Name = "listBoxFriendsList";
+            this.listBoxFriendsList.Size = new System.Drawing.Size(143, 116);
+            this.listBoxFriendsList.TabIndex = 77;
+            // 
+            // labelFriends
+            // 
+            this.labelFriends.AutoSize = true;
+            this.labelFriends.Location = new System.Drawing.Point(1003, 410);
+            this.labelFriends.Name = "labelFriends";
+            this.labelFriends.Size = new System.Drawing.Size(52, 16);
+            this.labelFriends.TabIndex = 78;
+            this.labelFriends.Text = "Friends";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 817);
+            this.ClientSize = new System.Drawing.Size(1319, 804);
+            this.Controls.Add(this.labelFriends);
+            this.Controls.Add(this.listBoxFriendsList);
             this.Controls.Add(this.pictureBoxGroup);
             this.Controls.Add(this.labelPostComments);
             this.Controls.Add(this.labelUserPosts);
@@ -392,6 +414,8 @@
         private System.Windows.Forms.Label labelUserPosts;
         private System.Windows.Forms.Label labelPostComments;
         private System.Windows.Forms.PictureBox pictureBoxGroup;
+        private System.Windows.Forms.ListBox listBoxFriendsList;
+        private System.Windows.Forms.Label labelFriends;
     }
 }
 

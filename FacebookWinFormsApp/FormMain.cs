@@ -74,6 +74,7 @@ namespace BasicFacebookFeatures
             fetchAlbums();
             fetchAlbumPhotos();
             fetchUserPosts();
+            fetchFriendsList();
             // To change to picture that says someing like "No album selected" 
             pictureBoxSelectedAlbum.LoadAsync("http://www.trendycovers.com/covers/Listen_to_your_heart_facebook_cover_1330517429.jpg");
 
@@ -136,7 +137,25 @@ namespace BasicFacebookFeatures
             MessageBox.Show("No cover photo to retrieve :(");
         }
 
-        
+        private void fetchFriendsList()
+        {
+
+            foreach (FriendList friends in m_LoggedInUser.FriendLists)
+            {
+                listBoxFriendsList.Items.Add(friends);
+            }
+
+            foreach (User friend in m_LoggedInUser.Friends)
+            {
+                listBoxFriendsList.Items.Add(friend);   
+            }
+
+            if (listBoxFriendsList.Items.Count == 0)
+            {
+                MessageBox.Show("No friends to retrieve :(");
+            }
+        }
+
 
         //copied from Guy TODO: delete comment and change the code
         private void fetchAlbums()
