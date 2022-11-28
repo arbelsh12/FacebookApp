@@ -139,12 +139,6 @@ namespace BasicFacebookFeatures
 
         private void fetchFriendsList()
         {
-
-            foreach (FriendList friends in m_LoggedInUser.FriendLists)
-            {
-                listBoxFriendsList.Items.Add(friends);
-            }
-
             foreach (User friend in m_LoggedInUser.Friends)
             {
                 listBoxFriendsList.Items.Add(friend);   
