@@ -26,7 +26,7 @@ namespace FacebookAppLogic
 
             }
 
-            enum Month
+            enum eMonth
             {
                 Jan = 1,
                 Feb,
@@ -49,51 +49,51 @@ namespace FacebookAppLogic
                 int birthdayDay = int.Parse(birthDateArray[1]);
                 string zodiac = String.Empty;
 
-                if (((birthdayMonth == (int)Month.Mar) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Apr) && (birthdayDay >= 01 || birthdayDay <= 20)))
+                if (((birthdayMonth == (int)eMonth.Mar) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Apr) && (birthdayDay >= 01 || birthdayDay <= 20)))
                 {
                     zodiac = "Aires";
                 }
-                else if (((birthdayMonth == (int)Month.Apr) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.May) && (birthdayDay >= 01 || birthdayDay <= 21)))
+                else if (((birthdayMonth == (int)eMonth.Apr) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.May) && (birthdayDay >= 01 || birthdayDay <= 21)))
                 {
                     zodiac = "Taurus";
                 }
-                else if (((birthdayMonth == (int)Month.May) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.June) && (birthdayDay >= 01 || birthdayDay <= 21)))
+                else if (((birthdayMonth == (int)eMonth.May) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.June) && (birthdayDay >= 01 || birthdayDay <= 21)))
                 {
                     zodiac = "Gemini";
                 }
-                else if (((birthdayMonth == (int)Month.June) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.July) && (birthdayDay >= 01 || birthdayDay <= 22)))
+                else if (((birthdayMonth == (int)eMonth.June) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.July) && (birthdayDay >= 01 || birthdayDay <= 22)))
                 {
                     zodiac = "Cancer";
                 }
-                else if (((birthdayMonth == (int)Month.July) && (birthdayDay >= 23 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Aug) && (birthdayDay >= 01 || birthdayDay <= 22)))
+                else if (((birthdayMonth == (int)eMonth.July) && (birthdayDay >= 23 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Aug) && (birthdayDay >= 01 || birthdayDay <= 22)))
                 {
                     zodiac = "Leo";
                 }
-                else if (((birthdayMonth == (int)Month.Aug) && (birthdayDay >= 23 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Sep) && (birthdayDay >= 01 || birthdayDay <= 21)))
+                else if (((birthdayMonth == (int)eMonth.Aug) && (birthdayDay >= 23 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Sep) && (birthdayDay >= 01 || birthdayDay <= 21)))
                 {
                     zodiac = "Virgo";
                 }
-                else if (((birthdayMonth == (int)Month.Sep) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Oct) && (birthdayDay >= 01 || birthdayDay <= 22)))
+                else if (((birthdayMonth == (int)eMonth.Sep) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Oct) && (birthdayDay >= 01 || birthdayDay <= 22)))
                 {
                     zodiac = "Libra";
                 }
-                else if (((birthdayMonth == (int)Month.Oct) && (birthdayDay >= 23 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Nov) && (birthdayDay >= 01 || birthdayDay <= 21)))
+                else if (((birthdayMonth == (int)eMonth.Oct) && (birthdayDay >= 23 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Nov) && (birthdayDay >= 01 || birthdayDay <= 21)))
                 {
                     zodiac = "Scorpio";
                 }
-                else if (((birthdayMonth == (int)Month.Nov) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Dec) && (birthdayDay >= 01 || birthdayDay <= 21)))
+                else if (((birthdayMonth == (int)eMonth.Nov) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Dec) && (birthdayDay >= 01 || birthdayDay <= 21)))
                 {
                     zodiac = "Sagittarius";
                 }
-                else if (((birthdayMonth == (int)Month.Dec) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Jan) && (birthdayDay >= 01 || birthdayDay <= 20)))
+                else if (((birthdayMonth == (int)eMonth.Dec) && (birthdayDay >= 22 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Jan) && (birthdayDay >= 01 || birthdayDay <= 20)))
                 {
                     zodiac = "Capricorn";
                 }
-                else if (((birthdayMonth == (int)Month.Jan) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Feb) && (birthdayDay >= 01 || birthdayDay <= 19)))
+                else if (((birthdayMonth == (int)eMonth.Jan) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Feb) && (birthdayDay >= 01 || birthdayDay <= 19)))
                 {
                     zodiac = "Aquarius";
                 }
-                else if (((birthdayMonth == (int)Month.Feb) && (birthdayDay >= 20 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.Mar) && (birthdayDay >= 01 || birthdayDay <= 20)))
+                else if (((birthdayMonth == (int)eMonth.Feb) && (birthdayDay >= 20 || birthdayDay <= 31)) || ((birthdayMonth == (int)eMonth.Mar) && (birthdayDay >= 01 || birthdayDay <= 20)))
                 {
                     zodiac = "Pisces";
                 }
