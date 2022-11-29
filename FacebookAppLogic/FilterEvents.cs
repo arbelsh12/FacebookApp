@@ -16,14 +16,14 @@ namespace FacebookAppLogic
 
         }
 
-        enum TimeSelection
+        enum eTimeSelection
         {
             Today,
             InTheNext7Days,
             ThisMonth
         }
 
-        enum GuestsConfirmations
+        enum eGuestsConfirmations
         {
             Attending,
             Interested,
@@ -31,21 +31,21 @@ namespace FacebookAppLogic
             Maybe
         }
 
-        public ICollection<Event> FilterAndSortByUserSelection(List<Event> i_events, int i_timeSelection, int i_guestsConfirmationsSelection)
+        public ICollection<Event> FilterAndSortByUserSelection(List<Event> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
         {
-            ICollection<Event> sortedEventsByAttendersAmount = i_timeSelection != k_NotSelected ? getFilteredListByTime(i_events, i_timeSelection) : i_events;
+            ICollection<Event> sortedEventsByAttendersAmount = i_TimeSelection != k_NotSelected ? getFilteredListByTime(i_Events, i_TimeSelection) : i_Events;
 
-            if (i_guestsConfirmationsSelection != k_NotSelected)
+            if (i_GuestsConfirmationsSelection != k_NotSelected)
             {
-                if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Attending)
+                if (i_GuestsConfirmationsSelection == (int)eGuestsConfirmations.Attending)
                 {
                     sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.AttendingCount).ToArray();
                 }
-                else if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Interested)
+                else if (i_GuestsConfirmationsSelection == (int)eGuestsConfirmations.Interested)
                 {
                     sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.InterestedCount).ToArray();
                 }
-                else if (i_guestsConfirmationsSelection == (int)GuestsConfirmations.Declined)
+                else if (i_GuestsConfirmationsSelection == (int)eGuestsConfirmations.Declined)
                 {
                     sortedEventsByAttendersAmount.OrderBy(userEvent => userEvent.DeclinedCount).ToArray();
                 }
@@ -58,13 +58,13 @@ namespace FacebookAppLogic
             return sortedEventsByAttendersAmount;
         }
 
-        private List<Event> getFilteredListByTime(List<Event> i_events, int i_timeSelection)
+        private List<Event> getFilteredListByTime(List<Event> i_Events, int i_TimeSelection)
         {
-            List<Event> filteredEventsListByTime = i_events;
+            List<Event> filteredEventsListByTime = i_Events;
 
-            if (i_timeSelection == (int)TimeSelection.Today)
+            if (i_TimeSelection == (int)eTimeSelection.Today)
             {
-                foreach (Event fbEvent in i_events)
+                foreach (Event fbEvent in i_Events)
                 {
                     if (fbEvent.StartTime.Value.Date != DateTime.Now.Date)
                     {
@@ -72,9 +72,9 @@ namespace FacebookAppLogic
                     }
                 }
             }
-            else if (i_timeSelection == (int)TimeSelection.InTheNext7Days)
+            else if (i_TimeSelection == (int)eTimeSelection.InTheNext7Days)
             {
-                foreach (Event fbEvent in i_events)
+                foreach (Event fbEvent in i_Events)
                 {
                     bool isEventInNext7Days = DateTime.Now.AddDays(7) <= fbEvent.StartTime.Value;
 
@@ -84,9 +84,9 @@ namespace FacebookAppLogic
                     }
                 }
             }
-            else if (i_timeSelection == (int)TimeSelection.ThisMonth)
+            else if (i_TimeSelection == (int)eTimeSelection.ThisMonth)
             {
-                foreach (Event fbEvent in i_events)
+                foreach (Event fbEvent in i_Events)
                 {
                     if (fbEvent.StartTime.Value.Month != DateTime.Now.Month)
                     {
