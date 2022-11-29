@@ -26,7 +26,6 @@ namespace FacebookAppLogic
 
             }
 
-            //TODO: check if the name of the enum is wrriten ok
             enum Month
             {
                 Jan = 1,
@@ -43,9 +42,9 @@ namespace FacebookAppLogic
                 Dec,
             }
 
-            public string findZodiac(string i_userBirthDate)
+            public string FindZodiac(string i_UserBirthDate)
             {
-                string[] birthDateArray = i_userBirthDate.Split('/');
+                string[] birthDateArray = i_UserBirthDate.Split('/');
                 int birthdayMonth = int.Parse(birthDateArray[0]);
                 int birthdayDay = int.Parse(birthDateArray[1]);
                 string zodiac = String.Empty;
@@ -58,7 +57,7 @@ namespace FacebookAppLogic
                 {
                     zodiac = "Taurus";
                 }
-                else if (((birthdayMonth == (int)Month.Apr) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.June) && (birthdayDay >= 01 || birthdayDay <= 21)))
+                else if (((birthdayMonth == (int)Month.May) && (birthdayDay >= 21 || birthdayDay <= 31)) || ((birthdayMonth == (int)Month.June) && (birthdayDay >= 01 || birthdayDay <= 21)))
                 {
                     zodiac = "Gemini";
                 }
@@ -108,10 +107,10 @@ namespace FacebookAppLogic
             r_Zodiac = new Zodiac();
         }
 
-        public async Task<string> CreateHoroscopePost(string i_userBirthDate)
+        public async Task<string> CreateHoroscopePost(string i_UserBirthDate)
         {
-            string apiUri = await GetUriByBirthday(i_userBirthDate);
-            JObject json = await GetJsonFromApi(apiUri);
+            string apiUri = await getUriByBirthday(i_UserBirthDate);
+            JObject json = await getJsonFromApi(apiUri);
             string astrologyHoroscope = json.SelectToken(k_AstrologyJsonHoroscopeKeyPath)?.ToString();
             string userZodiac = json.SelectToken(k_AstrologyJsonZodiacKeyPath)?.ToString();
             string astrologyHoroscopePost = $"Hi! My zodiac is {userZodiac} and my horoscope today is {astrologyHoroscope}";
@@ -119,40 +118,41 @@ namespace FacebookAppLogic
             return astrologyHoroscopePost;
         }
 
-        private async Task<JObject> GetJsonFromApi(string i_uri)
+        private async Task<JObject> getJsonFromApi(string i_Uri)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(i_uri),
+                RequestUri = new Uri(i_Uri),
                 Headers =
                    {
                        { k_RapidApiKeyHeader, k_AstrologyApiKey},
                        { k_RapidApiHostHeader, k_AstrologyApi },
                    },
             };
+
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                JObject json = JObject.Parse(body);
+                JObject apiJson = JObject.Parse(body);
 
-                return json;
+                return apiJson;
             }
         }
 
-        public async Task<string> GetUriByBirthday(string i_userBirthDate)
+        private async Task<string> getUriByBirthday(string i_UserBirthDay)
         {
-            string zodiac = r_Zodiac.findZodiac(i_userBirthDate);
+            string zodiac = r_Zodiac.FindZodiac(i_UserBirthDay);
             string apiUri = $"https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign={zodiac}&day=today";
 
             return apiUri;
         }
 
-        public string GetZodiac(string i_userBirthDate)
+        public string GetZodiac(string i_UserBirthDate)
         {
-            return r_Zodiac.findZodiac(i_userBirthDate);
+            return r_Zodiac.FindZodiac(i_UserBirthDate);
         }
     }
 }
