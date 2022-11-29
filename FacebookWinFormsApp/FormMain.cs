@@ -151,150 +151,108 @@ namespace BasicFacebookFeatures
 
         private void fetchCoverPhoto()
         {
-            try
+            foreach (Album album in m_LoggedInUser.Albums)
             {
-                foreach (Album album in m_LoggedInUser.Albums)
+                if (album.Name.Equals("Cover photos"))
                 {
-                    if (album.Name.Equals("Cover photos"))
-                    {
-                        pictureBoxCover.LoadAsync(album.Photos[0].PictureNormalURL);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No cover photo to retrieve :(");
-                    }
+                    pictureBoxCover.LoadAsync(album.Photos[0].PictureNormalURL);
+
+                    return;
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+
+                MessageBox.Show("No cover photo to retrieve :(");
             }
         }
 
         private void fetchFriendsList()
         {
-            try
+            listBoxFriendsList.Items.Clear();
+
+            foreach (User friend in m_LoggedInUser.Friends)
             {
-                listBoxFriendsList.Items.Clear();
-
-                foreach (User friend in m_LoggedInUser.Friends)
-                {
-                    listBoxFriendsList.Items.Add(friend);
-                }
-
-                if (listBoxFriendsList.Items.Count == 0)
-                {
-                    MessageBox.Show("No friends to retrieve :(");
-                }
+                listBoxFriendsList.Items.Add(friend);
             }
-            catch(Exception ex)
+
+            if (listBoxFriendsList.Items.Count == 0)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No friends to retrieve :(");
             }
         }
 
         private void fetchAlbums()
         {
-            try
+            //copied from Guy TODO: delete comment and change the code
+            listBoxAlbums.Items.Clear();
+            listBoxAlbums.DisplayMember = "Name";
+
+            foreach (Album album in m_LoggedInUser.Albums)
             {
-                //copied from Guy TODO: delete comment and change the code
-                listBoxAlbums.Items.Clear();
-                listBoxAlbums.DisplayMember = "Name";
-
-                foreach (Album album in m_LoggedInUser.Albums)
-                {
-                    listBoxAlbums.Items.Add(album);
-                }
-
-                if (listBoxAlbums.Items.Count == 0)
-                {
-                    MessageBox.Show("No Albums to retrieve :(");
-                }
+                listBoxAlbums.Items.Add(album);
             }
-            catch(Exception ex)
+
+            if (listBoxAlbums.Items.Count == 0)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No Albums to retrieve :(");
             }
         }
 
         private void displaySelectedAlbum()
         {
-            try
+            if (listBoxAlbums.SelectedItems.Count == 1)
             {
-                if (listBoxAlbums.SelectedItems.Count == 1)
+                Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+
+                if (selectedAlbum.PictureAlbumURL != null)
                 {
-                    Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
-
-                    if (selectedAlbum.PictureAlbumURL != null)
-                    {
-                        pictureBoxSelectedAlbum.LoadAsync(selectedAlbum.PictureAlbumURL);
-                    }
-                    else
-                    {
-                        // CHANGE to another picture, not profile
-                        pictureBoxSelectedAlbum.Image = pictureBoxProfile.ErrorImage;
-                    }
-
-                    fetchAlbumPhotos();
+                    pictureBoxSelectedAlbum.LoadAsync(selectedAlbum.PictureAlbumURL);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                else
+                {
+                    // CHANGE to another picture, not profile
+                    pictureBoxSelectedAlbum.Image = pictureBoxProfile.ErrorImage;
+                }
+
+                fetchAlbumPhotos();
             }
         }
         /// End copy
         /// 
         private void fetchAlbumPhotos()
         {
-            try
+            if (listBoxAlbums.SelectedItems.Count == 1)
             {
-                if (listBoxAlbums.SelectedItems.Count == 1)
-                {
-                    Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+                Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
 
-                    listBoxAlbumPhotos.Items.Clear();
-                    listBoxAlbumPhotos.DisplayMember = "Name";
-                    pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
+                listBoxAlbumPhotos.Items.Clear();
+                listBoxAlbumPhotos.DisplayMember = "Name";
+                pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
 
-                    foreach (Photo photo in selectedAlbum.Photos)
-                    {
-                        listBoxAlbumPhotos.Items.Add(photo);
-                    }
-                }
-                else
+                foreach (Photo photo in selectedAlbum.Photos)
                 {
-                    MessageBox.Show("No photos to retrieve in selected album :(");
+                    listBoxAlbumPhotos.Items.Add(photo);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No photos to retrieve in selected album :(");
             }
         }
 
         private void displaySelectedPhoto()
         {
-            try
+            if (listBoxAlbumPhotos.SelectedItems.Count == 1)
             {
-                if (listBoxAlbumPhotos.SelectedItems.Count == 1)
-                {
-                    Photo selectedPhoto = listBoxAlbumPhotos.SelectedItem as Photo;
+                Photo selectedPhoto = listBoxAlbumPhotos.SelectedItem as Photo;
 
-                    if (selectedPhoto.PictureNormalURL != null)
-                    {
-                        pictureBoxSelectedPhoto.LoadAsync(selectedPhoto.PictureNormalURL);
-                    }
-                    else
-                    {
-                        // CHANGE to another picture, not profile
-                        pictureBoxSelectedPhoto.Image = pictureBoxProfile.ErrorImage;
-                    }
+                if (selectedPhoto.PictureNormalURL != null)
+                {
+                    pictureBoxSelectedPhoto.LoadAsync(selectedPhoto.PictureNormalURL);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                else
+                {
+                    // CHANGE to another picture, not profile
+                    pictureBoxSelectedPhoto.Image = pictureBoxProfile.ErrorImage;
+                }
             }
         }
 
@@ -302,34 +260,27 @@ namespace BasicFacebookFeatures
         // Changed name, GUY - listBoxPosts MY name - listBoxUserPosts
         private void fetchUserPosts()
         {
-            try
+            listBoxUserPosts.Items.Clear();
+
+            foreach (Post post in m_LoggedInUser.Posts)
             {
-                listBoxUserPosts.Items.Clear();
-
-                foreach (Post post in m_LoggedInUser.Posts)
+                if (post.Message != null)
                 {
-                    if (post.Message != null)
-                    {
-                        listBoxUserPosts.Items.Add(post.Message);
-                    }
-                    else if (post.Caption != null)
-                    {
-                        listBoxUserPosts.Items.Add(post.Caption);
-                    }
-                    else
-                    {
-                        listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type));
-                    }
+                    listBoxUserPosts.Items.Add(post.Message);
                 }
-
-                if (listBoxUserPosts.Items.Count == 0)
+                else if (post.Caption != null)
                 {
-                    MessageBox.Show("No User Posts to retrieve :(");
+                    listBoxUserPosts.Items.Add(post.Caption);
+                }
+                else
+                {
+                    listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type));
                 }
             }
-            catch (Exception ex)
+
+            if (listBoxUserPosts.Items.Count == 0)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No User Posts to retrieve :(");
             }
         }
 
@@ -463,8 +414,6 @@ namespace BasicFacebookFeatures
 
         private void buttonEventsFilter_Click(object sender, EventArgs e)
         {
-            try
-            {
                 if (listBoxEvents.Items.Count == 0)
                 {
                     MessageBox.Show("No events to filter :(");
@@ -477,6 +426,9 @@ namespace BasicFacebookFeatures
 
                     return;
                 }
+
+            try
+            {
 
                 listBoxEvents.Items.Clear();                
                 ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
