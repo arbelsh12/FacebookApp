@@ -159,9 +159,9 @@ namespace BasicFacebookFeatures
 
                     return;
                 }
-
-                MessageBox.Show("No cover photo to retrieve :(");
             }
+
+            MessageBox.Show("No cover photo to retrieve :(");
         }
 
         private void fetchFriendsList()
