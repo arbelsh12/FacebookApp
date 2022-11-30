@@ -18,49 +18,51 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private User m_LoggedInUser;
-        private LoginResult m_LoginResult;      
+        //private LoginResult m_LoginResult;      
 
-        public FormMain()
+        public FormMain(User i_User)
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
+            m_LoggedInUser = i_User;
+            loadUserInfo();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
+        //    Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
-            m_LoginResult = FacebookService.Login(
-                    "1089208135099959",
-                    "email",
-                    "public_profile",
-                    "user_age_range",
-                    "user_birthday",
-                    "user_events",
-                    "user_friends",
-                    "user_gender",
-                    "user_hometown",
-                    "user_likes",
-                    "user_link",
-                    "user_location",
-                    "user_photos",
-                    "user_posts",
-                    "user_videos",
-                    "groups_access_member_info");
+        //    m_LoginResult = FacebookService.Login(
+        //            "1089208135099959",
+        //            "email",
+        //            "public_profile",
+        //            "user_age_range",
+        //            "user_birthday",
+        //            "user_events",
+        //            "user_friends",
+        //            "user_gender",
+        //            "user_hometown",
+        //            "user_likes",
+        //            "user_link",
+        //            "user_location",
+        //            "user_photos",
+        //            "user_posts",
+        //            "user_videos",
+        //            "groups_access_member_info");
 
-            if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-            {
-                m_LoggedInUser = m_LoginResult.LoggedInUser;
-                loadUserInfo();
-            }
-            else
-            {
-                MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
-            }
+        //    if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+        //    {
+        //        m_LoggedInUser = m_LoginResult.LoggedInUser;
+        //        loadUserInfo();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
+        //    }
 
-           // buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
+        //    buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
         }
 
         private void loadUserInfo()
@@ -159,9 +161,9 @@ namespace BasicFacebookFeatures
 
                     return;
                 }
-
-                MessageBox.Show("No cover photo to retrieve :(");
             }
+
+            MessageBox.Show("No cover photo to retrieve :(");
         }
 
         private void fetchFriendsList()
@@ -316,7 +318,6 @@ namespace BasicFacebookFeatures
         {
 			FacebookService.LogoutWithUI();
 			buttonLogin.Text = "Login";
-            m_LoginResult = null;
         }
 
         private void pictureBoxProfile_Click(object sender, EventArgs e)
@@ -420,6 +421,7 @@ namespace BasicFacebookFeatures
                     
                     return;
                 }
+
                 if(comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
                 {
                     MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
@@ -429,7 +431,6 @@ namespace BasicFacebookFeatures
 
             try
             {
-
                 listBoxEvents.Items.Clear();                
                 ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 

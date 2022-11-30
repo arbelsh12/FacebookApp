@@ -107,6 +107,7 @@ namespace FacebookAppLogic
             r_Zodiac = new Zodiac();
         }
 
+        //The Function return the user's daily compatibile astrology horoscope.
         public async Task<string> CreateHoroscopePost(string i_UserBirthDate)
         {
             string apiUri = await getUriByBirthday(i_UserBirthDate);

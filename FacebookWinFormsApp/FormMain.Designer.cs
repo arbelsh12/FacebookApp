@@ -149,7 +149,7 @@
             this.buttonAstrologyHoroscopePost.Name = "buttonAstrologyHoroscopePost";
             this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(141, 111);
             this.buttonAstrologyHoroscopePost.TabIndex = 59;
-            this.buttonAstrologyHoroscopePost.Text = "Post Compatibility Astrology Horoscope";
+            this.buttonAstrologyHoroscopePost.Text = "Post Daily Compatibility Astrology Horoscope";
             this.buttonAstrologyHoroscopePost.UseVisualStyleBackColor = true;
             this.buttonAstrologyHoroscopePost.Click += new System.EventHandler(this.buttonAstrologyHoroscopePost_Click);
             // 
@@ -368,8 +368,10 @@
             // 
             // comboBoxFilterTime
             // 
+            this.comboBoxFilterTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFilterTime.FormattingEnabled = true;
             this.comboBoxFilterTime.Items.AddRange(new object[] {
+            "-select-",
             "Today",
             "In the next 7 days",
             "This month"});
@@ -391,8 +393,10 @@
             // 
             // comboBoxSortByAttends
             // 
+            this.comboBoxSortByAttends.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSortByAttends.FormattingEnabled = true;
             this.comboBoxSortByAttends.Items.AddRange(new object[] {
+            "-select-",
             "Attending",
             "Interested",
             "Declined",
