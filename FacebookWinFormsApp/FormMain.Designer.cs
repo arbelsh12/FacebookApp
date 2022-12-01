@@ -63,11 +63,13 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageFeed = new System.Windows.Forms.TabPage();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
-            this.tabPageLikedPages = new System.Windows.Forms.TabPage();
-            this.tabPageGroups = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanelGroups = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelAlbumPhotos = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPageLikedPages = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPageGroups = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelGroups = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPageSport = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelSport = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -78,6 +80,7 @@
             this.tabPageAlbums.SuspendLayout();
             this.tabPageLikedPages.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
+            this.tabPageSport.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogout
@@ -420,6 +423,7 @@
             this.tabControl.Controls.Add(this.tabPageAlbums);
             this.tabControl.Controls.Add(this.tabPageLikedPages);
             this.tabControl.Controls.Add(this.tabPageGroups);
+            this.tabControl.Controls.Add(this.tabPageSport);
             this.tabControl.Location = new System.Drawing.Point(46, 162);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -461,6 +465,14 @@
             this.tabPageAlbums.Text = "Albums";
             this.tabPageAlbums.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanelAlbumPhotos
+            // 
+            this.flowLayoutPanelAlbumPhotos.AutoScroll = true;
+            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(8, 168);
+            this.flowLayoutPanelAlbumPhotos.Name = "flowLayoutPanelAlbumPhotos";
+            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1028, 256);
+            this.flowLayoutPanelAlbumPhotos.TabIndex = 68;
+            // 
             // tabPageLikedPages
             // 
             this.tabPageLikedPages.Controls.Add(this.flowLayoutPanelPages);
@@ -470,6 +482,14 @@
             this.tabPageLikedPages.TabIndex = 2;
             this.tabPageLikedPages.Text = "Liked Pages";
             this.tabPageLikedPages.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelPages
+            // 
+            this.flowLayoutPanelPages.AutoScroll = true;
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelPages.TabIndex = 77;
             // 
             // tabPageGroups
             // 
@@ -481,14 +501,6 @@
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanelPages
-            // 
-            this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1039, 424);
-            this.flowLayoutPanelPages.TabIndex = 77;
-            // 
             // flowLayoutPanelGroups
             // 
             this.flowLayoutPanelGroups.AutoScroll = true;
@@ -497,13 +509,22 @@
             this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1039, 424);
             this.flowLayoutPanelGroups.TabIndex = 0;
             // 
-            // flowLayoutPanelAlbumPhotos
+            // tabPageSport
             // 
-            this.flowLayoutPanelAlbumPhotos.AutoScroll = true;
-            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(8, 168);
-            this.flowLayoutPanelAlbumPhotos.Name = "flowLayoutPanelAlbumPhotos";
-            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1028, 256);
-            this.flowLayoutPanelAlbumPhotos.TabIndex = 68;
+            this.tabPageSport.Controls.Add(this.flowLayoutPanelSport);
+            this.tabPageSport.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSport.Name = "tabPageSport";
+            this.tabPageSport.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageSport.TabIndex = 4;
+            this.tabPageSport.Text = "Sport Teams";
+            this.tabPageSport.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelSport
+            // 
+            this.flowLayoutPanelSport.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelSport.Name = "flowLayoutPanelSport";
+            this.flowLayoutPanelSport.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelSport.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -547,6 +568,7 @@
             this.tabPageAlbums.PerformLayout();
             this.tabPageLikedPages.ResumeLayout(false);
             this.tabPageGroups.ResumeLayout(false);
+            this.tabPageSport.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,6 +615,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPages;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelGroups;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlbumPhotos;
+        private System.Windows.Forms.TabPage tabPageSport;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSport;
     }
 }
 

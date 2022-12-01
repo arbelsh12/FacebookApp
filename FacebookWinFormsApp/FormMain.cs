@@ -454,6 +454,12 @@ namespace BasicFacebookFeatures
                         fetchGroupsListFlowControl();
                         break;
                     }
+                case 4:
+                    {
+                        MessageBox.Show("Click tab 5 ! :)");
+                        fetchSportTeamsFlowControl();
+                        break;
+                    }
                 default:
                     break;
             }
@@ -584,6 +590,49 @@ namespace BasicFacebookFeatures
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void fetchSportTeamsFlowControl()
+        {
+            flowLayoutPanelSport.Controls.Clear();
+
+            //listBoxPages.DisplayMember = "Name";
+
+            if (m_LoggedInUser.FavofriteTeams != null)
+            {
+                try
+                {
+                    foreach (Page team in m_LoggedInUser.FavofriteTeams)
+                    {
+                        GroupBox box = new GroupBox();
+                        box.Size = new Size(140, 120);
+                        box.Text = team.Name;
+                        box.Name = "Groupbox" + team.Name;
+                        box.BackColor = Color.Pink;
+
+                        PictureBox groupPicture = new PictureBox();
+                        groupPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                        groupPicture.Size = new Size(70, 70);
+                        groupPicture.LoadAsync(team.PictureNormalURL);
+                        groupPicture.Name = "pictureBox" + team.Name;
+                        groupPicture.Location = new Point(35, 45);
+
+
+                        box.Controls.Add(groupPicture);
+
+                        flowLayoutPanelSport.Controls.Add(box);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            
+            if (flowLayoutPanelSport.Controls.Count == 0)
+            {
+                MessageBox.Show("No sport teams to retrieve :(");
             }
         }
     }
