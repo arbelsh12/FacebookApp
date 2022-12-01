@@ -47,7 +47,7 @@ namespace BasicFacebookFeatures
             {
                 this.DialogResult = DialogResult.OK;
                 this.Hide();
-                FormMain formMain = new FormMain(m_LoginResult.LoggedInUser);
+                FormMain formMain = new FormMain(m_LoginResult.LoggedInUser, this);
                 formMain.ShowDialog();
             }
             else
@@ -62,6 +62,11 @@ namespace BasicFacebookFeatures
         }
 
         private void FormLogIn_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelWelcome_Click(object sender, EventArgs e)
         {
 
         }

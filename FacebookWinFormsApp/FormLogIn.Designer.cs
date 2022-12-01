@@ -64,6 +64,7 @@
             this.labelWelcome.Size = new System.Drawing.Size(354, 28);
             this.labelWelcome.TabIndex = 2;
             this.labelWelcome.Text = "Welcome to our app!";
+            this.labelWelcome.Click += new System.EventHandler(this.labelWelcome_Click);
             // 
             // FormLogIn
             // 

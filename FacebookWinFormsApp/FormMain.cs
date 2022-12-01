@@ -17,52 +17,23 @@ namespace BasicFacebookFeatures
         private const int k_NotSelected = -1;
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
+        private readonly FormLogIn r_FormLogIn;
         private User m_LoggedInUser;
-        //private LoginResult m_LoginResult;      
 
-        public FormMain(User i_User)
+        public FormMain(User i_User, FormLogIn i_FormLogin)
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
+            r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
             loadUserInfo();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-        //    Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
-        //    m_LoginResult = FacebookService.Login(
-        //            "1089208135099959",
-        //            "email",
-        //            "public_profile",
-        //            "user_age_range",
-        //            "user_birthday",
-        //            "user_events",
-        //            "user_friends",
-        //            "user_gender",
-        //            "user_hometown",
-        //            "user_likes",
-        //            "user_link",
-        //            "user_location",
-        //            "user_photos",
-        //            "user_posts",
-        //            "user_videos",
-        //            "groups_access_member_info");
-
-        //    if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-        //    {
-        //        m_LoggedInUser = m_LoginResult.LoggedInUser;
-        //        loadUserInfo();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
-        //    }
-
-        //    buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
         }
 
         private void loadUserInfo()
@@ -317,7 +288,9 @@ namespace BasicFacebookFeatures
         private void buttonLogout_Click(object sender, EventArgs e)
         {
 			FacebookService.LogoutWithUI();
-			buttonLogin.Text = "Login";
+            this.Hide();
+            r_FormLogIn.Show(); // maybe should use : ShowDialog();
+            this.Close();
         }
 
         private void pictureBoxProfile_Click(object sender, EventArgs e)
