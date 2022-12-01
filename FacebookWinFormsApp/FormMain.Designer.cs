@@ -70,6 +70,7 @@
             this.flowLayoutPanelGroups = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageSport = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelSport = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelUserName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -96,10 +97,10 @@
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(46, 24);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 24);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(140, 113);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(151, 133);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
@@ -130,7 +131,7 @@
             // 
             this.listBoxPages.FormattingEnabled = true;
             this.listBoxPages.ItemHeight = 16;
-            this.listBoxPages.Location = new System.Drawing.Point(74, 658);
+            this.listBoxPages.Location = new System.Drawing.Point(74, 714);
             this.listBoxPages.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.listBoxPages.Name = "listBoxPages";
             this.listBoxPages.Size = new System.Drawing.Size(269, 132);
@@ -140,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 637);
+            this.label1.Location = new System.Drawing.Point(74, 693);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 58;
@@ -161,7 +162,7 @@
             // 
             this.listBoxGroups.FormattingEnabled = true;
             this.listBoxGroups.ItemHeight = 16;
-            this.listBoxGroups.Location = new System.Drawing.Point(77, 824);
+            this.listBoxGroups.Location = new System.Drawing.Point(77, 880);
             this.listBoxGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxGroups.Name = "listBoxGroups";
             this.listBoxGroups.Size = new System.Drawing.Size(259, 132);
@@ -170,10 +171,10 @@
             // 
             // pictureBoxCover
             // 
-            this.pictureBoxCover.Location = new System.Drawing.Point(230, 24);
+            this.pictureBoxCover.Location = new System.Drawing.Point(203, 23);
             this.pictureBoxCover.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxCover.Name = "pictureBoxCover";
-            this.pictureBoxCover.Size = new System.Drawing.Size(242, 70);
+            this.pictureBoxCover.Size = new System.Drawing.Size(271, 97);
             this.pictureBoxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCover.TabIndex = 62;
             this.pictureBoxCover.TabStop = false;
@@ -182,7 +183,7 @@
             // labelGroups
             // 
             this.labelGroups.AutoSize = true;
-            this.labelGroups.Location = new System.Drawing.Point(77, 803);
+            this.labelGroups.Location = new System.Drawing.Point(77, 859);
             this.labelGroups.Name = "labelGroups";
             this.labelGroups.Size = new System.Drawing.Size(51, 16);
             this.labelGroups.TabIndex = 63;
@@ -251,7 +252,7 @@
             // 
             this.listBoxAlbumPhotos.FormattingEnabled = true;
             this.listBoxAlbumPhotos.ItemHeight = 16;
-            this.listBoxAlbumPhotos.Location = new System.Drawing.Point(911, 703);
+            this.listBoxAlbumPhotos.Location = new System.Drawing.Point(911, 759);
             this.listBoxAlbumPhotos.Name = "listBoxAlbumPhotos";
             this.listBoxAlbumPhotos.Size = new System.Drawing.Size(269, 116);
             this.listBoxAlbumPhotos.TabIndex = 68;
@@ -259,7 +260,7 @@
             // 
             // pictureBoxSelectedPhoto
             // 
-            this.pictureBoxSelectedPhoto.Location = new System.Drawing.Point(1201, 703);
+            this.pictureBoxSelectedPhoto.Location = new System.Drawing.Point(1201, 759);
             this.pictureBoxSelectedPhoto.Name = "pictureBoxSelectedPhoto";
             this.pictureBoxSelectedPhoto.Size = new System.Drawing.Size(176, 117);
             this.pictureBoxSelectedPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -269,7 +270,7 @@
             // labelSelectedPhoto
             // 
             this.labelSelectedPhoto.AutoSize = true;
-            this.labelSelectedPhoto.Location = new System.Drawing.Point(1200, 681);
+            this.labelSelectedPhoto.Location = new System.Drawing.Point(1200, 737);
             this.labelSelectedPhoto.Name = "labelSelectedPhoto";
             this.labelSelectedPhoto.Size = new System.Drawing.Size(99, 16);
             this.labelSelectedPhoto.TabIndex = 70;
@@ -278,7 +279,7 @@
             // labelSelectedAlbumPhotos
             // 
             this.labelSelectedAlbumPhotos.AutoSize = true;
-            this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(912, 681);
+            this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(912, 737);
             this.labelSelectedAlbumPhotos.Name = "labelSelectedAlbumPhotos";
             this.labelSelectedAlbumPhotos.Size = new System.Drawing.Size(90, 16);
             this.labelSelectedAlbumPhotos.TabIndex = 71;
@@ -325,7 +326,7 @@
             // 
             // pictureBoxGroup
             // 
-            this.pictureBoxGroup.Location = new System.Drawing.Point(265, 892);
+            this.pictureBoxGroup.Location = new System.Drawing.Point(265, 948);
             this.pictureBoxGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxGroup.Name = "pictureBoxGroup";
             this.pictureBoxGroup.Size = new System.Drawing.Size(60, 48);
@@ -355,7 +356,7 @@
             // labelEvents
             // 
             this.labelEvents.AutoSize = true;
-            this.labelEvents.Location = new System.Drawing.Point(412, 644);
+            this.labelEvents.Location = new System.Drawing.Point(412, 700);
             this.labelEvents.Name = "labelEvents";
             this.labelEvents.Size = new System.Drawing.Size(51, 16);
             this.labelEvents.TabIndex = 74;
@@ -366,7 +367,7 @@
             // 
             this.listBoxEvents.FormattingEnabled = true;
             this.listBoxEvents.ItemHeight = 16;
-            this.listBoxEvents.Location = new System.Drawing.Point(415, 674);
+            this.listBoxEvents.Location = new System.Drawing.Point(415, 730);
             this.listBoxEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxEvents.Name = "listBoxEvents";
             this.listBoxEvents.Size = new System.Drawing.Size(247, 116);
@@ -382,7 +383,7 @@
             "Today",
             "In the next 7 days",
             "This month"});
-            this.comboBoxFilterTime.Location = new System.Drawing.Point(676, 710);
+            this.comboBoxFilterTime.Location = new System.Drawing.Point(676, 766);
             this.comboBoxFilterTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFilterTime.Name = "comboBoxFilterTime";
             this.comboBoxFilterTime.Size = new System.Drawing.Size(133, 24);
@@ -391,7 +392,7 @@
             // 
             // buttonEventsFilter
             // 
-            this.buttonEventsFilter.Location = new System.Drawing.Point(676, 674);
+            this.buttonEventsFilter.Location = new System.Drawing.Point(676, 730);
             this.buttonEventsFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEventsFilter.Name = "buttonEventsFilter";
             this.buttonEventsFilter.Size = new System.Drawing.Size(79, 23);
@@ -410,7 +411,7 @@
             "Interested",
             "Declined",
             "Maybe"});
-            this.comboBoxSortByAttends.Location = new System.Drawing.Point(676, 738);
+            this.comboBoxSortByAttends.Location = new System.Drawing.Point(676, 794);
             this.comboBoxSortByAttends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSortByAttends.Name = "comboBoxSortByAttends";
             this.comboBoxSortByAttends.Size = new System.Drawing.Size(133, 24);
@@ -424,7 +425,7 @@
             this.tabControl.Controls.Add(this.tabPageLikedPages);
             this.tabControl.Controls.Add(this.tabPageGroups);
             this.tabControl.Controls.Add(this.tabPageSport);
-            this.tabControl.Location = new System.Drawing.Point(46, 162);
+            this.tabControl.Location = new System.Drawing.Point(46, 218);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1053, 459);
@@ -526,11 +527,24 @@
             this.flowLayoutPanelSport.Size = new System.Drawing.Size(1039, 424);
             this.flowLayoutPanelSport.TabIndex = 0;
             // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUserName.Location = new System.Drawing.Point(209, 125);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(201, 46);
+            this.labelUserName.TabIndex = 80;
+            this.labelUserName.Text = "userName";
+            this.labelUserName.Visible = false;
+            this.labelUserName.Click += new System.EventHandler(this.labelUserName_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1556, 1026);
+            this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.listBoxPages);
             this.Controls.Add(this.label1);
@@ -617,6 +631,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlbumPhotos;
         private System.Windows.Forms.TabPage tabPageSport;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSport;
+        private System.Windows.Forms.Label labelUserName;
     }
 }
 

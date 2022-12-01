@@ -45,6 +45,8 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
             listBoxAboutInfo.Items.Add(r_Astrology.GetZodiac(m_LoggedInUser.Birthday));
+            labelUserName.Text = m_LoggedInUser.Name;
+            labelUserName.Show();
 
             fetchCoverPhoto();
             fetchAlbums();
@@ -634,6 +636,11 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No sport teams to retrieve :(");
             }
+        }
+
+        private void labelUserName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
