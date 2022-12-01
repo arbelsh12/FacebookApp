@@ -48,12 +48,12 @@ namespace BasicFacebookFeatures
 
             fetchCoverPhoto();
             fetchAlbums();
-            fetchAlbumPhotos();
+            //fetchAlbumPhotos();
             fetchUserPosts();
-            fetchFriendsList();
+            //fetchFriendsList();
             fetchPagesList();
             fetchGroupsList();
-            fetchEventsList();
+           // fetchEventsList();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
 
@@ -344,6 +344,7 @@ namespace BasicFacebookFeatures
         private void listBoxAlbums_SelectedAlbumIndexChanged(object sender, EventArgs e)
         {
             displaySelectedAlbum();
+            fetchAlbumPhotosFlowControl();
         }
         /// End copy
         
@@ -424,5 +425,167 @@ namespace BasicFacebookFeatures
         {
 
         }
+
+        //
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl.SelectedIndex)
+            {
+                case 0:
+                    {
+                        MessageBox.Show("Click tab 1 ! :)");
+                        break;
+                    }
+                case 1:
+                    {
+                        MessageBox.Show("Click tab 2 ! :)");
+                        break;
+                    }
+                case 2:
+                    {
+                        MessageBox.Show("Click tab 3 ! :)");
+                        fetchLikedPagesListFlowControl();
+                        break;
+                    }
+                case 3:
+                    {
+                        MessageBox.Show("Click tab 4 ! :)");
+                        fetchGroupsListFlowControl();
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+        }
+
+        private void fetchLikedPagesListFlowControl()
+        {
+            flowLayoutPanelPages.Controls.Clear();
+
+            //listBoxPages.DisplayMember = "Name";
+
+            try
+            {
+                foreach (Page page in m_LoggedInUser.LikedPages)
+                {
+                    GroupBox box = new GroupBox();
+                    box.Size = new Size(140, 120);
+                    box.Text = page.Name;
+                    box.Name = "Groupbox" + page.Name;
+                    box.BackColor = Color.Pink;
+
+                    PictureBox pagePicture = new PictureBox();
+                    pagePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pagePicture.Size = new Size(70, 70);
+                    pagePicture.LoadAsync(page.PictureNormalURL);
+                    pagePicture.Name = "pictureBox" + page.Name;
+                    pagePicture.Location = new Point(35, 45);
+
+
+                    box.Controls.Add(pagePicture);
+
+                    flowLayoutPanelPages.Controls.Add(box);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (flowLayoutPanelPages.Controls.Count == 0)
+            {
+                MessageBox.Show("No liked pages to retrieve :(");
+            }
+        }
+
+        private void fetchGroupsListFlowControl()
+        {
+            flowLayoutPanelGroups.Controls.Clear();
+
+            //listBoxPages.DisplayMember = "Name";
+
+            try
+            {
+                foreach (Group group in m_LoggedInUser.Groups)
+                {
+                    GroupBox box = new GroupBox();
+                    box.Size = new Size(140, 120);
+                    box.Text = group.Name;
+                    box.Name = "Groupbox" + group.Name;
+                    box.BackColor = Color.Pink;
+
+                    PictureBox groupPicture = new PictureBox();
+                    groupPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                    groupPicture.Size = new Size(70, 70);
+                    groupPicture.LoadAsync(group.PictureNormalURL);
+                    groupPicture.Name = "pictureBox" + group.Name;
+                    groupPicture.Location = new Point(35, 45);
+
+
+                    box.Controls.Add(groupPicture);
+
+                    flowLayoutPanelGroups.Controls.Add(box);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (flowLayoutPanelGroups.Controls.Count == 0)
+            {
+                MessageBox.Show("No groups to retrieve :(");
+            }
+        }
+
+        private void fetchAlbumPhotosFlowControl()
+        {
+            flowLayoutPanelAlbumPhotos.Controls.Clear();
+            //listBoxPages.DisplayMember = "Name";
+
+            try
+            {
+                if (listBoxAlbums.SelectedItems.Count == 1)
+                {
+                    Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+
+                    pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
+
+                    foreach (Photo photo in selectedAlbum.Photos)
+                    {
+                        PictureBox picture = new PictureBox();
+                        picture.SizeMode = PictureBoxSizeMode.StretchImage;
+                        picture.Size = new Size(100, 100);
+
+
+                        if (photo.PictureNormalURL != null)
+                        {
+                            picture.LoadAsync(photo.PictureNormalURL);
+                        }
+                        else
+                        {
+                            // CHANGE to another picture, not profile
+                            picture.Image = pictureBoxProfile.ErrorImage;
+                        }
+
+                        //pagePicture.Name = "pictureBox" + photo.Name;
+                        picture.Location = new Point(35, 45);
+
+                        flowLayoutPanelAlbumPhotos.Controls.Add(picture);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No photos to retrieve in selected album :(");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
+

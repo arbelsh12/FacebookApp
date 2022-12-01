@@ -64,7 +64,10 @@
             this.tabPageFeed = new System.Windows.Forms.TabPage();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
             this.tabPageLikedPages = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPageGroups = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelGroups = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelAlbumPhotos = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -74,12 +77,13 @@
             this.tabPageFeed.SuspendLayout();
             this.tabPageAlbums.SuspendLayout();
             this.tabPageLikedPages.SuspendLayout();
+            this.tabPageGroups.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogout
             // 
             this.buttonLogout.Location = new System.Drawing.Point(911, 41);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(201, 28);
             this.buttonLogout.TabIndex = 52;
@@ -123,7 +127,7 @@
             // 
             this.listBoxPages.FormattingEnabled = true;
             this.listBoxPages.ItemHeight = 16;
-            this.listBoxPages.Location = new System.Drawing.Point(14, 35);
+            this.listBoxPages.Location = new System.Drawing.Point(74, 658);
             this.listBoxPages.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.listBoxPages.Name = "listBoxPages";
             this.listBoxPages.Size = new System.Drawing.Size(269, 132);
@@ -133,7 +137,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 14);
+            this.label1.Location = new System.Drawing.Point(74, 637);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 58;
@@ -154,7 +158,7 @@
             // 
             this.listBoxGroups.FormattingEnabled = true;
             this.listBoxGroups.ItemHeight = 16;
-            this.listBoxGroups.Location = new System.Drawing.Point(17, 201);
+            this.listBoxGroups.Location = new System.Drawing.Point(77, 824);
             this.listBoxGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxGroups.Name = "listBoxGroups";
             this.listBoxGroups.Size = new System.Drawing.Size(259, 132);
@@ -175,7 +179,7 @@
             // labelGroups
             // 
             this.labelGroups.AutoSize = true;
-            this.labelGroups.Location = new System.Drawing.Point(17, 180);
+            this.labelGroups.Location = new System.Drawing.Point(77, 803);
             this.labelGroups.Name = "labelGroups";
             this.labelGroups.Size = new System.Drawing.Size(51, 16);
             this.labelGroups.TabIndex = 63;
@@ -223,7 +227,7 @@
             // 
             // pictureBoxSelectedAlbum
             // 
-            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(267, 74);
+            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(272, 41);
             this.pictureBoxSelectedAlbum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxSelectedAlbum.Name = "pictureBoxSelectedAlbum";
             this.pictureBoxSelectedAlbum.Size = new System.Drawing.Size(105, 90);
@@ -234,7 +238,7 @@
             // labelSelectedAlbum
             // 
             this.labelSelectedAlbum.AutoSize = true;
-            this.labelSelectedAlbum.Location = new System.Drawing.Point(263, 55);
+            this.labelSelectedAlbum.Location = new System.Drawing.Point(268, 22);
             this.labelSelectedAlbum.Name = "labelSelectedAlbum";
             this.labelSelectedAlbum.Size = new System.Drawing.Size(102, 16);
             this.labelSelectedAlbum.TabIndex = 67;
@@ -244,7 +248,7 @@
             // 
             this.listBoxAlbumPhotos.FormattingEnabled = true;
             this.listBoxAlbumPhotos.ItemHeight = 16;
-            this.listBoxAlbumPhotos.Location = new System.Drawing.Point(11, 199);
+            this.listBoxAlbumPhotos.Location = new System.Drawing.Point(911, 703);
             this.listBoxAlbumPhotos.Name = "listBoxAlbumPhotos";
             this.listBoxAlbumPhotos.Size = new System.Drawing.Size(269, 116);
             this.listBoxAlbumPhotos.TabIndex = 68;
@@ -252,7 +256,7 @@
             // 
             // pictureBoxSelectedPhoto
             // 
-            this.pictureBoxSelectedPhoto.Location = new System.Drawing.Point(301, 199);
+            this.pictureBoxSelectedPhoto.Location = new System.Drawing.Point(1201, 703);
             this.pictureBoxSelectedPhoto.Name = "pictureBoxSelectedPhoto";
             this.pictureBoxSelectedPhoto.Size = new System.Drawing.Size(176, 117);
             this.pictureBoxSelectedPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -262,7 +266,7 @@
             // labelSelectedPhoto
             // 
             this.labelSelectedPhoto.AutoSize = true;
-            this.labelSelectedPhoto.Location = new System.Drawing.Point(300, 177);
+            this.labelSelectedPhoto.Location = new System.Drawing.Point(1200, 681);
             this.labelSelectedPhoto.Name = "labelSelectedPhoto";
             this.labelSelectedPhoto.Size = new System.Drawing.Size(99, 16);
             this.labelSelectedPhoto.TabIndex = 70;
@@ -271,7 +275,7 @@
             // labelSelectedAlbumPhotos
             // 
             this.labelSelectedAlbumPhotos.AutoSize = true;
-            this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(12, 177);
+            this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(912, 681);
             this.labelSelectedAlbumPhotos.Name = "labelSelectedAlbumPhotos";
             this.labelSelectedAlbumPhotos.Size = new System.Drawing.Size(90, 16);
             this.labelSelectedAlbumPhotos.TabIndex = 71;
@@ -318,7 +322,7 @@
             // 
             // pictureBoxGroup
             // 
-            this.pictureBoxGroup.Location = new System.Drawing.Point(205, 269);
+            this.pictureBoxGroup.Location = new System.Drawing.Point(265, 892);
             this.pictureBoxGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxGroup.Name = "pictureBoxGroup";
             this.pictureBoxGroup.Size = new System.Drawing.Size(60, 48);
@@ -415,12 +419,13 @@
             this.tabControl.Controls.Add(this.tabPageFeed);
             this.tabControl.Controls.Add(this.tabPageAlbums);
             this.tabControl.Controls.Add(this.tabPageLikedPages);
-            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPageGroups);
             this.tabControl.Location = new System.Drawing.Point(46, 162);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1053, 459);
             this.tabControl.TabIndex = 79;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPageFeed
             // 
@@ -443,14 +448,11 @@
             // 
             // tabPageAlbums
             // 
+            this.tabPageAlbums.Controls.Add(this.flowLayoutPanelAlbumPhotos);
             this.tabPageAlbums.Controls.Add(this.listBoxAlbums);
             this.tabPageAlbums.Controls.Add(this.labelAlbums);
             this.tabPageAlbums.Controls.Add(this.pictureBoxSelectedAlbum);
             this.tabPageAlbums.Controls.Add(this.labelSelectedAlbum);
-            this.tabPageAlbums.Controls.Add(this.listBoxAlbumPhotos);
-            this.tabPageAlbums.Controls.Add(this.pictureBoxSelectedPhoto);
-            this.tabPageAlbums.Controls.Add(this.labelSelectedPhoto);
-            this.tabPageAlbums.Controls.Add(this.labelSelectedAlbumPhotos);
             this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
             this.tabPageAlbums.Name = "tabPageAlbums";
             this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3);
@@ -461,11 +463,7 @@
             // 
             // tabPageLikedPages
             // 
-            this.tabPageLikedPages.Controls.Add(this.listBoxPages);
-            this.tabPageLikedPages.Controls.Add(this.label1);
-            this.tabPageLikedPages.Controls.Add(this.pictureBoxGroup);
-            this.tabPageLikedPages.Controls.Add(this.listBoxGroups);
-            this.tabPageLikedPages.Controls.Add(this.labelGroups);
+            this.tabPageLikedPages.Controls.Add(this.flowLayoutPanelPages);
             this.tabPageLikedPages.Location = new System.Drawing.Point(4, 25);
             this.tabPageLikedPages.Name = "tabPageLikedPages";
             this.tabPageLikedPages.Size = new System.Drawing.Size(1045, 430);
@@ -473,24 +471,58 @@
             this.tabPageLikedPages.Text = "Liked Pages";
             this.tabPageLikedPages.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // tabPageGroups
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1045, 430);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPageGroups.Controls.Add(this.flowLayoutPanelGroups);
+            this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
+            this.tabPageGroups.Name = "tabPageGroups";
+            this.tabPageGroups.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageGroups.TabIndex = 3;
+            this.tabPageGroups.Text = "Groups";
+            this.tabPageGroups.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelPages
+            // 
+            this.flowLayoutPanelPages.AutoScroll = true;
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelPages.TabIndex = 77;
+            // 
+            // flowLayoutPanelGroups
+            // 
+            this.flowLayoutPanelGroups.AutoScroll = true;
+            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
+            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelGroups.TabIndex = 0;
+            // 
+            // flowLayoutPanelAlbumPhotos
+            // 
+            this.flowLayoutPanelAlbumPhotos.AutoScroll = true;
+            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(8, 168);
+            this.flowLayoutPanelAlbumPhotos.Name = "flowLayoutPanelAlbumPhotos";
+            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1028, 256);
+            this.flowLayoutPanelAlbumPhotos.TabIndex = 68;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1452, 970);
+            this.ClientSize = new System.Drawing.Size(1556, 1026);
             this.Controls.Add(this.pictureBoxCover);
+            this.Controls.Add(this.listBoxPages);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelFriends);
+            this.Controls.Add(this.listBoxAlbumPhotos);
+            this.Controls.Add(this.pictureBoxSelectedPhoto);
+            this.Controls.Add(this.pictureBoxGroup);
+            this.Controls.Add(this.labelSelectedPhoto);
             this.Controls.Add(this.pictureBoxProfile);
+            this.Controls.Add(this.labelSelectedAlbumPhotos);
+            this.Controls.Add(this.listBoxGroups);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.labelGroups);
             this.Controls.Add(this.listBoxFriendsList);
             this.Controls.Add(this.comboBoxSortByAttends);
             this.Controls.Add(this.buttonEventsFilter);
@@ -498,7 +530,7 @@
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.labelEvents);
             this.Controls.Add(this.buttonLogout);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -514,7 +546,7 @@
             this.tabPageAlbums.ResumeLayout(false);
             this.tabPageAlbums.PerformLayout();
             this.tabPageLikedPages.ResumeLayout(false);
-            this.tabPageLikedPages.PerformLayout();
+            this.tabPageGroups.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,7 +589,10 @@
         private System.Windows.Forms.TabPage tabPageFeed;
         private System.Windows.Forms.TabPage tabPageAlbums;
         private System.Windows.Forms.TabPage tabPageLikedPages;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPageGroups;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPages;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelGroups;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlbumPhotos;
     }
 }
 
