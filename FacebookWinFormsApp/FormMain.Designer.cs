@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.listBoxAboutInfo = new System.Windows.Forms.ListBox();
@@ -67,17 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonLogin
-            // 
-            this.buttonLogin.Location = new System.Drawing.Point(1025, 12);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(226, 35);
-            this.buttonLogin.TabIndex = 36;
-            this.buttonLogin.Text = "Login";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonLogout
             // 
@@ -444,7 +432,6 @@
             this.Controls.Add(this.listBoxAboutInfo);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.buttonLogin);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -461,8 +448,6 @@
         }
 
 		#endregion
-
-		private System.Windows.Forms.Button buttonLogin;
 		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.ListBox listBoxAboutInfo;
