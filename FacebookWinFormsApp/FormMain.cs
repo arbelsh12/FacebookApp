@@ -436,29 +436,24 @@ namespace BasicFacebookFeatures
             {
                 case 0:
                     {
-                        MessageBox.Show("Click tab 1 ! :)");
                         break;
                     }
                 case 1:
                     {
-                        MessageBox.Show("Click tab 2 ! :)");
                         break;
                     }
                 case 2:
                     {
-                        MessageBox.Show("Click tab 3 ! :)");
                         fetchLikedPagesListFlowControl();
                         break;
                     }
                 case 3:
                     {
-                        MessageBox.Show("Click tab 4 ! :)");
                         fetchGroupsListFlowControl();
                         break;
                     }
                 case 4:
                     {
-                        MessageBox.Show("Click tab 5 ! :)");
                         fetchSportTeamsFlowControl();
                         break;
                     }
@@ -471,21 +466,22 @@ namespace BasicFacebookFeatures
         private void fetchLikedPagesListFlowControl()
         {
             flowLayoutPanelPages.Controls.Clear();
-
             //listBoxPages.DisplayMember = "Name";
-
-            try
+            if (m_LoggedInUser.LikedPages != null)
             {
-                foreach (Page page in m_LoggedInUser.LikedPages)
+                try
                 {
-                    addGroupBoxToLayout(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                    foreach (Page page in m_LoggedInUser.LikedPages)
+                    {
+                        addGroupBoxToLayout(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+           
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
                 MessageBox.Show("No liked pages to retrieve :(");
@@ -495,19 +491,20 @@ namespace BasicFacebookFeatures
         private void fetchGroupsListFlowControl()
         {
             flowLayoutPanelGroups.Controls.Clear();
-
             //listBoxPages.DisplayMember = "Name";
-
-            try
+            if(m_LoggedInUser.Groups != null)
             {
-                foreach (Group group in m_LoggedInUser.Groups)
+                try
                 {
-                    addGroupBoxToLayout(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                    foreach (Group group in m_LoggedInUser.Groups)
+                    {
+                        addGroupBoxToLayout(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             if (flowLayoutPanelGroups.Controls.Count == 0)
@@ -519,21 +516,18 @@ namespace BasicFacebookFeatures
         private void addGroupBoxToLayout(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
         {
             GroupBox box = new GroupBox();
+            PictureBox picture = new PictureBox();
+
             box.Size = new Size(140, 120);
             box.Text = i_Name;
             box.Name = "Groupbox" + i_Name;
             box.BackColor = Color.Pink;
-
-            PictureBox groupPicture = new PictureBox();
-            groupPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            groupPicture.Size = new Size(70, 70);
-            groupPicture.LoadAsync(i_PictureURL);
-            groupPicture.Name = "pictureBox" + i_Name;
-            groupPicture.Location = new Point(35, 45);
-
-
-            box.Controls.Add(groupPicture);
-
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            picture.Size = new Size(70, 70);
+            picture.LoadAsync(i_PictureURL);
+            picture.Name = "pictureBox" + i_Name;
+            picture.Location = new Point(35, 45);
+            box.Controls.Add(picture);
             i_Panel.Controls.Add(box);
         }
 
@@ -541,7 +535,6 @@ namespace BasicFacebookFeatures
         {
             flowLayoutPanelAlbumPhotos.Controls.Clear();
             //listBoxPages.DisplayMember = "Name";
-
             try
             {
                 if (listBoxAlbums.SelectedItems.Count == 1)
@@ -549,14 +542,12 @@ namespace BasicFacebookFeatures
                     Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
 
                     pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
-
                     foreach (Photo photo in selectedAlbum.Photos)
                     {
                         PictureBox picture = new PictureBox();
+
                         picture.SizeMode = PictureBoxSizeMode.StretchImage;
                         picture.Size = new Size(100, 100);
-
-
                         if (photo.PictureNormalURL != null)
                         {
                             picture.LoadAsync(photo.PictureNormalURL);
@@ -569,7 +560,6 @@ namespace BasicFacebookFeatures
 
                         //pagePicture.Name = "pictureBox" + photo.Name;
                         picture.Location = new Point(35, 45);
-
                         flowLayoutPanelAlbumPhotos.Controls.Add(picture);
                     }
                 }
@@ -587,9 +577,7 @@ namespace BasicFacebookFeatures
         private void fetchSportTeamsFlowControl()
         {
             flowLayoutPanelSport.Controls.Clear();
-
             //listBoxPages.DisplayMember = "Name";
-
             if (m_LoggedInUser.FavofriteTeams != null)
             {
                 try
