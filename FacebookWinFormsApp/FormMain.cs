@@ -478,23 +478,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Page page in m_LoggedInUser.LikedPages)
                 {
-                    GroupBox box = new GroupBox();
-                    box.Size = new Size(140, 120);
-                    box.Text = page.Name;
-                    box.Name = "Groupbox" + page.Name;
-                    box.BackColor = Color.Pink;
-
-                    PictureBox pagePicture = new PictureBox();
-                    pagePicture.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pagePicture.Size = new Size(70, 70);
-                    pagePicture.LoadAsync(page.PictureNormalURL);
-                    pagePicture.Name = "pictureBox" + page.Name;
-                    pagePicture.Location = new Point(35, 45);
-
-
-                    box.Controls.Add(pagePicture);
-
-                    flowLayoutPanelPages.Controls.Add(box);
+                    addGroupBoxToLayout(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                 }
             }
             catch (Exception ex)
@@ -518,23 +502,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Group group in m_LoggedInUser.Groups)
                 {
-                    GroupBox box = new GroupBox();
-                    box.Size = new Size(140, 120);
-                    box.Text = group.Name;
-                    box.Name = "Groupbox" + group.Name;
-                    box.BackColor = Color.Pink;
-
-                    PictureBox groupPicture = new PictureBox();
-                    groupPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-                    groupPicture.Size = new Size(70, 70);
-                    groupPicture.LoadAsync(group.PictureNormalURL);
-                    groupPicture.Name = "pictureBox" + group.Name;
-                    groupPicture.Location = new Point(35, 45);
-
-
-                    box.Controls.Add(groupPicture);
-
-                    flowLayoutPanelGroups.Controls.Add(box);
+                    addGroupBoxToLayout(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                 }
             }
             catch (Exception ex)
@@ -546,6 +514,27 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No groups to retrieve :(");
             }
+        }
+
+        private void addGroupBoxToLayout(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
+        {
+            GroupBox box = new GroupBox();
+            box.Size = new Size(140, 120);
+            box.Text = i_Name;
+            box.Name = "Groupbox" + i_Name;
+            box.BackColor = Color.Pink;
+
+            PictureBox groupPicture = new PictureBox();
+            groupPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            groupPicture.Size = new Size(70, 70);
+            groupPicture.LoadAsync(i_PictureURL);
+            groupPicture.Name = "pictureBox" + i_Name;
+            groupPicture.Location = new Point(35, 45);
+
+
+            box.Controls.Add(groupPicture);
+
+            i_Panel.Controls.Add(box);
         }
 
         private void fetchAlbumPhotosFlowControl()
@@ -607,23 +596,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (Page team in m_LoggedInUser.FavofriteTeams)
                     {
-                        GroupBox box = new GroupBox();
-                        box.Size = new Size(140, 120);
-                        box.Text = team.Name;
-                        box.Name = "Groupbox" + team.Name;
-                        box.BackColor = Color.Pink;
-
-                        PictureBox groupPicture = new PictureBox();
-                        groupPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-                        groupPicture.Size = new Size(70, 70);
-                        groupPicture.LoadAsync(team.PictureNormalURL);
-                        groupPicture.Name = "pictureBox" + team.Name;
-                        groupPicture.Location = new Point(35, 45);
-
-
-                        box.Controls.Add(groupPicture);
-
-                        flowLayoutPanelSport.Controls.Add(box);
+                        addGroupBoxToLayout(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -636,11 +609,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No sport teams to retrieve :(");
             }
-        }
-
-        private void labelUserName_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

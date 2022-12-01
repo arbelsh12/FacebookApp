@@ -537,7 +537,6 @@
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             this.labelUserName.Visible = false;
-            this.labelUserName.Click += new System.EventHandler(this.labelUserName_Click);
             // 
             // FormMain
             // 
