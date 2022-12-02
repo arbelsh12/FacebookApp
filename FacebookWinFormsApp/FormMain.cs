@@ -45,15 +45,17 @@ namespace BasicFacebookFeatures
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
             listBoxAboutInfo.Items.Add(r_Astrology.GetZodiac(m_LoggedInUser.Birthday));
+            labelUserName.Text = m_LoggedInUser.Name;
+            labelUserName.Show();
 
             fetchCoverPhoto();
             fetchAlbums();
-            fetchAlbumPhotos();
+            //fetchAlbumPhotos();
             fetchUserPosts();
-            fetchFriendsList();
+            //fetchFriendsList();
             fetchPagesList();
             fetchGroupsList();
-            fetchEventsList();
+           // fetchEventsList();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
 
@@ -344,6 +346,7 @@ namespace BasicFacebookFeatures
         private void listBoxAlbums_SelectedAlbumIndexChanged(object sender, EventArgs e)
         {
             displaySelectedAlbum();
+            fetchAlbumPhotosFlowControl();
         }
         /// End copy
         
@@ -424,5 +427,177 @@ namespace BasicFacebookFeatures
         {
 
         }
+
+        //
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl.SelectedIndex)
+            {
+                case 0:
+                    {
+                        break;
+                    }
+                case 1:
+                    {
+                        break;
+                    }
+                case 2:
+                    {
+                        fetchLikedPagesListFlowControl();
+                        break;
+                    }
+                case 3:
+                    {
+                        fetchGroupsListFlowControl();
+                        break;
+                    }
+                case 4:
+                    {
+                        fetchSportTeamsFlowControl();
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+        }
+
+        private void fetchLikedPagesListFlowControl()
+        {
+            flowLayoutPanelPages.Controls.Clear();
+            //listBoxPages.DisplayMember = "Name";
+            if (m_LoggedInUser.LikedPages != null)
+            {
+                try
+                {
+                    foreach (Page page in m_LoggedInUser.LikedPages)
+                    {
+                        addGroupBoxToLayout(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+           
+            if (flowLayoutPanelPages.Controls.Count == 0)
+            {
+                MessageBox.Show("No liked pages to retrieve :(");
+            }
+        }
+
+        private void fetchGroupsListFlowControl()
+        {
+            flowLayoutPanelGroups.Controls.Clear();
+            //listBoxPages.DisplayMember = "Name";
+            if(m_LoggedInUser.Groups != null)
+            {
+                try
+                {
+                    foreach (Group group in m_LoggedInUser.Groups)
+                    {
+                        addGroupBoxToLayout(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            if (flowLayoutPanelGroups.Controls.Count == 0)
+            {
+                MessageBox.Show("No groups to retrieve :(");
+            }
+        }
+
+        private void addGroupBoxToLayout(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
+        {
+            GroupBox box = new GroupBox();
+            PictureBox picture = new PictureBox();
+
+            box.Size = new Size(140, 120);
+            box.Text = i_Name;
+            box.Name = "Groupbox" + i_Name;
+            box.BackColor = Color.Pink;
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            picture.Size = new Size(70, 70);
+            picture.LoadAsync(i_PictureURL);
+            picture.Name = "pictureBox" + i_Name;
+            picture.Location = new Point(35, 45);
+            box.Controls.Add(picture);
+            i_Panel.Controls.Add(box);
+        }
+
+        private void fetchAlbumPhotosFlowControl()
+        {
+            flowLayoutPanelAlbumPhotos.Controls.Clear();
+            //listBoxPages.DisplayMember = "Name";
+            try
+            {
+                if (listBoxAlbums.SelectedItems.Count == 1)
+                {
+                    Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+
+                    pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
+                    foreach (Photo photo in selectedAlbum.Photos)
+                    {
+                        PictureBox picture = new PictureBox();
+
+                        picture.SizeMode = PictureBoxSizeMode.StretchImage;
+                        picture.Size = new Size(100, 100);
+                        if (photo.PictureNormalURL != null)
+                        {
+                            picture.LoadAsync(photo.PictureNormalURL);
+                        }
+                        else
+                        {
+                            // CHANGE to another picture, not profile
+                            picture.Image = pictureBoxProfile.ErrorImage;
+                        }
+
+                        //pagePicture.Name = "pictureBox" + photo.Name;
+                        picture.Location = new Point(35, 45);
+                        flowLayoutPanelAlbumPhotos.Controls.Add(picture);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No photos to retrieve in selected album :(");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void fetchSportTeamsFlowControl()
+        {
+            flowLayoutPanelSport.Controls.Clear();
+            //listBoxPages.DisplayMember = "Name";
+            if (m_LoggedInUser.FavofriteTeams != null)
+            {
+                try
+                {
+                    foreach (Page team in m_LoggedInUser.FavofriteTeams)
+                    {
+                        addGroupBoxToLayout(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            
+            if (flowLayoutPanelSport.Controls.Count == 0)
+            {
+                MessageBox.Show("No sport teams to retrieve :(");
+            }
+        }
     }
 }
+
