@@ -19,6 +19,7 @@ namespace BasicFacebookFeatures
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
         private User m_LoggedInUser;
+        private MockData m_MockData;
 
         public FormMain(User i_User, FormLogIn i_FormLogin)
         {
@@ -29,6 +30,7 @@ namespace BasicFacebookFeatures
             r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
             loadUserInfo();
+            m_MockData = new MockData();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -446,19 +448,24 @@ namespace BasicFacebookFeatures
                     }
                 case 1:
                     {
+                        fetchFriendsFlowControl();
                         break;
                     }
                 case 2:
                     {
-                        fetchLikedPagesListFlowControl();
                         break;
                     }
                 case 3:
                     {
-                        fetchGroupsListFlowControl();
+                        fetchLikedPagesListFlowControl();
                         break;
                     }
                 case 4:
+                    {
+                        fetchGroupsListFlowControl();
+                        break;
+                    }
+                case 5:
                     {
                         fetchSportTeamsFlowControl();
                         break;
@@ -639,6 +646,45 @@ namespace BasicFacebookFeatures
             label.BackColor = Color.LightSkyBlue;
             label.AutoSize = true;
             i_Panel.Controls.Add(label);
+        }
+
+        private void fetchFriendsFlowControl()
+        {
+            flowLayoutPanelFriends.Controls.Clear();
+            //listBoxPages.DisplayMember = "Name";
+
+            foreach (User friend in m_LoggedInUser.Friends)
+            {
+                //listBoxFriendsList.Items.Add(friend);
+            }
+
+            if (listBoxFriendsList.Items.Count == 0)
+            {
+                foreach(MockUser friend in m_MockData.Friends)
+                {
+                    addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                }
+            }
+
+            //if (m_LoggedInUser.FavofriteTeams != null)
+            //{
+            //    try
+            //    {
+            //        foreach (Page team in m_LoggedInUser.FavofriteTeams)
+            //        {
+            //            addGroupBoxToPanel(flowLayoutPanelFriends, team.Name, team.PictureNormalURL);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
+
+            if (flowLayoutPanelFriends.Controls.Count == 0)
+            {
+                MessageBox.Show("No freinds to retrieve :(");
+            }
         }
     }
 }

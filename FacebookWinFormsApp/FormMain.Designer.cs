@@ -62,6 +62,7 @@
             this.comboBoxSortByAttends = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageFeed = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelComments = new System.Windows.Forms.FlowLayoutPanel();
             this.labelUserEmail = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUserZodiac = new System.Windows.Forms.Label();
@@ -79,7 +80,8 @@
             this.tabPageSport = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelSport = new System.Windows.Forms.FlowLayoutPanel();
             this.labelUserName = new System.Windows.Forms.Label();
-            this.flowLayoutPanelComments = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPageFriends = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -91,6 +93,7 @@
             this.tabPageLikedPages.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.tabPageSport.SuspendLayout();
+            this.tabPageFriends.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogout
@@ -430,6 +433,7 @@
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabPageFeed);
+            this.tabControl.Controls.Add(this.tabPageFriends);
             this.tabControl.Controls.Add(this.tabPageAlbums);
             this.tabControl.Controls.Add(this.tabPageLikedPages);
             this.tabControl.Controls.Add(this.tabPageGroups);
@@ -466,6 +470,14 @@
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
             this.tabPageFeed.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelComments
+            // 
+            this.flowLayoutPanelComments.AutoScroll = true;
+            this.flowLayoutPanelComments.Location = new System.Drawing.Point(330, 220);
+            this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
+            this.flowLayoutPanelComments.Size = new System.Drawing.Size(293, 100);
+            this.flowLayoutPanelComments.TabIndex = 86;
             // 
             // labelUserEmail
             // 
@@ -629,13 +641,22 @@
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
-            // flowLayoutPanelComments
+            // tabPageFriends
             // 
-            this.flowLayoutPanelComments.AutoScroll = true;
-            this.flowLayoutPanelComments.Location = new System.Drawing.Point(330, 220);
-            this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
-            this.flowLayoutPanelComments.Size = new System.Drawing.Size(293, 100);
-            this.flowLayoutPanelComments.TabIndex = 86;
+            this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
+            this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFriends.Name = "tabPageFriends";
+            this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageFriends.TabIndex = 5;
+            this.tabPageFriends.Text = "Friends";
+            this.tabPageFriends.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelFriends
+            // 
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(1038, 423);
+            this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -683,6 +704,7 @@
             this.tabPageLikedPages.ResumeLayout(false);
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageSport.ResumeLayout(false);
+            this.tabPageFriends.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -741,6 +763,8 @@
         private System.Windows.Forms.Label labelUserEmail;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelComments;
+        private System.Windows.Forms.TabPage tabPageFriends;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
     }
 }
 
