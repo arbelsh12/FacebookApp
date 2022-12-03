@@ -62,6 +62,14 @@
             this.comboBoxSortByAttends = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageFeed = new System.Windows.Forms.TabPage();
+            this.labelUserEmail = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelUserZodiac = new System.Windows.Forms.Label();
+            this.labelUserGender = new System.Windows.Forms.Label();
+            this.labelBirthDate = new System.Windows.Forms.Label();
+            this.labelZodiac = new System.Windows.Forms.Label();
+            this.labelGender = new System.Windows.Forms.Label();
+            this.labelBirth = new System.Windows.Forms.Label();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelAlbumPhotos = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageLikedPages = new System.Windows.Forms.TabPage();
@@ -71,6 +79,7 @@
             this.tabPageSport = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelSport = new System.Windows.Forms.FlowLayoutPanel();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.flowLayoutPanelComments = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -110,7 +119,7 @@
             // 
             this.listBoxAboutInfo.FormattingEnabled = true;
             this.listBoxAboutInfo.ItemHeight = 16;
-            this.listBoxAboutInfo.Location = new System.Drawing.Point(11, 33);
+            this.listBoxAboutInfo.Location = new System.Drawing.Point(1176, 394);
             this.listBoxAboutInfo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.listBoxAboutInfo.Name = "listBoxAboutInfo";
             this.listBoxAboutInfo.Size = new System.Drawing.Size(269, 68);
@@ -120,7 +129,7 @@
             // labelAbout
             // 
             this.labelAbout.AutoSize = true;
-            this.labelAbout.Location = new System.Drawing.Point(11, 14);
+            this.labelAbout.Location = new System.Drawing.Point(1176, 375);
             this.labelAbout.Name = "labelAbout";
             this.labelAbout.Size = new System.Drawing.Size(45, 16);
             this.labelAbout.TabIndex = 56;
@@ -149,7 +158,7 @@
             // 
             // buttonAstrologyHoroscopePost
             // 
-            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(473, 141);
+            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(846, 18);
             this.buttonAstrologyHoroscopePost.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.buttonAstrologyHoroscopePost.Name = "buttonAstrologyHoroscopePost";
             this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(125, 89);
@@ -191,7 +200,7 @@
             // 
             // textBoxPost
             // 
-            this.textBoxPost.Location = new System.Drawing.Point(36, 270);
+            this.textBoxPost.Location = new System.Drawing.Point(398, 21);
             this.textBoxPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPost.Name = "textBoxPost";
             this.textBoxPost.Size = new System.Drawing.Size(349, 22);
@@ -199,7 +208,7 @@
             // 
             // buttonPost
             // 
-            this.buttonPost.Location = new System.Drawing.Point(36, 303);
+            this.buttonPost.Location = new System.Drawing.Point(764, 18);
             this.buttonPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(67, 25);
@@ -289,10 +298,10 @@
             // 
             this.listBoxUserPosts.FormattingEnabled = true;
             this.listBoxUserPosts.ItemHeight = 16;
-            this.listBoxUserPosts.Location = new System.Drawing.Point(11, 146);
+            this.listBoxUserPosts.Location = new System.Drawing.Point(22, 205);
             this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxUserPosts.Name = "listBoxUserPosts";
-            this.listBoxUserPosts.Size = new System.Drawing.Size(263, 84);
+            this.listBoxUserPosts.Size = new System.Drawing.Size(271, 116);
             this.listBoxUserPosts.TabIndex = 72;
             this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedPostIndexChanged);
             // 
@@ -300,16 +309,16 @@
             // 
             this.listBoxPostComments.FormattingEnabled = true;
             this.listBoxPostComments.ItemHeight = 16;
-            this.listBoxPostComments.Location = new System.Drawing.Point(318, 146);
+            this.listBoxPostComments.Location = new System.Drawing.Point(674, 220);
             this.listBoxPostComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPostComments.Name = "listBoxPostComments";
-            this.listBoxPostComments.Size = new System.Drawing.Size(126, 84);
+            this.listBoxPostComments.Size = new System.Drawing.Size(207, 84);
             this.listBoxPostComments.TabIndex = 73;
             // 
             // labelUserPosts
             // 
             this.labelUserPosts.AutoSize = true;
-            this.labelUserPosts.Location = new System.Drawing.Point(8, 125);
+            this.labelUserPosts.Location = new System.Drawing.Point(19, 184);
             this.labelUserPosts.Name = "labelUserPosts";
             this.labelUserPosts.Size = new System.Drawing.Size(83, 16);
             this.labelUserPosts.TabIndex = 74;
@@ -318,7 +327,7 @@
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
-            this.labelPostComments.Location = new System.Drawing.Point(305, 121);
+            this.labelPostComments.Location = new System.Drawing.Point(327, 199);
             this.labelPostComments.Name = "labelPostComments";
             this.labelPostComments.Size = new System.Drawing.Size(101, 16);
             this.labelPostComments.TabIndex = 75;
@@ -434,8 +443,15 @@
             // 
             // tabPageFeed
             // 
-            this.tabPageFeed.Controls.Add(this.listBoxAboutInfo);
-            this.tabPageFeed.Controls.Add(this.labelAbout);
+            this.tabPageFeed.Controls.Add(this.flowLayoutPanelComments);
+            this.tabPageFeed.Controls.Add(this.labelUserEmail);
+            this.tabPageFeed.Controls.Add(this.labelEmail);
+            this.tabPageFeed.Controls.Add(this.labelUserZodiac);
+            this.tabPageFeed.Controls.Add(this.labelUserGender);
+            this.tabPageFeed.Controls.Add(this.labelBirthDate);
+            this.tabPageFeed.Controls.Add(this.labelZodiac);
+            this.tabPageFeed.Controls.Add(this.labelGender);
+            this.tabPageFeed.Controls.Add(this.labelBirth);
             this.tabPageFeed.Controls.Add(this.labelUserPosts);
             this.tabPageFeed.Controls.Add(this.buttonAstrologyHoroscopePost);
             this.tabPageFeed.Controls.Add(this.labelPostComments);
@@ -450,6 +466,82 @@
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
             this.tabPageFeed.UseVisualStyleBackColor = true;
+            // 
+            // labelUserEmail
+            // 
+            this.labelUserEmail.AutoSize = true;
+            this.labelUserEmail.Location = new System.Drawing.Point(100, 130);
+            this.labelUserEmail.Name = "labelUserEmail";
+            this.labelUserEmail.Size = new System.Drawing.Size(41, 16);
+            this.labelUserEmail.TabIndex = 85;
+            this.labelUserEmail.Text = "Email";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.Location = new System.Drawing.Point(19, 130);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(50, 16);
+            this.labelEmail.TabIndex = 84;
+            this.labelEmail.Text = "Email:";
+            // 
+            // labelUserZodiac
+            // 
+            this.labelUserZodiac.AutoSize = true;
+            this.labelUserZodiac.Location = new System.Drawing.Point(100, 92);
+            this.labelUserZodiac.Name = "labelUserZodiac";
+            this.labelUserZodiac.Size = new System.Drawing.Size(75, 16);
+            this.labelUserZodiac.TabIndex = 83;
+            this.labelUserZodiac.Text = "userZodiac";
+            // 
+            // labelUserGender
+            // 
+            this.labelUserGender.AutoSize = true;
+            this.labelUserGender.Location = new System.Drawing.Point(100, 59);
+            this.labelUserGender.Name = "labelUserGender";
+            this.labelUserGender.Size = new System.Drawing.Size(78, 16);
+            this.labelUserGender.TabIndex = 82;
+            this.labelUserGender.Text = "userGender";
+            // 
+            // labelBirthDate
+            // 
+            this.labelBirthDate.AutoSize = true;
+            this.labelBirthDate.Location = new System.Drawing.Point(100, 21);
+            this.labelBirthDate.Name = "labelBirthDate";
+            this.labelBirthDate.Size = new System.Drawing.Size(62, 16);
+            this.labelBirthDate.TabIndex = 81;
+            this.labelBirthDate.Text = "BirthDate";
+            // 
+            // labelZodiac
+            // 
+            this.labelZodiac.AutoSize = true;
+            this.labelZodiac.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelZodiac.Location = new System.Drawing.Point(19, 92);
+            this.labelZodiac.Name = "labelZodiac";
+            this.labelZodiac.Size = new System.Drawing.Size(59, 16);
+            this.labelZodiac.TabIndex = 79;
+            this.labelZodiac.Text = "Zodiac:";
+            // 
+            // labelGender
+            // 
+            this.labelGender.AutoSize = true;
+            this.labelGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGender.Location = new System.Drawing.Point(19, 59);
+            this.labelGender.Name = "labelGender";
+            this.labelGender.Size = new System.Drawing.Size(62, 16);
+            this.labelGender.TabIndex = 78;
+            this.labelGender.Text = "Gender:";
+            // 
+            // labelBirth
+            // 
+            this.labelBirth.AutoSize = true;
+            this.labelBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBirth.Location = new System.Drawing.Point(19, 21);
+            this.labelBirth.Name = "labelBirth";
+            this.labelBirth.Size = new System.Drawing.Size(68, 16);
+            this.labelBirth.TabIndex = 77;
+            this.labelBirth.Text = "Birthday:";
             // 
             // tabPageAlbums
             // 
@@ -533,10 +625,17 @@
             this.labelUserName.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUserName.Location = new System.Drawing.Point(209, 125);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(201, 46);
+            this.labelUserName.Size = new System.Drawing.Size(161, 37);
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
-            this.labelUserName.Visible = false;
+            // 
+            // flowLayoutPanelComments
+            // 
+            this.flowLayoutPanelComments.AutoScroll = true;
+            this.flowLayoutPanelComments.Location = new System.Drawing.Point(330, 220);
+            this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
+            this.flowLayoutPanelComments.Size = new System.Drawing.Size(293, 100);
+            this.flowLayoutPanelComments.TabIndex = 86;
             // 
             // FormMain
             // 
@@ -551,6 +650,8 @@
             this.Controls.Add(this.listBoxAlbumPhotos);
             this.Controls.Add(this.pictureBoxSelectedPhoto);
             this.Controls.Add(this.pictureBoxGroup);
+            this.Controls.Add(this.listBoxAboutInfo);
+            this.Controls.Add(this.labelAbout);
             this.Controls.Add(this.labelSelectedPhoto);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.labelSelectedAlbumPhotos);
@@ -631,6 +732,15 @@
         private System.Windows.Forms.TabPage tabPageSport;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSport;
         private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelZodiac;
+        private System.Windows.Forms.Label labelGender;
+        private System.Windows.Forms.Label labelBirth;
+        private System.Windows.Forms.Label labelUserZodiac;
+        private System.Windows.Forms.Label labelUserGender;
+        private System.Windows.Forms.Label labelBirthDate;
+        private System.Windows.Forms.Label labelUserEmail;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelComments;
     }
 }
 

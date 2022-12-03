@@ -39,14 +39,18 @@ namespace BasicFacebookFeatures
         private void loadUserInfo()
         {
             string userGender = m_LoggedInUser.Gender == User.eGender.female ? "Female" : "Male";
+            string zodiac = r_Astrology.GetZodiac(m_LoggedInUser.Birthday);
 
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Email);
             listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
             listBoxAboutInfo.Items.Add(userGender);
-            listBoxAboutInfo.Items.Add(r_Astrology.GetZodiac(m_LoggedInUser.Birthday));
+            listBoxAboutInfo.Items.Add(zodiac);
             labelUserName.Text = m_LoggedInUser.Name;
-            labelUserName.Show();
+            labelBirthDate.Text = m_LoggedInUser.Birthday;
+            labelUserEmail.Text = m_LoggedInUser.Email;
+            labelUserGender.Text = userGender;
+            labelUserZodiac.Text = zodiac;
 
             fetchCoverPhoto();
             fetchAlbums();
@@ -267,6 +271,8 @@ namespace BasicFacebookFeatures
             Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
             listBoxPostComments.DisplayMember = "Message";
 
+            fetchCommentsFlowControl();
+
             try
             {
                 listBoxPostComments.DataSource = selected.Comments;
@@ -473,7 +479,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (Page page in m_LoggedInUser.LikedPages)
                     {
-                        addGroupBoxToLayout(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                        addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -498,7 +504,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (Group group in m_LoggedInUser.Groups)
                     {
-                        addGroupBoxToLayout(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                        addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -513,7 +519,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void addGroupBoxToLayout(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
+        private void addGroupBoxToPanel(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
         {
             GroupBox box = new GroupBox();
             PictureBox picture = new PictureBox();
@@ -584,7 +590,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (Page team in m_LoggedInUser.FavofriteTeams)
                     {
-                        addGroupBoxToLayout(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                        addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -597,6 +603,42 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No sport teams to retrieve :(");
             }
+        }
+
+        private void fetchCommentsFlowControl()
+        {
+            Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
+
+            flowLayoutPanelComments.Controls.Clear();
+            if (selected != null)
+            {
+                try
+                {
+                    foreach (Comment comment in selected.Comments)
+                    {
+                        addCommentToPanel(flowLayoutPanelComments, comment.Message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No permissions to show this comment :(");
+                }
+            }
+
+            if (flowLayoutPanelComments.Controls.Count == 0)
+            {
+                addCommentToPanel(flowLayoutPanelComments, "No comments for this post");
+            }
+        }
+
+        private void addCommentToPanel(FlowLayoutPanel i_Panel, string i_comment)
+        {
+            Label label = new Label();
+
+            label.Text = i_comment;
+            label.BackColor = Color.LightSkyBlue;
+            label.AutoSize = true;
+            i_Panel.Controls.Add(label);
         }
     }
 }
