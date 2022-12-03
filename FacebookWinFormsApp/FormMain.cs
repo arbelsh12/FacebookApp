@@ -77,7 +77,7 @@ namespace BasicFacebookFeatures
             if (listBoxEvents.Items.Count == 0)
             {
                 MessageBox.Show("No Events to retrieve :(");
-            }
+            } 
         }
 
         private void fetchGroupsList()
