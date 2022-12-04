@@ -18,6 +18,8 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
+        private readonly MockData r_MockData;
+
         private User m_LoggedInUser;
 
         public FormMain(User i_User, FormLogIn i_FormLogin)
@@ -29,6 +31,7 @@ namespace BasicFacebookFeatures
             r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
             loadUserInfo();
+            r_MockData = new MockData();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -446,19 +449,24 @@ namespace BasicFacebookFeatures
                     }
                 case 1:
                     {
+                        fetchFriendsFlowControl();
                         break;
                     }
                 case 2:
                     {
-                        fetchLikedPagesListFlowControl();
                         break;
                     }
                 case 3:
                     {
-                        fetchGroupsListFlowControl();
+                        fetchLikedPagesListFlowControl();
                         break;
                     }
                 case 4:
+                    {
+                        fetchGroupsListFlowControl();
+                        break;
+                    }
+                case 5:
                     {
                         fetchSportTeamsFlowControl();
                         break;
@@ -639,6 +647,36 @@ namespace BasicFacebookFeatures
             label.BackColor = Color.LightSkyBlue;
             label.AutoSize = true;
             i_Panel.Controls.Add(label);
+        }
+
+        private void fetchFriendsFlowControl()
+        {
+            flowLayoutPanelFriends.Controls.Clear();
+            try
+            {
+                foreach (User friend in m_LoggedInUser.Friends)
+                {
+                    addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            if (flowLayoutPanelFriends.Controls.Count == 0)
+            {
+                foreach(MockUser friend in r_MockData.Friends)
+                {
+                    addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                }
+            }
+
+            if (flowLayoutPanelFriends.Controls.Count == 0)
+            {
+                MessageBox.Show("No freinds to retrieve :(");
+            }
         }
     }
 }
