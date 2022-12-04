@@ -323,7 +323,7 @@ namespace BasicFacebookFeatures
                     }
                 case 6:
                     {
-                        fetchEventsFlowControl();
+                        fetchEventsDataGrid();
                         break;
                     }
                 default:
@@ -532,7 +532,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void fetchEventsFlowControl()
+        private void fetchEventsDataGrid()
         {
             dataGridViewEvents.Rows.Clear();
 
@@ -557,11 +557,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No Events to retrieve :(");
             }
-        }
-
-        private void dataGridViewEvents_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
