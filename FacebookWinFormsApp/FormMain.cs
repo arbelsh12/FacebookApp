@@ -558,11 +558,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("No Events to retrieve :(");
             }
         }
-
-        private void dataGridViewEvents_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
 
