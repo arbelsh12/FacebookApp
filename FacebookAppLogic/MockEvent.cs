@@ -8,19 +8,26 @@ namespace FacebookAppLogic
 {
     public class MockEvent
     {
+        private string m_Name;
         private DateTime m_StartTime;
-        public long m_AttendingCount;
+        private long m_AttendingCount;
         private long m_InterestedCount;
         private long m_DeclinedCount;
         private long m_MaybeCount;
         
-        public MockEvent(DateTime i_StartTime, long i_AttendingCount, long i_InterestedCount, long i_DeclinedCount, long i_MaybeCount)
+        public MockEvent(string i_Name, DateTime i_StartTime, long i_AttendingCount, long i_InterestedCount, long i_DeclinedCount, long i_MaybeCount)
         {
+            m_Name = i_Name;
             m_StartTime = i_StartTime;
             m_AttendingCount = i_AttendingCount;
             m_InterestedCount = i_InterestedCount;
             m_DeclinedCount = i_DeclinedCount;
             m_MaybeCount = i_MaybeCount;
+        }
+
+        public string Name
+        {
+            get { return m_Name; }
         }
 
         public DateTime StartTime

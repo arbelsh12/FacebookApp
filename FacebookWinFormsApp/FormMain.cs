@@ -61,18 +61,6 @@ namespace BasicFacebookFeatures
         private void fetchEventsList()
         {
             //copied from Guy TODO: delete comment and change the code
-            listBoxEvents.Items.Clear();
-            listBoxEvents.DisplayMember = "Name";
-
-            foreach (Event fbEvent in m_LoggedInUser.Events)
-            {
-                listBoxEvents.Items.Add(fbEvent);
-            }
-
-            if (listBoxEvents.Items.Count == 0)
-            {
-                MessageBox.Show("No Events to retrieve :(");
-            } 
         }
 
         private void fetchCoverPhoto()
@@ -333,6 +321,11 @@ namespace BasicFacebookFeatures
                         fetchSportTeamsFlowControl();
                         break;
                     }
+                case 6:
+                    {
+                        fetchEventsDataGrid();
+                        break;
+                    }
                 default:
                     break;
             }
@@ -512,6 +505,7 @@ namespace BasicFacebookFeatures
         private void fetchFriendsFlowControl()
         {
             flowLayoutPanelFriends.Controls.Clear();
+
             try
             {
                 foreach (User friend in m_LoggedInUser.Friends)
@@ -524,7 +518,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message);
             }
 
-
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
                 foreach(MockUser friend in r_MockData.Friends)
@@ -536,6 +529,33 @@ namespace BasicFacebookFeatures
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
                 MessageBox.Show("No freinds to retrieve :(");
+            }
+        }
+
+        private void fetchEventsDataGrid()
+        {
+            dataGridViewEvents.Rows.Clear();
+
+            try
+            {
+                if(m_LoggedInUser.Events.Count != 0)
+                {
+                    dataGridViewEvents.DataSource = m_LoggedInUser.Events;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (dataGridViewEvents.Rows.Count == 0)
+            {
+                dataGridViewEvents.DataSource = r_MockData.Events;
+            }
+
+            if (dataGridViewEvents.Rows.Count == 0)
+            {
+                MessageBox.Show("No Events to retrieve :(");
             }
         }
     }
