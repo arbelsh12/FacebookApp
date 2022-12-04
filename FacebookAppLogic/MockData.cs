@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +8,13 @@ namespace FacebookAppLogic
 {
     public class MockData
     {
-        public List<MockEvent> r_Events;
-        public List<MockUser> r_Friends;
+        private readonly List<MockEvent> r_Events;
+        private readonly List<MockUser> r_Friends;
 
         public MockData()
         {
             r_Events = createMockEvents();
             r_Friends = createMockFriends();
-
 
             MockUser freind1 = new MockUser();
             freind1.Name = "Rachel Green";
@@ -27,7 +26,6 @@ namespace FacebookAppLogic
             freind1.BirthDate = "5/5/70";
             freind1.PictureURL = "https://pyxis.nymag.com/v1/imgs/47c/71a/130bf1e557e534b3f2be3351afc2ecf952-17-rachel-green-jewish.rsquare.w700.jpg";
 
-
             MockUser freind2 = new MockUser();
             freind2.Name = "Monica Geller";
             freind2.FirstName = "Monica";
@@ -37,7 +35,6 @@ namespace FacebookAppLogic
             freind2.Gender = FacebookWrapper.ObjectModel.User.eGender.female;
             freind2.BirthDate = "14/9/72";
             freind2.PictureURL = "https://home.adelphi.edu/~ni21572/Monica.jpg";
-
 
             MockUser freind3 = new MockUser();
             freind3.Name = "Phoebe Bofey";
@@ -58,7 +55,6 @@ namespace FacebookAppLogic
             freind4.Gender = FacebookWrapper.ObjectModel.User.eGender.male;
             freind4.BirthDate = "22/3/69";
             freind4.PictureURL = "https://static.wikia.nocookie.net/friends/images/a/aa/Ross_Unagi.jpeg/revision/latest/scale-to-width-down/250?cb=20200708234621";
-
 
             MockUser freind5 = new MockUser();
             freind5.Name = "Chandler Bing";
@@ -91,6 +87,17 @@ namespace FacebookAppLogic
         private List<MockEvent> createMockEvents()
         {
             List<MockEvent> mockEvents = new List<MockEvent>();
+            MockEvent event1 = new MockEvent(new DateTime(2023, 5, 12), 100, 250, 122, 5);
+            MockEvent event2 = new MockEvent(new DateTime(2023, 12, 12), 200, 60, 16, 65);
+            MockEvent event3 = new MockEvent(new DateTime(2023, 12, 7), 400, 50, 15, 66);
+            MockEvent event4 = new MockEvent(new DateTime(2024, 1, 1), 230, 234, 12, 85);
+            MockEvent event5 = new MockEvent(new DateTime(2023, 12, 4), 149, 24, 129, 7);
+
+            mockEvents.Add(event1);
+            mockEvents.Add(event2);
+            mockEvents.Add(event3);
+            mockEvents.Add(event4);
+            mockEvents.Add(event5);
 
             return mockEvents;
         }
@@ -105,6 +112,11 @@ namespace FacebookAppLogic
         public List<MockUser> Friends
         {
             get { return r_Friends; }
+        }
+
+        public List<MockEvent> Events
+        {
+            get { return r_Events; }
         }
     }
 }
