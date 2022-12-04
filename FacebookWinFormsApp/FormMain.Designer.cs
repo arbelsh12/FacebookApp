@@ -67,6 +67,8 @@
             this.flowLayoutPanelGroups = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageSport = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelSport = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPageEvents = new System.Windows.Forms.TabPage();
+            this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.labelUserName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
@@ -78,14 +80,16 @@
             this.tabPageLikedPages.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.tabPageSport.SuspendLayout();
+            this.tabPageEvents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(911, 41);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLogout.Location = new System.Drawing.Point(1025, 51);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(201, 28);
+            this.buttonLogout.Size = new System.Drawing.Size(226, 35);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -93,51 +97,112 @@
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 24);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(32, 30);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(151, 133);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(170, 166);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
             this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
+            // listBoxAboutInfo
+            // 
+            this.listBoxAboutInfo.FormattingEnabled = true;
+            this.listBoxAboutInfo.ItemHeight = 20;
+            this.listBoxAboutInfo.Location = new System.Drawing.Point(1323, 492);
+            this.listBoxAboutInfo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.listBoxAboutInfo.Name = "listBoxAboutInfo";
+            this.listBoxAboutInfo.Size = new System.Drawing.Size(302, 84);
+            this.listBoxAboutInfo.TabIndex = 55;
+            this.listBoxAboutInfo.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // labelAbout
+            // 
+            this.labelAbout.AutoSize = true;
+            this.labelAbout.Location = new System.Drawing.Point(1323, 469);
+            this.labelAbout.Name = "labelAbout";
+            this.labelAbout.Size = new System.Drawing.Size(56, 20);
+            this.labelAbout.TabIndex = 56;
+            this.labelAbout.Text = "About:";
+            this.labelAbout.Click += new System.EventHandler(this.labelAbout_Click);
+            // 
+            // listBoxPages
+            // 
+            this.listBoxPages.FormattingEnabled = true;
+            this.listBoxPages.ItemHeight = 20;
+            this.listBoxPages.Location = new System.Drawing.Point(83, 892);
+            this.listBoxPages.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.listBoxPages.Name = "listBoxPages";
+            this.listBoxPages.Size = new System.Drawing.Size(302, 164);
+            this.listBoxPages.TabIndex = 57;
+            this.listBoxPages.SelectedIndexChanged += new System.EventHandler(this.listBoxPages_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(83, 866);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Liked pages";
+            // 
             // buttonAstrologyHoroscopePost
             // 
-            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(846, 18);
+            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(952, 22);
             this.buttonAstrologyHoroscopePost.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.buttonAstrologyHoroscopePost.Name = "buttonAstrologyHoroscopePost";
-            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(125, 89);
+            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(141, 111);
             this.buttonAstrologyHoroscopePost.TabIndex = 59;
             this.buttonAstrologyHoroscopePost.Text = "Post Daily Compatibility Astrology Horoscope";
             this.buttonAstrologyHoroscopePost.UseVisualStyleBackColor = true;
             this.buttonAstrologyHoroscopePost.Click += new System.EventHandler(this.buttonAstrologyHoroscopePost_Click);
             // 
+            // listBoxGroups
+            // 
+            this.listBoxGroups.FormattingEnabled = true;
+            this.listBoxGroups.ItemHeight = 20;
+            this.listBoxGroups.Location = new System.Drawing.Point(87, 1100);
+            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.listBoxGroups.Name = "listBoxGroups";
+            this.listBoxGroups.Size = new System.Drawing.Size(291, 164);
+            this.listBoxGroups.TabIndex = 60;
+            this.listBoxGroups.SelectedIndexChanged += new System.EventHandler(this.listBoxGroups_SelectedGroupIndexChanged);
+            // 
             // pictureBoxCover
             // 
-            this.pictureBoxCover.Location = new System.Drawing.Point(203, 23);
-            this.pictureBoxCover.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxCover.Location = new System.Drawing.Point(228, 29);
+            this.pictureBoxCover.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pictureBoxCover.Name = "pictureBoxCover";
-            this.pictureBoxCover.Size = new System.Drawing.Size(271, 97);
+            this.pictureBoxCover.Size = new System.Drawing.Size(305, 121);
             this.pictureBoxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCover.TabIndex = 62;
             this.pictureBoxCover.TabStop = false;
             this.pictureBoxCover.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // labelGroups
+            // 
+            this.labelGroups.AutoSize = true;
+            this.labelGroups.Location = new System.Drawing.Point(87, 1074);
+            this.labelGroups.Name = "labelGroups";
+            this.labelGroups.Size = new System.Drawing.Size(62, 20);
+            this.labelGroups.TabIndex = 63;
+            this.labelGroups.Text = "Groups";
+            // 
             // textBoxPost
             // 
-            this.textBoxPost.Location = new System.Drawing.Point(398, 21);
+            this.textBoxPost.Location = new System.Drawing.Point(448, 26);
             this.textBoxPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPost.Name = "textBoxPost";
-            this.textBoxPost.Size = new System.Drawing.Size(349, 22);
+            this.textBoxPost.Size = new System.Drawing.Size(392, 26);
             this.textBoxPost.TabIndex = 64;
             // 
             // buttonPost
             // 
-            this.buttonPost.Location = new System.Drawing.Point(764, 18);
+            this.buttonPost.Location = new System.Drawing.Point(860, 22);
             this.buttonPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(67, 25);
+            this.buttonPost.Size = new System.Drawing.Size(75, 31);
             this.buttonPost.TabIndex = 65;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
@@ -146,30 +211,30 @@
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.ItemHeight = 16;
-            this.listBoxAlbums.Location = new System.Drawing.Point(6, 31);
+            this.listBoxAlbums.ItemHeight = 20;
+            this.listBoxAlbums.Location = new System.Drawing.Point(7, 39);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(249, 132);
+            this.listBoxAlbums.Size = new System.Drawing.Size(280, 164);
             this.listBoxAlbums.TabIndex = 64;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedAlbumIndexChanged);
             // 
             // labelAlbums
             // 
             this.labelAlbums.AutoSize = true;
-            this.labelAlbums.Location = new System.Drawing.Point(8, 10);
+            this.labelAlbums.Location = new System.Drawing.Point(9, 12);
             this.labelAlbums.Name = "labelAlbums";
-            this.labelAlbums.Size = new System.Drawing.Size(52, 16);
+            this.labelAlbums.Size = new System.Drawing.Size(62, 20);
             this.labelAlbums.TabIndex = 65;
             this.labelAlbums.Text = "Albums";
             this.labelAlbums.Click += new System.EventHandler(this.labelAlbums_Click);
             // 
             // pictureBoxSelectedAlbum
             // 
-            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(272, 41);
+            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(306, 51);
             this.pictureBoxSelectedAlbum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxSelectedAlbum.Name = "pictureBoxSelectedAlbum";
-            this.pictureBoxSelectedAlbum.Size = new System.Drawing.Size(105, 90);
+            this.pictureBoxSelectedAlbum.Size = new System.Drawing.Size(118, 112);
             this.pictureBoxSelectedAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSelectedAlbum.TabIndex = 66;
             this.pictureBoxSelectedAlbum.TabStop = false;
@@ -177,47 +242,125 @@
             // labelSelectedAlbum
             // 
             this.labelSelectedAlbum.AutoSize = true;
-            this.labelSelectedAlbum.Location = new System.Drawing.Point(268, 22);
+            this.labelSelectedAlbum.Location = new System.Drawing.Point(302, 28);
             this.labelSelectedAlbum.Name = "labelSelectedAlbum";
-            this.labelSelectedAlbum.Size = new System.Drawing.Size(102, 16);
+            this.labelSelectedAlbum.Size = new System.Drawing.Size(121, 20);
             this.labelSelectedAlbum.TabIndex = 67;
             this.labelSelectedAlbum.Text = "Selected Album";
+            // 
+            // listBoxAlbumPhotos
+            // 
+            this.listBoxAlbumPhotos.FormattingEnabled = true;
+            this.listBoxAlbumPhotos.ItemHeight = 20;
+            this.listBoxAlbumPhotos.Location = new System.Drawing.Point(1025, 949);
+            this.listBoxAlbumPhotos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxAlbumPhotos.Name = "listBoxAlbumPhotos";
+            this.listBoxAlbumPhotos.Size = new System.Drawing.Size(302, 144);
+            this.listBoxAlbumPhotos.TabIndex = 68;
+            this.listBoxAlbumPhotos.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbumPhotos_SelectedPhotoChanged);
+            // 
+            // pictureBoxSelectedPhoto
+            // 
+            this.pictureBoxSelectedPhoto.Location = new System.Drawing.Point(1351, 949);
+            this.pictureBoxSelectedPhoto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxSelectedPhoto.Name = "pictureBoxSelectedPhoto";
+            this.pictureBoxSelectedPhoto.Size = new System.Drawing.Size(198, 146);
+            this.pictureBoxSelectedPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxSelectedPhoto.TabIndex = 69;
+            this.pictureBoxSelectedPhoto.TabStop = false;
+            // 
+            // labelSelectedPhoto
+            // 
+            this.labelSelectedPhoto.AutoSize = true;
+            this.labelSelectedPhoto.Location = new System.Drawing.Point(1350, 921);
+            this.labelSelectedPhoto.Name = "labelSelectedPhoto";
+            this.labelSelectedPhoto.Size = new System.Drawing.Size(118, 20);
+            this.labelSelectedPhoto.TabIndex = 70;
+            this.labelSelectedPhoto.Text = "Selected Photo";
+            // 
+            // labelSelectedAlbumPhotos
+            // 
+            this.labelSelectedAlbumPhotos.AutoSize = true;
+            this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(1026, 921);
+            this.labelSelectedAlbumPhotos.Name = "labelSelectedAlbumPhotos";
+            this.labelSelectedAlbumPhotos.Size = new System.Drawing.Size(108, 20);
+            this.labelSelectedAlbumPhotos.TabIndex = 71;
+            this.labelSelectedAlbumPhotos.Text = "Album Photos";
             // 
             // listBoxUserPosts
             // 
             this.listBoxUserPosts.FormattingEnabled = true;
-            this.listBoxUserPosts.ItemHeight = 16;
-            this.listBoxUserPosts.Location = new System.Drawing.Point(22, 205);
+            this.listBoxUserPosts.ItemHeight = 20;
+            this.listBoxUserPosts.Location = new System.Drawing.Point(25, 256);
             this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxUserPosts.Name = "listBoxUserPosts";
-            this.listBoxUserPosts.Size = new System.Drawing.Size(271, 116);
+            this.listBoxUserPosts.Size = new System.Drawing.Size(304, 144);
             this.listBoxUserPosts.TabIndex = 72;
             this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedPostIndexChanged);
+            // 
+            // listBoxPostComments
+            // 
+            this.listBoxPostComments.FormattingEnabled = true;
+            this.listBoxPostComments.ItemHeight = 20;
+            this.listBoxPostComments.Location = new System.Drawing.Point(758, 275);
+            this.listBoxPostComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBoxPostComments.Name = "listBoxPostComments";
+            this.listBoxPostComments.Size = new System.Drawing.Size(232, 104);
+            this.listBoxPostComments.TabIndex = 73;
             // 
             // labelUserPosts
             // 
             this.labelUserPosts.AutoSize = true;
-            this.labelUserPosts.Location = new System.Drawing.Point(19, 184);
+            this.labelUserPosts.Location = new System.Drawing.Point(21, 230);
             this.labelUserPosts.Name = "labelUserPosts";
-            this.labelUserPosts.Size = new System.Drawing.Size(83, 16);
+            this.labelUserPosts.Size = new System.Drawing.Size(98, 20);
             this.labelUserPosts.TabIndex = 74;
             this.labelUserPosts.Text = "User\'s Posts";
             // 
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
-            this.labelPostComments.Location = new System.Drawing.Point(327, 199);
+            this.labelPostComments.Location = new System.Drawing.Point(368, 249);
             this.labelPostComments.Name = "labelPostComments";
-            this.labelPostComments.Size = new System.Drawing.Size(101, 16);
+            this.labelPostComments.Size = new System.Drawing.Size(122, 20);
             this.labelPostComments.TabIndex = 75;
             this.labelPostComments.Text = "Post Comments";
+            // 
+            // pictureBoxGroup
+            // 
+            this.pictureBoxGroup.Location = new System.Drawing.Point(298, 1185);
+            this.pictureBoxGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxGroup.Name = "pictureBoxGroup";
+            this.pictureBoxGroup.Size = new System.Drawing.Size(68, 60);
+            this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxGroup.TabIndex = 76;
+            this.pictureBoxGroup.TabStop = false;
+            // 
+            // listBoxFriendsList
+            // 
+            this.listBoxFriendsList.FormattingEnabled = true;
+            this.listBoxFriendsList.ItemHeight = 20;
+            this.listBoxFriendsList.Location = new System.Drawing.Point(642, 51);
+            this.listBoxFriendsList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBoxFriendsList.Name = "listBoxFriendsList";
+            this.listBoxFriendsList.Size = new System.Drawing.Size(144, 104);
+            this.listBoxFriendsList.TabIndex = 77;
+            // 
+            // labelFriends
+            // 
+            this.labelFriends.AutoSize = true;
+            this.labelFriends.Location = new System.Drawing.Point(639, 29);
+            this.labelFriends.Name = "labelFriends";
+            this.labelFriends.Size = new System.Drawing.Size(62, 20);
+            this.labelFriends.TabIndex = 78;
+            this.labelFriends.Text = "Friends";
             // 
             // labelEvents
             // 
             this.labelEvents.AutoSize = true;
-            this.labelEvents.Location = new System.Drawing.Point(412, 700);
+            this.labelEvents.Location = new System.Drawing.Point(464, 875);
             this.labelEvents.Name = "labelEvents";
-            this.labelEvents.Size = new System.Drawing.Size(51, 16);
+            this.labelEvents.Size = new System.Drawing.Size(62, 20);
             this.labelEvents.TabIndex = 74;
             this.labelEvents.Text = "Events:";
             this.labelEvents.Click += new System.EventHandler(this.labelEvents_Click);
@@ -225,11 +368,11 @@
             // listBoxEvents
             // 
             this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.ItemHeight = 16;
-            this.listBoxEvents.Location = new System.Drawing.Point(415, 730);
+            this.listBoxEvents.ItemHeight = 20;
+            this.listBoxEvents.Location = new System.Drawing.Point(467, 912);
             this.listBoxEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(247, 116);
+            this.listBoxEvents.Size = new System.Drawing.Size(277, 144);
             this.listBoxEvents.TabIndex = 75;
             this.listBoxEvents.SelectedIndexChanged += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
             // 
@@ -242,19 +385,19 @@
             "Today",
             "In the next 7 days",
             "This month"});
-            this.comboBoxFilterTime.Location = new System.Drawing.Point(676, 766);
+            this.comboBoxFilterTime.Location = new System.Drawing.Point(760, 958);
             this.comboBoxFilterTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFilterTime.Name = "comboBoxFilterTime";
-            this.comboBoxFilterTime.Size = new System.Drawing.Size(133, 24);
+            this.comboBoxFilterTime.Size = new System.Drawing.Size(149, 28);
             this.comboBoxFilterTime.TabIndex = 76;
             this.comboBoxFilterTime.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterTime_SelectedIndexChanged);
             // 
             // buttonEventsFilter
             // 
-            this.buttonEventsFilter.Location = new System.Drawing.Point(676, 730);
+            this.buttonEventsFilter.Location = new System.Drawing.Point(760, 912);
             this.buttonEventsFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEventsFilter.Name = "buttonEventsFilter";
-            this.buttonEventsFilter.Size = new System.Drawing.Size(79, 23);
+            this.buttonEventsFilter.Size = new System.Drawing.Size(89, 29);
             this.buttonEventsFilter.TabIndex = 77;
             this.buttonEventsFilter.Text = "Filter";
             this.buttonEventsFilter.UseVisualStyleBackColor = true;
@@ -270,10 +413,10 @@
             "Interested",
             "Declined",
             "Maybe"});
-            this.comboBoxSortByAttends.Location = new System.Drawing.Point(676, 794);
+            this.comboBoxSortByAttends.Location = new System.Drawing.Point(760, 992);
             this.comboBoxSortByAttends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSortByAttends.Name = "comboBoxSortByAttends";
-            this.comboBoxSortByAttends.Size = new System.Drawing.Size(133, 24);
+            this.comboBoxSortByAttends.Size = new System.Drawing.Size(149, 28);
             this.comboBoxSortByAttends.TabIndex = 78;
             this.comboBoxSortByAttends.SelectedIndexChanged += new System.EventHandler(this.comboBoxSortByAttends_SelectedIndexChanged);
             // 
@@ -285,10 +428,12 @@
             this.tabControl.Controls.Add(this.tabPageLikedPages);
             this.tabControl.Controls.Add(this.tabPageGroups);
             this.tabControl.Controls.Add(this.tabPageSport);
-            this.tabControl.Location = new System.Drawing.Point(46, 218);
+            this.tabControl.Controls.Add(this.tabPageEvents);
+            this.tabControl.Location = new System.Drawing.Point(52, 272);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1053, 459);
+            this.tabControl.Size = new System.Drawing.Size(1185, 574);
             this.tabControl.TabIndex = 79;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -309,10 +454,11 @@
             this.tabPageFeed.Controls.Add(this.listBoxUserPosts);
             this.tabPageFeed.Controls.Add(this.textBoxPost);
             this.tabPageFeed.Controls.Add(this.buttonPost);
-            this.tabPageFeed.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFeed.Location = new System.Drawing.Point(4, 29);
+            this.tabPageFeed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageFeed.Name = "tabPageFeed";
-            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFeed.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageFeed.Size = new System.Drawing.Size(1177, 541);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
             this.tabPageFeed.UseVisualStyleBackColor = true;
@@ -320,17 +466,18 @@
             // flowLayoutPanelComments
             // 
             this.flowLayoutPanelComments.AutoScroll = true;
-            this.flowLayoutPanelComments.Location = new System.Drawing.Point(330, 220);
+            this.flowLayoutPanelComments.Location = new System.Drawing.Point(371, 275);
+            this.flowLayoutPanelComments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
-            this.flowLayoutPanelComments.Size = new System.Drawing.Size(293, 100);
+            this.flowLayoutPanelComments.Size = new System.Drawing.Size(330, 125);
             this.flowLayoutPanelComments.TabIndex = 86;
             // 
             // labelUserEmail
             // 
             this.labelUserEmail.AutoSize = true;
-            this.labelUserEmail.Location = new System.Drawing.Point(100, 130);
+            this.labelUserEmail.Location = new System.Drawing.Point(112, 162);
             this.labelUserEmail.Name = "labelUserEmail";
-            this.labelUserEmail.Size = new System.Drawing.Size(41, 16);
+            this.labelUserEmail.Size = new System.Drawing.Size(48, 20);
             this.labelUserEmail.TabIndex = 85;
             this.labelUserEmail.Text = "Email";
             // 
@@ -338,36 +485,36 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(19, 130);
+            this.labelEmail.Location = new System.Drawing.Point(21, 162);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(50, 16);
+            this.labelEmail.Size = new System.Drawing.Size(58, 20);
             this.labelEmail.TabIndex = 84;
             this.labelEmail.Text = "Email:";
             // 
             // labelUserZodiac
             // 
             this.labelUserZodiac.AutoSize = true;
-            this.labelUserZodiac.Location = new System.Drawing.Point(100, 92);
+            this.labelUserZodiac.Location = new System.Drawing.Point(112, 115);
             this.labelUserZodiac.Name = "labelUserZodiac";
-            this.labelUserZodiac.Size = new System.Drawing.Size(75, 16);
+            this.labelUserZodiac.Size = new System.Drawing.Size(88, 20);
             this.labelUserZodiac.TabIndex = 83;
             this.labelUserZodiac.Text = "userZodiac";
             // 
             // labelUserGender
             // 
             this.labelUserGender.AutoSize = true;
-            this.labelUserGender.Location = new System.Drawing.Point(100, 59);
+            this.labelUserGender.Location = new System.Drawing.Point(112, 74);
             this.labelUserGender.Name = "labelUserGender";
-            this.labelUserGender.Size = new System.Drawing.Size(78, 16);
+            this.labelUserGender.Size = new System.Drawing.Size(94, 20);
             this.labelUserGender.TabIndex = 82;
             this.labelUserGender.Text = "userGender";
             // 
             // labelBirthDate
             // 
             this.labelBirthDate.AutoSize = true;
-            this.labelBirthDate.Location = new System.Drawing.Point(100, 21);
+            this.labelBirthDate.Location = new System.Drawing.Point(112, 26);
             this.labelBirthDate.Name = "labelBirthDate";
-            this.labelBirthDate.Size = new System.Drawing.Size(62, 16);
+            this.labelBirthDate.Size = new System.Drawing.Size(77, 20);
             this.labelBirthDate.TabIndex = 81;
             this.labelBirthDate.Text = "BirthDate";
             // 
@@ -375,9 +522,9 @@
             // 
             this.labelZodiac.AutoSize = true;
             this.labelZodiac.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZodiac.Location = new System.Drawing.Point(19, 92);
+            this.labelZodiac.Location = new System.Drawing.Point(21, 115);
             this.labelZodiac.Name = "labelZodiac";
-            this.labelZodiac.Size = new System.Drawing.Size(59, 16);
+            this.labelZodiac.Size = new System.Drawing.Size(68, 20);
             this.labelZodiac.TabIndex = 79;
             this.labelZodiac.Text = "Zodiac:";
             // 
@@ -385,9 +532,9 @@
             // 
             this.labelGender.AutoSize = true;
             this.labelGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGender.Location = new System.Drawing.Point(19, 59);
+            this.labelGender.Location = new System.Drawing.Point(21, 74);
             this.labelGender.Name = "labelGender";
-            this.labelGender.Size = new System.Drawing.Size(62, 16);
+            this.labelGender.Size = new System.Drawing.Size(74, 20);
             this.labelGender.TabIndex = 78;
             this.labelGender.Text = "Gender:";
             // 
@@ -395,9 +542,9 @@
             // 
             this.labelBirth.AutoSize = true;
             this.labelBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBirth.Location = new System.Drawing.Point(19, 21);
+            this.labelBirth.Location = new System.Drawing.Point(21, 26);
             this.labelBirth.Name = "labelBirth";
-            this.labelBirth.Size = new System.Drawing.Size(68, 16);
+            this.labelBirth.Size = new System.Drawing.Size(80, 20);
             this.labelBirth.TabIndex = 77;
             this.labelBirth.Text = "Birthday:";
             // 
@@ -425,10 +572,11 @@
             this.tabPageAlbums.Controls.Add(this.labelAlbums);
             this.tabPageAlbums.Controls.Add(this.pictureBoxSelectedAlbum);
             this.tabPageAlbums.Controls.Add(this.labelSelectedAlbum);
-            this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAlbums.Location = new System.Drawing.Point(4, 29);
+            this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageAlbums.Name = "tabPageAlbums";
-            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAlbums.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageAlbums.Size = new System.Drawing.Size(1177, 541);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             this.tabPageAlbums.UseVisualStyleBackColor = true;
@@ -436,17 +584,19 @@
             // flowLayoutPanelAlbumPhotos
             // 
             this.flowLayoutPanelAlbumPhotos.AutoScroll = true;
-            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(8, 168);
+            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(9, 210);
+            this.flowLayoutPanelAlbumPhotos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanelAlbumPhotos.Name = "flowLayoutPanelAlbumPhotos";
-            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1028, 256);
+            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1156, 320);
             this.flowLayoutPanelAlbumPhotos.TabIndex = 68;
             // 
             // tabPageLikedPages
             // 
             this.tabPageLikedPages.Controls.Add(this.flowLayoutPanelPages);
-            this.tabPageLikedPages.Location = new System.Drawing.Point(4, 25);
+            this.tabPageLikedPages.Location = new System.Drawing.Point(4, 29);
+            this.tabPageLikedPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageLikedPages.Name = "tabPageLikedPages";
-            this.tabPageLikedPages.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageLikedPages.Size = new System.Drawing.Size(1177, 541);
             this.tabPageLikedPages.TabIndex = 2;
             this.tabPageLikedPages.Text = "Liked Pages";
             this.tabPageLikedPages.UseVisualStyleBackColor = true;
@@ -454,17 +604,19 @@
             // flowLayoutPanelPages
             // 
             this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(3, 4);
+            this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1169, 530);
             this.flowLayoutPanelPages.TabIndex = 77;
             // 
             // tabPageGroups
             // 
             this.tabPageGroups.Controls.Add(this.flowLayoutPanelGroups);
-            this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
+            this.tabPageGroups.Location = new System.Drawing.Point(4, 29);
+            this.tabPageGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageGroups.Name = "tabPageGroups";
-            this.tabPageGroups.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageGroups.Size = new System.Drawing.Size(1177, 541);
             this.tabPageGroups.TabIndex = 3;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -472,43 +624,68 @@
             // flowLayoutPanelGroups
             // 
             this.flowLayoutPanelGroups.AutoScroll = true;
-            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 4);
+            this.flowLayoutPanelGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
-            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1169, 530);
             this.flowLayoutPanelGroups.TabIndex = 0;
             // 
             // tabPageSport
             // 
             this.tabPageSport.Controls.Add(this.flowLayoutPanelSport);
-            this.tabPageSport.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSport.Location = new System.Drawing.Point(4, 29);
+            this.tabPageSport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageSport.Name = "tabPageSport";
-            this.tabPageSport.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageSport.Size = new System.Drawing.Size(1177, 541);
             this.tabPageSport.TabIndex = 4;
             this.tabPageSport.Text = "Sport Teams";
             this.tabPageSport.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelSport
             // 
-            this.flowLayoutPanelSport.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelSport.Location = new System.Drawing.Point(3, 4);
+            this.flowLayoutPanelSport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanelSport.Name = "flowLayoutPanelSport";
-            this.flowLayoutPanelSport.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelSport.Size = new System.Drawing.Size(1169, 530);
             this.flowLayoutPanelSport.TabIndex = 0;
+            // 
+            // tabPageEvents
+            // 
+            this.tabPageEvents.Controls.Add(this.dataGridViewEvents);
+            this.tabPageEvents.Location = new System.Drawing.Point(4, 29);
+            this.tabPageEvents.Name = "tabPageEvents";
+            this.tabPageEvents.Size = new System.Drawing.Size(1177, 541);
+            this.tabPageEvents.TabIndex = 6;
+            this.tabPageEvents.Text = "Events";
+            this.tabPageEvents.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewEvents
+            // 
+            this.dataGridViewEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 3);
+            this.dataGridViewEvents.Name = "dataGridViewEvents";
+            this.dataGridViewEvents.RowHeadersWidth = 62;
+            this.dataGridViewEvents.RowTemplate.Height = 28;
+            this.dataGridViewEvents.Size = new System.Drawing.Size(1174, 538);
+            this.dataGridViewEvents.TabIndex = 0;
+            this.dataGridViewEvents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEvents_CellContentClick);
             // 
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
             this.labelUserName.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUserName.Location = new System.Drawing.Point(209, 125);
+            this.labelUserName.Location = new System.Drawing.Point(235, 156);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(161, 37);
+            this.labelUserName.Size = new System.Drawing.Size(187, 44);
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1556, 1026);
+            this.ClientSize = new System.Drawing.Size(1750, 1050);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
@@ -519,7 +696,7 @@
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.labelEvents);
             this.Controls.Add(this.buttonLogout);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -536,6 +713,8 @@
             this.tabPageLikedPages.ResumeLayout(false);
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageSport.ResumeLayout(false);
+            this.tabPageEvents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,6 +761,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelComments;
         private System.Windows.Forms.TabPage tabPageFriends;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
+        private System.Windows.Forms.TabPage tabPageEvents;
+        private System.Windows.Forms.DataGridView dataGridViewEvents;
     }
 }
 
