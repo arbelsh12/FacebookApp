@@ -390,7 +390,7 @@ namespace BasicFacebookFeatures
             box.Size = new Size(140, 120);
             box.Text = i_Name;
             box.Name = "Groupbox" + i_Name;
-            box.BackColor = Color.Pink;
+            box.BackColor = SystemColors.GradientActiveCaption;
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
             picture.Size = new Size(70, 70);
             picture.LoadAsync(i_PictureURL);

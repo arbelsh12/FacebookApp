@@ -31,14 +31,17 @@
             this.buttonLogIn = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogIn
             // 
-            this.buttonLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLogIn.Location = new System.Drawing.Point(128, 119);
+            this.buttonLogIn.Font = new System.Drawing.Font("MS PGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogIn.Location = new System.Drawing.Point(115, 187);
+            this.buttonLogIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(108, 36);
+            this.buttonLogIn.Size = new System.Drawing.Size(108, 40);
             this.buttonLogIn.TabIndex = 0;
             this.buttonLogIn.Text = "Log In";
             this.buttonLogIn.UseVisualStyleBackColor = true;
@@ -46,10 +49,11 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonExit.Location = new System.Drawing.Point(128, 161);
+            this.buttonExit.Font = new System.Drawing.Font("MS PGothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.Location = new System.Drawing.Point(115, 233);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(108, 36);
+            this.buttonExit.Size = new System.Drawing.Size(108, 40);
             this.buttonExit.TabIndex = 1;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -58,29 +62,42 @@
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Font = new System.Drawing.Font("Miriam Fixed", 14F, System.Drawing.FontStyle.Bold);
-            this.labelWelcome.Location = new System.Drawing.Point(12, 55);
+            this.labelWelcome.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.Location = new System.Drawing.Point(21, 136);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(354, 28);
+            this.labelWelcome.Size = new System.Drawing.Size(286, 30);
             this.labelWelcome.TabIndex = 2;
             this.labelWelcome.Text = "Welcome to our app!";
             this.labelWelcome.Click += new System.EventHandler(this.labelWelcome_Click);
             // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Location = new System.Drawing.Point(56, 23);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(235, 77);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 3;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // FormLogIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(368, 247);
+            this.ClientSize = new System.Drawing.Size(354, 302);
+            this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonLogIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogIn";
             this.Load += new System.EventHandler(this.FormLogIn_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,5 +108,6 @@
         private System.Windows.Forms.Button buttonLogIn;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label labelWelcome;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
     }
 }

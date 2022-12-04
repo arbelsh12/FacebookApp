@@ -300,6 +300,7 @@
             // 
             // tabPageFeed
             // 
+            this.tabPageFeed.BackColor = System.Drawing.Color.OldLace;
             this.tabPageFeed.Controls.Add(this.flowLayoutPanelComments);
             this.tabPageFeed.Controls.Add(this.labelUserEmail);
             this.tabPageFeed.Controls.Add(this.labelEmail);
@@ -322,7 +323,6 @@
             this.tabPageFeed.Size = new System.Drawing.Size(1177, 541);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
-            this.tabPageFeed.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelComments
             // 
@@ -411,23 +411,24 @@
             // 
             // tabPageFriends
             // 
+            this.tabPageFriends.BackColor = System.Drawing.Color.OldLace;
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
             this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriends.Name = "tabPageFriends";
             this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
             this.tabPageFriends.TabIndex = 5;
             this.tabPageFriends.Text = "Friends";
-            this.tabPageFriends.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelFriends
             // 
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
             this.flowLayoutPanelFriends.Size = new System.Drawing.Size(1038, 423);
             this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // tabPageAlbums
             // 
+            this.tabPageAlbums.BackColor = System.Drawing.Color.OldLace;
             this.tabPageAlbums.Controls.Add(this.flowLayoutPanelAlbumPhotos);
             this.tabPageAlbums.Controls.Add(this.listBoxAlbums);
             this.tabPageAlbums.Controls.Add(this.labelAlbums);
@@ -440,7 +441,6 @@
             this.tabPageAlbums.Size = new System.Drawing.Size(1177, 541);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
-            this.tabPageAlbums.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelAlbumPhotos
             // 
@@ -453,6 +453,7 @@
             // 
             // tabPageLikedPages
             // 
+            this.tabPageLikedPages.BackColor = System.Drawing.Color.OldLace;
             this.tabPageLikedPages.Controls.Add(this.flowLayoutPanelPages);
             this.tabPageLikedPages.Location = new System.Drawing.Point(4, 29);
             this.tabPageLikedPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -460,19 +461,18 @@
             this.tabPageLikedPages.Size = new System.Drawing.Size(1177, 541);
             this.tabPageLikedPages.TabIndex = 2;
             this.tabPageLikedPages.Text = "Liked Pages";
-            this.tabPageLikedPages.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelPages
             // 
             this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(3, 4);
-            this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(0, 6);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
             this.flowLayoutPanelPages.Size = new System.Drawing.Size(1169, 530);
             this.flowLayoutPanelPages.TabIndex = 77;
             // 
             // tabPageGroups
             // 
+            this.tabPageGroups.BackColor = System.Drawing.Color.OldLace;
             this.tabPageGroups.Controls.Add(this.flowLayoutPanelGroups);
             this.tabPageGroups.Location = new System.Drawing.Point(4, 29);
             this.tabPageGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -480,19 +480,18 @@
             this.tabPageGroups.Size = new System.Drawing.Size(1177, 541);
             this.tabPageGroups.TabIndex = 3;
             this.tabPageGroups.Text = "Groups";
-            this.tabPageGroups.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelGroups
             // 
             this.flowLayoutPanelGroups.AutoScroll = true;
-            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 4);
-            this.flowLayoutPanelGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 0);
             this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
             this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1169, 530);
             this.flowLayoutPanelGroups.TabIndex = 0;
             // 
             // tabPageSport
             // 
+            this.tabPageSport.BackColor = System.Drawing.Color.OldLace;
             this.tabPageSport.Controls.Add(this.flowLayoutPanelSport);
             this.tabPageSport.Location = new System.Drawing.Point(4, 29);
             this.tabPageSport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -500,7 +499,6 @@
             this.tabPageSport.Size = new System.Drawing.Size(1177, 541);
             this.tabPageSport.TabIndex = 4;
             this.tabPageSport.Text = "Sport Teams";
-            this.tabPageSport.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelSport
             // 
@@ -545,7 +543,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1750, 1050);
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1556, 1026);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
