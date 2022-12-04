@@ -30,31 +30,17 @@
         {
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.listBoxAboutInfo = new System.Windows.Forms.ListBox();
-            this.labelAbout = new System.Windows.Forms.Label();
-            this.listBoxPages = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.buttonAstrologyHoroscopePost = new System.Windows.Forms.Button();
-            this.listBoxGroups = new System.Windows.Forms.ListBox();
             this.pictureBoxCover = new System.Windows.Forms.PictureBox();
-            this.labelGroups = new System.Windows.Forms.Label();
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.labelAlbums = new System.Windows.Forms.Label();
             this.pictureBoxSelectedAlbum = new System.Windows.Forms.PictureBox();
             this.labelSelectedAlbum = new System.Windows.Forms.Label();
-            this.listBoxAlbumPhotos = new System.Windows.Forms.ListBox();
-            this.pictureBoxSelectedPhoto = new System.Windows.Forms.PictureBox();
-            this.labelSelectedPhoto = new System.Windows.Forms.Label();
-            this.labelSelectedAlbumPhotos = new System.Windows.Forms.Label();
             this.listBoxUserPosts = new System.Windows.Forms.ListBox();
-            this.listBoxPostComments = new System.Windows.Forms.ListBox();
             this.labelUserPosts = new System.Windows.Forms.Label();
             this.labelPostComments = new System.Windows.Forms.Label();
-            this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
-            this.listBoxFriendsList = new System.Windows.Forms.ListBox();
-            this.labelFriends = new System.Windows.Forms.Label();
             this.labelEvents = new System.Windows.Forms.Label();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.comboBoxFilterTime = new System.Windows.Forms.ComboBox();
@@ -87,8 +73,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageFeed.SuspendLayout();
             this.tabPageFriends.SuspendLayout();
@@ -468,7 +452,6 @@
             this.tabPageFeed.Controls.Add(this.buttonAstrologyHoroscopePost);
             this.tabPageFeed.Controls.Add(this.labelPostComments);
             this.tabPageFeed.Controls.Add(this.listBoxUserPosts);
-            this.tabPageFeed.Controls.Add(this.listBoxPostComments);
             this.tabPageFeed.Controls.Add(this.textBoxPost);
             this.tabPageFeed.Controls.Add(this.buttonPost);
             this.tabPageFeed.Location = new System.Drawing.Point(4, 29);
@@ -568,20 +551,18 @@
             // tabPageFriends
             // 
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
-            this.tabPageFriends.Location = new System.Drawing.Point(4, 29);
-            this.tabPageFriends.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriends.Name = "tabPageFriends";
-            this.tabPageFriends.Size = new System.Drawing.Size(1177, 541);
+            this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
             this.tabPageFriends.TabIndex = 5;
             this.tabPageFriends.Text = "Friends";
             this.tabPageFriends.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelFriends
             // 
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(4, 5);
-            this.flowLayoutPanelFriends.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(4, 4);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(1168, 529);
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(1038, 423);
             this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // tabPageAlbums
@@ -707,21 +688,8 @@
             this.ClientSize = new System.Drawing.Size(1750, 1050);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
-            this.Controls.Add(this.listBoxPages);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelFriends);
-            this.Controls.Add(this.listBoxAlbumPhotos);
-            this.Controls.Add(this.pictureBoxSelectedPhoto);
-            this.Controls.Add(this.pictureBoxGroup);
-            this.Controls.Add(this.listBoxAboutInfo);
-            this.Controls.Add(this.labelAbout);
-            this.Controls.Add(this.labelSelectedPhoto);
             this.Controls.Add(this.pictureBoxProfile);
-            this.Controls.Add(this.labelSelectedAlbumPhotos);
-            this.Controls.Add(this.listBoxGroups);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.labelGroups);
-            this.Controls.Add(this.listBoxFriendsList);
             this.Controls.Add(this.comboBoxSortByAttends);
             this.Controls.Add(this.buttonEventsFilter);
             this.Controls.Add(this.comboBoxFilterTime);
@@ -736,8 +704,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPageFeed.ResumeLayout(false);
             this.tabPageFeed.PerformLayout();
@@ -757,31 +723,17 @@
 		#endregion
 		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
-        private System.Windows.Forms.ListBox listBoxAboutInfo;
-        private System.Windows.Forms.Label labelAbout;
-        private System.Windows.Forms.ListBox listBoxPages;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAstrologyHoroscopePost;
-        private System.Windows.Forms.ListBox listBoxGroups;
         private System.Windows.Forms.PictureBox pictureBoxCover;
-        private System.Windows.Forms.Label labelGroups;
         private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.Label labelAlbums;
         private System.Windows.Forms.PictureBox pictureBoxSelectedAlbum;
         private System.Windows.Forms.Label labelSelectedAlbum;
-        private System.Windows.Forms.ListBox listBoxAlbumPhotos;
-        private System.Windows.Forms.PictureBox pictureBoxSelectedPhoto;
-        private System.Windows.Forms.Label labelSelectedPhoto;
-        private System.Windows.Forms.Label labelSelectedAlbumPhotos;
         private System.Windows.Forms.ListBox listBoxUserPosts;
-        private System.Windows.Forms.ListBox listBoxPostComments;
         private System.Windows.Forms.Label labelUserPosts;
         private System.Windows.Forms.Label labelPostComments;
-        private System.Windows.Forms.PictureBox pictureBoxGroup;
-        private System.Windows.Forms.ListBox listBoxFriendsList;
-        private System.Windows.Forms.Label labelFriends;
         private System.Windows.Forms.Label labelEvents;
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.ComboBox comboBoxFilterTime;
