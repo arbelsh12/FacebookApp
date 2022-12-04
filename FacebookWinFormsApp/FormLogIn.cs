@@ -19,6 +19,7 @@ namespace BasicFacebookFeatures
         public FormLogIn()
         {
             InitializeComponent();
+            pictureBoxLogo.LoadAsync("https://i2-prod.mirror.co.uk/incoming/article676858.ece/ALTERNATES/s1200/Topic%20-%20Facebook");
         }
 
         private void buttonLogIn_Click(object sender, EventArgs e)
