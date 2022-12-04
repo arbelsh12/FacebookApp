@@ -530,7 +530,6 @@
             this.dataGridViewEvents.RowTemplate.Height = 28;
             this.dataGridViewEvents.Size = new System.Drawing.Size(1174, 538);
             this.dataGridViewEvents.TabIndex = 0;
-            this.dataGridViewEvents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEvents_CellContentClick);
             // 
             // labelUserName
             // 
