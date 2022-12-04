@@ -400,28 +400,28 @@ namespace BasicFacebookFeatures
 
         private void buttonEventsFilter_Click(object sender, EventArgs e)
         {
-                if (listBoxEvents.Items.Count == 0)
-                {
-                    MessageBox.Show("No events to filter :(");
-                    
-                    return;
-                }
+            if (listBoxEvents.Items.Count == 0)
+            {
+                MessageBox.Show("No events to filter :(");
 
-                if(comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
-                {
-                    MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
+                return;
+            }
 
-                    return;
-                }
+            if (comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
+            {
+                MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
+
+                return;
+            }
 
             try
             {
-                listBoxEvents.Items.Clear();                
+                listBoxEvents.Items.Clear();
                 ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                 listBoxEvents.Items.AddRange((ListBox.ObjectCollection)sortedAndFilteredEvents);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Failed to filter the events");
             }
