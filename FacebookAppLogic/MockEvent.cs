@@ -9,7 +9,7 @@ namespace FacebookAppLogic
     public class MockEvent
     {
         private DateTime m_StartTime;
-        public long m_AttendingCount;
+        private long m_AttendingCount;
         private long m_InterestedCount;
         private long m_DeclinedCount;
         private long m_MaybeCount;
