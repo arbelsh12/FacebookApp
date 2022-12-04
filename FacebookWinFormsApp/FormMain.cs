@@ -18,8 +18,9 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
+        private readonly MockData r_MockData;
+
         private User m_LoggedInUser;
-        private MockData m_MockData;
 
         public FormMain(User i_User, FormLogIn i_FormLogin)
         {
@@ -30,7 +31,7 @@ namespace BasicFacebookFeatures
             r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
             loadUserInfo();
-            m_MockData = new MockData();
+            r_MockData = new MockData();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -651,35 +652,26 @@ namespace BasicFacebookFeatures
         private void fetchFriendsFlowControl()
         {
             flowLayoutPanelFriends.Controls.Clear();
-            //listBoxPages.DisplayMember = "Name";
-
-            foreach (User friend in m_LoggedInUser.Friends)
+            try
             {
-                //listBoxFriendsList.Items.Add(friend);
+                foreach (User friend in m_LoggedInUser.Friends)
+                {
+                    addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
-            if (listBoxFriendsList.Items.Count == 0)
+
+            if (flowLayoutPanelFriends.Controls.Count == 0)
             {
-                foreach(MockUser friend in m_MockData.Friends)
+                foreach(MockUser friend in r_MockData.Friends)
                 {
                     addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                 }
             }
-
-            //if (m_LoggedInUser.FavofriteTeams != null)
-            //{
-            //    try
-            //    {
-            //        foreach (Page team in m_LoggedInUser.FavofriteTeams)
-            //        {
-            //            addGroupBoxToPanel(flowLayoutPanelFriends, team.Name, team.PictureNormalURL);
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
 
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
