@@ -30,31 +30,17 @@
         {
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.listBoxAboutInfo = new System.Windows.Forms.ListBox();
-            this.labelAbout = new System.Windows.Forms.Label();
-            this.listBoxPages = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.buttonAstrologyHoroscopePost = new System.Windows.Forms.Button();
-            this.listBoxGroups = new System.Windows.Forms.ListBox();
             this.pictureBoxCover = new System.Windows.Forms.PictureBox();
-            this.labelGroups = new System.Windows.Forms.Label();
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.labelAlbums = new System.Windows.Forms.Label();
             this.pictureBoxSelectedAlbum = new System.Windows.Forms.PictureBox();
             this.labelSelectedAlbum = new System.Windows.Forms.Label();
-            this.listBoxAlbumPhotos = new System.Windows.Forms.ListBox();
-            this.pictureBoxSelectedPhoto = new System.Windows.Forms.PictureBox();
-            this.labelSelectedPhoto = new System.Windows.Forms.Label();
-            this.labelSelectedAlbumPhotos = new System.Windows.Forms.Label();
             this.listBoxUserPosts = new System.Windows.Forms.ListBox();
-            this.listBoxPostComments = new System.Windows.Forms.ListBox();
             this.labelUserPosts = new System.Windows.Forms.Label();
             this.labelPostComments = new System.Windows.Forms.Label();
-            this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
-            this.listBoxFriendsList = new System.Windows.Forms.ListBox();
-            this.labelFriends = new System.Windows.Forms.Label();
             this.labelEvents = new System.Windows.Forms.Label();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.comboBoxFilterTime = new System.Windows.Forms.ComboBox();
@@ -71,6 +57,8 @@
             this.labelZodiac = new System.Windows.Forms.Label();
             this.labelGender = new System.Windows.Forms.Label();
             this.labelBirth = new System.Windows.Forms.Label();
+            this.tabPageFriends = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelAlbumPhotos = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageLikedPages = new System.Windows.Forms.TabPage();
@@ -80,20 +68,16 @@
             this.tabPageSport = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelSport = new System.Windows.Forms.FlowLayoutPanel();
             this.labelUserName = new System.Windows.Forms.Label();
-            this.tabPageFriends = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageFeed.SuspendLayout();
+            this.tabPageFriends.SuspendLayout();
             this.tabPageAlbums.SuspendLayout();
             this.tabPageLikedPages.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.tabPageSport.SuspendLayout();
-            this.tabPageFriends.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogout
@@ -118,47 +102,6 @@
             this.pictureBoxProfile.TabStop = false;
             this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
-            // listBoxAboutInfo
-            // 
-            this.listBoxAboutInfo.FormattingEnabled = true;
-            this.listBoxAboutInfo.ItemHeight = 16;
-            this.listBoxAboutInfo.Location = new System.Drawing.Point(1176, 394);
-            this.listBoxAboutInfo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.listBoxAboutInfo.Name = "listBoxAboutInfo";
-            this.listBoxAboutInfo.Size = new System.Drawing.Size(269, 68);
-            this.listBoxAboutInfo.TabIndex = 55;
-            this.listBoxAboutInfo.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // labelAbout
-            // 
-            this.labelAbout.AutoSize = true;
-            this.labelAbout.Location = new System.Drawing.Point(1176, 375);
-            this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(45, 16);
-            this.labelAbout.TabIndex = 56;
-            this.labelAbout.Text = "About:";
-            this.labelAbout.Click += new System.EventHandler(this.labelAbout_Click);
-            // 
-            // listBoxPages
-            // 
-            this.listBoxPages.FormattingEnabled = true;
-            this.listBoxPages.ItemHeight = 16;
-            this.listBoxPages.Location = new System.Drawing.Point(74, 714);
-            this.listBoxPages.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.listBoxPages.Name = "listBoxPages";
-            this.listBoxPages.Size = new System.Drawing.Size(269, 132);
-            this.listBoxPages.TabIndex = 57;
-            this.listBoxPages.SelectedIndexChanged += new System.EventHandler(this.listBoxPages_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 693);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 16);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Liked pages";
-            // 
             // buttonAstrologyHoroscopePost
             // 
             this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(846, 18);
@@ -170,17 +113,6 @@
             this.buttonAstrologyHoroscopePost.UseVisualStyleBackColor = true;
             this.buttonAstrologyHoroscopePost.Click += new System.EventHandler(this.buttonAstrologyHoroscopePost_Click);
             // 
-            // listBoxGroups
-            // 
-            this.listBoxGroups.FormattingEnabled = true;
-            this.listBoxGroups.ItemHeight = 16;
-            this.listBoxGroups.Location = new System.Drawing.Point(77, 880);
-            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBoxGroups.Name = "listBoxGroups";
-            this.listBoxGroups.Size = new System.Drawing.Size(259, 132);
-            this.listBoxGroups.TabIndex = 60;
-            this.listBoxGroups.SelectedIndexChanged += new System.EventHandler(this.listBoxGroups_SelectedGroupIndexChanged);
-            // 
             // pictureBoxCover
             // 
             this.pictureBoxCover.Location = new System.Drawing.Point(203, 23);
@@ -191,15 +123,6 @@
             this.pictureBoxCover.TabIndex = 62;
             this.pictureBoxCover.TabStop = false;
             this.pictureBoxCover.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // labelGroups
-            // 
-            this.labelGroups.AutoSize = true;
-            this.labelGroups.Location = new System.Drawing.Point(77, 859);
-            this.labelGroups.Name = "labelGroups";
-            this.labelGroups.Size = new System.Drawing.Size(51, 16);
-            this.labelGroups.TabIndex = 63;
-            this.labelGroups.Text = "Groups";
             // 
             // textBoxPost
             // 
@@ -260,43 +183,6 @@
             this.labelSelectedAlbum.TabIndex = 67;
             this.labelSelectedAlbum.Text = "Selected Album";
             // 
-            // listBoxAlbumPhotos
-            // 
-            this.listBoxAlbumPhotos.FormattingEnabled = true;
-            this.listBoxAlbumPhotos.ItemHeight = 16;
-            this.listBoxAlbumPhotos.Location = new System.Drawing.Point(911, 759);
-            this.listBoxAlbumPhotos.Name = "listBoxAlbumPhotos";
-            this.listBoxAlbumPhotos.Size = new System.Drawing.Size(269, 116);
-            this.listBoxAlbumPhotos.TabIndex = 68;
-            this.listBoxAlbumPhotos.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbumPhotos_SelectedPhotoChanged);
-            // 
-            // pictureBoxSelectedPhoto
-            // 
-            this.pictureBoxSelectedPhoto.Location = new System.Drawing.Point(1201, 759);
-            this.pictureBoxSelectedPhoto.Name = "pictureBoxSelectedPhoto";
-            this.pictureBoxSelectedPhoto.Size = new System.Drawing.Size(176, 117);
-            this.pictureBoxSelectedPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxSelectedPhoto.TabIndex = 69;
-            this.pictureBoxSelectedPhoto.TabStop = false;
-            // 
-            // labelSelectedPhoto
-            // 
-            this.labelSelectedPhoto.AutoSize = true;
-            this.labelSelectedPhoto.Location = new System.Drawing.Point(1200, 737);
-            this.labelSelectedPhoto.Name = "labelSelectedPhoto";
-            this.labelSelectedPhoto.Size = new System.Drawing.Size(99, 16);
-            this.labelSelectedPhoto.TabIndex = 70;
-            this.labelSelectedPhoto.Text = "Selected Photo";
-            // 
-            // labelSelectedAlbumPhotos
-            // 
-            this.labelSelectedAlbumPhotos.AutoSize = true;
-            this.labelSelectedAlbumPhotos.Location = new System.Drawing.Point(912, 737);
-            this.labelSelectedAlbumPhotos.Name = "labelSelectedAlbumPhotos";
-            this.labelSelectedAlbumPhotos.Size = new System.Drawing.Size(90, 16);
-            this.labelSelectedAlbumPhotos.TabIndex = 71;
-            this.labelSelectedAlbumPhotos.Text = "Album Photos";
-            // 
             // listBoxUserPosts
             // 
             this.listBoxUserPosts.FormattingEnabled = true;
@@ -307,16 +193,6 @@
             this.listBoxUserPosts.Size = new System.Drawing.Size(271, 116);
             this.listBoxUserPosts.TabIndex = 72;
             this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedPostIndexChanged);
-            // 
-            // listBoxPostComments
-            // 
-            this.listBoxPostComments.FormattingEnabled = true;
-            this.listBoxPostComments.ItemHeight = 16;
-            this.listBoxPostComments.Location = new System.Drawing.Point(674, 220);
-            this.listBoxPostComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxPostComments.Name = "listBoxPostComments";
-            this.listBoxPostComments.Size = new System.Drawing.Size(207, 84);
-            this.listBoxPostComments.TabIndex = 73;
             // 
             // labelUserPosts
             // 
@@ -335,35 +211,6 @@
             this.labelPostComments.Size = new System.Drawing.Size(101, 16);
             this.labelPostComments.TabIndex = 75;
             this.labelPostComments.Text = "Post Comments";
-            // 
-            // pictureBoxGroup
-            // 
-            this.pictureBoxGroup.Location = new System.Drawing.Point(265, 948);
-            this.pictureBoxGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxGroup.Name = "pictureBoxGroup";
-            this.pictureBoxGroup.Size = new System.Drawing.Size(60, 48);
-            this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxGroup.TabIndex = 76;
-            this.pictureBoxGroup.TabStop = false;
-            // 
-            // listBoxFriendsList
-            // 
-            this.listBoxFriendsList.FormattingEnabled = true;
-            this.listBoxFriendsList.ItemHeight = 16;
-            this.listBoxFriendsList.Location = new System.Drawing.Point(571, 41);
-            this.listBoxFriendsList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxFriendsList.Name = "listBoxFriendsList";
-            this.listBoxFriendsList.Size = new System.Drawing.Size(128, 84);
-            this.listBoxFriendsList.TabIndex = 77;
-            // 
-            // labelFriends
-            // 
-            this.labelFriends.AutoSize = true;
-            this.labelFriends.Location = new System.Drawing.Point(568, 23);
-            this.labelFriends.Name = "labelFriends";
-            this.labelFriends.Size = new System.Drawing.Size(52, 16);
-            this.labelFriends.TabIndex = 78;
-            this.labelFriends.Text = "Friends";
             // 
             // labelEvents
             // 
@@ -460,7 +307,6 @@
             this.tabPageFeed.Controls.Add(this.buttonAstrologyHoroscopePost);
             this.tabPageFeed.Controls.Add(this.labelPostComments);
             this.tabPageFeed.Controls.Add(this.listBoxUserPosts);
-            this.tabPageFeed.Controls.Add(this.listBoxPostComments);
             this.tabPageFeed.Controls.Add(this.textBoxPost);
             this.tabPageFeed.Controls.Add(this.buttonPost);
             this.tabPageFeed.Location = new System.Drawing.Point(4, 25);
@@ -555,6 +401,23 @@
             this.labelBirth.TabIndex = 77;
             this.labelBirth.Text = "Birthday:";
             // 
+            // tabPageFriends
+            // 
+            this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
+            this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFriends.Name = "tabPageFriends";
+            this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageFriends.TabIndex = 5;
+            this.tabPageFriends.Text = "Friends";
+            this.tabPageFriends.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelFriends
+            // 
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(1038, 423);
+            this.flowLayoutPanelFriends.TabIndex = 0;
+            // 
             // tabPageAlbums
             // 
             this.tabPageAlbums.Controls.Add(this.flowLayoutPanelAlbumPhotos);
@@ -641,23 +504,6 @@
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
-            // tabPageFriends
-            // 
-            this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
-            this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
-            this.tabPageFriends.Name = "tabPageFriends";
-            this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
-            this.tabPageFriends.TabIndex = 5;
-            this.tabPageFriends.Text = "Friends";
-            this.tabPageFriends.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanelFriends
-            // 
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(4, 4);
-            this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(1038, 423);
-            this.flowLayoutPanelFriends.TabIndex = 0;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -665,21 +511,8 @@
             this.ClientSize = new System.Drawing.Size(1556, 1026);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
-            this.Controls.Add(this.listBoxPages);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelFriends);
-            this.Controls.Add(this.listBoxAlbumPhotos);
-            this.Controls.Add(this.pictureBoxSelectedPhoto);
-            this.Controls.Add(this.pictureBoxGroup);
-            this.Controls.Add(this.listBoxAboutInfo);
-            this.Controls.Add(this.labelAbout);
-            this.Controls.Add(this.labelSelectedPhoto);
             this.Controls.Add(this.pictureBoxProfile);
-            this.Controls.Add(this.labelSelectedAlbumPhotos);
-            this.Controls.Add(this.listBoxGroups);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.labelGroups);
-            this.Controls.Add(this.listBoxFriendsList);
             this.Controls.Add(this.comboBoxSortByAttends);
             this.Controls.Add(this.buttonEventsFilter);
             this.Controls.Add(this.comboBoxFilterTime);
@@ -694,17 +527,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPageFeed.ResumeLayout(false);
             this.tabPageFeed.PerformLayout();
+            this.tabPageFriends.ResumeLayout(false);
             this.tabPageAlbums.ResumeLayout(false);
             this.tabPageAlbums.PerformLayout();
             this.tabPageLikedPages.ResumeLayout(false);
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageSport.ResumeLayout(false);
-            this.tabPageFriends.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -713,31 +544,17 @@
 		#endregion
 		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
-        private System.Windows.Forms.ListBox listBoxAboutInfo;
-        private System.Windows.Forms.Label labelAbout;
-        private System.Windows.Forms.ListBox listBoxPages;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAstrologyHoroscopePost;
-        private System.Windows.Forms.ListBox listBoxGroups;
         private System.Windows.Forms.PictureBox pictureBoxCover;
-        private System.Windows.Forms.Label labelGroups;
         private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.Label labelAlbums;
         private System.Windows.Forms.PictureBox pictureBoxSelectedAlbum;
         private System.Windows.Forms.Label labelSelectedAlbum;
-        private System.Windows.Forms.ListBox listBoxAlbumPhotos;
-        private System.Windows.Forms.PictureBox pictureBoxSelectedPhoto;
-        private System.Windows.Forms.Label labelSelectedPhoto;
-        private System.Windows.Forms.Label labelSelectedAlbumPhotos;
         private System.Windows.Forms.ListBox listBoxUserPosts;
-        private System.Windows.Forms.ListBox listBoxPostComments;
         private System.Windows.Forms.Label labelUserPosts;
         private System.Windows.Forms.Label labelPostComments;
-        private System.Windows.Forms.PictureBox pictureBoxGroup;
-        private System.Windows.Forms.ListBox listBoxFriendsList;
-        private System.Windows.Forms.Label labelFriends;
         private System.Windows.Forms.Label labelEvents;
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.ComboBox comboBoxFilterTime;

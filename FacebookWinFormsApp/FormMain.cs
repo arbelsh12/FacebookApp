@@ -45,10 +45,6 @@ namespace BasicFacebookFeatures
             string zodiac = r_Astrology.GetZodiac(m_LoggedInUser.Birthday);
 
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            listBoxAboutInfo.Items.Add(m_LoggedInUser.Email);
-            listBoxAboutInfo.Items.Add(m_LoggedInUser.Birthday);
-            listBoxAboutInfo.Items.Add(userGender);
-            listBoxAboutInfo.Items.Add(zodiac);
             labelUserName.Text = m_LoggedInUser.Name;
             labelBirthDate.Text = m_LoggedInUser.Birthday;
             labelUserEmail.Text = m_LoggedInUser.Email;
@@ -57,11 +53,7 @@ namespace BasicFacebookFeatures
 
             fetchCoverPhoto();
             fetchAlbums();
-            //fetchAlbumPhotos();
-            fetchUserPosts();
-            //fetchFriendsList();
-            fetchPagesList();
-            fetchGroupsList();
+            fetchUserPosts();        
            // fetchEventsList();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
@@ -83,54 +75,6 @@ namespace BasicFacebookFeatures
             } 
         }
 
-        private void fetchGroupsList()
-        {
-            //copied from Guy TODO: delete comment and change the code
-            listBoxGroups.Items.Clear();
-            listBoxGroups.DisplayMember = "Name";
-
-            try
-            {
-                foreach (Group group in m_LoggedInUser.Groups)
-                {
-                    listBoxGroups.Items.Add(group);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (listBoxGroups.Items.Count == 0)
-            {
-                MessageBox.Show("No groups to retrieve :(");
-            }
-        }
-
-        private void fetchPagesList()
-        {
-            //copied from Guy TODO: delete comment and change the code
-            listBoxPages.Items.Clear();
-            listBoxPages.DisplayMember = "Name";
-
-            try
-            {
-                foreach (Page page in m_LoggedInUser.LikedPages)
-                {
-                    listBoxPages.Items.Add(page);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (listBoxPages.Items.Count == 0)
-            {
-                MessageBox.Show("No liked pages to retrieve :(");
-            }
-        }
-
         private void fetchCoverPhoto()
         {
             foreach (Album album in m_LoggedInUser.Albums)
@@ -144,21 +88,6 @@ namespace BasicFacebookFeatures
             }
 
             MessageBox.Show("No cover photo to retrieve :(");
-        }
-
-        private void fetchFriendsList()
-        {
-            listBoxFriendsList.Items.Clear();
-
-            foreach (User friend in m_LoggedInUser.Friends)
-            {
-                listBoxFriendsList.Items.Add(friend);
-            }
-
-            if (listBoxFriendsList.Items.Count == 0)
-            {
-                MessageBox.Show("No friends to retrieve :(");
-            }
         }
 
         private void fetchAlbums()
@@ -193,50 +122,9 @@ namespace BasicFacebookFeatures
                     // CHANGE to another picture, not profile
                     pictureBoxSelectedAlbum.Image = pictureBoxProfile.ErrorImage;
                 }
-
-                fetchAlbumPhotos();
             }
         }
-        /// End copy
-        /// 
-        private void fetchAlbumPhotos()
-        {
-            if (listBoxAlbums.SelectedItems.Count == 1)
-            {
-                Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
-
-                listBoxAlbumPhotos.Items.Clear();
-                listBoxAlbumPhotos.DisplayMember = "Name";
-                pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
-
-                foreach (Photo photo in selectedAlbum.Photos)
-                {
-                    listBoxAlbumPhotos.Items.Add(photo);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No photos to retrieve in selected album :(");
-            }
-        }
-
-        private void displaySelectedPhoto()
-        {
-            if (listBoxAlbumPhotos.SelectedItems.Count == 1)
-            {
-                Photo selectedPhoto = listBoxAlbumPhotos.SelectedItem as Photo;
-
-                if (selectedPhoto.PictureNormalURL != null)
-                {
-                    pictureBoxSelectedPhoto.LoadAsync(selectedPhoto.PictureNormalURL);
-                }
-                else
-                {
-                    // CHANGE to another picture, not profile
-                    pictureBoxSelectedPhoto.Image = pictureBoxProfile.ErrorImage;
-                }
-            }
-        }
+        /// End copy      
 
         //copied from Guy TODO: delete comment and change the code
         // Changed name, GUY - listBoxPosts MY name - listBoxUserPosts
@@ -271,28 +159,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void listBoxUserPosts_SelectedPostIndexChanged(object sender, EventArgs e)
         {
-            Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
-            listBoxPostComments.DisplayMember = "Message";
-
             fetchCommentsFlowControl();
-
-            try
-            {
-                listBoxPostComments.DataSource = selected.Comments;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No permissions to show this comment :(");
-            }
-        }
-
-        private void listBoxGroups_SelectedGroupIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxGroups.SelectedItems.Count == 1)
-            {
-                Group selectedGroup = listBoxGroups.SelectedItem as Group;
-                pictureBoxGroup.LoadAsync(selectedGroup.PictureNormalURL);
-            }
         }
         /// END COPY
 
@@ -358,11 +225,6 @@ namespace BasicFacebookFeatures
             fetchAlbumPhotosFlowControl();
         }
         /// End copy
-        
-        private void listBoxAlbumPhotos_SelectedPhotoChanged(object sender, EventArgs e)
-        {
-            displaySelectedPhoto();
-        }
 
         private void buttonPost_Click(object sender, EventArgs e)
         {
@@ -555,7 +417,6 @@ namespace BasicFacebookFeatures
                 {
                     Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
 
-                    pictureBoxSelectedPhoto.LoadAsync(selectedAlbum.PictureAlbumURL);
                     foreach (Photo photo in selectedAlbum.Photos)
                     {
                         PictureBox picture = new PictureBox();
@@ -572,7 +433,6 @@ namespace BasicFacebookFeatures
                             picture.Image = pictureBoxProfile.ErrorImage;
                         }
 
-                        //pagePicture.Name = "pictureBox" + photo.Name;
                         picture.Location = new Point(35, 45);
                         flowLayoutPanelAlbumPhotos.Controls.Add(picture);
                     }
