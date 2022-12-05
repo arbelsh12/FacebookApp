@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Astrology.cs" />
+    <Compile Include="FilterMockEvents.cs" />
     <Compile Include="MockData.cs" />
     <Compile Include="MockEvent.cs" />
     <Compile Include="MockUser.cs" />

@@ -7,11 +7,11 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookAppLogic
 {
-    public class FilterEvents
+    public class FilterMockEvents
     {
         private const int k_NotSelected = -1;
 
-        public FilterEvents()
+        public FilterMockEvents()
         {
 
         }
@@ -33,9 +33,9 @@ namespace FacebookAppLogic
             Maybe
         }
 
-        public ICollection<Event> FilterAndSortByUserSelection(List<Event> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
+        public ICollection<MockEvent> FilterAndSortByUserSelection(List<MockEvent> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
         {
-            ICollection<Event> filteredEventsByUserSelection = null;
+            ICollection<MockEvent> filteredEventsByUserSelection = null;
 
             if (i_TimeSelection != k_NotSelected && i_TimeSelection != (int)eTimeSelection.All) // The user selected the events that accurs today/in the next 7 days/this month
             {
@@ -56,16 +56,16 @@ namespace FacebookAppLogic
                 switch (i_GuestsConfirmationsSelection)
                 {
                     case (int)eGuestsConfirmations.Attending:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.AttendingCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderBy(userEvent => userEvent.AttendingCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Interested:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.InterestedCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderBy(userEvent => userEvent.InterestedCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Declined:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.DeclinedCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Maybe:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.MaybeCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderBy(userEvent => userEvent.MaybeCount).ToList();
                         break;
                     default:
                         break;
@@ -75,15 +75,15 @@ namespace FacebookAppLogic
             return filteredEventsByUserSelection;
         }
 
-        private List<Event> getFilteredListByTime(List<Event> i_Events, int i_TimeSelection)
+        private List<MockEvent> getFilteredListByTime(List<MockEvent> i_Events, int i_TimeSelection)
         {
-            List<Event> filteredEventsListByTime = new List<Event>(); ;
+            List<MockEvent> filteredEventsListByTime = new List<MockEvent>();
 
             if (i_TimeSelection == (int)eTimeSelection.Today)
             {
-                foreach (Event fbEvent in i_Events)
+                foreach (MockEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.StartTime.Value.Date == DateTime.Now.Date)
+                    if (fbEvent.StartTime.Date == DateTime.Now.Date)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }
@@ -91,7 +91,7 @@ namespace FacebookAppLogic
             }
             else if (i_TimeSelection == (int)eTimeSelection.InTheNext7Days)
             {
-                foreach (Event fbEvent in i_Events)
+                foreach (MockEvent fbEvent in i_Events)
                 {
                     bool isEventInNext7Days = DateTime.Now.AddDays(7) >= fbEvent.StartTime && DateTime.Now <= fbEvent.StartTime;
 
@@ -103,9 +103,9 @@ namespace FacebookAppLogic
             }
             else if (i_TimeSelection == (int)eTimeSelection.ThisMonth)
             {
-                foreach (Event fbEvent in i_Events)
+                foreach (MockEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.StartTime.Value.Month == DateTime.Now.Month)
+                    if (fbEvent.StartTime.Month == DateTime.Now.Month)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }

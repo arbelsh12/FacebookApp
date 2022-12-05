@@ -41,8 +41,6 @@
             this.listBoxUserPosts = new System.Windows.Forms.ListBox();
             this.labelUserPosts = new System.Windows.Forms.Label();
             this.labelPostComments = new System.Windows.Forms.Label();
-            this.labelEvents = new System.Windows.Forms.Label();
-            this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.comboBoxFilterTime = new System.Windows.Forms.ComboBox();
             this.buttonEventsFilter = new System.Windows.Forms.Button();
             this.comboBoxSortByAttends = new System.Windows.Forms.ComboBox();
@@ -216,27 +214,6 @@
             this.labelPostComments.TabIndex = 75;
             this.labelPostComments.Text = "Post Comments";
             // 
-            // labelEvents
-            // 
-            this.labelEvents.AutoSize = true;
-            this.labelEvents.Location = new System.Drawing.Point(464, 875);
-            this.labelEvents.Name = "labelEvents";
-            this.labelEvents.Size = new System.Drawing.Size(62, 20);
-            this.labelEvents.TabIndex = 74;
-            this.labelEvents.Text = "Events:";
-            this.labelEvents.Click += new System.EventHandler(this.labelEvents_Click);
-            // 
-            // listBoxEvents
-            // 
-            this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.ItemHeight = 20;
-            this.listBoxEvents.Location = new System.Drawing.Point(467, 912);
-            this.listBoxEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(277, 144);
-            this.listBoxEvents.TabIndex = 75;
-            this.listBoxEvents.SelectedIndexChanged += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
-            // 
             // comboBoxFilterTime
             // 
             this.comboBoxFilterTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -246,7 +223,7 @@
             "Today",
             "In the next 7 days",
             "This month"});
-            this.comboBoxFilterTime.Location = new System.Drawing.Point(760, 958);
+            this.comboBoxFilterTime.Location = new System.Drawing.Point(14, 17);
             this.comboBoxFilterTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFilterTime.Name = "comboBoxFilterTime";
             this.comboBoxFilterTime.Size = new System.Drawing.Size(149, 28);
@@ -255,7 +232,7 @@
             // 
             // buttonEventsFilter
             // 
-            this.buttonEventsFilter.Location = new System.Drawing.Point(760, 912);
+            this.buttonEventsFilter.Location = new System.Drawing.Point(172, 17);
             this.buttonEventsFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEventsFilter.Name = "buttonEventsFilter";
             this.buttonEventsFilter.Size = new System.Drawing.Size(89, 29);
@@ -274,7 +251,7 @@
             "Interested",
             "Declined",
             "Maybe"});
-            this.comboBoxSortByAttends.Location = new System.Drawing.Point(760, 992);
+            this.comboBoxSortByAttends.Location = new System.Drawing.Point(14, 51);
             this.comboBoxSortByAttends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSortByAttends.Name = "comboBoxSortByAttends";
             this.comboBoxSortByAttends.Size = new System.Drawing.Size(149, 28);
@@ -413,9 +390,9 @@
             // 
             this.tabPageFriends.BackColor = System.Drawing.Color.OldLace;
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
-            this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFriends.Location = new System.Drawing.Point(4, 29);
             this.tabPageFriends.Name = "tabPageFriends";
-            this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageFriends.Size = new System.Drawing.Size(1177, 541);
             this.tabPageFriends.TabIndex = 5;
             this.tabPageFriends.Text = "Friends";
             // 
@@ -511,6 +488,9 @@
             // tabPageEvents
             // 
             this.tabPageEvents.Controls.Add(this.dataGridViewEvents);
+            this.tabPageEvents.Controls.Add(this.comboBoxFilterTime);
+            this.tabPageEvents.Controls.Add(this.comboBoxSortByAttends);
+            this.tabPageEvents.Controls.Add(this.buttonEventsFilter);
             this.tabPageEvents.Location = new System.Drawing.Point(4, 29);
             this.tabPageEvents.Name = "tabPageEvents";
             this.tabPageEvents.Size = new System.Drawing.Size(1177, 541);
@@ -522,11 +502,11 @@
             // 
             this.dataGridViewEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 3);
+            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 88);
             this.dataGridViewEvents.Name = "dataGridViewEvents";
             this.dataGridViewEvents.RowHeadersWidth = 62;
             this.dataGridViewEvents.RowTemplate.Height = 28;
-            this.dataGridViewEvents.Size = new System.Drawing.Size(1174, 538);
+            this.dataGridViewEvents.Size = new System.Drawing.Size(1174, 453);
             this.dataGridViewEvents.TabIndex = 0;
             // 
             // labelUserName
@@ -549,11 +529,6 @@
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.comboBoxSortByAttends);
-            this.Controls.Add(this.buttonEventsFilter);
-            this.Controls.Add(this.comboBoxFilterTime);
-            this.Controls.Add(this.listBoxEvents);
-            this.Controls.Add(this.labelEvents);
             this.Controls.Add(this.buttonLogout);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
@@ -593,8 +568,6 @@
         private System.Windows.Forms.ListBox listBoxUserPosts;
         private System.Windows.Forms.Label labelUserPosts;
         private System.Windows.Forms.Label labelPostComments;
-        private System.Windows.Forms.Label labelEvents;
-        private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.ComboBox comboBoxFilterTime;
         private System.Windows.Forms.Button buttonEventsFilter;
         private System.Windows.Forms.ComboBox comboBoxSortByAttends;

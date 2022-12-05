@@ -17,6 +17,7 @@ namespace BasicFacebookFeatures
         private const int k_NotSelected = -1;
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
+        private readonly FilterMockEvents r_FilterMockEvents;
         private readonly FormLogIn r_FormLogIn;
         private readonly MockData r_MockData;
 
@@ -28,6 +29,7 @@ namespace BasicFacebookFeatures
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
+            r_FilterMockEvents = new FilterMockEvents();
             r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
             loadUserInfo();
@@ -53,16 +55,10 @@ namespace BasicFacebookFeatures
 
             fetchCoverPhoto();
             fetchAlbums();
-            fetchUserPosts();        
-           // fetchEventsList();
+            fetchUserPosts();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
-
-        private void fetchEventsList()
-        {
-            //copied from Guy TODO: delete comment and change the code
-        }
-
+        
         private void fetchCoverPhoto()
         {
             foreach (Album album in m_LoggedInUser.Albums)
@@ -250,28 +246,35 @@ namespace BasicFacebookFeatures
 
         private void buttonEventsFilter_Click(object sender, EventArgs e)
         {
-                if (listBoxEvents.Items.Count == 0)
-                {
-                    MessageBox.Show("No events to filter :(");
-                    
-                    return;
-                }
+            if (comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
+            {
+                MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
 
-                if(comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
-                {
-                    MessageBox.Show("Please select filter's values in order to filter the events", "Filter failed");
-
-                    return;
-                }
+                return;
+            }
 
             try
             {
-                listBoxEvents.Items.Clear();                
-                ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                if(m_LoggedInUser.Events.Count > 0)
+                {
+                    ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
-                listBoxEvents.Items.AddRange((ListBox.ObjectCollection)sortedAndFilteredEvents);
+                    dataGridViewEvents.DataSource = sortedAndFilteredEvents;
+                }
+                else if (r_MockData.Events.Count > 0)
+                {
+                    ICollection<MockEvent> sortedAndFilteredEvents = r_FilterMockEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+
+                    dataGridViewEvents.DataSource = sortedAndFilteredEvents;
+                }
+                else
+                {
+                    MessageBox.Show("No events to filter :(");
+
+                    return;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Failed to filter the events");
             }
@@ -534,8 +537,6 @@ namespace BasicFacebookFeatures
 
         private void fetchEventsDataGrid()
         {
-            dataGridViewEvents.Rows.Clear();
-
             try
             {
                 if(m_LoggedInUser.Events.Count != 0)
