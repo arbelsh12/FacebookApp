@@ -56,16 +56,16 @@ namespace FacebookAppLogic
                 switch (i_GuestsConfirmationsSelection)
                 {
                     case (int)eGuestsConfirmations.Attending:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderBy(userEvent => userEvent.AttendingCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Interested:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderBy(userEvent => userEvent.InterestedCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Declined:
                         filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Maybe:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderBy(userEvent => userEvent.MaybeCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
                         break;
                     default:
                         break;
