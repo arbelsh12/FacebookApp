@@ -38,10 +38,10 @@
             // buttonLogIn
             // 
             this.buttonLogIn.Font = new System.Drawing.Font("MS PGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLogIn.Location = new System.Drawing.Point(115, 187);
+            this.buttonLogIn.Location = new System.Drawing.Point(129, 234);
             this.buttonLogIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(108, 40);
+            this.buttonLogIn.Size = new System.Drawing.Size(122, 50);
             this.buttonLogIn.TabIndex = 0;
             this.buttonLogIn.Text = "Log In";
             this.buttonLogIn.UseVisualStyleBackColor = true;
@@ -50,10 +50,10 @@
             // buttonExit
             // 
             this.buttonExit.Font = new System.Drawing.Font("MS PGothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.Location = new System.Drawing.Point(115, 233);
+            this.buttonExit.Location = new System.Drawing.Point(129, 291);
             this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(108, 40);
+            this.buttonExit.Size = new System.Drawing.Size(122, 50);
             this.buttonExit.TabIndex = 1;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -63,28 +63,29 @@
             // 
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(21, 136);
+            this.labelWelcome.Location = new System.Drawing.Point(24, 170);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(286, 30);
+            this.labelWelcome.Size = new System.Drawing.Size(341, 36);
             this.labelWelcome.TabIndex = 2;
             this.labelWelcome.Text = "Welcome to our app!";
             this.labelWelcome.Click += new System.EventHandler(this.labelWelcome_Click);
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Location = new System.Drawing.Point(56, 23);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(63, 29);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(235, 77);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(264, 96);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 3;
             this.pictureBoxLogo.TabStop = false;
             // 
             // FormLogIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(354, 302);
+            this.ClientSize = new System.Drawing.Size(398, 378);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.buttonExit);
@@ -95,7 +96,7 @@
             this.MinimizeBox = false;
             this.Name = "FormLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormLogIn";
+            this.Text = "Facebook App";
             this.Load += new System.EventHandler(this.FormLogIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
