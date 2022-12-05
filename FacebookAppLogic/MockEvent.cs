@@ -33,6 +33,7 @@ namespace FacebookAppLogic
         public DateTime StartTime
         {
             get { return m_StartTime; }
+            set { m_StartTime = value; }
         }
 
         public long AttendingCount { get { return m_AttendingCount; } }

@@ -88,10 +88,10 @@ namespace FacebookAppLogic
         {
             List<MockEvent> mockEvents = new List<MockEvent>();
             MockEvent event1 = new MockEvent("Justin Timberlake Concert", new DateTime(2023, 5, 12), 100, 250, 122, 5);
-            MockEvent event2 = new MockEvent("Jazz Festival", new DateTime(2023, 12, 12), 200, 60, 16, 65);
-            MockEvent event3 = new MockEvent("Norah Jones Concert", new DateTime(2023, 12, 7), 400, 50, 15, 66);
+            MockEvent event2 = new MockEvent("Jazz Festival", new DateTime(2022, 12, 12), 200, 60, 16, 65);
+            MockEvent event3 = new MockEvent("Norah Jones Concert", new DateTime(2022, 12, 7), 400, 50, 15, 66);
             MockEvent event4 = new MockEvent("Cooking Class", new DateTime(2024, 1, 1), 230, 234, 12, 85);
-            MockEvent event5 = new MockEvent("Ted Talk", new DateTime(2023, 12, 4), 149, 24, 129, 7);
+            MockEvent event5 = new MockEvent("Ted Talk", new DateTime(2022, 12, 5), 149, 24, 129, 7);
 
             mockEvents.Add(event1);
             mockEvents.Add(event2);
