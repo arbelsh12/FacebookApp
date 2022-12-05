@@ -16,23 +16,6 @@ namespace FacebookAppLogic
 
         }
 
-        enum eTimeSelection
-        {
-            All,
-            Today,
-            InTheNext7Days,
-            ThisMonth
-        }
-
-        enum eGuestsConfirmations
-        {
-            All,
-            Attending,
-            Interested,
-            Declined,
-            Maybe
-        }
-
         public ICollection<Event> FilterAndSortByUserSelection(List<Event> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
         {
             ICollection<Event> filteredEventsByUserSelection = null;
@@ -56,16 +39,16 @@ namespace FacebookAppLogic
                 switch (i_GuestsConfirmationsSelection)
                 {
                     case (int)eGuestsConfirmations.Attending:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.AttendingCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Interested:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.InterestedCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Declined:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.DeclinedCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
                         break;
                     case (int)eGuestsConfirmations.Maybe:
-                        filteredEventsByUserSelection.OrderBy(userEvent => userEvent.MaybeCount).ToArray();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
                         break;
                     default:
                         break;

@@ -16,23 +16,6 @@ namespace FacebookAppLogic
 
         }
 
-        enum eTimeSelection
-        {
-            All,
-            Today,
-            InTheNext7Days,
-            ThisMonth
-        }
-
-        enum eGuestsConfirmations
-        {
-            All,
-            Attending,
-            Interested,
-            Declined,
-            Maybe
-        }
-
         public ICollection<MockEvent> FilterAndSortByUserSelection(List<MockEvent> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
         {
             ICollection<MockEvent> filteredEventsByUserSelection = null;
