@@ -14,13 +14,13 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private User m_LoggedInUser;
         private const int k_NotSelected = -1;
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FilterMockEvents r_FilterMockEvents;
         private readonly FormLogIn r_FormLogIn;
         private readonly MockData r_MockData;
-        private readonly User r_LoggedInUser;
 
         public FormMain(User i_User, FormLogIn i_FormLogin)
         {
@@ -31,19 +31,19 @@ namespace BasicFacebookFeatures
             r_FilterMockEvents = new FilterMockEvents();
             r_MockData = new MockData();
             r_FormLogIn = i_FormLogin;
-            r_LoggedInUser = i_User;
+            m_LoggedInUser = i_User;
             loadUserInfo();
         }
 
         private void loadUserInfo()
         {
-            string userGender = r_LoggedInUser.Gender == User.eGender.female ? "Female" : "Male";
-            string zodiac = r_Astrology.GetZodiac(r_LoggedInUser.Birthday);
+            string userGender = m_LoggedInUser.Gender == User.eGender.female ? "Female" : "Male";
+            string zodiac = r_Astrology.GetZodiac(m_LoggedInUser.Birthday);
 
-            pictureBoxProfile.LoadAsync(r_LoggedInUser.PictureNormalURL);
-            labelUserName.Text = r_LoggedInUser.Name;
-            labelBirthDate.Text = r_LoggedInUser.Birthday;
-            labelUserEmail.Text = r_LoggedInUser.Email;
+            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            labelUserName.Text = m_LoggedInUser.Name;
+            labelBirthDate.Text = m_LoggedInUser.Birthday;
+            labelUserEmail.Text = m_LoggedInUser.Email;
             labelUserGender.Text = userGender;
             labelUserZodiac.Text = zodiac;
 
@@ -55,7 +55,7 @@ namespace BasicFacebookFeatures
         
         private void fetchCoverPhoto()
         {
-            foreach (Album album in r_LoggedInUser.Albums)
+            foreach (Album album in m_LoggedInUser.Albums)
             {
                 if (album.Name.Equals("Cover photos"))
                 {
@@ -74,7 +74,7 @@ namespace BasicFacebookFeatures
             listBoxAlbums.Items.Clear();
             listBoxAlbums.DisplayMember = "Name";
 
-            foreach (Album album in r_LoggedInUser.Albums)
+            foreach (Album album in m_LoggedInUser.Albums)
             {
                 listBoxAlbums.Items.Add(album);
             }
@@ -110,7 +110,7 @@ namespace BasicFacebookFeatures
         {
             listBoxUserPosts.Items.Clear();
 
-            foreach (Post post in r_LoggedInUser.Posts)
+            foreach (Post post in m_LoggedInUser.Posts)
             {
                 if (post.Message != null)
                 {
@@ -147,6 +147,7 @@ namespace BasicFacebookFeatures
             this.Hide();
             r_FormLogIn.Show(); // maybe should use : ShowDialog();
             this.Close();
+            m_LoggedInUser = null;
         }
 
         private void pictureBoxProfile_Click(object sender, EventArgs e)
@@ -158,10 +159,10 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(r_LoggedInUser.Birthday);
+                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
 
                 MessageBox.Show(astrologyHoroscopePost);
-                Status postedStatus = r_LoggedInUser.PostStatus(astrologyHoroscopePost);
+                Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
                 
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
@@ -188,7 +189,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                Status postedStatus = r_LoggedInUser.PostStatus(textBoxPost.Text);
+                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPost.Text);
 
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
@@ -229,9 +230,9 @@ namespace BasicFacebookFeatures
 
             try
             {
-                if(r_LoggedInUser.Events.Count > 0)
+                if(m_LoggedInUser.Events.Count > 0)
                 {
-                    ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(r_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                     dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
@@ -301,6 +302,8 @@ namespace BasicFacebookFeatures
                 case 6:
                     {
                         fetchEventsDataGrid();
+                        comboBoxFilterTime.SelectedIndex = comboBoxFilterTime.FindStringExact("-select-");
+                        comboBoxSortByAttends.SelectedIndex = comboBoxFilterTime.FindStringExact("-select-");
                         break;
                     }
                 default:
@@ -313,11 +316,11 @@ namespace BasicFacebookFeatures
         {
             flowLayoutPanelPages.Controls.Clear();
             //listBoxPages.DisplayMember = "Name";
-            if (r_LoggedInUser.LikedPages != null)
+            if (m_LoggedInUser.LikedPages != null)
             {
                 try
                 {
-                    foreach (Page page in r_LoggedInUser.LikedPages)
+                    foreach (Page page in m_LoggedInUser.LikedPages)
                     {
                         addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                     }
@@ -338,11 +341,11 @@ namespace BasicFacebookFeatures
         {
             flowLayoutPanelGroups.Controls.Clear();
             //listBoxPages.DisplayMember = "Name";
-            if(r_LoggedInUser.Groups != null)
+            if(m_LoggedInUser.Groups != null)
             {
                 try
                 {
-                    foreach (Group group in r_LoggedInUser.Groups)
+                    foreach (Group group in m_LoggedInUser.Groups)
                     {
                         addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                     }
@@ -422,11 +425,11 @@ namespace BasicFacebookFeatures
         {
             flowLayoutPanelSport.Controls.Clear();
             //listBoxPages.DisplayMember = "Name";
-            if (r_LoggedInUser.FavofriteTeams != null)
+            if (m_LoggedInUser.FavofriteTeams != null)
             {
                 try
                 {
-                    foreach (Page team in r_LoggedInUser.FavofriteTeams)
+                    foreach (Page team in m_LoggedInUser.FavofriteTeams)
                     {
                         addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                     }
@@ -445,7 +448,7 @@ namespace BasicFacebookFeatures
 
         private void fetchCommentsFlowControl()
         {
-            Post selected = r_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
+            Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
 
             flowLayoutPanelComments.Controls.Clear();
             if (selected != null)
@@ -485,7 +488,7 @@ namespace BasicFacebookFeatures
 
             try
             {
-                foreach (User friend in r_LoggedInUser.Friends)
+                foreach (User friend in m_LoggedInUser.Friends)
                 {
                     addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
                 }
@@ -513,9 +516,13 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if(r_LoggedInUser.Events.Count != 0)
+                if(m_LoggedInUser.Events.Count != 0)
                 {
-                    dataGridViewEvents.DataSource = r_LoggedInUser.Events;
+                    dataGridViewEvents.DataSource = m_LoggedInUser.Events;
+                }
+                else
+                {
+                    dataGridViewEvents.DataSource = r_MockData.Events;
                 }
             }
             catch (Exception ex)
@@ -523,10 +530,10 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message);
             }
 
-            if (dataGridViewEvents.Rows.Count == 0)
-            {
-                dataGridViewEvents.DataSource = r_MockData.Events;
-            }
+            //if (dataGridViewEvents.Rows.Count == 0)
+            //{
+            //    dataGridViewEvents.DataSource = r_MockData.Events;
+            //}
 
             if (dataGridViewEvents.Rows.Count == 0)
             {
