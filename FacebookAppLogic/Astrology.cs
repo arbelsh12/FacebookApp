@@ -42,7 +42,7 @@ namespace FacebookAppLogic
                 Dec,
             }
 
-            public string FindZodiac(string i_UserBirthDate)
+            internal string FindZodiac(string i_UserBirthDate)
             {
                 string[] birthDateArray = i_UserBirthDate.Split('/');
                 int birthdayMonth = int.Parse(birthDateArray[0]);
