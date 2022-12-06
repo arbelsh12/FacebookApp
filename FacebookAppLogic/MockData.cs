@@ -15,6 +15,29 @@ namespace FacebookAppLogic
         {
             r_Events = createMockEvents();
             r_Friends = createMockFriends();
+        }
+
+        private List<MockEvent> createMockEvents()
+        {
+            List<MockEvent> mockEvents = new List<MockEvent>();
+            MockEvent event1 = new MockEvent("Justin Timberlake Concert", new DateTime(2023, 5, 12), 100, 250, 122, 5);
+            MockEvent event2 = new MockEvent("Jazz Festival", new DateTime(2022, 12, 12), 200, 60, 16, 65);
+            MockEvent event3 = new MockEvent("Norah Jones Concert", new DateTime(2022, 12, 7), 400, 50, 15, 66);
+            MockEvent event4 = new MockEvent("Cooking Class", new DateTime(2024, 1, 1), 230, 234, 12, 85);
+            MockEvent event5 = new MockEvent("Ted Talk", new DateTime(2022, 12, 5), 149, 24, 129, 7);
+
+            mockEvents.Add(event1);
+            mockEvents.Add(event2);
+            mockEvents.Add(event3);
+            mockEvents.Add(event4);
+            mockEvents.Add(event5);
+
+            return mockEvents;
+        }
+
+        private List<MockUser> createMockFriends()
+        {
+            List<MockUser> mockFriends = new List<MockUser>();
 
             MockUser freind1 = new MockUser();
             freind1.Name = "Rachel Green";
@@ -82,29 +105,6 @@ namespace FacebookAppLogic
             r_Friends.Add(freind4);
             r_Friends.Add(freind5);
             r_Friends.Add(freind6);
-        }
-
-        private List<MockEvent> createMockEvents()
-        {
-            List<MockEvent> mockEvents = new List<MockEvent>();
-            MockEvent event1 = new MockEvent("Justin Timberlake Concert", new DateTime(2023, 5, 12), 100, 250, 122, 5);
-            MockEvent event2 = new MockEvent("Jazz Festival", new DateTime(2022, 12, 12), 200, 60, 16, 65);
-            MockEvent event3 = new MockEvent("Norah Jones Concert", new DateTime(2022, 12, 7), 400, 50, 15, 66);
-            MockEvent event4 = new MockEvent("Cooking Class", new DateTime(2024, 1, 1), 230, 234, 12, 85);
-            MockEvent event5 = new MockEvent("Ted Talk", new DateTime(2022, 12, 5), 149, 24, 129, 7);
-
-            mockEvents.Add(event1);
-            mockEvents.Add(event2);
-            mockEvents.Add(event3);
-            mockEvents.Add(event4);
-            mockEvents.Add(event5);
-
-            return mockEvents;
-        }
-
-        private List<MockUser> createMockFriends()
-        {
-            List<MockUser> mockFriends = new List<MockUser>();
 
             return mockFriends;
         }
