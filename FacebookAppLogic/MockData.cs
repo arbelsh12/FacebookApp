@@ -99,12 +99,12 @@ namespace FacebookAppLogic
             freind6.BirthDate = "2/10/72";
             freind6.PictureURL = "https://img2.thejournal.ie/inline/3496837/original/?width=630&version=3496837";
 
-            r_Friends.Add(freind1);
-            r_Friends.Add(freind2);
-            r_Friends.Add(freind3);
-            r_Friends.Add(freind4);
-            r_Friends.Add(freind5);
-            r_Friends.Add(freind6);
+            mockFriends.Add(freind1);
+            mockFriends.Add(freind2);
+            mockFriends.Add(freind3);
+            mockFriends.Add(freind4);
+            mockFriends.Add(freind5);
+            mockFriends.Add(freind6);
 
             return mockFriends;
         }
