@@ -135,7 +135,7 @@ namespace BasicFacebookFeatures
         /// <summary>
         /// Fetching all comments *** made by the logged in user ***, to the selected post:
         /// </summary>
-        private void listBoxUserPosts_SelectedPostIndexChanged(object sender, EventArgs e)
+        private void listBoxUserPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
             fetchCommentsFlowControl();
         }
@@ -177,7 +177,7 @@ namespace BasicFacebookFeatures
         }
 
         //copied from Guy TODO: delete comment and change the code
-        private void listBoxAlbums_SelectedAlbumIndexChanged(object sender, EventArgs e)
+        private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
             displaySelectedAlbum();
             fetchAlbumPhotosFlowControl();

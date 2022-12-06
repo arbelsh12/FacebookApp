@@ -156,7 +156,7 @@
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(280, 164);
             this.listBoxAlbums.TabIndex = 64;
-            this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedAlbumIndexChanged);
+            this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // labelAlbums
             // 
@@ -196,7 +196,7 @@
             this.listBoxUserPosts.Name = "listBoxUserPosts";
             this.listBoxUserPosts.Size = new System.Drawing.Size(304, 144);
             this.listBoxUserPosts.TabIndex = 72;
-            this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedPostIndexChanged);
+            this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedIndexChanged);
             // 
             // labelUserPosts
             // 
