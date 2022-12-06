@@ -68,6 +68,8 @@
             this.tabPageEvents = new System.Windows.Forms.TabPage();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.labelFilter = new System.Windows.Forms.Label();
+            this.labelSort = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
@@ -223,7 +225,7 @@
             "Today",
             "In the next 7 days",
             "This month"});
-            this.comboBoxFilterTime.Location = new System.Drawing.Point(14, 17);
+            this.comboBoxFilterTime.Location = new System.Drawing.Point(187, 50);
             this.comboBoxFilterTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFilterTime.Name = "comboBoxFilterTime";
             this.comboBoxFilterTime.Size = new System.Drawing.Size(149, 28);
@@ -232,12 +234,12 @@
             // 
             // buttonEventsFilter
             // 
-            this.buttonEventsFilter.Location = new System.Drawing.Point(172, 17);
+            this.buttonEventsFilter.Location = new System.Drawing.Point(142, 96);
             this.buttonEventsFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEventsFilter.Name = "buttonEventsFilter";
-            this.buttonEventsFilter.Size = new System.Drawing.Size(89, 29);
+            this.buttonEventsFilter.Size = new System.Drawing.Size(70, 29);
             this.buttonEventsFilter.TabIndex = 77;
-            this.buttonEventsFilter.Text = "Filter";
+            this.buttonEventsFilter.Text = "Go!";
             this.buttonEventsFilter.UseVisualStyleBackColor = true;
             this.buttonEventsFilter.Click += new System.EventHandler(this.buttonEventsFilter_Click);
             // 
@@ -251,7 +253,7 @@
             "Interested",
             "Declined",
             "Maybe"});
-            this.comboBoxSortByAttends.Location = new System.Drawing.Point(14, 51);
+            this.comboBoxSortByAttends.Location = new System.Drawing.Point(14, 50);
             this.comboBoxSortByAttends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSortByAttends.Name = "comboBoxSortByAttends";
             this.comboBoxSortByAttends.Size = new System.Drawing.Size(149, 28);
@@ -487,6 +489,8 @@
             // 
             // tabPageEvents
             // 
+            this.tabPageEvents.Controls.Add(this.labelSort);
+            this.tabPageEvents.Controls.Add(this.labelFilter);
             this.tabPageEvents.Controls.Add(this.dataGridViewEvents);
             this.tabPageEvents.Controls.Add(this.comboBoxFilterTime);
             this.tabPageEvents.Controls.Add(this.comboBoxSortByAttends);
@@ -497,16 +501,17 @@
             this.tabPageEvents.TabIndex = 6;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
+            this.tabPageEvents.Click += new System.EventHandler(this.tabPageEvents_Click);
             // 
             // dataGridViewEvents
             // 
             this.dataGridViewEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 88);
+            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 130);
             this.dataGridViewEvents.Name = "dataGridViewEvents";
             this.dataGridViewEvents.RowHeadersWidth = 62;
             this.dataGridViewEvents.RowTemplate.Height = 28;
-            this.dataGridViewEvents.Size = new System.Drawing.Size(1174, 453);
+            this.dataGridViewEvents.Size = new System.Drawing.Size(1174, 411);
             this.dataGridViewEvents.TabIndex = 0;
             // 
             // labelUserName
@@ -518,6 +523,25 @@
             this.labelUserName.Size = new System.Drawing.Size(187, 44);
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
+            // 
+            // labelFilter
+            // 
+            this.labelFilter.AutoSize = true;
+            this.labelFilter.Location = new System.Drawing.Point(15, 16);
+            this.labelFilter.Name = "labelFilter";
+            this.labelFilter.Size = new System.Drawing.Size(102, 20);
+            this.labelFilter.TabIndex = 79;
+            this.labelFilter.Text = "Filter by time:";
+            // 
+            // labelSort
+            // 
+            this.labelSort.AutoSize = true;
+            this.labelSort.Location = new System.Drawing.Point(183, 16);
+            this.labelSort.Name = "labelSort";
+            this.labelSort.Size = new System.Drawing.Size(115, 20);
+            this.labelSort.TabIndex = 80;
+            this.labelSort.Text = "Sort by guests:";
+            this.labelSort.Click += new System.EventHandler(this.labelSort_Click);
             // 
             // FormMain
             // 
@@ -548,6 +572,7 @@
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageSport.ResumeLayout(false);
             this.tabPageEvents.ResumeLayout(false);
+            this.tabPageEvents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -595,6 +620,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
         private System.Windows.Forms.TabPage tabPageEvents;
         private System.Windows.Forms.DataGridView dataGridViewEvents;
+        private System.Windows.Forms.Label labelSort;
+        private System.Windows.Forms.Label labelFilter;
     }
 }
 

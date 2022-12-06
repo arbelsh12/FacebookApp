@@ -533,6 +533,16 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("No Events to retrieve :(");
             }
         }
+
+        private void tabPageEvents_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelSort_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
