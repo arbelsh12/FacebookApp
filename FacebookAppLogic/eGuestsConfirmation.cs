@@ -2,7 +2,7 @@
 
 namespace FacebookAppLogic
 {
-    enum eGuestsConfirmations
+    enum eGuestsConfirmation
     {
         All,
         Attending,
