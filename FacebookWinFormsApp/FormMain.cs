@@ -268,19 +268,21 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            flowLayoutPanelPages.Controls.Clear();
-            if (m_LoggedInUser.LikedPages != null)
+            if (flowLayoutPanelPages.Controls.Count == 0)
             {
-                try
+                if (m_LoggedInUser.LikedPages != null)
                 {
-                    foreach (Page page in m_LoggedInUser.LikedPages)
+                    try
                     {
-                        addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                        foreach (Page page in m_LoggedInUser.LikedPages)
+                        {
+                            addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
            
@@ -292,19 +294,21 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            flowLayoutPanelGroups.Controls.Clear();
-            if(m_LoggedInUser.Groups != null)
+            if (flowLayoutPanelGroups.Controls.Count == 0)
             {
-                try
+                if(m_LoggedInUser.Groups != null)
                 {
-                    foreach (Group group in m_LoggedInUser.Groups)
+                    try
                     {
-                        addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                        foreach (Group group in m_LoggedInUser.Groups)
+                        {
+                            addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
 
@@ -337,7 +341,7 @@ namespace BasicFacebookFeatures
             flowLayoutPanelAlbumPhotos.Controls.Clear();
             try
             {
-                if (listBoxAlbums.SelectedItems.Count == 1)
+                if(listBoxAlbums.SelectedItems.Count == 1)
                 {
                     Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
 
@@ -373,22 +377,24 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeams()
         {
-            flowLayoutPanelSport.Controls.Clear();
-            if (m_LoggedInUser.FavofriteTeams != null)
+            if (flowLayoutPanelSport.Controls.Count == 0)
             {
-                try
+                if(m_LoggedInUser.FavofriteTeams != null)
                 {
-                    foreach (Page team in m_LoggedInUser.FavofriteTeams)
+                    try
                     {
-                        addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                        foreach (Page team in m_LoggedInUser.FavofriteTeams)
+                        {
+                            addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
-            
+
             if (flowLayoutPanelSport.Controls.Count == 0)
             {
                 MessageBox.Show("No sport teams to retrieve :(");
@@ -400,7 +406,7 @@ namespace BasicFacebookFeatures
             Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
 
             flowLayoutPanelComments.Controls.Clear();
-            if (selected != null)
+            if(selected != null)
             {
                 try
                 {
@@ -433,24 +439,26 @@ namespace BasicFacebookFeatures
 
         private void fetchFriends()
         {
-            flowLayoutPanelFriends.Controls.Clear();
-            try
+            if(flowLayoutPanelFriends.Controls.Count == 0)
             {
-                foreach (User friend in m_LoggedInUser.Friends)
+                try
                 {
-                    addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                    foreach (User friend in m_LoggedInUser.Friends)
+                    {
+                        addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (flowLayoutPanelFriends.Controls.Count == 0)
-            {
-                foreach(MockUser friend in r_MockData.Friends)
+                catch (Exception ex)
                 {
-                    addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                    MessageBox.Show(ex.Message);
+                }
+
+                if (flowLayoutPanelFriends.Controls.Count == 0)
+                {
+                    foreach (MockUser friend in r_MockData.Friends)
+                    {
+                        addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                    }
                 }
             }
 
