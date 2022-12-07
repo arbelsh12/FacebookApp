@@ -14,13 +14,13 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
-        private User m_LoggedInUser;
         private const int k_NotSelected = -1;
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FilterMockEvents r_FilterMockEvents;
         private readonly FormLogIn r_FormLogIn;
         private readonly MockData r_MockData;
+        private User m_LoggedInUser;
 
         public FormMain(User i_User, FormLogIn i_FormLogin)
         {
@@ -464,7 +464,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if(m_LoggedInUser.Events.Count != 0)
+                if(m_LoggedInUser.Events.Count > 0)
                 {
                     dataGridViewEvents.DataSource = m_LoggedInUser.Events;
                 }
