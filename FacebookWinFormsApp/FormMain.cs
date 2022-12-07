@@ -35,6 +35,17 @@ namespace BasicFacebookFeatures
             loadUserInfo();
         }
 
+        private enum eTab
+        {
+            FeedProfile,
+            Friends,
+            Albums,
+            LikedPages,
+            Groups,
+            SportTeams,
+            Events
+        }
+
         private void loadUserInfo()
         {
             string userGender = m_LoggedInUser.Gender == User.eGender.female ? "Female" : "Male";
@@ -46,7 +57,6 @@ namespace BasicFacebookFeatures
             labelUserEmail.Text = m_LoggedInUser.Email;
             labelUserGender.Text = userGender;
             labelUserZodiac.Text = zodiac;
-
             fetchCoverPhoto();
             fetchAlbums();
             fetchUserPosts();
@@ -70,10 +80,8 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            //copied from Guy TODO: delete comment and change the code
             listBoxAlbums.Items.Clear();
             listBoxAlbums.DisplayMember = "Name";
-
             foreach (Album album in m_LoggedInUser.Albums)
             {
                 listBoxAlbums.Items.Add(album);
@@ -97,19 +105,14 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    // CHANGE to another picture, not profile
-                    pictureBoxSelectedAlbum.Image = pictureBoxProfile.ErrorImage;
+                    pictureBoxSelectedAlbum.Image = pictureBoxSelectedAlbum.ErrorImage;
                 }
             }
         }
-        /// End copy      
 
-        //copied from Guy TODO: delete comment and change the code
-        // Changed name, GUY - listBoxPosts MY name - listBoxUserPosts
         private void fetchUserPosts()
         {
             listBoxUserPosts.Items.Clear();
-
             foreach (Post post in m_LoggedInUser.Posts)
             {
                 if (post.Message != null)
@@ -132,27 +135,18 @@ namespace BasicFacebookFeatures
             }
         }
 
-        /// <summary>
-        /// Fetching all comments *** made by the logged in user ***, to the selected post:
-        /// </summary>
         private void listBoxUserPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fetchCommentsFlowControl();
+            fetchPostComments();
         }
-        /// END COPY
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
 			FacebookService.LogoutWithUI();
             this.Hide();
-            r_FormLogIn.Show(); // maybe should use : ShowDialog();
+            r_FormLogIn.Show();
             this.Close();
             m_LoggedInUser = null;
-        }
-
-        private void pictureBoxProfile_Click(object sender, EventArgs e)
-        {
-
         }
 
         private async void buttonAstrologyHoroscopePost_Click(object sender, EventArgs e)
@@ -168,22 +162,15 @@ namespace BasicFacebookFeatures
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Posting to feed failed (No permissions)");
+                MessageBox.Show("Posting to feed failed (No permissions)");
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //copied from Guy TODO: delete comment and change the code
         private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
             displaySelectedAlbum();
-            fetchAlbumPhotosFlowControl();
+            fetchAlbumPhotos();
         }
-        /// End copy
 
         private void buttonPost_Click(object sender, EventArgs e)
         {
@@ -195,28 +182,8 @@ namespace BasicFacebookFeatures
             }
             catch (Exception)
             {
-                MessageBox.Show($"Posting to feed failed (No permissions)");
+                MessageBox.Show("Posting to feed failed (No permissions)");
             }
-        }
-
-        private void labelAlbums_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxFilterTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonEventsFilter_Click(object sender, EventArgs e)
@@ -254,54 +221,42 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message, "Failed to filter the events");
             }
         }
-
-        private void comboBoxSortByAttends_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelEvents_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //
-
+     
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl.SelectedIndex)
             {
-                case 0:
+                case (int)eTab.FeedProfile:
                     {
                         break;
                     }
-                case 1:
+                case (int)eTab.Friends:
                     {
-                        fetchFriendsFlowControl();
+                        fetchFriends();
                         break;
                     }
-                case 2:
+                case (int)eTab.Albums:
                     {
                         break;
                     }
-                case 3:
+                case (int)eTab.LikedPages:
                     {
-                        fetchLikedPagesListFlowControl();
+                        fetchLikedPages();
                         break;
                     }
-                case 4:
+                case (int)eTab.Groups:
                     {
-                        fetchGroupsListFlowControl();
+                        fetchGroups();
                         break;
                     }
-                case 5:
+                case (int)eTab.SportTeams:
                     {
-                        fetchSportTeamsFlowControl();
+                        fetchSportTeams();
                         break;
                     }
-                case 6:
+                case (int)eTab.Events:
                     {
-                        fetchEventsDataGrid();
+                        fetchEvents();
                         comboBoxFilterTime.SelectedIndex = comboBoxFilterTime.FindStringExact("-select-");
                         comboBoxSortByAttends.SelectedIndex = comboBoxFilterTime.FindStringExact("-select-");
                         break;
@@ -309,13 +264,11 @@ namespace BasicFacebookFeatures
                 default:
                     break;
             }
-
         }
 
-        private void fetchLikedPagesListFlowControl()
+        private void fetchLikedPages()
         {
             flowLayoutPanelPages.Controls.Clear();
-            //listBoxPages.DisplayMember = "Name";
             if (m_LoggedInUser.LikedPages != null)
             {
                 try
@@ -337,10 +290,9 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void fetchGroupsListFlowControl()
+        private void fetchGroups()
         {
             flowLayoutPanelGroups.Controls.Clear();
-            //listBoxPages.DisplayMember = "Name";
             if(m_LoggedInUser.Groups != null)
             {
                 try
@@ -380,10 +332,9 @@ namespace BasicFacebookFeatures
             i_Panel.Controls.Add(box);
         }
 
-        private void fetchAlbumPhotosFlowControl()
+        private void fetchAlbumPhotos()
         {
             flowLayoutPanelAlbumPhotos.Controls.Clear();
-            //listBoxPages.DisplayMember = "Name";
             try
             {
                 if (listBoxAlbums.SelectedItems.Count == 1)
@@ -402,8 +353,7 @@ namespace BasicFacebookFeatures
                         }
                         else
                         {
-                            // CHANGE to another picture, not profile
-                            picture.Image = pictureBoxProfile.ErrorImage;
+                            picture.Image = picture.ErrorImage;
                         }
 
                         picture.Location = new Point(35, 45);
@@ -421,10 +371,9 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void fetchSportTeamsFlowControl()
+        private void fetchSportTeams()
         {
             flowLayoutPanelSport.Controls.Clear();
-            //listBoxPages.DisplayMember = "Name";
             if (m_LoggedInUser.FavofriteTeams != null)
             {
                 try
@@ -446,7 +395,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void fetchCommentsFlowControl()
+        private void fetchPostComments()
         {
             Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
 
@@ -482,10 +431,9 @@ namespace BasicFacebookFeatures
             i_Panel.Controls.Add(label);
         }
 
-        private void fetchFriendsFlowControl()
+        private void fetchFriends()
         {
             flowLayoutPanelFriends.Controls.Clear();
-
             try
             {
                 foreach (User friend in m_LoggedInUser.Friends)
@@ -512,7 +460,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void fetchEventsDataGrid()
+        private void fetchEvents()
         {
             try
             {
@@ -530,25 +478,10 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message);
             }
 
-            //if (dataGridViewEvents.Rows.Count == 0)
-            //{
-            //    dataGridViewEvents.DataSource = r_MockData.Events;
-            //}
-
             if (dataGridViewEvents.Rows.Count == 0)
             {
                 MessageBox.Show("No Events to retrieve :(");
             }
-        }
-
-        private void tabPageEvents_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelSort_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

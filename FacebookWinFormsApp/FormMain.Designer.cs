@@ -87,7 +87,7 @@
             // buttonLogout
             // 
             this.buttonLogout.Location = new System.Drawing.Point(839, 41);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(201, 28);
             this.buttonLogout.TabIndex = 52;
@@ -104,7 +104,6 @@
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
-            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
             // buttonAstrologyHoroscopePost
             // 
@@ -126,7 +125,6 @@
             this.pictureBoxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCover.TabIndex = 62;
             this.pictureBoxCover.TabStop = false;
-            this.pictureBoxCover.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBoxPost
             // 
@@ -166,7 +164,6 @@
             this.labelAlbums.Size = new System.Drawing.Size(52, 16);
             this.labelAlbums.TabIndex = 65;
             this.labelAlbums.Text = "Albums";
-            this.labelAlbums.Click += new System.EventHandler(this.labelAlbums_Click);
             // 
             // pictureBoxSelectedAlbum
             // 
@@ -194,7 +191,7 @@
             this.listBoxUserPosts.Location = new System.Drawing.Point(22, 205);
             this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxUserPosts.Name = "listBoxUserPosts";
-            this.listBoxUserPosts.Size = new System.Drawing.Size(271, 116);
+            this.listBoxUserPosts.Size = new System.Drawing.Size(364, 116);
             this.listBoxUserPosts.TabIndex = 72;
             this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedIndexChanged);
             // 
@@ -210,7 +207,7 @@
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
-            this.labelPostComments.Location = new System.Drawing.Point(327, 199);
+            this.labelPostComments.Location = new System.Drawing.Point(398, 199);
             this.labelPostComments.Name = "labelPostComments";
             this.labelPostComments.Size = new System.Drawing.Size(101, 16);
             this.labelPostComments.TabIndex = 75;
@@ -230,7 +227,6 @@
             this.comboBoxFilterTime.Name = "comboBoxFilterTime";
             this.comboBoxFilterTime.Size = new System.Drawing.Size(133, 24);
             this.comboBoxFilterTime.TabIndex = 76;
-            this.comboBoxFilterTime.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterTime_SelectedIndexChanged);
             // 
             // buttonEventsFilter
             // 
@@ -258,7 +254,6 @@
             this.comboBoxSortByAttends.Name = "comboBoxSortByAttends";
             this.comboBoxSortByAttends.Size = new System.Drawing.Size(133, 24);
             this.comboBoxSortByAttends.TabIndex = 78;
-            this.comboBoxSortByAttends.SelectedIndexChanged += new System.EventHandler(this.comboBoxSortByAttends_SelectedIndexChanged);
             // 
             // tabControl
             // 
@@ -296,7 +291,7 @@
             this.tabPageFeed.Controls.Add(this.buttonPost);
             this.tabPageFeed.Location = new System.Drawing.Point(4, 25);
             this.tabPageFeed.Name = "tabPageFeed";
-            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFeed.Size = new System.Drawing.Size(1045, 430);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
@@ -304,7 +299,7 @@
             // flowLayoutPanelComments
             // 
             this.flowLayoutPanelComments.AutoScroll = true;
-            this.flowLayoutPanelComments.Location = new System.Drawing.Point(330, 220);
+            this.flowLayoutPanelComments.Location = new System.Drawing.Point(401, 220);
             this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
             this.flowLayoutPanelComments.Size = new System.Drawing.Size(293, 100);
             this.flowLayoutPanelComments.TabIndex = 86;
@@ -414,7 +409,7 @@
             this.tabPageAlbums.Controls.Add(this.labelSelectedAlbum);
             this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
             this.tabPageAlbums.Name = "tabPageAlbums";
-            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAlbums.Size = new System.Drawing.Size(1045, 430);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
@@ -497,7 +492,6 @@
             this.tabPageEvents.TabIndex = 6;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
-            this.tabPageEvents.Click += new System.EventHandler(this.tabPageEvents_Click);
             // 
             // labelSort
             // 
@@ -507,7 +501,6 @@
             this.labelSort.Size = new System.Drawing.Size(95, 16);
             this.labelSort.TabIndex = 80;
             this.labelSort.Text = "Sort by guests:";
-            this.labelSort.Click += new System.EventHandler(this.labelSort_Click);
             // 
             // labelFilter
             // 
@@ -551,11 +544,10 @@
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonLogout);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook App";
-            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).EndInit();

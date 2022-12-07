@@ -28,26 +28,26 @@ namespace FacebookAppLogic
             {
                 filteredEventsByUserSelection = i_Events;
 
-                if (i_TimeSelection == (int)eTimeSelection.All && i_GuestsConfirmationsSelection == (int)eGuestsConfirmations.All)
+                if (i_TimeSelection == (int)eTimeSelection.All && i_GuestsConfirmationsSelection == (int)eGuestsConfirmation.All)
                 {
                     return filteredEventsByUserSelection;
                 }
             }
 
-            if (i_GuestsConfirmationsSelection != k_NotSelected && i_GuestsConfirmationsSelection != (int)eGuestsConfirmations.All) // The user selected to sort by Attending/ Interested/ Declined/ Maybe guests amount
+            if (i_GuestsConfirmationsSelection != k_NotSelected && i_GuestsConfirmationsSelection != (int)eGuestsConfirmation.All) // The user selected to sort by Attending/ Interested/ Declined/ Maybe guests amount
             {
                 switch (i_GuestsConfirmationsSelection)
                 {
-                    case (int)eGuestsConfirmations.Attending:
+                    case (int)eGuestsConfirmation.Attending:
                         filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
                         break;
-                    case (int)eGuestsConfirmations.Interested:
+                    case (int)eGuestsConfirmation.Interested:
                         filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
                         break;
-                    case (int)eGuestsConfirmations.Declined:
+                    case (int)eGuestsConfirmation.Declined:
                         filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
                         break;
-                    case (int)eGuestsConfirmations.Maybe:
+                    case (int)eGuestsConfirmation.Maybe:
                         filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
                         break;
                     default:
