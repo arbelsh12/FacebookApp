@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookAppLogic;
 using FacebookWrapper;
+using System.Threading;
 
 namespace BasicFacebookFeatures
 {
@@ -57,9 +58,9 @@ namespace BasicFacebookFeatures
             labelUserEmail.Text = m_LoggedInUser.Email;
             labelUserGender.Text = userGender;
             labelUserZodiac.Text = zodiac;
-            fetchCoverPhoto();
-            fetchAlbums();
-            fetchUserPosts();
+            new Thread(fetchCoverPhoto).Start();
+            new Thread(fetchAlbums).Start();
+            new Thread(fetchUserPosts).Start();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
         
@@ -84,7 +85,7 @@ namespace BasicFacebookFeatures
             listBoxAlbums.DisplayMember = "Name";
             foreach (Album album in m_LoggedInUser.Albums)
             {
-                listBoxAlbums.Items.Add(album);
+                listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
             }
 
             if (listBoxAlbums.Items.Count == 0)
@@ -117,15 +118,15 @@ namespace BasicFacebookFeatures
             {
                 if (post.Message != null)
                 {
-                    listBoxUserPosts.Items.Add(post.Message);
+                    listBoxUserPosts.Invoke(new Action(() => listBoxUserPosts.Items.Add(post.Message)));
                 }
                 else if (post.Caption != null)
                 {
-                    listBoxUserPosts.Items.Add(post.Caption);
+                    listBoxUserPosts.Invoke(new Action(() => listBoxUserPosts.Items.Add(post.Caption)));
                 }
                 else
                 {
-                    listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type));
+                    listBoxUserPosts.Invoke(new Action(() => listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type))));
                 }
             }
 
