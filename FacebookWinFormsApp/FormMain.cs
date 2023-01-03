@@ -269,7 +269,7 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            var likedPages = m_LoggedInUser.LikedPages;
+            FacebookObjectCollection<Page> likedPages = m_LoggedInUser.LikedPages;
 
             flowLayoutPanelPages.Invoke(new Action(() => fetchLikedPagesMainThread(likedPages)));
             listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
@@ -304,7 +304,7 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            var groups = m_LoggedInUser.Groups;
+            FacebookObjectCollection<Group> groups = m_LoggedInUser.Groups;
 
             flowLayoutPanelGroups.Invoke(new Action(() => fetchGroupsMainThread(groups)));
         }
@@ -394,7 +394,7 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeams()
         {
-            var teams = m_LoggedInUser.FavofriteTeams;
+            Page[] teams = m_LoggedInUser.FavofriteTeams;
 
             flowLayoutPanelSport.Invoke(new Action(() => fetchSportTeamsMainThread(teams)));
         }
