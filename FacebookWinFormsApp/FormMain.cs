@@ -286,6 +286,8 @@ namespace BasicFacebookFeatures
                     }
                 }
             }
+
+            pageBindingSource.DataSource = m_LoggedInUser.LikedPages;
            
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
