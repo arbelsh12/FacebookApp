@@ -34,10 +34,8 @@
             System.Windows.Forms.Label genderLabel;
             System.Windows.Forms.Label hometownLabel;
             System.Windows.Forms.Label nameLabel;
-            System.Windows.Forms.Label categoryLabel;
             System.Windows.Forms.Label descriptionLabel;
             System.Windows.Forms.Label idLabel;
-            System.Windows.Forms.Label likesCountLabel;
             System.Windows.Forms.Label nameLabel1;
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
@@ -79,6 +77,11 @@
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelAlbumPhotos = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageLikedPages = new System.Windows.Forms.TabPage();
+            this.panelLikedPages = new System.Windows.Forms.Panel();
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox1 = new System.Windows.Forms.TextBox();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
             this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageGroups = new System.Windows.Forms.TabPage();
@@ -90,22 +93,13 @@
             this.labelFilter = new System.Windows.Forms.Label();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.labelUserName = new System.Windows.Forms.Label();
-            this.panelLikedPages = new System.Windows.Forms.Panel();
-            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.likesCountNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.nameTextBox1 = new System.Windows.Forms.TextBox();
             birthDateLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             genderLabel = new System.Windows.Forms.Label();
             hometownLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
-            categoryLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
-            likesCountLabel = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
@@ -117,13 +111,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.mockUserBindingSource)).BeginInit();
             this.tabPageAlbums.SuspendLayout();
             this.tabPageLikedPages.SuspendLayout();
+            this.panelLikedPages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             this.tabPageGroups.SuspendLayout();
             this.tabPageSport.SuspendLayout();
             this.tabPageEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).BeginInit();
-            this.panelLikedPages.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.likesCountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // birthDateLabel
@@ -170,6 +163,33 @@
             nameLabel.Size = new System.Drawing.Size(47, 16);
             nameLabel.TabIndex = 8;
             nameLabel.Text = "Name:";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(23, 47);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(78, 16);
+            descriptionLabel.TabIndex = 2;
+            descriptionLabel.Text = "Description:";
+            // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(23, 75);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(21, 16);
+            idLabel.TabIndex = 4;
+            idLabel.Text = "Id:";
+            // 
+            // nameLabel1
+            // 
+            nameLabel1.AutoSize = true;
+            nameLabel1.Location = new System.Drawing.Point(23, 19);
+            nameLabel1.Name = "nameLabel1";
+            nameLabel1.Size = new System.Drawing.Size(47, 16);
+            nameLabel1.TabIndex = 8;
+            nameLabel1.Text = "Name:";
             // 
             // buttonLogout
             // 
@@ -596,6 +616,48 @@
             this.tabPageLikedPages.TabIndex = 2;
             this.tabPageLikedPages.Text = "Liked Pages";
             // 
+            // panelLikedPages
+            // 
+            this.panelLikedPages.BackColor = System.Drawing.Color.MistyRose;
+            this.panelLikedPages.Controls.Add(descriptionLabel);
+            this.panelLikedPages.Controls.Add(this.descriptionTextBox);
+            this.panelLikedPages.Controls.Add(idLabel);
+            this.panelLikedPages.Controls.Add(this.idTextBox);
+            this.panelLikedPages.Controls.Add(nameLabel1);
+            this.panelLikedPages.Controls.Add(this.nameTextBox1);
+            this.panelLikedPages.Location = new System.Drawing.Point(16, 125);
+            this.panelLikedPages.Name = "panelLikedPages";
+            this.panelLikedPages.Size = new System.Drawing.Size(298, 121);
+            this.panelLikedPages.TabIndex = 79;
+            // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
+            this.descriptionTextBox.Location = new System.Drawing.Point(108, 44);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(156, 22);
+            this.descriptionTextBox.TabIndex = 3;
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Id", true));
+            this.idTextBox.Location = new System.Drawing.Point(108, 72);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(156, 22);
+            this.idTextBox.TabIndex = 5;
+            // 
+            // nameTextBox1
+            // 
+            this.nameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Name", true));
+            this.nameTextBox1.Location = new System.Drawing.Point(108, 16);
+            this.nameTextBox1.Name = "nameTextBox1";
+            this.nameTextBox1.Size = new System.Drawing.Size(156, 22);
+            this.nameTextBox1.TabIndex = 9;
+            // 
             // listBoxLikedPages
             // 
             this.listBoxLikedPages.DataSource = this.pageBindingSource;
@@ -708,113 +770,6 @@
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
-            // panelLikedPages
-            // 
-            this.panelLikedPages.BackColor = System.Drawing.Color.MistyRose;
-            this.panelLikedPages.Controls.Add(categoryLabel);
-            this.panelLikedPages.Controls.Add(this.categoryTextBox);
-            this.panelLikedPages.Controls.Add(descriptionLabel);
-            this.panelLikedPages.Controls.Add(this.descriptionTextBox);
-            this.panelLikedPages.Controls.Add(idLabel);
-            this.panelLikedPages.Controls.Add(this.idTextBox);
-            this.panelLikedPages.Controls.Add(likesCountLabel);
-            this.panelLikedPages.Controls.Add(this.likesCountNumericUpDown);
-            this.panelLikedPages.Controls.Add(nameLabel1);
-            this.panelLikedPages.Controls.Add(this.nameTextBox1);
-            this.panelLikedPages.Location = new System.Drawing.Point(16, 125);
-            this.panelLikedPages.Name = "panelLikedPages";
-            this.panelLikedPages.Size = new System.Drawing.Size(298, 184);
-            this.panelLikedPages.TabIndex = 79;
-            // 
-            // pageBindingSource
-            // 
-            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
-            // 
-            // categoryLabel
-            // 
-            categoryLabel.AutoSize = true;
-            categoryLabel.Location = new System.Drawing.Point(23, 19);
-            categoryLabel.Name = "categoryLabel";
-            categoryLabel.Size = new System.Drawing.Size(65, 16);
-            categoryLabel.TabIndex = 0;
-            categoryLabel.Text = "Category:";
-            // 
-            // categoryTextBox
-            // 
-            this.categoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Category", true));
-            this.categoryTextBox.Location = new System.Drawing.Point(108, 16);
-            this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.Size = new System.Drawing.Size(156, 22);
-            this.categoryTextBox.TabIndex = 1;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(23, 47);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(78, 16);
-            descriptionLabel.TabIndex = 2;
-            descriptionLabel.Text = "Description:";
-            // 
-            // descriptionTextBox
-            // 
-            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(108, 44);
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(156, 22);
-            this.descriptionTextBox.TabIndex = 3;
-            // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(23, 75);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(21, 16);
-            idLabel.TabIndex = 4;
-            idLabel.Text = "Id:";
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(108, 72);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(156, 22);
-            this.idTextBox.TabIndex = 5;
-            // 
-            // likesCountLabel
-            // 
-            likesCountLabel.AutoSize = true;
-            likesCountLabel.Location = new System.Drawing.Point(23, 100);
-            likesCountLabel.Name = "likesCountLabel";
-            likesCountLabel.Size = new System.Drawing.Size(79, 16);
-            likesCountLabel.TabIndex = 6;
-            likesCountLabel.Text = "Likes Count:";
-            // 
-            // likesCountNumericUpDown
-            // 
-            this.likesCountNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pageBindingSource, "LikesCount", true));
-            this.likesCountNumericUpDown.Location = new System.Drawing.Point(108, 100);
-            this.likesCountNumericUpDown.Name = "likesCountNumericUpDown";
-            this.likesCountNumericUpDown.Size = new System.Drawing.Size(156, 22);
-            this.likesCountNumericUpDown.TabIndex = 7;
-            // 
-            // nameLabel1
-            // 
-            nameLabel1.AutoSize = true;
-            nameLabel1.Location = new System.Drawing.Point(23, 131);
-            nameLabel1.Name = "nameLabel1";
-            nameLabel1.Size = new System.Drawing.Size(47, 16);
-            nameLabel1.TabIndex = 8;
-            nameLabel1.Text = "Name:";
-            // 
-            // nameTextBox1
-            // 
-            this.nameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Name", true));
-            this.nameTextBox1.Location = new System.Drawing.Point(108, 128);
-            this.nameTextBox1.Name = "nameTextBox1";
-            this.nameTextBox1.Size = new System.Drawing.Size(156, 22);
-            this.nameTextBox1.TabIndex = 9;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -843,15 +798,14 @@
             this.tabPageAlbums.ResumeLayout(false);
             this.tabPageAlbums.PerformLayout();
             this.tabPageLikedPages.ResumeLayout(false);
+            this.panelLikedPages.ResumeLayout(false);
+            this.panelLikedPages.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageSport.ResumeLayout(false);
             this.tabPageEvents.ResumeLayout(false);
             this.tabPageEvents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).EndInit();
-            this.panelLikedPages.ResumeLayout(false);
-            this.panelLikedPages.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.likesCountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -910,11 +864,9 @@
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.ListBox listBoxLikedPages;
         private System.Windows.Forms.Panel panelLikedPages;
-        private System.Windows.Forms.TextBox categoryTextBox;
         private System.Windows.Forms.BindingSource pageBindingSource;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.TextBox idTextBox;
-        private System.Windows.Forms.NumericUpDown likesCountNumericUpDown;
         private System.Windows.Forms.TextBox nameTextBox1;
     }
 }
