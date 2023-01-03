@@ -460,8 +460,11 @@ namespace BasicFacebookFeatures
                     {
                         addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
+
+                    mockUserBindingSource.DataSource = r_MockData.Friends;
                 }
             }
+
 
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
