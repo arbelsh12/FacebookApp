@@ -393,6 +393,7 @@
             // 
             // flowLayoutPanelFriends
             // 
+            this.flowLayoutPanelFriends.AutoScroll = true;
             this.flowLayoutPanelFriends.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanelFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";

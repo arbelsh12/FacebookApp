@@ -42,6 +42,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,14 +53,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Astrology.cs" />
+    <Compile Include="DarkThumbnailBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="eGuestsConfirmation.cs" />
+    <Compile Include="eTheme.cs" />
     <Compile Include="eTimeSelection.cs" />
+    <Compile Include="FacebookThumbnailBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FilterMockEvents.cs" />
     <Compile Include="MockData.cs" />
     <Compile Include="MockEvent.cs" />
     <Compile Include="MockUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FilterEvents.cs" />
+    <Compile Include="ThumbnailBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThumbnailBoxFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

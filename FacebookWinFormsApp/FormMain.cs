@@ -277,7 +277,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page page in m_LoggedInUser.LikedPages)
                         {
-                            addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                            addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -303,7 +303,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Group group in m_LoggedInUser.Groups)
                         {
-                            addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                            addGroupBoxToPanel(eTheme.Dark, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -319,22 +319,10 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void addGroupBoxToPanel(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
+        private void addGroupBoxToPanel(eTheme i_Theme, FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
         {
-            GroupBox box = new GroupBox();
-            PictureBox picture = new PictureBox();
-
-            box.Size = new Size(140, 120);
-            box.Text = i_Name;
-            box.Name = "Groupbox" + i_Name;
-            box.BackColor = SystemColors.GradientActiveCaption;
-            picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            picture.Size = new Size(70, 70);
-            picture.LoadAsync(i_PictureURL);
-            picture.Name = "pictureBox" + i_Name;
-            picture.Location = new Point(35, 45);
-            box.Controls.Add(picture);
-            i_Panel.Controls.Add(box);
+            ThumbnailBox thumbnail = ThumbnailBoxFactory.Create(i_Theme, i_Name, i_PictureURL);
+            i_Panel.Controls.Add(thumbnail);
         }
 
         private void fetchAlbumPhotos()
@@ -386,7 +374,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page team in m_LoggedInUser.FavofriteTeams)
                         {
-                            addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                            addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -446,7 +434,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (User friend in m_LoggedInUser.Friends)
                     {
-                        addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                        addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -458,7 +446,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (MockUser friend in r_MockData.Friends)
                     {
-                        addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                        addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
                 }
             }
