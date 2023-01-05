@@ -10,7 +10,6 @@ namespace FacebookAppLogic
 {
     public abstract class ThumbnailBox : GroupBox
     {
-        //private readonly GroupBox r_Box;
         private readonly PictureBox r_Picture;
 
         protected ThumbnailBox(string i_Text, string i_PictureUrl)
@@ -18,12 +17,6 @@ namespace FacebookAppLogic
             Size = new Size(175, 150);
             Text = i_Text;
             Name = "Groupbox" + i_Text;
-            //r_Box = new GroupBox()
-            //{
-            //    Size = new Size(140, 120),
-            //    Text = i_Text,
-            //    Name = "Groupbox" + i_Text
-            //};
 
             r_Picture = new PictureBox()
             {

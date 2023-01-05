@@ -277,7 +277,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page page in m_LoggedInUser.LikedPages)
                         {
-                            addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                            addGroupBoxToPanel(eTheme.Dark, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
