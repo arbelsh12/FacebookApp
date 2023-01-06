@@ -53,7 +53,9 @@
     <Compile Include="Astrology.cs" />
     <Compile Include="eGuestsConfirmation.cs" />
     <Compile Include="eTimeSelection.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="FilterMockEvents.cs" />
+    <Compile Include="iEvent.cs" />
     <Compile Include="MockData.cs" />
     <Compile Include="MockEvent.cs" />
     <Compile Include="MockUser.cs" />

@@ -1,36 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacebookAppLogic
 {
     public class MockData
     {
-        private readonly List<MockEvent> r_Events;
         private readonly List<MockUser> r_Friends;
+        public List<iEvent> m_Events { get; }        
 
         public MockData()
         {
-            r_Events = createMockEvents();
+            m_Events = createMockEvents();
             r_Friends = createMockFriends();
         }
 
-        private List<MockEvent> createMockEvents()
+        private List<iEvent> createMockEvents()
         {
-            List<MockEvent> mockEvents = new List<MockEvent>();
-            MockEvent event1 = new MockEvent("Justin Timberlake Concert", new DateTime(2023, 5, 12), 100, 250, 122, 5);
-            MockEvent event2 = new MockEvent("Jazz Festival", new DateTime(2022, 12, 12), 200, 60, 16, 65);
-            MockEvent event3 = new MockEvent("Norah Jones Concert", new DateTime(2022, 12, 7), 400, 50, 15, 66);
-            MockEvent event4 = new MockEvent("Cooking Class", new DateTime(2024, 1, 1), 230, 234, 12, 85);
-            MockEvent event5 = new MockEvent("Ted Talk", new DateTime(2022, 12, 5), 149, 24, 129, 7);
-
-            mockEvents.Add(event1);
-            mockEvents.Add(event2);
-            mockEvents.Add(event3);
-            mockEvents.Add(event4);
-            mockEvents.Add(event5);
+            List<iEvent> mockEvents = new List<iEvent>()
+            {
+                new MockEvent()
+                {
+                    m_Name ="Justin Timberlake Concert",
+                    m_StartTime = new DateTime(2023, 1, 12),
+                    m_AttendingCount=100,
+                    m_InterestedCount = 250,
+                    m_DeclinedCount = 122,
+                    m_MaybeCount = 5,
+                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
+                },
+                new MockEvent()
+                {
+                    m_Name ="Jazz Festival",
+                    m_StartTime = new DateTime(2023, 1, 7),
+                    m_AttendingCount=200,
+                    m_InterestedCount = 60,
+                    m_DeclinedCount = 16,
+                    m_MaybeCount = 65,
+                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
+                },
+                new MockEvent()
+                {
+                    m_Name ="Norah Jones Concert",
+                    m_StartTime = new DateTime(2023, 1, 9),
+                    m_AttendingCount=400,
+                    m_InterestedCount = 50,
+                    m_DeclinedCount = 15,
+                    m_MaybeCount = 66,
+                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
+                },
+                new MockEvent()
+                {
+                    m_Name ="Cooking Class",
+                    m_StartTime = new DateTime(2023, 2, 9),
+                    m_AttendingCount=230,
+                    m_InterestedCount = 234,
+                    m_DeclinedCount = 12,
+                    m_MaybeCount = 85,
+                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
+                },
+                new MockEvent()
+                {
+                    m_Name ="Ted Talk",
+                    m_StartTime = new DateTime(2023, 1, 5),
+                    m_AttendingCount=149,
+                    m_InterestedCount = 24,
+                    m_DeclinedCount = 129,
+                    m_MaybeCount = 7,
+                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
+                },
+            };
 
             return mockEvents;
         }
@@ -112,11 +150,6 @@ namespace FacebookAppLogic
         public List<MockUser> Friends
         {
             get { return r_Friends; }
-        }
-
-        public List<MockEvent> Events
-        {
-            get { return r_Events; }
         }
     }
 }
