@@ -21,7 +21,7 @@ namespace FacebookAppLogic
             r_Picture = new PictureBox()
             {
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Size = new Size(88, 88),
+                Size = new Size(77, 77),
                 Name = "pictureBox" + i_Text,
                 Location = new Point(44, 56),
             };

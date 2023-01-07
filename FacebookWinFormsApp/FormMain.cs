@@ -22,6 +22,8 @@ namespace BasicFacebookFeatures
         private readonly FormLogIn r_FormLogIn;
         private readonly MockData r_MockData;
         private User m_LoggedInUser;
+        private eTheme m_Theme;
+        private eTheme m_prevTheme;
 
         public FormMain(User i_User, FormLogIn i_FormLogin)
         {
@@ -33,6 +35,8 @@ namespace BasicFacebookFeatures
             r_MockData = new MockData();
             r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
+            m_Theme = eTheme.Classic;
+            m_prevTheme = eTheme.Classic;
             loadUserInfo();
         }
 
@@ -277,7 +281,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page page in m_LoggedInUser.LikedPages)
                         {
-                            addGroupBoxToPanel(eTheme.Dark, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                            addGroupBoxToPanel(m_Theme, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -303,7 +307,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Group group in m_LoggedInUser.Groups)
                         {
-                            addGroupBoxToPanel(eTheme.Dark, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                            addGroupBoxToPanel(m_Theme, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -374,7 +378,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page team in m_LoggedInUser.FavofriteTeams)
                         {
-                            addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                            addGroupBoxToPanel(m_Theme, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -434,7 +438,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (User friend in m_LoggedInUser.Friends)
                     {
-                        addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                        addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -446,7 +450,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (MockUser friend in r_MockData.Friends)
                     {
-                        addGroupBoxToPanel(eTheme.Facebook, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                        addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
                 }
             }
@@ -478,6 +482,37 @@ namespace BasicFacebookFeatures
             if (dataGridViewEvents.Rows.Count == 0)
             {
                 MessageBox.Show("No Events to retrieve :(");
+            }
+        }
+
+        private void comboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+
+            m_prevTheme = m_Theme;
+
+            switch (comboBox.SelectedIndex)
+            {
+                case (int)eTheme.Classic:
+                    {
+                        m_Theme = eTheme.Classic;
+                        break;
+                    }
+                case (int)eTheme.Dark:
+                    {
+                        m_Theme = eTheme.Dark;
+                        break;
+                    }
+                case (int)eTheme.Facebook:
+                    {
+                        m_Theme = eTheme.Facebook;
+                        break;
+                    }
+                default:
+                    {
+                        m_Theme = eTheme.Classic;
+                        break;
+                    }
             }
         }
     }

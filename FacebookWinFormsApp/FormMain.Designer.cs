@@ -46,9 +46,6 @@
             this.comboBoxSortByAttends = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageFeed = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelComments = new System.Windows.Forms.FlowLayoutPanel();
             this.labelUserEmail = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -73,13 +70,13 @@
             this.labelFilter = new System.Windows.Forms.Label();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.comboBoxTheme = new System.Windows.Forms.ComboBox();
+            this.labelTheme = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageFeed.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPageFriends.SuspendLayout();
             this.tabPageAlbums.SuspendLayout();
             this.tabPageLikedPages.SuspendLayout();
@@ -279,7 +276,6 @@
             // tabPageFeed
             // 
             this.tabPageFeed.BackColor = System.Drawing.Color.OldLace;
-            this.tabPageFeed.Controls.Add(this.groupBox1);
             this.tabPageFeed.Controls.Add(this.flowLayoutPanelComments);
             this.tabPageFeed.Controls.Add(this.labelUserEmail);
             this.tabPageFeed.Controls.Add(this.labelEmail);
@@ -301,40 +297,6 @@
             this.tabPageFeed.Size = new System.Drawing.Size(1045, 430);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Black;
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.ForeColor = System.Drawing.Color.LightGray;
-            this.groupBox1.Location = new System.Drawing.Point(737, 184);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(219, 188);
-            this.groupBox1.TabIndex = 87;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.MenuText;
-            this.label1.Font = new System.Drawing.Font("Algerian", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(36, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Test Label";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.BurlyWood;
-            this.pictureBox1.Location = new System.Drawing.Point(55, 70);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 110);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // flowLayoutPanelComments
             // 
@@ -574,12 +536,37 @@
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
+            // comboBoxTheme
+            // 
+            this.comboBoxTheme.FormattingEnabled = true;
+            this.comboBoxTheme.Items.AddRange(new object[] {
+            "Classic",
+            "Dark",
+            "Facebook"});
+            this.comboBoxTheme.Location = new System.Drawing.Point(898, 163);
+            this.comboBoxTheme.Name = "comboBoxTheme";
+            this.comboBoxTheme.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxTheme.TabIndex = 81;
+            this.comboBoxTheme.SelectedIndexChanged += new System.EventHandler(this.comboBoxTheme_SelectedIndexChanged);
+            // 
+            // labelTheme
+            // 
+            this.labelTheme.AutoSize = true;
+            this.labelTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTheme.Location = new System.Drawing.Point(894, 139);
+            this.labelTheme.Name = "labelTheme";
+            this.labelTheme.Size = new System.Drawing.Size(184, 20);
+            this.labelTheme.TabIndex = 82;
+            this.labelTheme.Text = "Choose Your Theme!";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1136, 689);
+            this.Controls.Add(this.labelTheme);
+            this.Controls.Add(this.comboBoxTheme);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
@@ -595,9 +582,6 @@
             this.tabControl.ResumeLayout(false);
             this.tabPageFeed.ResumeLayout(false);
             this.tabPageFeed.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPageFriends.ResumeLayout(false);
             this.tabPageAlbums.ResumeLayout(false);
             this.tabPageAlbums.PerformLayout();
@@ -655,9 +639,8 @@
         private System.Windows.Forms.DataGridView dataGridViewEvents;
         private System.Windows.Forms.Label labelSort;
         private System.Windows.Forms.Label labelFilter;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxTheme;
+        private System.Windows.Forms.Label labelTheme;
     }
 }
 

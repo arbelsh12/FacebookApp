@@ -16,7 +16,7 @@ namespace FacebookAppLogic
             r_Label = new Label()
             {
                 Text = i_Text,
-                Font = new Font("Algerian", 13.8f, FontStyle.Bold),
+                Font = new Font("Algerian", 10.8f, FontStyle.Bold),
                 Location = new Point(36, 36),
                 ForeColor = Color.White
             };
