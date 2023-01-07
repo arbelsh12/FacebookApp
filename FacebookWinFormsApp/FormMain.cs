@@ -283,8 +283,13 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPagesMainThread(FacebookObjectCollection<Page> i_LikedPages)
         {
-            if (flowLayoutPanelPages.Controls.Count == 0)
+            if (flowLayoutPanelPages.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if (flowLayoutPanelPages.Controls.Count != 0)
+                {
+                    flowLayoutPanelPages.Controls.Clear();
+                }
+
                 if (i_LikedPages != null)
                 {
                     try
@@ -317,8 +322,13 @@ namespace BasicFacebookFeatures
 
         private void fetchGroupsMainThread(FacebookObjectCollection<Group> i_Groups)
         {
-            if (flowLayoutPanelGroups.Controls.Count == 0)
+            if (flowLayoutPanelGroups.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if(flowLayoutPanelGroups.Controls.Count != 0)
+                {
+                    flowLayoutPanelGroups.Controls.Clear();
+                }
+
                 if (i_Groups != null)
                 {
                     try
@@ -395,8 +405,13 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeamsMainThread(Page[] i_Teams)
         {
-            if (flowLayoutPanelSport.Controls.Count == 0)
+            if (flowLayoutPanelSport.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if(flowLayoutPanelSport.Controls.Count != 0)
+                {
+                    flowLayoutPanelSport.Controls.Clear();
+                }
+
                 if (i_Teams != null)
                 {
                     try
@@ -457,8 +472,13 @@ namespace BasicFacebookFeatures
 
         private void fetchFriends()
         {
-            if(flowLayoutPanelFriends.Controls.Count == 0)
+            if(flowLayoutPanelFriends.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if(flowLayoutPanelFriends.Controls.Count != 0)
+                {
+                    flowLayoutPanelFriends.Controls.Clear();
+                }
+
                 try
                 {
                     foreach (User friend in m_LoggedInUser.Friends)
