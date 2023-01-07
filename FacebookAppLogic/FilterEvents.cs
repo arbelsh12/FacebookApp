@@ -9,64 +9,48 @@ namespace FacebookAppLogic
 {
     public class FilterEvents
     {
-        private const int k_NotSelected = -1;
-
         public FilterEvents()
         {
 
         }
 
-        public ICollection<Event> FilterAndSortByUserSelection(List<Event> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
+        public ICollection<iEvent> FilterAndSortByUserSelection(List<iEvent> i_Events, int i_TimeSelection, int i_GuestsConfirmationsSelection)
         {
-            ICollection<Event> filteredEventsByUserSelection = null;
+            ICollection<iEvent> filteredEventsByUserSelections = i_TimeSelection != (int)eTimeSelection.All ? getFilteredListByTime(i_Events, i_TimeSelection) : i_Events;
 
-            if (i_TimeSelection != k_NotSelected && i_TimeSelection != (int)eTimeSelection.All) // The user selected the events that accurs today/in the next 7 days/this month
-            {
-                filteredEventsByUserSelection = getFilteredListByTime(i_Events, i_TimeSelection);
-            }
-            else //The user selected all his events or didn't select a "time" filter
-            {
-                filteredEventsByUserSelection = i_Events;
-
-                if (i_TimeSelection == (int)eTimeSelection.All && i_GuestsConfirmationsSelection == (int)eGuestsConfirmation.All)
-                {
-                    return filteredEventsByUserSelection;
-                }
-            }
-
-            if (i_GuestsConfirmationsSelection != k_NotSelected && i_GuestsConfirmationsSelection != (int)eGuestsConfirmation.All) // The user selected to sort by Attending/ Interested/ Declined/ Maybe guests amount
+            if (i_GuestsConfirmationsSelection != (int)eGuestsConfirmation.All) // The user selected to sort by Attending/ Interested/ Declined/ Maybe guests amount
             {
                 switch (i_GuestsConfirmationsSelection)
                 {
                     case (int)eGuestsConfirmation.Attending:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_AttendingCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Interested:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_InterestedCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Declined:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_DeclinedCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Maybe:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_MaybeCount).ToList();
                         break;
                     default:
                         break;
                 }
             }
 
-            return filteredEventsByUserSelection;
+            return filteredEventsByUserSelections;
         }
 
-        private List<Event> getFilteredListByTime(List<Event> i_Events, int i_TimeSelection)
+        private List<iEvent> getFilteredListByTime(List<iEvent> i_Events, int i_TimeSelection)
         {
-            List<Event> filteredEventsListByTime = new List<Event>(); ;
+            List<iEvent> filteredEventsListByTime = new List<iEvent>(); ;
 
             if (i_TimeSelection == (int)eTimeSelection.Today)
             {
-                foreach (Event fbEvent in i_Events)
+                foreach (iEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.StartTime.Value.Date == DateTime.Now.Date)
+                    if (fbEvent.m_StartTime.Date == DateTime.Now.Date)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }
@@ -74,9 +58,9 @@ namespace FacebookAppLogic
             }
             else if (i_TimeSelection == (int)eTimeSelection.InTheNext7Days)
             {
-                foreach (Event fbEvent in i_Events)
+                foreach (iEvent fbEvent in i_Events)
                 {
-                    bool isEventInNext7Days = DateTime.Now.AddDays(7) >= fbEvent.StartTime && DateTime.Now <= fbEvent.StartTime;
+                    bool isEventInNext7Days = DateTime.Now.AddDays(7) >= fbEvent.m_StartTime && DateTime.Now <= fbEvent.m_StartTime;
 
                     if (isEventInNext7Days)
                     {
@@ -86,9 +70,9 @@ namespace FacebookAppLogic
             }
             else if (i_TimeSelection == (int)eTimeSelection.ThisMonth)
             {
-                foreach (Event fbEvent in i_Events)
+                foreach (iEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.StartTime.Value.Month == DateTime.Now.Month)
+                    if (fbEvent.m_StartTime.Month == DateTime.Now.Month && fbEvent.m_StartTime.Year == DateTime.Now.Year)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }

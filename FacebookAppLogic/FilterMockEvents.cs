@@ -7,6 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookAppLogic
 {
+    //TODO: delete this class- not in use
     public class FilterMockEvents
     {
         private const int k_NotSelected = -1;
@@ -39,16 +40,16 @@ namespace FacebookAppLogic
                 switch (i_GuestsConfirmationsSelection)
                 {
                     case (int)eGuestsConfirmation.Attending:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.m_AttendingCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Interested:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.m_InterestedCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Declined:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.m_DeclinedCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Maybe:
-                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
+                        filteredEventsByUserSelection = filteredEventsByUserSelection.OrderByDescending(userEvent => userEvent.m_MaybeCount).ToList();
                         break;
                     default:
                         break;
@@ -66,7 +67,7 @@ namespace FacebookAppLogic
             {
                 foreach (MockEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.StartTime.Date == DateTime.Now.Date)
+                    if (fbEvent.m_StartTime.Date == DateTime.Now.Date)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }
@@ -76,7 +77,7 @@ namespace FacebookAppLogic
             {
                 foreach (MockEvent fbEvent in i_Events)
                 {
-                    bool isEventInNext7Days = DateTime.Now.AddDays(7) >= fbEvent.StartTime && DateTime.Now <= fbEvent.StartTime;
+                    bool isEventInNext7Days = DateTime.Now.AddDays(7) >= fbEvent.m_StartTime && DateTime.Now <= fbEvent.m_StartTime;
 
                     if (isEventInNext7Days)
                     {
@@ -88,7 +89,7 @@ namespace FacebookAppLogic
             {
                 foreach (MockEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.StartTime.Month == DateTime.Now.Month)
+                    if (fbEvent.m_StartTime.Month == DateTime.Now.Month)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }
