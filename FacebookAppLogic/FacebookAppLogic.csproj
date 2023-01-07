@@ -65,7 +65,9 @@
     <Compile Include="FacebookThumbnailBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Event.cs" />
     <Compile Include="FilterMockEvents.cs" />
+    <Compile Include="iEvent.cs" />
     <Compile Include="MockData.cs" />
     <Compile Include="MockEvent.cs" />
     <Compile Include="MockUser.cs" />

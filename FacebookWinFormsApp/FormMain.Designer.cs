@@ -28,6 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label birthDateLabel;
+            System.Windows.Forms.Label emailLabel;
+            System.Windows.Forms.Label genderLabel;
+            System.Windows.Forms.Label hometownLabel;
+            System.Windows.Forms.Label nameLabel;
+            System.Windows.Forms.Label descriptionLabel;
+            System.Windows.Forms.Label idLabel;
+            System.Windows.Forms.Label nameLabel1;
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.buttonAstrologyHoroscopePost = new System.Windows.Forms.Button();
@@ -56,10 +65,24 @@
             this.labelGender = new System.Windows.Forms.Label();
             this.labelBirth = new System.Windows.Forms.Label();
             this.tabPageFriends = new System.Windows.Forms.TabPage();
+            this.panelFriends = new System.Windows.Forms.Panel();
+            this.birthDateTextBox = new System.Windows.Forms.TextBox();
+            this.mockUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.genderTextBox = new System.Windows.Forms.TextBox();
+            this.hometownTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelAlbumPhotos = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageLikedPages = new System.Windows.Forms.TabPage();
+            this.panelLikedPages = new System.Windows.Forms.Panel();
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox1 = new System.Windows.Forms.TextBox();
+            this.listBoxLikedPages = new System.Windows.Forms.ListBox();
             this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageGroups = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelGroups = new System.Windows.Forms.FlowLayoutPanel();
@@ -72,19 +95,103 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
             this.labelTheme = new System.Windows.Forms.Label();
+            birthDateLabel = new System.Windows.Forms.Label();
+            emailLabel = new System.Windows.Forms.Label();
+            genderLabel = new System.Windows.Forms.Label();
+            hometownLabel = new System.Windows.Forms.Label();
+            nameLabel = new System.Windows.Forms.Label();
+            descriptionLabel = new System.Windows.Forms.Label();
+            idLabel = new System.Windows.Forms.Label();
+            nameLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelectedAlbum)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageFeed.SuspendLayout();
             this.tabPageFriends.SuspendLayout();
+            this.panelFriends.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mockUserBindingSource)).BeginInit();
             this.tabPageAlbums.SuspendLayout();
             this.tabPageLikedPages.SuspendLayout();
+            this.panelLikedPages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             this.tabPageGroups.SuspendLayout();
             this.tabPageSport.SuspendLayout();
             this.tabPageEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).BeginInit();
             this.SuspendLayout();
+            // 
+            // birthDateLabel
+            // 
+            birthDateLabel.AutoSize = true;
+            birthDateLabel.Location = new System.Drawing.Point(23, 43);
+            birthDateLabel.Name = "birthDateLabel";
+            birthDateLabel.Size = new System.Drawing.Size(68, 16);
+            birthDateLabel.TabIndex = 0;
+            birthDateLabel.Text = "Birth Date:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(23, 71);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(44, 16);
+            emailLabel.TabIndex = 2;
+            emailLabel.Text = "Email:";
+            // 
+            // genderLabel
+            // 
+            genderLabel.AutoSize = true;
+            genderLabel.Location = new System.Drawing.Point(23, 99);
+            genderLabel.Name = "genderLabel";
+            genderLabel.Size = new System.Drawing.Size(55, 16);
+            genderLabel.TabIndex = 4;
+            genderLabel.Text = "Gender:";
+            // 
+            // hometownLabel
+            // 
+            hometownLabel.AutoSize = true;
+            hometownLabel.Location = new System.Drawing.Point(23, 127);
+            hometownLabel.Name = "hometownLabel";
+            hometownLabel.Size = new System.Drawing.Size(74, 16);
+            hometownLabel.TabIndex = 6;
+            hometownLabel.Text = "Hometown:";
+            // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(23, 15);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(47, 16);
+            nameLabel.TabIndex = 8;
+            nameLabel.Text = "Name:";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(23, 47);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(78, 16);
+            descriptionLabel.TabIndex = 2;
+            descriptionLabel.Text = "Description:";
+            // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(23, 75);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(21, 16);
+            idLabel.TabIndex = 4;
+            idLabel.Text = "Id:";
+            // 
+            // nameLabel1
+            // 
+            nameLabel1.AutoSize = true;
+            nameLabel1.Location = new System.Drawing.Point(23, 19);
+            nameLabel1.Name = "nameLabel1";
+            nameLabel1.Size = new System.Drawing.Size(47, 16);
+            nameLabel1.TabIndex = 8;
+            nameLabel1.Text = "Name:";
             // 
             // buttonLogout
             // 
@@ -269,7 +376,7 @@
             this.tabControl.Location = new System.Drawing.Point(28, 193);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1053, 459);
+            this.tabControl.Size = new System.Drawing.Size(1012, 413);
             this.tabControl.TabIndex = 79;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -294,7 +401,7 @@
             this.tabPageFeed.Location = new System.Drawing.Point(4, 25);
             this.tabPageFeed.Name = "tabPageFeed";
             this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFeed.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageFeed.Size = new System.Drawing.Size(1004, 384);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
             // 
@@ -385,21 +492,97 @@
             // tabPageFriends
             // 
             this.tabPageFriends.BackColor = System.Drawing.Color.OldLace;
+            this.tabPageFriends.Controls.Add(this.panelFriends);
+            this.tabPageFriends.Controls.Add(this.listBoxFriends);
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
             this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageFriends.Name = "tabPageFriends";
-            this.tabPageFriends.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageFriends.Size = new System.Drawing.Size(1004, 384);
             this.tabPageFriends.TabIndex = 5;
             this.tabPageFriends.Text = "Friends";
+            // 
+            // panelFriends
+            // 
+            this.panelFriends.BackColor = System.Drawing.Color.MistyRose;
+            this.panelFriends.Controls.Add(birthDateLabel);
+            this.panelFriends.Controls.Add(this.birthDateTextBox);
+            this.panelFriends.Controls.Add(emailLabel);
+            this.panelFriends.Controls.Add(this.emailTextBox);
+            this.panelFriends.Controls.Add(genderLabel);
+            this.panelFriends.Controls.Add(this.genderTextBox);
+            this.panelFriends.Controls.Add(hometownLabel);
+            this.panelFriends.Controls.Add(this.hometownTextBox);
+            this.panelFriends.Controls.Add(nameLabel);
+            this.panelFriends.Controls.Add(this.nameTextBox);
+            this.panelFriends.Location = new System.Drawing.Point(27, 117);
+            this.panelFriends.Name = "panelFriends";
+            this.panelFriends.Size = new System.Drawing.Size(260, 175);
+            this.panelFriends.TabIndex = 2;
+            // 
+            // birthDateTextBox
+            // 
+            this.birthDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "BirthDate", true));
+            this.birthDateTextBox.Location = new System.Drawing.Point(103, 40);
+            this.birthDateTextBox.Name = "birthDateTextBox";
+            this.birthDateTextBox.Size = new System.Drawing.Size(140, 22);
+            this.birthDateTextBox.TabIndex = 1;
+            // 
+            // mockUserBindingSource
+            // 
+            this.mockUserBindingSource.DataSource = typeof(FacebookAppLogic.MockUser);
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Email", true));
+            this.emailTextBox.Location = new System.Drawing.Point(103, 68);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(140, 22);
+            this.emailTextBox.TabIndex = 3;
+            // 
+            // genderTextBox
+            // 
+            this.genderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Gender", true));
+            this.genderTextBox.Location = new System.Drawing.Point(103, 96);
+            this.genderTextBox.Name = "genderTextBox";
+            this.genderTextBox.Size = new System.Drawing.Size(140, 22);
+            this.genderTextBox.TabIndex = 5;
+            // 
+            // hometownTextBox
+            // 
+            this.hometownTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Hometown", true));
+            this.hometownTextBox.Location = new System.Drawing.Point(103, 124);
+            this.hometownTextBox.Name = "hometownTextBox";
+            this.hometownTextBox.Size = new System.Drawing.Size(140, 22);
+            this.hometownTextBox.TabIndex = 7;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Name", true));
+            this.nameTextBox.Location = new System.Drawing.Point(103, 12);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(140, 22);
+            this.nameTextBox.TabIndex = 9;
+            // 
+            // listBoxFriends
+            // 
+            this.listBoxFriends.DataSource = this.mockUserBindingSource;
+            this.listBoxFriends.DisplayMember = "Name";
+            this.listBoxFriends.FormattingEnabled = true;
+            this.listBoxFriends.ItemHeight = 16;
+            this.listBoxFriends.Location = new System.Drawing.Point(27, 15);
+            this.listBoxFriends.Name = "listBoxFriends";
+            this.listBoxFriends.Size = new System.Drawing.Size(260, 84);
+            this.listBoxFriends.TabIndex = 1;
             // 
             // flowLayoutPanelFriends
             // 
             this.flowLayoutPanelFriends.AutoScroll = true;
             this.flowLayoutPanelFriends.Location = new System.Drawing.Point(3, 2);
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(325, 12);
             this.flowLayoutPanelFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(923, 338);
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(671, 360);
             this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // tabPageAlbums
@@ -413,7 +596,7 @@
             this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
             this.tabPageAlbums.Name = "tabPageAlbums";
             this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAlbums.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageAlbums.Size = new System.Drawing.Size(1004, 384);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             // 
@@ -422,26 +605,81 @@
             this.flowLayoutPanelAlbumPhotos.AutoScroll = true;
             this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(8, 168);
             this.flowLayoutPanelAlbumPhotos.Name = "flowLayoutPanelAlbumPhotos";
-            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1028, 256);
+            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(990, 210);
             this.flowLayoutPanelAlbumPhotos.TabIndex = 68;
             // 
             // tabPageLikedPages
             // 
             this.tabPageLikedPages.BackColor = System.Drawing.Color.OldLace;
+            this.tabPageLikedPages.Controls.Add(this.panelLikedPages);
+            this.tabPageLikedPages.Controls.Add(this.listBoxLikedPages);
             this.tabPageLikedPages.Controls.Add(this.flowLayoutPanelPages);
             this.tabPageLikedPages.Location = new System.Drawing.Point(4, 25);
             this.tabPageLikedPages.Name = "tabPageLikedPages";
-            this.tabPageLikedPages.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageLikedPages.Size = new System.Drawing.Size(1004, 384);
             this.tabPageLikedPages.TabIndex = 2;
             this.tabPageLikedPages.Text = "Liked Pages";
+            // 
+            // panelLikedPages
+            // 
+            this.panelLikedPages.BackColor = System.Drawing.Color.MistyRose;
+            this.panelLikedPages.Controls.Add(descriptionLabel);
+            this.panelLikedPages.Controls.Add(this.descriptionTextBox);
+            this.panelLikedPages.Controls.Add(idLabel);
+            this.panelLikedPages.Controls.Add(this.idTextBox);
+            this.panelLikedPages.Controls.Add(nameLabel1);
+            this.panelLikedPages.Controls.Add(this.nameTextBox1);
+            this.panelLikedPages.Location = new System.Drawing.Point(16, 125);
+            this.panelLikedPages.Name = "panelLikedPages";
+            this.panelLikedPages.Size = new System.Drawing.Size(298, 121);
+            this.panelLikedPages.TabIndex = 79;
+            // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
+            this.descriptionTextBox.Location = new System.Drawing.Point(108, 44);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(156, 22);
+            this.descriptionTextBox.TabIndex = 3;
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Id", true));
+            this.idTextBox.Location = new System.Drawing.Point(108, 72);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(156, 22);
+            this.idTextBox.TabIndex = 5;
+            // 
+            // nameTextBox1
+            // 
+            this.nameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Name", true));
+            this.nameTextBox1.Location = new System.Drawing.Point(108, 16);
+            this.nameTextBox1.Name = "nameTextBox1";
+            this.nameTextBox1.Size = new System.Drawing.Size(156, 22);
+            this.nameTextBox1.TabIndex = 9;
+            // 
+            // listBoxLikedPages
+            // 
+            this.listBoxLikedPages.DataSource = this.pageBindingSource;
+            this.listBoxLikedPages.DisplayMember = "Name";
+            this.listBoxLikedPages.FormattingEnabled = true;
+            this.listBoxLikedPages.ItemHeight = 16;
+            this.listBoxLikedPages.Location = new System.Drawing.Point(16, 24);
+            this.listBoxLikedPages.Name = "listBoxLikedPages";
+            this.listBoxLikedPages.Size = new System.Drawing.Size(298, 84);
+            this.listBoxLikedPages.TabIndex = 78;
             // 
             // flowLayoutPanelPages
             // 
             this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(0, 5);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(348, 2);
             this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(653, 380);
             this.flowLayoutPanelPages.TabIndex = 77;
             // 
             // tabPageGroups
@@ -450,7 +688,7 @@
             this.tabPageGroups.Controls.Add(this.flowLayoutPanelGroups);
             this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
             this.tabPageGroups.Name = "tabPageGroups";
-            this.tabPageGroups.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageGroups.Size = new System.Drawing.Size(1004, 384);
             this.tabPageGroups.TabIndex = 3;
             this.tabPageGroups.Text = "Groups";
             // 
@@ -460,7 +698,7 @@
             this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 0);
             this.flowLayoutPanelGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
-            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(998, 382);
             this.flowLayoutPanelGroups.TabIndex = 0;
             // 
             // tabPageSport
@@ -469,7 +707,7 @@
             this.tabPageSport.Controls.Add(this.flowLayoutPanelSport);
             this.tabPageSport.Location = new System.Drawing.Point(4, 25);
             this.tabPageSport.Name = "tabPageSport";
-            this.tabPageSport.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageSport.Size = new System.Drawing.Size(1004, 384);
             this.tabPageSport.TabIndex = 4;
             this.tabPageSport.Text = "Sport Teams";
             // 
@@ -477,7 +715,7 @@
             // 
             this.flowLayoutPanelSport.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanelSport.Name = "flowLayoutPanelSport";
-            this.flowLayoutPanelSport.Size = new System.Drawing.Size(1039, 424);
+            this.flowLayoutPanelSport.Size = new System.Drawing.Size(998, 378);
             this.flowLayoutPanelSport.TabIndex = 0;
             // 
             // tabPageEvents
@@ -491,7 +729,7 @@
             this.tabPageEvents.Location = new System.Drawing.Point(4, 25);
             this.tabPageEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageEvents.Name = "tabPageEvents";
-            this.tabPageEvents.Size = new System.Drawing.Size(1045, 430);
+            this.tabPageEvents.Size = new System.Drawing.Size(1004, 384);
             this.tabPageEvents.TabIndex = 6;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
@@ -523,7 +761,7 @@
             this.dataGridViewEvents.Name = "dataGridViewEvents";
             this.dataGridViewEvents.RowHeadersWidth = 62;
             this.dataGridViewEvents.RowTemplate.Height = 28;
-            this.dataGridViewEvents.Size = new System.Drawing.Size(1044, 329);
+            this.dataGridViewEvents.Size = new System.Drawing.Size(1001, 278);
             this.dataGridViewEvents.TabIndex = 0;
             // 
             // labelUserName
@@ -583,9 +821,15 @@
             this.tabPageFeed.ResumeLayout(false);
             this.tabPageFeed.PerformLayout();
             this.tabPageFriends.ResumeLayout(false);
+            this.panelFriends.ResumeLayout(false);
+            this.panelFriends.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mockUserBindingSource)).EndInit();
             this.tabPageAlbums.ResumeLayout(false);
             this.tabPageAlbums.PerformLayout();
             this.tabPageLikedPages.ResumeLayout(false);
+            this.panelLikedPages.ResumeLayout(false);
+            this.panelLikedPages.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageSport.ResumeLayout(false);
             this.tabPageEvents.ResumeLayout(false);
@@ -641,6 +885,20 @@
         private System.Windows.Forms.Label labelFilter;
         private System.Windows.Forms.ComboBox comboBoxTheme;
         private System.Windows.Forms.Label labelTheme;
+        private System.Windows.Forms.Panel panelFriends;
+        private System.Windows.Forms.TextBox birthDateTextBox;
+        private System.Windows.Forms.BindingSource mockUserBindingSource;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.TextBox genderTextBox;
+        private System.Windows.Forms.TextBox hometownTextBox;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.ListBox listBoxFriends;
+        private System.Windows.Forms.ListBox listBoxLikedPages;
+        private System.Windows.Forms.Panel panelLikedPages;
+        private System.Windows.Forms.BindingSource pageBindingSource;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.TextBox nameTextBox1;
     }
 }
 

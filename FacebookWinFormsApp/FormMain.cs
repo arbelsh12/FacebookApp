@@ -18,7 +18,6 @@ namespace BasicFacebookFeatures
         private const int k_NotSelected = -1;
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
-        private readonly FilterMockEvents r_FilterMockEvents;
         private readonly FormLogIn r_FormLogIn;
         private readonly MockData r_MockData;
         private User m_LoggedInUser;
@@ -31,7 +30,6 @@ namespace BasicFacebookFeatures
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
-            r_FilterMockEvents = new FilterMockEvents();
             r_MockData = new MockData();
             r_FormLogIn = i_FormLogin;
             m_LoggedInUser = i_User;
@@ -62,9 +60,10 @@ namespace BasicFacebookFeatures
             labelUserEmail.Text = m_LoggedInUser.Email;
             labelUserGender.Text = userGender;
             labelUserZodiac.Text = zodiac;
+            //fetchUserPosts();
             new Thread(fetchCoverPhoto).Start();
             new Thread(fetchAlbums).Start();
-            new Thread(fetchUserPosts).Start();
+            //new Thread(fetchUserPosts).Start();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
         
@@ -204,13 +203,16 @@ namespace BasicFacebookFeatures
             {
                 if(m_LoggedInUser.Events.Count > 0)
                 {
-                    ICollection<Event> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    //TODO: Do I need to create an object of fake User and set his Data? - Resume the code in this case in the next commit with mock user
+                    //ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
-                    dataGridViewEvents.DataSource = sortedAndFilteredEvents;
+                    //dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
                 else if (r_MockData.Events.Count > 0)
                 {
-                    ICollection<MockEvent> sortedAndFilteredEvents = r_FilterMockEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    //old code - delete in future
+                    //ICollection<MockEvent> sortedAndFilteredEvents = r_FilterMockEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                     dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
@@ -246,17 +248,17 @@ namespace BasicFacebookFeatures
                     }
                 case (int)eTab.LikedPages:
                     {
-                        fetchLikedPages();
+                        new Thread(fetchLikedPages).Start();
                         break;
                     }
                 case (int)eTab.Groups:
                     {
-                        fetchGroups();
+                        new Thread(fetchGroups).Start();
                         break;
                     }
                 case (int)eTab.SportTeams:
                     {
-                        fetchSportTeams();
+                        new Thread(fetchSportTeams).Start();
                         break;
                     }
                 case (int)eTab.Events:
@@ -273,13 +275,21 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
+            FacebookObjectCollection<Page> likedPages = m_LoggedInUser.LikedPages;
+
+            flowLayoutPanelPages.Invoke(new Action(() => fetchLikedPagesMainThread(likedPages)));
+            listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
+        }
+
+        private void fetchLikedPagesMainThread(FacebookObjectCollection<Page> i_LikedPages)
+        {
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
-                if (m_LoggedInUser.LikedPages != null)
+                if (i_LikedPages != null)
                 {
                     try
                     {
-                        foreach (Page page in m_LoggedInUser.LikedPages)
+                        foreach (Page page in i_LikedPages)
                         {
                             addGroupBoxToPanel(m_Theme, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
@@ -290,22 +300,30 @@ namespace BasicFacebookFeatures
                     }
                 }
             }
-           
+
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
                 MessageBox.Show("No liked pages to retrieve :(");
             }
         }
 
+
         private void fetchGroups()
+        {
+            FacebookObjectCollection<Group> groups = m_LoggedInUser.Groups;
+
+            flowLayoutPanelGroups.Invoke(new Action(() => fetchGroupsMainThread(groups)));
+        }
+
+        private void fetchGroupsMainThread(FacebookObjectCollection<Group> i_Groups)
         {
             if (flowLayoutPanelGroups.Controls.Count == 0)
             {
-                if(m_LoggedInUser.Groups != null)
+                if (i_Groups != null)
                 {
                     try
                     {
-                        foreach (Group group in m_LoggedInUser.Groups)
+                        foreach (Group group in i_Groups)
                         {
                             addGroupBoxToPanel(m_Theme, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                         }
@@ -370,13 +388,20 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeams()
         {
+            Page[] teams = m_LoggedInUser.FavofriteTeams;
+
+            flowLayoutPanelSport.Invoke(new Action(() => fetchSportTeamsMainThread(teams)));
+        }
+
+        private void fetchSportTeamsMainThread(Page[] i_Teams)
+        {
             if (flowLayoutPanelSport.Controls.Count == 0)
             {
-                if(m_LoggedInUser.FavofriteTeams != null)
+                if (i_Teams != null)
                 {
                     try
                     {
-                        foreach (Page team in m_LoggedInUser.FavofriteTeams)
+                        foreach (Page team in i_Teams)
                         {
                             addGroupBoxToPanel(m_Theme, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                         }
@@ -387,7 +412,7 @@ namespace BasicFacebookFeatures
                     }
                 }
             }
-
+           
             if (flowLayoutPanelSport.Controls.Count == 0)
             {
                 MessageBox.Show("No sport teams to retrieve :(");
@@ -452,8 +477,11 @@ namespace BasicFacebookFeatures
                     {
                         addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
+
+                    mockUserBindingSource.DataSource = r_MockData.Friends;
                 }
             }
+
 
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
@@ -473,6 +501,13 @@ namespace BasicFacebookFeatures
                 {
                     dataGridViewEvents.DataSource = r_MockData.Events;
                 }
+
+                dataGridViewEvents.Columns[0].HeaderText = "Name";
+                dataGridViewEvents.Columns[1].HeaderText = "Start Time";
+                dataGridViewEvents.Columns[2].HeaderText = "Attending";
+                dataGridViewEvents.Columns[3].HeaderText = "Intrested";
+                dataGridViewEvents.Columns[4].HeaderText = "Declined";
+                dataGridViewEvents.Columns[5].HeaderText = "Maybe";
             }
             catch (Exception ex)
             {
