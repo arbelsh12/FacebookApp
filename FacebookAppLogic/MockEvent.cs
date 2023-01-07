@@ -10,7 +10,6 @@ namespace FacebookAppLogic
         public long m_InterestedCount { get; set; }
         public long m_DeclinedCount { get; set; }
         public long m_MaybeCount { get; set; }
-        public FacebookWrapper.ObjectModel.Event m_LegacyEvent { get; set; }
 
         public MockEvent()
         {

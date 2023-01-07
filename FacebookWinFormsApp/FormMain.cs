@@ -204,11 +204,11 @@ namespace BasicFacebookFeatures
 
                     //dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
-                else if (r_MockData.m_Events.Count > 0)
+                else if (r_MockData.Events.Count > 0)
                 {
                     //old code - delete in future
                     //ICollection<MockEvent> sortedAndFilteredEvents = r_FilterMockEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
-                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(r_MockData.m_Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                     dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
@@ -484,7 +484,7 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    dataGridViewEvents.DataSource = r_MockData.m_Events;
+                    dataGridViewEvents.DataSource = r_MockData.Events;
                 }
 
                 dataGridViewEvents.Columns[0].HeaderText = "Name";
@@ -503,16 +503,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No Events to retrieve :(");
             }
-        }
-
-        private void pictureBoxCover_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewEvents_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

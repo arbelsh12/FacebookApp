@@ -6,11 +6,11 @@ namespace FacebookAppLogic
     public class MockData
     {
         private readonly List<MockUser> r_Friends;
-        public List<iEvent> m_Events { get; }        
+        private readonly List<iEvent> r_Events;      
 
         public MockData()
         {
-            m_Events = createMockEvents();
+            r_Events = createMockEvents();
             r_Friends = createMockFriends();
         }
 
@@ -26,7 +26,6 @@ namespace FacebookAppLogic
                     m_InterestedCount = 250,
                     m_DeclinedCount = 122,
                     m_MaybeCount = 5,
-                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
                 },
                 new MockEvent()
                 {
@@ -36,7 +35,6 @@ namespace FacebookAppLogic
                     m_InterestedCount = 60,
                     m_DeclinedCount = 16,
                     m_MaybeCount = 65,
-                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
                 },
                 new MockEvent()
                 {
@@ -46,7 +44,6 @@ namespace FacebookAppLogic
                     m_InterestedCount = 50,
                     m_DeclinedCount = 15,
                     m_MaybeCount = 66,
-                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
                 },
                 new MockEvent()
                 {
@@ -56,7 +53,6 @@ namespace FacebookAppLogic
                     m_InterestedCount = 234,
                     m_DeclinedCount = 12,
                     m_MaybeCount = 85,
-                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
                 },
                 new MockEvent()
                 {
@@ -66,7 +62,6 @@ namespace FacebookAppLogic
                     m_InterestedCount = 24,
                     m_DeclinedCount = 129,
                     m_MaybeCount = 7,
-                    m_LegacyEvent = new FacebookWrapper.ObjectModel.Event(),
                 },
             };
 
@@ -150,6 +145,11 @@ namespace FacebookAppLogic
         public List<MockUser> Friends
         {
             get { return r_Friends; }
+        }
+
+        public List<iEvent> Events
+        {
+            get { return r_Events; }
         }
     }
 }
