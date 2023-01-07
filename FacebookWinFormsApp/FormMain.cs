@@ -244,17 +244,17 @@ namespace BasicFacebookFeatures
                     }
                 case (int)eTab.LikedPages:
                     {
-                        fetchLikedPages();
+                        new Thread(fetchLikedPages).Start();
                         break;
                     }
                 case (int)eTab.Groups:
                     {
-                        fetchGroups();
+                        new Thread(fetchGroups).Start();
                         break;
                     }
                 case (int)eTab.SportTeams:
                     {
-                        fetchSportTeams();
+                        new Thread(fetchSportTeams).Start();
                         break;
                     }
                 case (int)eTab.Events:
@@ -271,13 +271,21 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
+            FacebookObjectCollection<Page> likedPages = m_LoggedInUser.LikedPages;
+
+            flowLayoutPanelPages.Invoke(new Action(() => fetchLikedPagesMainThread(likedPages)));
+            listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
+        }
+
+        private void fetchLikedPagesMainThread(FacebookObjectCollection<Page> i_LikedPages)
+        {
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
-                if (m_LoggedInUser.LikedPages != null)
+                if (i_LikedPages != null)
                 {
                     try
                     {
-                        foreach (Page page in m_LoggedInUser.LikedPages)
+                        foreach (Page page in i_LikedPages)
                         {
                             addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
@@ -288,22 +296,30 @@ namespace BasicFacebookFeatures
                     }
                 }
             }
-           
+
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
                 MessageBox.Show("No liked pages to retrieve :(");
             }
         }
 
+
         private void fetchGroups()
+        {
+            FacebookObjectCollection<Group> groups = m_LoggedInUser.Groups;
+
+            flowLayoutPanelGroups.Invoke(new Action(() => fetchGroupsMainThread(groups)));
+        }
+
+        private void fetchGroupsMainThread(FacebookObjectCollection<Group> i_Groups)
         {
             if (flowLayoutPanelGroups.Controls.Count == 0)
             {
-                if(m_LoggedInUser.Groups != null)
+                if (i_Groups != null)
                 {
                     try
                     {
-                        foreach (Group group in m_LoggedInUser.Groups)
+                        foreach (Group group in i_Groups)
                         {
                             addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                         }
@@ -380,13 +396,20 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeams()
         {
+            Page[] teams = m_LoggedInUser.FavofriteTeams;
+
+            flowLayoutPanelSport.Invoke(new Action(() => fetchSportTeamsMainThread(teams)));
+        }
+
+        private void fetchSportTeamsMainThread(Page[] i_Teams)
+        {
             if (flowLayoutPanelSport.Controls.Count == 0)
             {
-                if(m_LoggedInUser.FavofriteTeams != null)
+                if (i_Teams != null)
                 {
                     try
                     {
-                        foreach (Page team in m_LoggedInUser.FavofriteTeams)
+                        foreach (Page team in i_Teams)
                         {
                             addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                         }
@@ -397,7 +420,7 @@ namespace BasicFacebookFeatures
                     }
                 }
             }
-
+           
             if (flowLayoutPanelSport.Controls.Count == 0)
             {
                 MessageBox.Show("No sport teams to retrieve :(");
