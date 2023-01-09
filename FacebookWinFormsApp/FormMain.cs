@@ -19,8 +19,8 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
-        private eTheme m_Theme;
-        private eTheme m_prevTheme;
+        public eTheme m_Theme { get; set; }
+        public eTheme m_prevTheme { get; set; }
 
         public FormMain(FormLogIn i_FormLogin)
         {
