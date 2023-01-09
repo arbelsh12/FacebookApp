@@ -79,7 +79,7 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            FacebookObjectCollection<Album> albums = LoggedInUserSingelton.Instance.User.Albums;
+            var albums = LoggedInUserSingelton.Instance.User.Albums;
 
             listBoxAlbums.Invoke(new Action(
                 () =>
@@ -118,7 +118,7 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
-            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
+            var posts = LoggedInUserSingelton.Instance.User.Posts;
 
             listBoxLikedPages.Invoke(new Action(() => addPostsToListBox(posts)));
         }
@@ -278,7 +278,7 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            FacebookObjectCollection<Page> likedPages = LoggedInUserSingelton.Instance.User.LikedPages;
+            var likedPages = LoggedInUserSingelton.Instance.User.LikedPages;
 
             flowLayoutPanelPages.Invoke(new Action(() => addLikedPagesToPanel(likedPages)));
             listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
@@ -318,7 +318,7 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            FacebookObjectCollection<Group> groups = LoggedInUserSingelton.Instance.User.Groups;
+            var groups = LoggedInUserSingelton.Instance.User.Groups;
 
             flowLayoutPanelGroups.Invoke(new Action(() => addGroupsToPanel(groups)));
             listBoxGroups.Invoke(new Action(() => groupBindingSource.DataSource = groups));
@@ -371,7 +371,7 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbumPhotos(Album i_album)
         {
-            FacebookObjectCollection<Photo> photos = i_album.Photos;
+            var photos = i_album.Photos;
 
             flowLayoutPanelAlbumPhotos.Invoke(new Action(() => addPhotosToPanel(photos)));
         }
