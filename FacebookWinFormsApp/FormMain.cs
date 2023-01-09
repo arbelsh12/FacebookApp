@@ -19,7 +19,6 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
-
         private eTheme m_Theme;
         private eTheme m_prevTheme;
 
@@ -30,7 +29,6 @@ namespace BasicFacebookFeatures
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
-           
             m_Theme = eTheme.Classic;
             m_prevTheme = eTheme.Classic;
             loadUserInfo();
@@ -316,6 +314,7 @@ namespace BasicFacebookFeatures
             FacebookObjectCollection<Group> groups = LoggedInUserSingelton.Instance.User.Groups;
 
             flowLayoutPanelGroups.Invoke(new Action(() => fetchGroupsMainThread(groups)));
+            listBoxGroups.Invoke(new Action(() => groupBindingSource.DataSource = groups));
         }
 
         private void fetchGroupsMainThread(FacebookObjectCollection<Group> i_Groups)
