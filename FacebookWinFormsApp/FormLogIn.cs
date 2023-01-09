@@ -1,4 +1,5 @@
-﻿using FacebookWrapper;
+﻿using FacebookAppLogic;
+using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,8 @@ namespace BasicFacebookFeatures
             {
                 this.DialogResult = DialogResult.OK;
                 this.Hide();
-                FormMain formMain = new FormMain(m_LoginResult.LoggedInUser, this);
+                LoggedInUserSingelton.Instance.User = m_LoginResult.LoggedInUser;
+                FormMain formMain = new FormMain(this);
                 formMain.ShowDialog();
             }
             else

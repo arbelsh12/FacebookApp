@@ -19,18 +19,14 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
-        private readonly MockData r_MockData;
-        private User m_LoggedInUser;
 
-        public FormMain(User i_User, FormLogIn i_FormLogin)
+        public FormMain(FormLogIn i_FormLogin)
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
-            r_MockData = new MockData();
             r_FormLogIn = i_FormLogin;
-            m_LoggedInUser = i_User;
             loadUserInfo();
         }
 
@@ -47,13 +43,13 @@ namespace BasicFacebookFeatures
 
         private void loadUserInfo()
         {
-            string userGender = m_LoggedInUser.Gender == User.eGender.female ? "Female" : "Male";
-            string zodiac = r_Astrology.GetZodiac(m_LoggedInUser.Birthday);
+            string userGender = LoggedInUserSingelton.Instance.User.Gender == User.eGender.female ? "Female" : "Male";
+            string zodiac = r_Astrology.GetZodiac(LoggedInUserSingelton.Instance.User.Birthday);
 
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            labelUserName.Text = m_LoggedInUser.Name;
-            labelBirthDate.Text = m_LoggedInUser.Birthday;
-            labelUserEmail.Text = m_LoggedInUser.Email;
+            pictureBoxProfile.LoadAsync(LoggedInUserSingelton.Instance.User.PictureNormalURL);
+            labelUserName.Text = LoggedInUserSingelton.Instance.User.Name;
+            labelBirthDate.Text = LoggedInUserSingelton.Instance.User.Birthday;
+            labelUserEmail.Text = LoggedInUserSingelton.Instance.User.Email;
             labelUserGender.Text = userGender;
             labelUserZodiac.Text = zodiac;
             //fetchUserPosts();
@@ -65,7 +61,7 @@ namespace BasicFacebookFeatures
         
         private void fetchCoverPhoto()
         {
-            foreach (Album album in m_LoggedInUser.Albums)
+            foreach (Album album in LoggedInUserSingelton.Instance.User.Albums)
             {
                 if (album.Name.Equals("Cover photos"))
                 {
@@ -82,7 +78,7 @@ namespace BasicFacebookFeatures
         {
             listBoxAlbums.Items.Clear();
             listBoxAlbums.DisplayMember = "Name";
-            foreach (Album album in m_LoggedInUser.Albums)
+            foreach (Album album in LoggedInUserSingelton.Instance.User.Albums)
             {
                 listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
             }
@@ -113,7 +109,7 @@ namespace BasicFacebookFeatures
         private void fetchUserPosts()
         {
             listBoxUserPosts.Items.Clear();
-            foreach (Post post in m_LoggedInUser.Posts)
+            foreach (Post post in LoggedInUserSingelton.Instance.User.Posts)
             {
                 if (post.Message != null)
                 {
@@ -146,17 +142,17 @@ namespace BasicFacebookFeatures
             this.Hide();
             r_FormLogIn.Show();
             this.Close();
-            m_LoggedInUser = null;
+            LoggedInUserSingelton.Instance.User = null;
         }
 
         private async void buttonAstrologyHoroscopePost_Click(object sender, EventArgs e)
         {
             try
             {
-                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(m_LoggedInUser.Birthday);
+                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(LoggedInUserSingelton.Instance.User.Birthday);
 
                 MessageBox.Show(astrologyHoroscopePost);
-                Status postedStatus = m_LoggedInUser.PostStatus(astrologyHoroscopePost);
+                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(astrologyHoroscopePost);
                 
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
@@ -176,7 +172,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPost.Text);
+                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
 
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
             }
@@ -197,18 +193,18 @@ namespace BasicFacebookFeatures
 
             try
             {
-                if(m_LoggedInUser.Events.Count > 0)
+                if(LoggedInUserSingelton.Instance.User.Events.Count > 0)
                 {
                     //TODO: Do I need to create an object of fake User and set his Data? - Resume the code in this case in the next commit with mock user
                     //ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                     //dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
-                else if (r_MockData.Events.Count > 0)
+                else if (LoggedInUserSingelton.Instance.MockData.Events.Count > 0)
                 {
                     //old code - delete in future
                     //ICollection<MockEvent> sortedAndFilteredEvents = r_FilterMockEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
-                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(LoggedInUserSingelton.Instance.MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                     dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
@@ -271,7 +267,7 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            FacebookObjectCollection<Page> likedPages = m_LoggedInUser.LikedPages;
+            FacebookObjectCollection<Page> likedPages = LoggedInUserSingelton.Instance.User.LikedPages;
 
             flowLayoutPanelPages.Invoke(new Action(() => fetchLikedPagesMainThread(likedPages)));
             listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
@@ -306,7 +302,7 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            FacebookObjectCollection<Group> groups = m_LoggedInUser.Groups;
+            FacebookObjectCollection<Group> groups = LoggedInUserSingelton.Instance.User.Groups;
 
             flowLayoutPanelGroups.Invoke(new Action(() => fetchGroupsMainThread(groups)));
         }
@@ -396,7 +392,7 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeams()
         {
-            Page[] teams = m_LoggedInUser.FavofriteTeams;
+            Page[] teams = LoggedInUserSingelton.Instance.User.FavofriteTeams;
 
             flowLayoutPanelSport.Invoke(new Action(() => fetchSportTeamsMainThread(teams)));
         }
@@ -429,7 +425,7 @@ namespace BasicFacebookFeatures
 
         private void fetchPostComments()
         {
-            Post selected = m_LoggedInUser.Posts[listBoxUserPosts.SelectedIndex];
+            Post selected = LoggedInUserSingelton.Instance.User.Posts[listBoxUserPosts.SelectedIndex];
 
             flowLayoutPanelComments.Controls.Clear();
             if(selected != null)
@@ -469,7 +465,7 @@ namespace BasicFacebookFeatures
             {
                 try
                 {
-                    foreach (User friend in m_LoggedInUser.Friends)
+                    foreach (User friend in LoggedInUserSingelton.Instance.User.Friends)
                     {
                         addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
                     }
@@ -481,12 +477,12 @@ namespace BasicFacebookFeatures
 
                 if (flowLayoutPanelFriends.Controls.Count == 0)
                 {
-                    foreach (MockUser friend in r_MockData.Friends)
+                    foreach (MockUser friend in LoggedInUserSingelton.Instance.MockData.Friends)
                     {
                         addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
 
-                    mockUserBindingSource.DataSource = r_MockData.Friends;
+                    mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
                 }
             }
 
@@ -501,13 +497,13 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if(m_LoggedInUser.Events.Count > 0)
+                if(LoggedInUserSingelton.Instance.User.Events.Count > 0)
                 {
-                    dataGridViewEvents.DataSource = m_LoggedInUser.Events;
+                    dataGridViewEvents.DataSource = LoggedInUserSingelton.Instance.User.Events;
                 }
                 else
                 {
-                    dataGridViewEvents.DataSource = r_MockData.Events;
+                    dataGridViewEvents.DataSource = LoggedInUserSingelton.Instance.MockData.Events;
                 }
 
                 dataGridViewEvents.Columns[0].HeaderText = "Name";
