@@ -63,16 +63,6 @@ namespace BasicFacebookFeatures
         {
             Application.Exit();
         }
-
-        private void FormLogIn_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelWelcome_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

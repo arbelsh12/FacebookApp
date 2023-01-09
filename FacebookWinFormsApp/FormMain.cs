@@ -273,11 +273,11 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Page> likedPages = LoggedInUserSingelton.Instance.User.LikedPages;
 
-            flowLayoutPanelPages.Invoke(new Action(() => fetchLikedPagesMainThread(likedPages)));
+            flowLayoutPanelPages.Invoke(new Action(() => addLikedPagesToPanel(likedPages)));
             listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
         }
 
-        private void fetchLikedPagesMainThread(FacebookObjectCollection<Page> i_LikedPages)
+        private void addLikedPagesToPanel(FacebookObjectCollection<Page> i_LikedPages)
         {
             if (flowLayoutPanelPages.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
@@ -313,11 +313,11 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Group> groups = LoggedInUserSingelton.Instance.User.Groups;
 
-            flowLayoutPanelGroups.Invoke(new Action(() => fetchGroupsMainThread(groups)));
+            flowLayoutPanelGroups.Invoke(new Action(() => addGroupsToPanel(groups)));
             listBoxGroups.Invoke(new Action(() => groupBindingSource.DataSource = groups));
         }
 
-        private void fetchGroupsMainThread(FacebookObjectCollection<Group> i_Groups)
+        private void addGroupsToPanel(FacebookObjectCollection<Group> i_Groups)
         {
             if (flowLayoutPanelGroups.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
@@ -397,10 +397,10 @@ namespace BasicFacebookFeatures
         {
             Page[] teams = LoggedInUserSingelton.Instance.User.FavofriteTeams;
 
-            flowLayoutPanelSport.Invoke(new Action(() => fetchSportTeamsMainThread(teams)));
+            flowLayoutPanelSport.Invoke(new Action(() => addSportTeamsToPanel(teams)));
         }
 
-        private void fetchSportTeamsMainThread(Page[] i_Teams)
+        private void addSportTeamsToPanel(Page[] i_Teams)
         {
             if (flowLayoutPanelSport.Controls.Count == 0 || m_Theme != m_prevTheme)
             {

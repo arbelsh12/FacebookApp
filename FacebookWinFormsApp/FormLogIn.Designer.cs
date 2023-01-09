@@ -68,7 +68,6 @@
             this.labelWelcome.Size = new System.Drawing.Size(341, 36);
             this.labelWelcome.TabIndex = 2;
             this.labelWelcome.Text = "Welcome to our app!";
-            this.labelWelcome.Click += new System.EventHandler(this.labelWelcome_Click);
             // 
             // pictureBoxLogo
             // 
@@ -97,7 +96,6 @@
             this.Name = "FormLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook App";
-            this.Load += new System.EventHandler(this.FormLogIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
