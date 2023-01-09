@@ -75,7 +75,7 @@ namespace FacebookAppLogic
                 new MockUser("Rachel", "Green", "Rachel@mock.com", FacebookWrapper.ObjectModel.User.eGender.female, "Brooklyn, NY",  "5/5/70",
                 "https://pyxis.nymag.com/v1/imgs/47c/71a/130bf1e557e534b3f2be3351afc2ecf952-17-rachel-green-jewish.rsquare.w700.jpg"),
                  new MockUser("Monica", "Geller", "Monica@mock.com", FacebookWrapper.ObjectModel.User.eGender.female, "Brooklyn, NY",  "14/9/72",
-                "https://pyxis.nymag.com/v1/imgs/47c/71a/130bf1e557e534b3f2be3351afc2ecf952-17-rachel-green-jewish.rsquare.w700.jpg"),
+                "https://home.adelphi.edu/~ni21572/Monica.jpg"),
                 new MockUser("Phoebe", "Bofey", "Phoebe@mock.com", FacebookWrapper.ObjectModel.User.eGender.female, "Brooklyn, NY",  "27/1/69",
                 "https://i.insider.com/55df18389dd7cc0f008b64cc?width=1000&format=jpeg&auto=webp"),
                 new MockUser("Ross", "Geller", "Ross@mock.com", FacebookWrapper.ObjectModel.User.eGender.male, "Brooklyn, NY",  "22/3/69",
