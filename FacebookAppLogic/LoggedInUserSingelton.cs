@@ -6,6 +6,7 @@ namespace FacebookAppLogic
     public sealed class LoggedInUserSingelton
     {
         private static LoggedInUserSingelton s_Instance = null;
+        private static object s_LockObj = new Object();
         private readonly MockData r_MockData = null;
         private User m_User = null;
 
@@ -20,7 +21,13 @@ namespace FacebookAppLogic
             {
                 if (s_Instance == null)
                 {
-                    s_Instance = new LoggedInUserSingelton();
+                    lock(s_LockObj)
+                    {
+                        if(s_Instance == null)
+                        {
+                            s_Instance = new LoggedInUserSingelton();
+                        }
+                    }
                 }
 
                 return s_Instance;
