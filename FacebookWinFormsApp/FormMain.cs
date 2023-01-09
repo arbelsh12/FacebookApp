@@ -56,10 +56,9 @@ namespace BasicFacebookFeatures
             labelUserEmail.Text = LoggedInUserSingelton.Instance.User.Email;
             labelUserGender.Text = userGender;
             labelUserZodiac.Text = zodiac;
-            //fetchUserPosts();
             new Thread(fetchCoverPhoto).Start();
             new Thread(fetchAlbums).Start();
-            //new Thread(fetchUserPosts).Start();
+            new Thread(fetchUserPosts).Start();
             pictureBoxSelectedAlbum.LoadAsync("https://media.istockphoto.com/id/1422715938/vector/no-image-vector-symbol-shadow-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=-GBgNDJfqE-wJmB9aew8E7Qzi197xz9JfCa88C_0rY8=");
         }
         
@@ -80,17 +79,24 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            listBoxAlbums.Items.Clear();
-            listBoxAlbums.DisplayMember = "Name";
-            foreach (Album album in LoggedInUserSingelton.Instance.User.Albums)
-            {
-                listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
-            }
+            FacebookObjectCollection<Album> albums = LoggedInUserSingelton.Instance.User.Albums;
 
-            if (listBoxAlbums.Items.Count == 0)
-            {
-                MessageBox.Show("No Albums to retrieve :(");
-            }
+            listBoxAlbums.Invoke(new Action(
+                () =>
+                {
+                    listBoxAlbums.Items.Clear();
+                    listBoxAlbums.DisplayMember = "Name";
+                    foreach (Album album in LoggedInUserSingelton.Instance.User.Albums)
+                    {
+                        listBoxAlbums.Items.Add(album);
+                    }
+
+                    if (listBoxAlbums.Items.Count == 0)
+                    {
+                        MessageBox.Show("No Albums to retrieve :(");
+                    }
+                }
+            ));
         }
 
         private void displaySelectedAlbum()
@@ -112,20 +118,27 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
+            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
+
+            listBoxLikedPages.Invoke(new Action(() => addPostsToListBox(posts)));
+        }
+
+        private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
+        {
             listBoxUserPosts.Items.Clear();
             foreach (Post post in LoggedInUserSingelton.Instance.User.Posts)
             {
                 if (post.Message != null)
                 {
-                    listBoxUserPosts.Invoke(new Action(() => listBoxUserPosts.Items.Add(post.Message)));
+                     listBoxUserPosts.Items.Add(post.Message);
                 }
                 else if (post.Caption != null)
                 {
-                    listBoxUserPosts.Invoke(new Action(() => listBoxUserPosts.Items.Add(post.Caption)));
+                   listBoxUserPosts.Items.Add(post.Caption);
                 }
                 else
                 {
-                    listBoxUserPosts.Invoke(new Action(() => listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type))));
+                    listBoxUserPosts.Items.Add(string.Format("[{0}]", post.Type));
                 }
             }
 
@@ -164,12 +177,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("Posting to feed failed (No permissions)");
             }
-        }
-
-        private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            displaySelectedAlbum();
-            fetchAlbumPhotos();
         }
 
         private void buttonPost_Click(object sender, EventArgs e)
@@ -354,16 +361,29 @@ namespace BasicFacebookFeatures
             i_Panel.Controls.Add(thumbnail);
         }
 
-        private void fetchAlbumPhotos()
+        private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+
+            displaySelectedAlbum();
+            new Thread(() => fetchAlbumPhotos(selectedAlbum)).Start();
+        }
+
+        private void fetchAlbumPhotos(Album i_album)
+        {
+            FacebookObjectCollection<Photo> photos = i_album.Photos;
+
+            flowLayoutPanelAlbumPhotos.Invoke(new Action(() => addPhotosToPanel(photos)));
+        }
+
+        private void addPhotosToPanel(FacebookObjectCollection<Photo> i_Photos)
         {
             flowLayoutPanelAlbumPhotos.Controls.Clear();
             try
             {
                 if(listBoxAlbums.SelectedItems.Count == 1)
                 {
-                    Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
-
-                    foreach (Photo photo in selectedAlbum.Photos)
+                    foreach (Photo photo in i_Photos)
                     {
                         PictureBox picture = new PictureBox();
 
