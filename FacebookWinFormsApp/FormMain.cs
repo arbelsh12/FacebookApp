@@ -120,7 +120,7 @@ namespace BasicFacebookFeatures
         {
             var posts = LoggedInUserSingelton.Instance.User.Posts;
 
-            listBoxLikedPages.Invoke(new Action(() => addPostsToListBox(posts)));
+            listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
         }
 
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
