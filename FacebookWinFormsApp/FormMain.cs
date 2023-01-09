@@ -20,6 +20,9 @@ namespace BasicFacebookFeatures
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
 
+        private eTheme m_Theme;
+        private eTheme m_prevTheme;
+
         public FormMain(FormLogIn i_FormLogin)
         {
             InitializeComponent();
@@ -27,6 +30,9 @@ namespace BasicFacebookFeatures
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
+           
+            m_Theme = eTheme.Classic;
+            m_prevTheme = eTheme.Classic;
             loadUserInfo();
         }
 
@@ -275,15 +281,20 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPagesMainThread(FacebookObjectCollection<Page> i_LikedPages)
         {
-            if (flowLayoutPanelPages.Controls.Count == 0)
+            if (flowLayoutPanelPages.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if (flowLayoutPanelPages.Controls.Count != 0)
+                {
+                    flowLayoutPanelPages.Controls.Clear();
+                }
+
                 if (i_LikedPages != null)
                 {
                     try
                     {
                         foreach (Page page in i_LikedPages)
                         {
-                            addGroupBoxToPanel(flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                            addGroupBoxToPanel(m_Theme, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -309,15 +320,20 @@ namespace BasicFacebookFeatures
 
         private void fetchGroupsMainThread(FacebookObjectCollection<Group> i_Groups)
         {
-            if (flowLayoutPanelGroups.Controls.Count == 0)
+            if (flowLayoutPanelGroups.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if(flowLayoutPanelGroups.Controls.Count != 0)
+                {
+                    flowLayoutPanelGroups.Controls.Clear();
+                }
+
                 if (i_Groups != null)
                 {
                     try
                     {
                         foreach (Group group in i_Groups)
                         {
-                            addGroupBoxToPanel(flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                            addGroupBoxToPanel(m_Theme, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -333,22 +349,10 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void addGroupBoxToPanel(FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
+        private void addGroupBoxToPanel(eTheme i_Theme, FlowLayoutPanel i_Panel, string i_Name, string i_PictureURL)
         {
-            GroupBox box = new GroupBox();
-            PictureBox picture = new PictureBox();
-
-            box.Size = new Size(140, 120);
-            box.Text = i_Name;
-            box.Name = "Groupbox" + i_Name;
-            box.BackColor = SystemColors.GradientActiveCaption;
-            picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            picture.Size = new Size(70, 70);
-            picture.LoadAsync(i_PictureURL);
-            picture.Name = "pictureBox" + i_Name;
-            picture.Location = new Point(35, 45);
-            box.Controls.Add(picture);
-            i_Panel.Controls.Add(box);
+            ThumbnailBox thumbnail = ThumbnailBoxFactory.Create(i_Theme, i_Name, i_PictureURL);
+            i_Panel.Controls.Add(thumbnail);
         }
 
         private void fetchAlbumPhotos()
@@ -399,15 +403,20 @@ namespace BasicFacebookFeatures
 
         private void fetchSportTeamsMainThread(Page[] i_Teams)
         {
-            if (flowLayoutPanelSport.Controls.Count == 0)
+            if (flowLayoutPanelSport.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if(flowLayoutPanelSport.Controls.Count != 0)
+                {
+                    flowLayoutPanelSport.Controls.Clear();
+                }
+
                 if (i_Teams != null)
                 {
                     try
                     {
                         foreach (Page team in i_Teams)
                         {
-                            addGroupBoxToPanel(flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                            addGroupBoxToPanel(m_Theme, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -461,13 +470,18 @@ namespace BasicFacebookFeatures
 
         private void fetchFriends()
         {
-            if(flowLayoutPanelFriends.Controls.Count == 0)
+            if(flowLayoutPanelFriends.Controls.Count == 0 || m_Theme != m_prevTheme)
             {
+                if(flowLayoutPanelFriends.Controls.Count != 0)
+                {
+                    flowLayoutPanelFriends.Controls.Clear();
+                }
+
                 try
                 {
                     foreach (User friend in LoggedInUserSingelton.Instance.User.Friends)
                     {
-                        addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                        addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -479,7 +493,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (MockUser friend in LoggedInUserSingelton.Instance.MockData.Friends)
                     {
-                        addGroupBoxToPanel(flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                        addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
 
                     mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
@@ -521,6 +535,37 @@ namespace BasicFacebookFeatures
             if (dataGridViewEvents.Rows.Count == 0)
             {
                 MessageBox.Show("No Events to retrieve :(");
+            }
+        }
+
+        private void comboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+
+            m_prevTheme = m_Theme;
+
+            switch (comboBox.SelectedIndex)
+            {
+                case (int)eTheme.Classic:
+                    {
+                        m_Theme = eTheme.Classic;
+                        break;
+                    }
+                case (int)eTheme.Dark:
+                    {
+                        m_Theme = eTheme.Dark;
+                        break;
+                    }
+                case (int)eTheme.Facebook:
+                    {
+                        m_Theme = eTheme.Facebook;
+                        break;
+                    }
+                default:
+                    {
+                        m_Theme = eTheme.Classic;
+                        break;
+                    }
             }
         }
     }

@@ -93,6 +93,8 @@
             this.labelFilter = new System.Windows.Forms.Label();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.comboBoxTheme = new System.Windows.Forms.ComboBox();
+            this.labelTheme = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             genderLabel = new System.Windows.Forms.Label();
@@ -575,6 +577,8 @@
             // 
             // flowLayoutPanelFriends
             // 
+            this.flowLayoutPanelFriends.AutoScroll = true;
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanelFriends.Location = new System.Drawing.Point(325, 12);
             this.flowLayoutPanelFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
@@ -770,12 +774,37 @@
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
+            // comboBoxTheme
+            // 
+            this.comboBoxTheme.FormattingEnabled = true;
+            this.comboBoxTheme.Items.AddRange(new object[] {
+            "Classic",
+            "Dark",
+            "Facebook"});
+            this.comboBoxTheme.Location = new System.Drawing.Point(898, 163);
+            this.comboBoxTheme.Name = "comboBoxTheme";
+            this.comboBoxTheme.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxTheme.TabIndex = 81;
+            this.comboBoxTheme.SelectedIndexChanged += new System.EventHandler(this.comboBoxTheme_SelectedIndexChanged);
+            // 
+            // labelTheme
+            // 
+            this.labelTheme.AutoSize = true;
+            this.labelTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTheme.Location = new System.Drawing.Point(894, 139);
+            this.labelTheme.Name = "labelTheme";
+            this.labelTheme.Size = new System.Drawing.Size(184, 20);
+            this.labelTheme.TabIndex = 82;
+            this.labelTheme.Text = "Choose Your Theme!";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1136, 689);
+            this.Controls.Add(this.labelTheme);
+            this.Controls.Add(this.comboBoxTheme);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
@@ -854,6 +883,8 @@
         private System.Windows.Forms.DataGridView dataGridViewEvents;
         private System.Windows.Forms.Label labelSort;
         private System.Windows.Forms.Label labelFilter;
+        private System.Windows.Forms.ComboBox comboBoxTheme;
+        private System.Windows.Forms.Label labelTheme;
         private System.Windows.Forms.Panel panelFriends;
         private System.Windows.Forms.TextBox birthDateTextBox;
         private System.Windows.Forms.BindingSource mockUserBindingSource;
