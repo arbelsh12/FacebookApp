@@ -5,74 +5,65 @@ namespace FacebookAppLogic
 {
     public class MockUser
     {
-        private string m_Hometown;
-        private string m_FirstName;
-        private string m_LastName;
-        private string m_Name;
-        private string m_BirthDate;
-        private string m_Email;
-        private string m_PictureURL;
-        private eGender m_Gender;
+        private readonly string r_Hometown;
+        private readonly string r_FirstName;
+        private readonly string r_LastName;
+        private readonly string r_Name;
+        private readonly string r_BirthDate;
+        private readonly string r_Email;
+        private readonly string r_PictureURL;
+        private readonly eGender r_Gender;
 
-        public MockUser(string i_FirstName, string i_LastName, string i_Email, eGender i_Gender)
+        public MockUser(string i_FirstName, string i_LastName, string i_Email, eGender i_Gender, string i_Hometown, string i_BirthDate, string i_Url)
         {
-            m_Email = i_Email;
-            m_FirstName = i_FirstName;
-            m_LastName = i_LastName;
-            m_Gender = i_Gender;
-        }
-
-        public MockUser()
-        {
-
+            r_Email = i_Email;
+            r_FirstName = i_FirstName;
+            r_LastName = i_LastName;
+            r_Gender = i_Gender;
+            r_Name = i_FirstName + " " + i_LastName;
+            r_PictureURL = i_Url;
+            r_BirthDate = i_BirthDate;
+            r_Hometown = i_Hometown;
         }
 
         public string PictureURL
         {
-            get { return m_PictureURL; }
-            set { m_PictureURL = value; }
+            get { return r_PictureURL; }
         }
 
         public string Hometown
         {
-            get { return m_Hometown; }
-            set { m_Hometown = value; }
+            get { return r_Hometown; }
         }
 
         public string FirstName
         {
-            get { return m_FirstName; }
-            set { m_FirstName = value; }
+            get { return r_FirstName; }
         }
 
         public string LastName
         {
-            get { return m_LastName; }
-            set { m_LastName = value; }
+            get { return r_LastName; }
         }
 
         public eGender Gender
         {
-            get { return m_Gender; }
-            set { m_Gender = value; }
+            get { return r_Gender; }
         }
 
         public string Name
         {
-            get { return m_Name; }
-            set { m_Name = value; }
+            get { return r_Name; }
         }
 
         public string BirthDate
         {
-            get { return m_BirthDate; } 
-            set { m_BirthDate = value; }
+            get { return r_BirthDate; } 
         }
 
         public string Email
         {
-            get { return m_Email; }
-            set { m_Email = value; }
+            get { return r_Email; }
         }
     }
 }
