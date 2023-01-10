@@ -19,8 +19,8 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
-        public eTheme m_Theme { get; set; }
-        public eTheme m_prevTheme { get; set; }
+        public eTheme Theme { get; set; }
+        public eTheme PrevTheme { get; set; }
 
         public FormMain(FormLogIn i_FormLogin)
         {
@@ -29,8 +29,8 @@ namespace BasicFacebookFeatures
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
-            m_Theme = eTheme.Classic;
-            m_prevTheme = eTheme.Classic;
+            Theme = eTheme.Classic;
+            PrevTheme = eTheme.Classic;
             loadUserInfo();
         }
 
@@ -79,7 +79,7 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            var albums = LoggedInUserSingelton.Instance.User.Albums;
+            FacebookObjectCollection<Album> albums = LoggedInUserSingelton.Instance.User.Albums;
 
             listBoxAlbums.Invoke(new Action(
                 () =>
@@ -118,7 +118,7 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
-            var posts = LoggedInUserSingelton.Instance.User.Posts;
+            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
 
             listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
         }
@@ -269,7 +269,7 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            var likedPages = LoggedInUserSingelton.Instance.User.LikedPages;
+            FacebookObjectCollection<Page> likedPages = LoggedInUserSingelton.Instance.User.LikedPages;
 
             flowLayoutPanelPages.Invoke(new Action(() => addLikedPagesToPanel(likedPages)));
             listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
@@ -277,7 +277,7 @@ namespace BasicFacebookFeatures
 
         private void addLikedPagesToPanel(FacebookObjectCollection<Page> i_LikedPages)
         {
-            if (flowLayoutPanelPages.Controls.Count == 0 || m_Theme != m_prevTheme)
+            if (flowLayoutPanelPages.Controls.Count == 0 || Theme != PrevTheme)
             {
                 if (flowLayoutPanelPages.Controls.Count != 0)
                 {
@@ -290,7 +290,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page page in i_LikedPages)
                         {
-                            addGroupBoxToPanel(m_Theme, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
+                            addGroupBoxToPanel(Theme, flowLayoutPanelPages, page.Name, page.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -309,7 +309,7 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            var groups = LoggedInUserSingelton.Instance.User.Groups;
+            FacebookObjectCollection<Group> groups = LoggedInUserSingelton.Instance.User.Groups;
 
             flowLayoutPanelGroups.Invoke(new Action(() => addGroupsToPanel(groups)));
             listBoxGroups.Invoke(new Action(() => groupBindingSource.DataSource = groups));
@@ -317,7 +317,7 @@ namespace BasicFacebookFeatures
 
         private void addGroupsToPanel(FacebookObjectCollection<Group> i_Groups)
         {
-            if (flowLayoutPanelGroups.Controls.Count == 0 || m_Theme != m_prevTheme)
+            if (flowLayoutPanelGroups.Controls.Count == 0 || Theme != PrevTheme)
             {
                 if(flowLayoutPanelGroups.Controls.Count != 0)
                 {
@@ -330,7 +330,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Group group in i_Groups)
                         {
-                            addGroupBoxToPanel(m_Theme, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
+                            addGroupBoxToPanel(Theme, flowLayoutPanelGroups, group.Name, group.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -362,7 +362,7 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbumPhotos(Album i_album)
         {
-            var photos = i_album.Photos;
+            FacebookObjectCollection<Photo> photos = i_album.Photos;
 
             flowLayoutPanelAlbumPhotos.Invoke(new Action(() => addPhotosToPanel(photos)));
         }
@@ -413,7 +413,7 @@ namespace BasicFacebookFeatures
 
         private void addSportTeamsToPanel(Page[] i_Teams)
         {
-            if (flowLayoutPanelSport.Controls.Count == 0 || m_Theme != m_prevTheme)
+            if (flowLayoutPanelSport.Controls.Count == 0 || Theme != PrevTheme)
             {
                 if(flowLayoutPanelSport.Controls.Count != 0)
                 {
@@ -426,7 +426,7 @@ namespace BasicFacebookFeatures
                     {
                         foreach (Page team in i_Teams)
                         {
-                            addGroupBoxToPanel(m_Theme, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
+                            addGroupBoxToPanel(Theme, flowLayoutPanelSport, team.Name, team.PictureNormalURL);
                         }
                     }
                     catch (Exception ex)
@@ -480,7 +480,7 @@ namespace BasicFacebookFeatures
 
         private void fetchFriends()
         {
-            if(flowLayoutPanelFriends.Controls.Count == 0 || m_Theme != m_prevTheme)
+            if(flowLayoutPanelFriends.Controls.Count == 0 || Theme != PrevTheme)
             {
                 if(flowLayoutPanelFriends.Controls.Count != 0)
                 {
@@ -491,7 +491,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (User friend in LoggedInUserSingelton.Instance.User.Friends)
                     {
-                        addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
+                        addGroupBoxToPanel(Theme, flowLayoutPanelFriends, friend.Name, friend.PictureNormalURL);
                     }
                 }
                 catch (Exception ex)
@@ -503,7 +503,7 @@ namespace BasicFacebookFeatures
                 {
                     foreach (MockUser friend in LoggedInUserSingelton.Instance.MockData.Friends)
                     {
-                        addGroupBoxToPanel(m_Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                        addGroupBoxToPanel(Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
                     }
 
                     mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
@@ -545,30 +545,64 @@ namespace BasicFacebookFeatures
         {
             ComboBox comboBox = (ComboBox)sender;
 
-            m_prevTheme = m_Theme;
+            PrevTheme = Theme;
 
             switch (comboBox.SelectedIndex)
             {
                 case (int)eTheme.Classic:
                     {
-                        m_Theme = eTheme.Classic;
+                        Theme = eTheme.Classic;
                         break;
                     }
                 case (int)eTheme.Dark:
                     {
-                        m_Theme = eTheme.Dark;
+                        Theme = eTheme.Dark;
                         break;
                     }
                 case (int)eTheme.Facebook:
                     {
-                        m_Theme = eTheme.Facebook;
+                        Theme = eTheme.Facebook;
                         break;
                     }
                 default:
                     {
-                        m_Theme = eTheme.Classic;
+                        Theme = eTheme.Classic;
                         break;
                     }
+            }
+
+            if (Theme != PrevTheme)
+            {
+                updateCurTabTheme();
+            }
+        }
+
+        private void updateCurTabTheme()
+        {
+            switch (tabControl.SelectedIndex)
+            {
+                case (int)eTab.Friends:
+                    {
+                        fetchFriends();
+                        break;
+                    }
+                case (int)eTab.LikedPages:
+                    {
+                        new Thread(fetchLikedPages).Start();
+                        break;
+                    }
+                case (int)eTab.Groups:
+                    {
+                        new Thread(fetchGroups).Start();
+                        break;
+                    }
+                case (int)eTab.SportTeams:
+                    {
+                        new Thread(fetchSportTeams).Start();
+                        break;
+                    }
+                default:
+                    break;
             }
         }
     }
