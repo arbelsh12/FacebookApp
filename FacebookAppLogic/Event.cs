@@ -4,12 +4,17 @@ namespace FacebookAppLogic
 {
     public class Event : iEvent
     {
-        public string m_Name { get; set; }
-        public DateTime m_StartTime { get; set; }
-        public long m_AttendingCount { get; set; }
-        public long m_InterestedCount { get; set; }
-        public long m_DeclinedCount { get; set; }
-        public long m_MaybeCount { get; set; }
-        public FacebookWrapper.ObjectModel.Event m_LegacyEvent { get; set; }
+        private readonly FacebookWrapper.ObjectModel.Event r_LegacyEvent;
+        public string m_Name { get { return r_LegacyEvent.Name; } }
+        public DateTime m_StartTime { get { return r_LegacyEvent.StartTime.Value; } }
+        public long m_AttendingCount { get { return r_LegacyEvent.AttendingCount.Value; } }
+        public long m_InterestedCount { get { return r_LegacyEvent.InterestedCount.Value; } }
+        public long m_DeclinedCount { get { return r_LegacyEvent.DeclinedCount.Value; } }
+        public long m_MaybeCount { get { return r_LegacyEvent.MaybeCount.Value; } }
+        
+        public Event(FacebookWrapper.ObjectModel.Event userEvent)
+        {
+            r_LegacyEvent = userEvent;
+        }
     }
 }

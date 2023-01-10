@@ -60,7 +60,7 @@ namespace FacebookAppLogic
             {
                 foreach (iEvent fbEvent in i_Events)
                 {
-                    bool isEventInNext7Days = DateTime.Now.AddDays(7) >= fbEvent.m_StartTime && DateTime.Now <= fbEvent.m_StartTime;
+                    bool isEventInNext7Days = DateTime.Today.AddDays(7) >= fbEvent.m_StartTime && (DateTime.Now <= fbEvent.m_StartTime || DateTime.Equals(fbEvent.m_StartTime, DateTime.Today));
 
                     if (isEventInNext7Days)
                     {

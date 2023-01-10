@@ -15,15 +15,5 @@ namespace FacebookAppLogic
         {
 
         }
-
-        public MockEvent(string i_Name, DateTime i_StartTime, long i_AttendingCount, long i_InterestedCount, long i_DeclinedCount, long i_MaybeCount)
-        {
-            m_Name = i_Name;
-            m_StartTime = i_StartTime;
-            m_AttendingCount = i_AttendingCount;
-            m_InterestedCount = i_InterestedCount;
-            m_DeclinedCount = i_DeclinedCount;
-            m_MaybeCount = i_MaybeCount;
-        }
     }
 }

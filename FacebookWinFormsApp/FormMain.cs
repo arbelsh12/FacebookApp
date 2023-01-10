@@ -197,18 +197,9 @@ namespace BasicFacebookFeatures
 
             try
             {
-                if(LoggedInUserSingelton.Instance.User.Events.Count > 0)
+                if(LoggedInUserSingelton.Instance.Events?.Count > 0)
                 {
-                    //TODO: Do I need to create an object of fake User and set his Data? - Resume the code in this case in the next commit with mock user
-                    //ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(m_LoggedInUser.Events.ToList(), comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
-
-                    //dataGridViewEvents.DataSource = sortedAndFilteredEvents;
-                }
-                else if (LoggedInUserSingelton.Instance.MockData.Events.Count > 0)
-                {
-                    //old code - delete in future
-                    //ICollection<MockEvent> sortedAndFilteredEvents = r_FilterMockEvents.FilterAndSortByUserSelection(r_MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
-                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(LoggedInUserSingelton.Instance.MockData.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
+                    ICollection<iEvent> sortedAndFilteredEvents = r_FilterEvents.FilterAndSortByUserSelection(LoggedInUserSingelton.Instance.Events, comboBoxFilterTime.SelectedIndex, comboBoxSortByAttends.SelectedIndex);
 
                     dataGridViewEvents.DataSource = sortedAndFilteredEvents;
                 }
@@ -510,14 +501,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if(LoggedInUserSingelton.Instance.User.Events.Count > 0)
-                {
-                    dataGridViewEvents.DataSource = LoggedInUserSingelton.Instance.User.Events;
-                }
-                else
-                {
-                    dataGridViewEvents.DataSource = LoggedInUserSingelton.Instance.MockData.Events;
-                }
+                dataGridViewEvents.DataSource = LoggedInUserSingelton.Instance.Events;
 
                 dataGridViewEvents.Columns[0].HeaderText = "Name";
                 dataGridViewEvents.Columns[1].HeaderText = "Start Time";
@@ -566,6 +550,11 @@ namespace BasicFacebookFeatures
                         break;
                     }
             }
+        }
+
+        private void comboBoxFilterTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
