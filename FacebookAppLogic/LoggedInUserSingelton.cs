@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookAppLogic
@@ -7,7 +8,8 @@ namespace FacebookAppLogic
     {
         private static LoggedInUserSingelton s_Instance = null;
         private static object s_LockObj = new Object();
-        private readonly MockData r_MockData;
+        private readonly MockData r_MockData = null;
+        private List<iEvent> m_Events = null;
         public User User { get; set; }
 
         private LoggedInUserSingelton()
@@ -40,6 +42,33 @@ namespace FacebookAppLogic
             {
                 return r_MockData;
             }
+        }
+
+        public List<iEvent> Events
+        {
+            get
+            {
+                if (m_Events == null)
+                {
+                    if (User.Events.Count > 0)
+                    {
+                        m_Events = new List<iEvent>();
+
+                        foreach (FacebookWrapper.ObjectModel.Event userEvent in User.Events)
+                        {
+                            m_Events.Add(new Event(userEvent));
+                        }
+                    }
+                    else if (MockData.Events.Count > 0)
+                    {
+                        m_Events = MockData.Events;
+                    }
+                }
+
+                return m_Events;
+            }
+
+            private set { }
         }
     }
 }

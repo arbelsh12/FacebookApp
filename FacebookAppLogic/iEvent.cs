@@ -8,11 +8,11 @@ namespace FacebookAppLogic
 {
     public interface iEvent
     {
-        string m_Name { get; set; }
-        DateTime m_StartTime { get; set; }
-        long m_AttendingCount { get; set; }
-        long m_InterestedCount { get; set; }
-        long m_DeclinedCount { get; set; }
-        long m_MaybeCount { get; set; }
+        string Name { get; }
+        DateTime StartTime { get; }
+        long AttendingCount { get; }
+        long InterestedCount { get; }
+        long DeclinedCount { get; }
+        long MaybeCount { get; }
     }
 }
