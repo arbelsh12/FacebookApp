@@ -7,16 +7,10 @@ namespace FacebookAppLogic
     public sealed class LoggedInUserSingelton
     {
         private static LoggedInUserSingelton s_Instance = null;
-<<<<<<< HEAD
+        private static object s_LockObj = new Object();
         private readonly MockData r_MockData = null;
         private List<iEvent> m_Events = null;
-        private User m_User = null;
-=======
-        private static object s_LockObj = new Object();
-        private readonly List<iEvent> r_Events = null;        
-        private readonly MockData r_MockData;
         public User User { get; set; }
->>>>>>> 3ca91680a0025b00854093465be40b27174e8e86
 
         private LoggedInUserSingelton()
         {
