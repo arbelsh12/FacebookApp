@@ -23,16 +23,16 @@ namespace FacebookAppLogic
                 switch (i_GuestsConfirmationsSelection)
                 {
                     case (int)eGuestsConfirmation.Attending:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_AttendingCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Interested:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_InterestedCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Declined:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_DeclinedCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
                         break;
                     case (int)eGuestsConfirmation.Maybe:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.m_MaybeCount).ToList();
+                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
                         break;
                     default:
                         break;
@@ -50,7 +50,7 @@ namespace FacebookAppLogic
             {
                 foreach (iEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.m_StartTime.Date == DateTime.Now.Date)
+                    if (fbEvent.StartTime.Date == DateTime.Now.Date)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }
@@ -60,7 +60,7 @@ namespace FacebookAppLogic
             {
                 foreach (iEvent fbEvent in i_Events)
                 {
-                    bool isEventInNext7Days = DateTime.Today.AddDays(7) >= fbEvent.m_StartTime && (DateTime.Now <= fbEvent.m_StartTime || DateTime.Equals(fbEvent.m_StartTime, DateTime.Today));
+                    bool isEventInNext7Days = DateTime.Today.AddDays(7) >= fbEvent.StartTime && (DateTime.Now <= fbEvent.StartTime || DateTime.Equals(fbEvent.StartTime, DateTime.Today));
 
                     if (isEventInNext7Days)
                     {
@@ -72,7 +72,7 @@ namespace FacebookAppLogic
             {
                 foreach (iEvent fbEvent in i_Events)
                 {
-                    if (fbEvent.m_StartTime.Month == DateTime.Now.Month && fbEvent.m_StartTime.Year == DateTime.Now.Year)
+                    if (fbEvent.StartTime.Month == DateTime.Now.Month && fbEvent.StartTime.Year == DateTime.Now.Year)
                     {
                         filteredEventsListByTime.Add(fbEvent);
                     }

@@ -4,12 +4,12 @@ namespace FacebookAppLogic
 {
     public class MockEvent : iEvent
     {
-        public string m_Name { get; set; }
-        public DateTime m_StartTime { get; set; }
-        public long m_AttendingCount { get; set; }
-        public long m_InterestedCount { get; set; }
-        public long m_DeclinedCount { get; set; }
-        public long m_MaybeCount { get; set; }
+        public string Name { get; set; }
+        public DateTime StartTime { get; set; }
+        public long AttendingCount { get; set; }
+        public long InterestedCount { get; set; }
+        public long DeclinedCount { get; set; }
+        public long MaybeCount { get; set; }
 
         public MockEvent()
         {
