@@ -571,11 +571,6 @@ namespace BasicFacebookFeatures
                     }
             }
         }
-
-        private void comboBoxFilterTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
