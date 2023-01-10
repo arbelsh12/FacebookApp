@@ -586,6 +586,40 @@ namespace BasicFacebookFeatures
                         break;
                     }
             }
+
+            if (Theme != PrevTheme)
+            {
+                updateCurTabTheme();
+            }
+        }
+
+        private void updateCurTabTheme()
+        {
+            switch (tabControl.SelectedIndex)
+            {
+                case (int)eTab.Friends:
+                    {
+                        fetchFriends();
+                        break;
+                    }
+                case (int)eTab.LikedPages:
+                    {
+                        new Thread(fetchLikedPages).Start();
+                        break;
+                    }
+                case (int)eTab.Groups:
+                    {
+                        new Thread(fetchGroups).Start();
+                        break;
+                    }
+                case (int)eTab.SportTeams:
+                    {
+                        new Thread(fetchSportTeams).Start();
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
     }
 }
