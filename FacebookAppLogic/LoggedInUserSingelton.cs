@@ -8,7 +8,7 @@ namespace FacebookAppLogic
     {
         private static LoggedInUserSingelton s_Instance = null;
         private readonly MockData r_MockData = null;
-        private readonly List<iEvent> r_Events = null;
+        private List<iEvent> m_Events = null;
         private User m_User = null;
 
         private LoggedInUserSingelton()
@@ -54,31 +54,27 @@ namespace FacebookAppLogic
         {
             get
             {
-                List<iEvent> events = null;
-
-                if (r_Events == null)
+                if (m_Events == null)
                 {
                     if (User.Events.Count > 0)
                     {
-                        events = new List<iEvent>();
+                        m_Events = new List<iEvent>();
 
                         foreach (FacebookWrapper.ObjectModel.Event userEvent in User.Events)
                         {
-                            events.Add(new Event(userEvent));
+                            m_Events.Add(new Event(userEvent));
                         }
                     }
                     else if (MockData.Events.Count > 0)
                     {
-                        events = MockData.Events;
+                        m_Events = MockData.Events;
                     }
                 }
-                else
-                {
-                    events = r_Events;
-                }
 
-                return events;
+                return m_Events;
             }
+
+            private set { }
         }
     }
 }
