@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookAppLogic;
@@ -126,7 +122,7 @@ namespace BasicFacebookFeatures
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
         {
             listBoxUserPosts.Items.Clear();
-            foreach (Post post in LoggedInUserSingelton.Instance.User.Posts)
+            foreach (Post post in i_Posts)
             {
                 if (post.Message != null)
                 {
@@ -447,7 +443,7 @@ namespace BasicFacebookFeatures
             Post selected = LoggedInUserSingelton.Instance.User.Posts[listBoxUserPosts.SelectedIndex];
 
             flowLayoutPanelComments.Controls.Clear();
-            if(selected != null)
+            if (selected != null)
             {
                 try
                 {
@@ -509,7 +505,6 @@ namespace BasicFacebookFeatures
                     mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
                 }
             }
-
 
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
