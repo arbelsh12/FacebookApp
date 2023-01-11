@@ -122,7 +122,7 @@ namespace BasicFacebookFeatures
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
         {
             listBoxUserPosts.Items.Clear();
-            foreach (Post post in LoggedInUserSingelton.Instance.User.Posts)
+            foreach (Post post in i_Posts)
             {
                 if (post.Message != null)
                 {
@@ -505,7 +505,6 @@ namespace BasicFacebookFeatures
                     mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
                 }
             }
-
 
             if (flowLayoutPanelFriends.Controls.Count == 0)
             {
