@@ -24,7 +24,6 @@ namespace FacebookAppLogic
             Controls.Add(r_Label);
             BackColor = Color.Black;
             ForeColor = Color.LightGray;
-        }
-    
+        }    
     }
 }

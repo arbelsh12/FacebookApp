@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacebookAppLogic
 {
@@ -30,7 +26,6 @@ namespace FacebookAppLogic
                         break;
                     }
                 default:
-                    //throw new ArgumentException("Not Valid type");
                     break;
             }
 
