@@ -443,7 +443,7 @@ namespace BasicFacebookFeatures
             Post selected = LoggedInUserSingelton.Instance.User.Posts[listBoxUserPosts.SelectedIndex];
 
             flowLayoutPanelComments.Controls.Clear();
-            if (selected != null)
+            if(selected != null)
             {
                 try
                 {
