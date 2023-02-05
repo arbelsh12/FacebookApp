@@ -476,13 +476,23 @@ namespace BasicFacebookFeatures
 
         private void fetchFriends()
         {
-            if(flowLayoutPanelFriends.Controls.Count == 0 || Theme != PrevTheme)
+            if (flowLayoutPanelFriends.Controls.Count != 0)
             {
-                if(flowLayoutPanelFriends.Controls.Count != 0)
-                {
-                    flowLayoutPanelFriends.Controls.Clear();
-                }
+                flowLayoutPanelFriends.Controls.Clear();
+            }
 
+            List<MockUser> friendsList = new List<MockUser>();
+
+            foreach (MockUser friend in LoggedInUserSingelton.Instance.MockFriends)
+            {
+                addGroupBoxToPanel(Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                friendsList.Add(friend);
+            }
+
+            mockUserBindingSource.DataSource = friendsList;
+
+            if (flowLayoutPanelFriends.Controls.Count == 0)
+            {
                 try
                 {
                     foreach (User friend in LoggedInUserSingelton.Instance.User.Friends)
@@ -493,16 +503,6 @@ namespace BasicFacebookFeatures
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-
-                if (flowLayoutPanelFriends.Controls.Count == 0)
-                {
-                    foreach (MockUser friend in LoggedInUserSingelton.Instance.MockData.Friends)
-                    {
-                        addGroupBoxToPanel(Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
-                    }
-
-                    mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
                 }
             }
 
@@ -599,6 +599,32 @@ namespace BasicFacebookFeatures
                 default:
                     break;
             }
+        }
+
+        private void comboBoxFilterFriends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+
+            switch (comboBox.SelectedIndex)
+            {
+                case (int)User.eGender.female:
+                    {
+                        LoggedInUserSingelton.Instance.MockFriends.UpdateGenderFilter((int)User.eGender.female);
+                        break;
+                    }
+                case (int)User.eGender.male:
+                    {
+                        LoggedInUserSingelton.Instance.MockFriends.UpdateGenderFilter((int)User.eGender.male);
+                        break;
+                    }
+                default:
+                    {
+                        LoggedInUserSingelton.Instance.MockFriends.UpdateGenderFilter(LoggedInUserSingelton.Instance.MockFriends.AllGenders);
+                        break;
+                    }
+            }
+
+            fetchFriends();
         }
     }
 }

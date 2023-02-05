@@ -9,12 +9,14 @@ namespace FacebookAppLogic
         private static LoggedInUserSingelton s_Instance = null;
         private static object s_LockObj = new Object();
         private readonly MockData r_MockData = null;
+        private readonly MockFriends r_MockFriends = null;
         private List<iEvent> m_Events = null;
         public User User { get; set; }
 
         private LoggedInUserSingelton()
         {
             r_MockData = new MockData();
+            r_MockFriends = new MockFriends();
         }
 
         public static LoggedInUserSingelton Instance
@@ -41,6 +43,14 @@ namespace FacebookAppLogic
             get
             {
                 return r_MockData;
+            }
+        }
+
+        public MockFriends MockFriends
+        {
+            get
+            {
+                return r_MockFriends;
             }
         }
 

@@ -106,6 +106,8 @@
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
             this.labelTheme = new System.Windows.Forms.Label();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.comboBoxFilterFriends = new System.Windows.Forms.ComboBox();
+            this.labelFilterFriends = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             genderLabel = new System.Windows.Forms.Label();
@@ -142,9 +144,10 @@
             // 
             birthDateLabel.AutoSize = true;
             birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            birthDateLabel.Location = new System.Drawing.Point(23, 44);
+            birthDateLabel.Location = new System.Drawing.Point(17, 36);
+            birthDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(79, 16);
+            birthDateLabel.Size = new System.Drawing.Size(68, 13);
             birthDateLabel.TabIndex = 0;
             birthDateLabel.Text = "Birth Date:";
             // 
@@ -152,9 +155,10 @@
             // 
             emailLabel.AutoSize = true;
             emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            emailLabel.Location = new System.Drawing.Point(23, 67);
+            emailLabel.Location = new System.Drawing.Point(17, 54);
+            emailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(50, 16);
+            emailLabel.Size = new System.Drawing.Size(41, 13);
             emailLabel.TabIndex = 2;
             emailLabel.Text = "Email:";
             // 
@@ -162,9 +166,10 @@
             // 
             genderLabel.AutoSize = true;
             genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            genderLabel.Location = new System.Drawing.Point(23, 90);
+            genderLabel.Location = new System.Drawing.Point(17, 73);
+            genderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             genderLabel.Name = "genderLabel";
-            genderLabel.Size = new System.Drawing.Size(62, 16);
+            genderLabel.Size = new System.Drawing.Size(52, 13);
             genderLabel.TabIndex = 4;
             genderLabel.Text = "Gender:";
             // 
@@ -172,9 +177,10 @@
             // 
             hometownLabel.AutoSize = true;
             hometownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            hometownLabel.Location = new System.Drawing.Point(23, 113);
+            hometownLabel.Location = new System.Drawing.Point(17, 92);
+            hometownLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             hometownLabel.Name = "hometownLabel";
-            hometownLabel.Size = new System.Drawing.Size(83, 16);
+            hometownLabel.Size = new System.Drawing.Size(70, 13);
             hometownLabel.TabIndex = 6;
             hometownLabel.Text = "Hometown:";
             // 
@@ -182,9 +188,10 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nameLabel.Location = new System.Drawing.Point(23, 21);
+            nameLabel.Location = new System.Drawing.Point(17, 17);
+            nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(52, 16);
+            nameLabel.Size = new System.Drawing.Size(43, 13);
             nameLabel.TabIndex = 8;
             nameLabel.Text = "Name:";
             // 
@@ -192,9 +199,10 @@
             // 
             descriptionLabel.AutoSize = true;
             descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descriptionLabel.Location = new System.Drawing.Point(22, 48);
+            descriptionLabel.Location = new System.Drawing.Point(16, 39);
+            descriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(90, 16);
+            descriptionLabel.Size = new System.Drawing.Size(75, 13);
             descriptionLabel.TabIndex = 0;
             descriptionLabel.Text = "Description:";
             // 
@@ -202,9 +210,10 @@
             // 
             idLabel.AutoSize = true;
             idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idLabel.Location = new System.Drawing.Point(21, 71);
+            idLabel.Location = new System.Drawing.Point(16, 58);
+            idLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(24, 16);
+            idLabel.Size = new System.Drawing.Size(22, 13);
             idLabel.TabIndex = 2;
             idLabel.Text = "Id:";
             // 
@@ -212,9 +221,10 @@
             // 
             nameLabel1.AutoSize = true;
             nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nameLabel1.Location = new System.Drawing.Point(21, 25);
+            nameLabel1.Location = new System.Drawing.Point(16, 20);
+            nameLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             nameLabel1.Name = "nameLabel1";
-            nameLabel1.Size = new System.Drawing.Size(52, 16);
+            nameLabel1.Size = new System.Drawing.Size(43, 13);
             nameLabel1.TabIndex = 4;
             nameLabel1.Text = "Name:";
             // 
@@ -222,9 +232,10 @@
             // 
             descriptionLabel2.AutoSize = true;
             descriptionLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descriptionLabel2.Location = new System.Drawing.Point(20, 41);
+            descriptionLabel2.Location = new System.Drawing.Point(15, 33);
+            descriptionLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             descriptionLabel2.Name = "descriptionLabel2";
-            descriptionLabel2.Size = new System.Drawing.Size(90, 16);
+            descriptionLabel2.Size = new System.Drawing.Size(75, 13);
             descriptionLabel2.TabIndex = 0;
             descriptionLabel2.Text = "Description:";
             // 
@@ -232,9 +243,10 @@
             // 
             idLabel2.AutoSize = true;
             idLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idLabel2.Location = new System.Drawing.Point(20, 64);
+            idLabel2.Location = new System.Drawing.Point(15, 52);
+            idLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             idLabel2.Name = "idLabel2";
-            idLabel2.Size = new System.Drawing.Size(24, 16);
+            idLabel2.Size = new System.Drawing.Size(22, 13);
             idLabel2.TabIndex = 2;
             idLabel2.Text = "Id:";
             // 
@@ -242,18 +254,18 @@
             // 
             nameLabel4.AutoSize = true;
             nameLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nameLabel4.Location = new System.Drawing.Point(20, 18);
+            nameLabel4.Location = new System.Drawing.Point(15, 15);
+            nameLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             nameLabel4.Name = "nameLabel4";
-            nameLabel4.Size = new System.Drawing.Size(52, 16);
+            nameLabel4.Size = new System.Drawing.Size(43, 13);
             nameLabel4.TabIndex = 4;
             nameLabel4.Text = "Name:";
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(839, 41);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLogout.Location = new System.Drawing.Point(629, 33);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(201, 28);
+            this.buttonLogout.Size = new System.Drawing.Size(151, 23);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -261,20 +273,20 @@
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 24);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(21, 20);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(151, 133);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(113, 108);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
             // 
             // buttonAstrologyHoroscopePost
             // 
-            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(846, 18);
-            this.buttonAstrologyHoroscopePost.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(634, 15);
+            this.buttonAstrologyHoroscopePost.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonAstrologyHoroscopePost.Name = "buttonAstrologyHoroscopePost";
-            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(125, 89);
+            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(94, 72);
             this.buttonAstrologyHoroscopePost.TabIndex = 59;
             this.buttonAstrologyHoroscopePost.Text = "Post Daily Compatibility Astrology Horoscope";
             this.buttonAstrologyHoroscopePost.UseVisualStyleBackColor = true;
@@ -282,28 +294,28 @@
             // 
             // pictureBoxCover
             // 
-            this.pictureBoxCover.Location = new System.Drawing.Point(203, 23);
-            this.pictureBoxCover.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxCover.Location = new System.Drawing.Point(152, 19);
+            this.pictureBoxCover.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBoxCover.Name = "pictureBoxCover";
-            this.pictureBoxCover.Size = new System.Drawing.Size(271, 97);
+            this.pictureBoxCover.Size = new System.Drawing.Size(203, 79);
             this.pictureBoxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCover.TabIndex = 62;
             this.pictureBoxCover.TabStop = false;
             // 
             // textBoxPost
             // 
-            this.textBoxPost.Location = new System.Drawing.Point(398, 21);
-            this.textBoxPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxPost.Location = new System.Drawing.Point(298, 17);
+            this.textBoxPost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxPost.Name = "textBoxPost";
-            this.textBoxPost.Size = new System.Drawing.Size(349, 22);
+            this.textBoxPost.Size = new System.Drawing.Size(263, 20);
             this.textBoxPost.TabIndex = 64;
             // 
             // buttonPost
             // 
-            this.buttonPost.Location = new System.Drawing.Point(764, 18);
-            this.buttonPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonPost.Location = new System.Drawing.Point(573, 15);
+            this.buttonPost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(67, 25);
+            this.buttonPost.Size = new System.Drawing.Size(50, 20);
             this.buttonPost.TabIndex = 65;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
@@ -312,29 +324,29 @@
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.ItemHeight = 16;
-            this.listBoxAlbums.Location = new System.Drawing.Point(6, 31);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBoxAlbums.Location = new System.Drawing.Point(4, 25);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(249, 132);
+            this.listBoxAlbums.Size = new System.Drawing.Size(188, 108);
             this.listBoxAlbums.TabIndex = 64;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // labelAlbums
             // 
             this.labelAlbums.AutoSize = true;
-            this.labelAlbums.Location = new System.Drawing.Point(8, 10);
+            this.labelAlbums.Location = new System.Drawing.Point(6, 8);
+            this.labelAlbums.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAlbums.Name = "labelAlbums";
-            this.labelAlbums.Size = new System.Drawing.Size(52, 16);
+            this.labelAlbums.Size = new System.Drawing.Size(41, 13);
             this.labelAlbums.TabIndex = 65;
             this.labelAlbums.Text = "Albums";
             // 
             // pictureBoxSelectedAlbum
             // 
-            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(272, 41);
-            this.pictureBoxSelectedAlbum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxSelectedAlbum.Location = new System.Drawing.Point(204, 33);
+            this.pictureBoxSelectedAlbum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxSelectedAlbum.Name = "pictureBoxSelectedAlbum";
-            this.pictureBoxSelectedAlbum.Size = new System.Drawing.Size(105, 90);
+            this.pictureBoxSelectedAlbum.Size = new System.Drawing.Size(79, 73);
             this.pictureBoxSelectedAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSelectedAlbum.TabIndex = 66;
             this.pictureBoxSelectedAlbum.TabStop = false;
@@ -342,38 +354,40 @@
             // labelSelectedAlbum
             // 
             this.labelSelectedAlbum.AutoSize = true;
-            this.labelSelectedAlbum.Location = new System.Drawing.Point(268, 22);
+            this.labelSelectedAlbum.Location = new System.Drawing.Point(201, 18);
+            this.labelSelectedAlbum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSelectedAlbum.Name = "labelSelectedAlbum";
-            this.labelSelectedAlbum.Size = new System.Drawing.Size(102, 16);
+            this.labelSelectedAlbum.Size = new System.Drawing.Size(81, 13);
             this.labelSelectedAlbum.TabIndex = 67;
             this.labelSelectedAlbum.Text = "Selected Album";
             // 
             // listBoxUserPosts
             // 
             this.listBoxUserPosts.FormattingEnabled = true;
-            this.listBoxUserPosts.ItemHeight = 16;
-            this.listBoxUserPosts.Location = new System.Drawing.Point(22, 205);
-            this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBoxUserPosts.Location = new System.Drawing.Point(16, 167);
+            this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxUserPosts.Name = "listBoxUserPosts";
-            this.listBoxUserPosts.Size = new System.Drawing.Size(364, 116);
+            this.listBoxUserPosts.Size = new System.Drawing.Size(274, 95);
             this.listBoxUserPosts.TabIndex = 72;
             this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedIndexChanged);
             // 
             // labelUserPosts
             // 
             this.labelUserPosts.AutoSize = true;
-            this.labelUserPosts.Location = new System.Drawing.Point(19, 184);
+            this.labelUserPosts.Location = new System.Drawing.Point(14, 150);
+            this.labelUserPosts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUserPosts.Name = "labelUserPosts";
-            this.labelUserPosts.Size = new System.Drawing.Size(83, 16);
+            this.labelUserPosts.Size = new System.Drawing.Size(65, 13);
             this.labelUserPosts.TabIndex = 74;
             this.labelUserPosts.Text = "User\'s Posts";
             // 
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
-            this.labelPostComments.Location = new System.Drawing.Point(398, 199);
+            this.labelPostComments.Location = new System.Drawing.Point(298, 162);
+            this.labelPostComments.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPostComments.Name = "labelPostComments";
-            this.labelPostComments.Size = new System.Drawing.Size(101, 16);
+            this.labelPostComments.Size = new System.Drawing.Size(80, 13);
             this.labelPostComments.TabIndex = 75;
             this.labelPostComments.Text = "Post Comments";
             // 
@@ -386,18 +400,18 @@
             "Today",
             "In the next 7 days",
             "This month"});
-            this.comboBoxFilterTime.Location = new System.Drawing.Point(166, 40);
-            this.comboBoxFilterTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxFilterTime.Location = new System.Drawing.Point(124, 32);
+            this.comboBoxFilterTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxFilterTime.Name = "comboBoxFilterTime";
-            this.comboBoxFilterTime.Size = new System.Drawing.Size(133, 24);
+            this.comboBoxFilterTime.Size = new System.Drawing.Size(101, 21);
             this.comboBoxFilterTime.TabIndex = 76;
             // 
             // buttonEventsFilter
             // 
-            this.buttonEventsFilter.Location = new System.Drawing.Point(126, 77);
-            this.buttonEventsFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEventsFilter.Location = new System.Drawing.Point(94, 63);
+            this.buttonEventsFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonEventsFilter.Name = "buttonEventsFilter";
-            this.buttonEventsFilter.Size = new System.Drawing.Size(62, 23);
+            this.buttonEventsFilter.Size = new System.Drawing.Size(46, 19);
             this.buttonEventsFilter.TabIndex = 77;
             this.buttonEventsFilter.Text = "Go!";
             this.buttonEventsFilter.UseVisualStyleBackColor = true;
@@ -413,10 +427,10 @@
             "Interested",
             "Declined",
             "Maybe"});
-            this.comboBoxSortByAttends.Location = new System.Drawing.Point(12, 40);
-            this.comboBoxSortByAttends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxSortByAttends.Location = new System.Drawing.Point(9, 32);
+            this.comboBoxSortByAttends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxSortByAttends.Name = "comboBoxSortByAttends";
-            this.comboBoxSortByAttends.Size = new System.Drawing.Size(133, 24);
+            this.comboBoxSortByAttends.Size = new System.Drawing.Size(101, 21);
             this.comboBoxSortByAttends.TabIndex = 78;
             // 
             // tabControl
@@ -428,10 +442,11 @@
             this.tabControl.Controls.Add(this.tabPageGroups);
             this.tabControl.Controls.Add(this.tabPageSport);
             this.tabControl.Controls.Add(this.tabPageEvents);
-            this.tabControl.Location = new System.Drawing.Point(28, 193);
+            this.tabControl.Location = new System.Drawing.Point(21, 157);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1144, 413);
+            this.tabControl.Size = new System.Drawing.Size(858, 336);
             this.tabControl.TabIndex = 79;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -453,27 +468,30 @@
             this.tabPageFeed.Controls.Add(this.listBoxUserPosts);
             this.tabPageFeed.Controls.Add(this.textBoxPost);
             this.tabPageFeed.Controls.Add(this.buttonPost);
-            this.tabPageFeed.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFeed.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageFeed.Name = "tabPageFeed";
-            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFeed.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageFeed.Size = new System.Drawing.Size(850, 310);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
             // 
             // flowLayoutPanelComments
             // 
             this.flowLayoutPanelComments.AutoScroll = true;
-            this.flowLayoutPanelComments.Location = new System.Drawing.Point(401, 220);
+            this.flowLayoutPanelComments.Location = new System.Drawing.Point(301, 179);
+            this.flowLayoutPanelComments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
-            this.flowLayoutPanelComments.Size = new System.Drawing.Size(293, 100);
+            this.flowLayoutPanelComments.Size = new System.Drawing.Size(220, 81);
             this.flowLayoutPanelComments.TabIndex = 86;
             // 
             // labelUserEmail
             // 
             this.labelUserEmail.AutoSize = true;
-            this.labelUserEmail.Location = new System.Drawing.Point(115, 136);
+            this.labelUserEmail.Location = new System.Drawing.Point(86, 110);
+            this.labelUserEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUserEmail.Name = "labelUserEmail";
-            this.labelUserEmail.Size = new System.Drawing.Size(41, 16);
+            this.labelUserEmail.Size = new System.Drawing.Size(32, 13);
             this.labelUserEmail.TabIndex = 85;
             this.labelUserEmail.Text = "Email";
             // 
@@ -481,9 +499,10 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(34, 136);
+            this.labelEmail.Location = new System.Drawing.Point(26, 110);
+            this.labelEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(50, 16);
+            this.labelEmail.Size = new System.Drawing.Size(41, 13);
             this.labelEmail.TabIndex = 84;
             this.labelEmail.Text = "Email:";
             // 
@@ -491,27 +510,30 @@
             // 
             this.labelUserZodiac.AutoSize = true;
             this.labelUserZodiac.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUserZodiac.Location = new System.Drawing.Point(115, 104);
+            this.labelUserZodiac.Location = new System.Drawing.Point(86, 84);
+            this.labelUserZodiac.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUserZodiac.Name = "labelUserZodiac";
-            this.labelUserZodiac.Size = new System.Drawing.Size(75, 16);
+            this.labelUserZodiac.Size = new System.Drawing.Size(60, 13);
             this.labelUserZodiac.TabIndex = 83;
             this.labelUserZodiac.Text = "userZodiac";
             // 
             // labelUserGender
             // 
             this.labelUserGender.AutoSize = true;
-            this.labelUserGender.Location = new System.Drawing.Point(115, 65);
+            this.labelUserGender.Location = new System.Drawing.Point(86, 53);
+            this.labelUserGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUserGender.Name = "labelUserGender";
-            this.labelUserGender.Size = new System.Drawing.Size(78, 16);
+            this.labelUserGender.Size = new System.Drawing.Size(62, 13);
             this.labelUserGender.TabIndex = 82;
             this.labelUserGender.Text = "userGender";
             // 
             // labelBirthDate
             // 
             this.labelBirthDate.AutoSize = true;
-            this.labelBirthDate.Location = new System.Drawing.Point(115, 27);
+            this.labelBirthDate.Location = new System.Drawing.Point(86, 22);
+            this.labelBirthDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBirthDate.Name = "labelBirthDate";
-            this.labelBirthDate.Size = new System.Drawing.Size(62, 16);
+            this.labelBirthDate.Size = new System.Drawing.Size(51, 13);
             this.labelBirthDate.TabIndex = 81;
             this.labelBirthDate.Text = "BirthDate";
             // 
@@ -519,9 +541,10 @@
             // 
             this.labelZodiac.AutoSize = true;
             this.labelZodiac.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZodiac.Location = new System.Drawing.Point(34, 104);
+            this.labelZodiac.Location = new System.Drawing.Point(26, 84);
+            this.labelZodiac.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelZodiac.Name = "labelZodiac";
-            this.labelZodiac.Size = new System.Drawing.Size(59, 16);
+            this.labelZodiac.Size = new System.Drawing.Size(50, 13);
             this.labelZodiac.TabIndex = 79;
             this.labelZodiac.Text = "Zodiac:";
             // 
@@ -529,9 +552,10 @@
             // 
             this.labelGender.AutoSize = true;
             this.labelGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGender.Location = new System.Drawing.Point(34, 65);
+            this.labelGender.Location = new System.Drawing.Point(26, 53);
+            this.labelGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelGender.Name = "labelGender";
-            this.labelGender.Size = new System.Drawing.Size(62, 16);
+            this.labelGender.Size = new System.Drawing.Size(52, 13);
             this.labelGender.TabIndex = 78;
             this.labelGender.Text = "Gender:";
             // 
@@ -539,22 +563,25 @@
             // 
             this.labelBirth.AutoSize = true;
             this.labelBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBirth.Location = new System.Drawing.Point(34, 27);
+            this.labelBirth.Location = new System.Drawing.Point(26, 22);
+            this.labelBirth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBirth.Name = "labelBirth";
-            this.labelBirth.Size = new System.Drawing.Size(68, 16);
+            this.labelBirth.Size = new System.Drawing.Size(57, 13);
             this.labelBirth.TabIndex = 77;
             this.labelBirth.Text = "Birthday:";
             // 
             // tabPageFriends
             // 
             this.tabPageFriends.BackColor = System.Drawing.Color.OldLace;
+            this.tabPageFriends.Controls.Add(this.labelFilterFriends);
+            this.tabPageFriends.Controls.Add(this.comboBoxFilterFriends);
             this.tabPageFriends.Controls.Add(this.panelFriends);
             this.tabPageFriends.Controls.Add(this.listBoxFriends);
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
-            this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
-            this.tabPageFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPageFriends.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFriends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageFriends.Name = "tabPageFriends";
-            this.tabPageFriends.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageFriends.Size = new System.Drawing.Size(850, 310);
             this.tabPageFriends.TabIndex = 5;
             this.tabPageFriends.Text = "Friends";
             // 
@@ -571,17 +598,19 @@
             this.panelFriends.Controls.Add(this.hometownLabel1);
             this.panelFriends.Controls.Add(nameLabel);
             this.panelFriends.Controls.Add(this.nameLabel2);
-            this.panelFriends.Location = new System.Drawing.Point(27, 117);
+            this.panelFriends.Location = new System.Drawing.Point(20, 154);
+            this.panelFriends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelFriends.Name = "panelFriends";
-            this.panelFriends.Size = new System.Drawing.Size(295, 182);
+            this.panelFriends.Size = new System.Drawing.Size(221, 148);
             this.panelFriends.TabIndex = 2;
             // 
             // birthDateLabel1
             // 
             this.birthDateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "BirthDate", true));
-            this.birthDateLabel1.Location = new System.Drawing.Point(132, 44);
+            this.birthDateLabel1.Location = new System.Drawing.Point(99, 36);
+            this.birthDateLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.birthDateLabel1.Name = "birthDateLabel1";
-            this.birthDateLabel1.Size = new System.Drawing.Size(100, 23);
+            this.birthDateLabel1.Size = new System.Drawing.Size(75, 19);
             this.birthDateLabel1.TabIndex = 1;
             this.birthDateLabel1.Text = "label1";
             // 
@@ -592,9 +621,10 @@
             // emailLinkLabel
             // 
             this.emailLinkLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Email", true));
-            this.emailLinkLabel.Location = new System.Drawing.Point(132, 67);
+            this.emailLinkLabel.Location = new System.Drawing.Point(99, 54);
+            this.emailLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.emailLinkLabel.Name = "emailLinkLabel";
-            this.emailLinkLabel.Size = new System.Drawing.Size(100, 23);
+            this.emailLinkLabel.Size = new System.Drawing.Size(75, 19);
             this.emailLinkLabel.TabIndex = 3;
             this.emailLinkLabel.TabStop = true;
             this.emailLinkLabel.Text = "linkLabel1";
@@ -602,27 +632,30 @@
             // genderLabel1
             // 
             this.genderLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Gender", true));
-            this.genderLabel1.Location = new System.Drawing.Point(132, 90);
+            this.genderLabel1.Location = new System.Drawing.Point(99, 73);
+            this.genderLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.genderLabel1.Name = "genderLabel1";
-            this.genderLabel1.Size = new System.Drawing.Size(100, 23);
+            this.genderLabel1.Size = new System.Drawing.Size(75, 19);
             this.genderLabel1.TabIndex = 5;
             this.genderLabel1.Text = "label1";
             // 
             // hometownLabel1
             // 
             this.hometownLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Hometown", true));
-            this.hometownLabel1.Location = new System.Drawing.Point(132, 113);
+            this.hometownLabel1.Location = new System.Drawing.Point(99, 92);
+            this.hometownLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hometownLabel1.Name = "hometownLabel1";
-            this.hometownLabel1.Size = new System.Drawing.Size(100, 23);
+            this.hometownLabel1.Size = new System.Drawing.Size(75, 19);
             this.hometownLabel1.TabIndex = 7;
             this.hometownLabel1.Text = "label1";
             // 
             // nameLabel2
             // 
             this.nameLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mockUserBindingSource, "Name", true));
-            this.nameLabel2.Location = new System.Drawing.Point(132, 21);
+            this.nameLabel2.Location = new System.Drawing.Point(99, 17);
+            this.nameLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel2.Name = "nameLabel2";
-            this.nameLabel2.Size = new System.Drawing.Size(100, 23);
+            this.nameLabel2.Size = new System.Drawing.Size(75, 19);
             this.nameLabel2.TabIndex = 9;
             this.nameLabel2.Text = "label1";
             // 
@@ -631,19 +664,19 @@
             this.listBoxFriends.DataSource = this.mockUserBindingSource;
             this.listBoxFriends.DisplayMember = "Name";
             this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.ItemHeight = 16;
-            this.listBoxFriends.Location = new System.Drawing.Point(27, 15);
+            this.listBoxFriends.Location = new System.Drawing.Point(20, 71);
+            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(295, 84);
+            this.listBoxFriends.Size = new System.Drawing.Size(222, 69);
             this.listBoxFriends.TabIndex = 1;
             // 
             // flowLayoutPanelFriends
             // 
             this.flowLayoutPanelFriends.AutoScroll = true;
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(341, 12);
-            this.flowLayoutPanelFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(256, 10);
+            this.flowLayoutPanelFriends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(781, 360);
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(586, 292);
             this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // tabPageAlbums
@@ -654,19 +687,21 @@
             this.tabPageAlbums.Controls.Add(this.labelAlbums);
             this.tabPageAlbums.Controls.Add(this.pictureBoxSelectedAlbum);
             this.tabPageAlbums.Controls.Add(this.labelSelectedAlbum);
-            this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAlbums.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageAlbums.Name = "tabPageAlbums";
-            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAlbums.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageAlbums.Size = new System.Drawing.Size(850, 310);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             // 
             // flowLayoutPanelAlbumPhotos
             // 
             this.flowLayoutPanelAlbumPhotos.AutoScroll = true;
-            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(8, 168);
+            this.flowLayoutPanelAlbumPhotos.Location = new System.Drawing.Point(6, 136);
+            this.flowLayoutPanelAlbumPhotos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelAlbumPhotos.Name = "flowLayoutPanelAlbumPhotos";
-            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(1122, 210);
+            this.flowLayoutPanelAlbumPhotos.Size = new System.Drawing.Size(842, 171);
             this.flowLayoutPanelAlbumPhotos.TabIndex = 68;
             // 
             // tabPageLikedPages
@@ -675,9 +710,10 @@
             this.tabPageLikedPages.Controls.Add(this.panelLikedPages);
             this.tabPageLikedPages.Controls.Add(this.listBoxLikedPages);
             this.tabPageLikedPages.Controls.Add(this.flowLayoutPanelPages);
-            this.tabPageLikedPages.Location = new System.Drawing.Point(4, 25);
+            this.tabPageLikedPages.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLikedPages.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageLikedPages.Name = "tabPageLikedPages";
-            this.tabPageLikedPages.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageLikedPages.Size = new System.Drawing.Size(850, 310);
             this.tabPageLikedPages.TabIndex = 2;
             this.tabPageLikedPages.Text = "Liked Pages";
             // 
@@ -690,17 +726,19 @@
             this.panelLikedPages.Controls.Add(this.idLabel1);
             this.panelLikedPages.Controls.Add(nameLabel1);
             this.panelLikedPages.Controls.Add(this.nameLabel3);
-            this.panelLikedPages.Location = new System.Drawing.Point(16, 125);
+            this.panelLikedPages.Location = new System.Drawing.Point(12, 102);
+            this.panelLikedPages.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLikedPages.Name = "panelLikedPages";
-            this.panelLikedPages.Size = new System.Drawing.Size(298, 132);
+            this.panelLikedPages.Size = new System.Drawing.Size(224, 107);
             this.panelLikedPages.TabIndex = 79;
             // 
             // descriptionLabel1
             // 
             this.descriptionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
-            this.descriptionLabel1.Location = new System.Drawing.Point(127, 48);
+            this.descriptionLabel1.Location = new System.Drawing.Point(95, 39);
+            this.descriptionLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.descriptionLabel1.Name = "descriptionLabel1";
-            this.descriptionLabel1.Size = new System.Drawing.Size(100, 23);
+            this.descriptionLabel1.Size = new System.Drawing.Size(75, 19);
             this.descriptionLabel1.TabIndex = 1;
             this.descriptionLabel1.Text = "label1";
             // 
@@ -711,18 +749,20 @@
             // idLabel1
             // 
             this.idLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Id", true));
-            this.idLabel1.Location = new System.Drawing.Point(127, 71);
+            this.idLabel1.Location = new System.Drawing.Point(95, 58);
+            this.idLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.idLabel1.Name = "idLabel1";
-            this.idLabel1.Size = new System.Drawing.Size(100, 23);
+            this.idLabel1.Size = new System.Drawing.Size(75, 19);
             this.idLabel1.TabIndex = 3;
             this.idLabel1.Text = "label1";
             // 
             // nameLabel3
             // 
             this.nameLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Name", true));
-            this.nameLabel3.Location = new System.Drawing.Point(127, 25);
+            this.nameLabel3.Location = new System.Drawing.Point(95, 20);
+            this.nameLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel3.Name = "nameLabel3";
-            this.nameLabel3.Size = new System.Drawing.Size(100, 23);
+            this.nameLabel3.Size = new System.Drawing.Size(75, 19);
             this.nameLabel3.TabIndex = 5;
             this.nameLabel3.Text = "label1";
             // 
@@ -731,19 +771,19 @@
             this.listBoxLikedPages.DataSource = this.pageBindingSource;
             this.listBoxLikedPages.DisplayMember = "Name";
             this.listBoxLikedPages.FormattingEnabled = true;
-            this.listBoxLikedPages.ItemHeight = 16;
-            this.listBoxLikedPages.Location = new System.Drawing.Point(16, 24);
+            this.listBoxLikedPages.Location = new System.Drawing.Point(12, 20);
+            this.listBoxLikedPages.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
-            this.listBoxLikedPages.Size = new System.Drawing.Size(298, 84);
+            this.listBoxLikedPages.Size = new System.Drawing.Size(224, 69);
             this.listBoxLikedPages.TabIndex = 78;
             // 
             // flowLayoutPanelPages
             // 
             this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(348, 2);
-            this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(261, 2);
+            this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(785, 380);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(589, 309);
             this.flowLayoutPanelPages.TabIndex = 77;
             // 
             // tabPageGroups
@@ -752,9 +792,10 @@
             this.tabPageGroups.Controls.Add(this.panelGroups);
             this.tabPageGroups.Controls.Add(this.listBoxGroups);
             this.tabPageGroups.Controls.Add(this.flowLayoutPanelGroups);
-            this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
+            this.tabPageGroups.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGroups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageGroups.Name = "tabPageGroups";
-            this.tabPageGroups.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageGroups.Size = new System.Drawing.Size(850, 310);
             this.tabPageGroups.TabIndex = 3;
             this.tabPageGroups.Text = "Groups";
             // 
@@ -767,17 +808,19 @@
             this.panelGroups.Controls.Add(this.idLabel3);
             this.panelGroups.Controls.Add(nameLabel4);
             this.panelGroups.Controls.Add(this.nameLabel5);
-            this.panelGroups.Location = new System.Drawing.Point(20, 126);
+            this.panelGroups.Location = new System.Drawing.Point(15, 102);
+            this.panelGroups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelGroups.Name = "panelGroups";
-            this.panelGroups.Size = new System.Drawing.Size(283, 115);
+            this.panelGroups.Size = new System.Drawing.Size(212, 93);
             this.panelGroups.TabIndex = 2;
             // 
             // descriptionLabel3
             // 
             this.descriptionLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.groupBindingSource, "Description", true));
-            this.descriptionLabel3.Location = new System.Drawing.Point(125, 41);
+            this.descriptionLabel3.Location = new System.Drawing.Point(94, 33);
+            this.descriptionLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.descriptionLabel3.Name = "descriptionLabel3";
-            this.descriptionLabel3.Size = new System.Drawing.Size(100, 23);
+            this.descriptionLabel3.Size = new System.Drawing.Size(75, 19);
             this.descriptionLabel3.TabIndex = 1;
             this.descriptionLabel3.Text = "label1";
             // 
@@ -788,18 +831,20 @@
             // idLabel3
             // 
             this.idLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.groupBindingSource, "Id", true));
-            this.idLabel3.Location = new System.Drawing.Point(125, 64);
+            this.idLabel3.Location = new System.Drawing.Point(94, 52);
+            this.idLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.idLabel3.Name = "idLabel3";
-            this.idLabel3.Size = new System.Drawing.Size(100, 23);
+            this.idLabel3.Size = new System.Drawing.Size(75, 19);
             this.idLabel3.TabIndex = 3;
             this.idLabel3.Text = "label1";
             // 
             // nameLabel5
             // 
             this.nameLabel5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.groupBindingSource, "Name", true));
-            this.nameLabel5.Location = new System.Drawing.Point(125, 18);
+            this.nameLabel5.Location = new System.Drawing.Point(94, 15);
+            this.nameLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel5.Name = "nameLabel5";
-            this.nameLabel5.Size = new System.Drawing.Size(100, 23);
+            this.nameLabel5.Size = new System.Drawing.Size(75, 19);
             this.nameLabel5.TabIndex = 5;
             this.nameLabel5.Text = "label1";
             // 
@@ -807,36 +852,38 @@
             // 
             this.listBoxGroups.DataSource = this.groupBindingSource;
             this.listBoxGroups.FormattingEnabled = true;
-            this.listBoxGroups.ItemHeight = 16;
-            this.listBoxGroups.Location = new System.Drawing.Point(20, 16);
+            this.listBoxGroups.Location = new System.Drawing.Point(15, 13);
+            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxGroups.Name = "listBoxGroups";
-            this.listBoxGroups.Size = new System.Drawing.Size(283, 84);
+            this.listBoxGroups.Size = new System.Drawing.Size(213, 69);
             this.listBoxGroups.TabIndex = 1;
             // 
             // flowLayoutPanelGroups
             // 
             this.flowLayoutPanelGroups.AutoScroll = true;
-            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(322, 0);
-            this.flowLayoutPanelGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(242, 0);
+            this.flowLayoutPanelGroups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
-            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(811, 382);
+            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(608, 310);
             this.flowLayoutPanelGroups.TabIndex = 0;
             // 
             // tabPageSport
             // 
             this.tabPageSport.BackColor = System.Drawing.Color.OldLace;
             this.tabPageSport.Controls.Add(this.flowLayoutPanelSport);
-            this.tabPageSport.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSport.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageSport.Name = "tabPageSport";
-            this.tabPageSport.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageSport.Size = new System.Drawing.Size(850, 310);
             this.tabPageSport.TabIndex = 4;
             this.tabPageSport.Text = "Sport Teams";
             // 
             // flowLayoutPanelSport
             // 
-            this.flowLayoutPanelSport.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelSport.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanelSport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelSport.Name = "flowLayoutPanelSport";
-            this.flowLayoutPanelSport.Size = new System.Drawing.Size(1130, 378);
+            this.flowLayoutPanelSport.Size = new System.Drawing.Size(848, 307);
             this.flowLayoutPanelSport.TabIndex = 0;
             // 
             // tabPageEvents
@@ -847,10 +894,10 @@
             this.tabPageEvents.Controls.Add(this.comboBoxFilterTime);
             this.tabPageEvents.Controls.Add(this.comboBoxSortByAttends);
             this.tabPageEvents.Controls.Add(this.buttonEventsFilter);
-            this.tabPageEvents.Location = new System.Drawing.Point(4, 25);
-            this.tabPageEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPageEvents.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEvents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageEvents.Name = "tabPageEvents";
-            this.tabPageEvents.Size = new System.Drawing.Size(1136, 384);
+            this.tabPageEvents.Size = new System.Drawing.Size(850, 310);
             this.tabPageEvents.TabIndex = 6;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
@@ -858,18 +905,20 @@
             // labelSort
             // 
             this.labelSort.AutoSize = true;
-            this.labelSort.Location = new System.Drawing.Point(13, 13);
+            this.labelSort.Location = new System.Drawing.Point(10, 11);
+            this.labelSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSort.Name = "labelSort";
-            this.labelSort.Size = new System.Drawing.Size(95, 16);
+            this.labelSort.Size = new System.Drawing.Size(77, 13);
             this.labelSort.TabIndex = 80;
             this.labelSort.Text = "Sort by guests:";
             // 
             // labelFilter
             // 
             this.labelFilter.AutoSize = true;
-            this.labelFilter.Location = new System.Drawing.Point(172, 13);
+            this.labelFilter.Location = new System.Drawing.Point(129, 11);
+            this.labelFilter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFilter.Name = "labelFilter";
-            this.labelFilter.Size = new System.Drawing.Size(85, 16);
+            this.labelFilter.Size = new System.Drawing.Size(68, 13);
             this.labelFilter.TabIndex = 79;
             this.labelFilter.Text = "Filter by time:";
             // 
@@ -877,12 +926,12 @@
             // 
             this.dataGridViewEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 104);
-            this.dataGridViewEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewEvents.Location = new System.Drawing.Point(0, 84);
+            this.dataGridViewEvents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewEvents.Name = "dataGridViewEvents";
             this.dataGridViewEvents.RowHeadersWidth = 62;
             this.dataGridViewEvents.RowTemplate.Height = 28;
-            this.dataGridViewEvents.Size = new System.Drawing.Size(1001, 278);
+            this.dataGridViewEvents.Size = new System.Drawing.Size(751, 226);
             this.dataGridViewEvents.TabIndex = 0;
             // 
             // userBindingSource
@@ -893,9 +942,10 @@
             // 
             this.labelUserName.AutoSize = true;
             this.labelUserName.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUserName.Location = new System.Drawing.Point(209, 125);
+            this.labelUserName.Location = new System.Drawing.Point(157, 102);
+            this.labelUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(161, 37);
+            this.labelUserName.Size = new System.Drawing.Size(127, 30);
             this.labelUserName.TabIndex = 80;
             this.labelUserName.Text = "userName";
             // 
@@ -906,9 +956,10 @@
             "Classic",
             "Dark",
             "Facebook"});
-            this.comboBoxTheme.Location = new System.Drawing.Point(860, 161);
+            this.comboBoxTheme.Location = new System.Drawing.Point(645, 131);
+            this.comboBoxTheme.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxTheme.Size = new System.Drawing.Size(135, 21);
             this.comboBoxTheme.TabIndex = 81;
             this.comboBoxTheme.SelectedIndexChanged += new System.EventHandler(this.comboBoxTheme_SelectedIndexChanged);
             // 
@@ -916,18 +967,43 @@
             // 
             this.labelTheme.AutoSize = true;
             this.labelTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTheme.Location = new System.Drawing.Point(856, 137);
+            this.labelTheme.Location = new System.Drawing.Point(642, 111);
+            this.labelTheme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTheme.Name = "labelTheme";
-            this.labelTheme.Size = new System.Drawing.Size(184, 20);
+            this.labelTheme.Size = new System.Drawing.Size(159, 17);
             this.labelTheme.TabIndex = 82;
             this.labelTheme.Text = "Choose Your Theme!";
             // 
+            // comboBoxFilterFriends
+            // 
+            this.comboBoxFilterFriends.FormattingEnabled = true;
+            this.comboBoxFilterFriends.Items.AddRange(new object[] {
+            "Female",
+            "Male",
+            "All Friends"});
+            this.comboBoxFilterFriends.Location = new System.Drawing.Point(22, 35);
+            this.comboBoxFilterFriends.Name = "comboBoxFilterFriends";
+            this.comboBoxFilterFriends.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxFilterFriends.TabIndex = 3;
+            this.comboBoxFilterFriends.Text = "-select-";
+            this.comboBoxFilterFriends.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterFriends_SelectedIndexChanged);
+            // 
+            // labelFilterFriends
+            // 
+            this.labelFilterFriends.AutoSize = true;
+            this.labelFilterFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFilterFriends.Location = new System.Drawing.Point(22, 17);
+            this.labelFilterFriends.Name = "labelFilterFriends";
+            this.labelFilterFriends.Size = new System.Drawing.Size(80, 13);
+            this.labelFilterFriends.TabIndex = 4;
+            this.labelFilterFriends.Text = "Filter Friends";
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1211, 643);
+            this.ClientSize = new System.Drawing.Size(908, 522);
             this.Controls.Add(this.labelTheme);
             this.Controls.Add(this.comboBoxTheme);
             this.Controls.Add(this.labelUserName);
@@ -935,7 +1011,6 @@
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonLogout);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook App";
@@ -946,6 +1021,7 @@
             this.tabPageFeed.ResumeLayout(false);
             this.tabPageFeed.PerformLayout();
             this.tabPageFriends.ResumeLayout(false);
+            this.tabPageFriends.PerformLayout();
             this.panelFriends.ResumeLayout(false);
             this.panelFriends.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mockUserBindingSource)).EndInit();
@@ -1036,6 +1112,8 @@
         private System.Windows.Forms.Label nameLabel5;
         private System.Windows.Forms.ListBox listBoxGroups;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private System.Windows.Forms.ComboBox comboBoxFilterFriends;
+        private System.Windows.Forms.Label labelFilterFriends;
     }
 }
 
