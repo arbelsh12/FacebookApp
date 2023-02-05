@@ -6,6 +6,9 @@ namespace FacebookAppLogic
 {
     public class FilterEvents
     {
+        public Func<iEvent, bool> filterStrategyMethod { get; set; }
+        public Func<iEvent, long> sortStrategyMethod { get; set; }
+
         public FilterEvents()
         {
 
@@ -17,23 +20,8 @@ namespace FacebookAppLogic
 
             if (i_GuestsConfirmationsSelection != (int)eGuestsConfirmation.All) // The user selected to sort by Attending/ Interested/ Declined/ Maybe guests amount
             {
-                switch (i_GuestsConfirmationsSelection)
-                {
-                    case (int)eGuestsConfirmation.Attending:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.AttendingCount).ToList();
-                        break;
-                    case (int)eGuestsConfirmation.Interested:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.InterestedCount).ToList();
-                        break;
-                    case (int)eGuestsConfirmation.Declined:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.DeclinedCount).ToList();
-                        break;
-                    case (int)eGuestsConfirmation.Maybe:
-                        filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(userEvent => userEvent.MaybeCount).ToList();
-                        break;
-                    default:
-                        break;
-                }
+                setSortStrategyMethod(i_GuestsConfirmationsSelection);
+                filteredEventsByUserSelections = filteredEventsByUserSelections.OrderByDescending(sortStrategyMethod).ToList();
             }
 
             return filteredEventsByUserSelections;
@@ -41,42 +29,60 @@ namespace FacebookAppLogic
 
         private List<iEvent> getFilteredListByTime(List<iEvent> i_Events, int i_TimeSelection)
         {
-            List<iEvent> filteredEventsListByTime = new List<iEvent>(); ;
+            List<iEvent> filteredEventsListByTime = new List<iEvent>();
 
-            if (i_TimeSelection == (int)eTimeSelection.Today)
-            {
-                foreach (iEvent fbEvent in i_Events)
-                {
-                    if (fbEvent.StartTime.Date == DateTime.Now.Date)
-                    {
-                        filteredEventsListByTime.Add(fbEvent);
-                    }
-                }
-            }
-            else if (i_TimeSelection == (int)eTimeSelection.InTheNext7Days)
-            {
-                foreach (iEvent fbEvent in i_Events)
-                {
-                    bool isEventInNext7Days = DateTime.Today.AddDays(7) >= fbEvent.StartTime && (DateTime.Now <= fbEvent.StartTime || DateTime.Equals(fbEvent.StartTime, DateTime.Today));
+            setFilterStrategyMethod(i_TimeSelection);
 
-                    if (isEventInNext7Days)
-                    {
-                        filteredEventsListByTime.Add(fbEvent);
-                    }
-                }
-            }
-            else if (i_TimeSelection == (int)eTimeSelection.ThisMonth)
+            foreach (iEvent fbEvent in i_Events)
             {
-                foreach (iEvent fbEvent in i_Events)
+                if (filterStrategyMethod(fbEvent))
                 {
-                    if (fbEvent.StartTime.Month == DateTime.Now.Month && fbEvent.StartTime.Year == DateTime.Now.Year)
-                    {
-                        filteredEventsListByTime.Add(fbEvent);
-                    }
+                    filteredEventsListByTime.Add(fbEvent);
                 }
             }
 
             return filteredEventsListByTime;
+        }
+
+        private void setSortStrategyMethod(int i_GuestsConfirmationsSelection)
+        {
+            switch (i_GuestsConfirmationsSelection)
+            {
+                case (int)eGuestsConfirmation.Attending:
+                    sortStrategyMethod = userEvent => userEvent.AttendingCount;
+                    break;
+                case (int)eGuestsConfirmation.Interested:
+                    sortStrategyMethod = userEvent => userEvent.InterestedCount;
+                    break;
+                case (int)eGuestsConfirmation.Declined:
+                    sortStrategyMethod = userEvent => userEvent.DeclinedCount;
+                    break;
+                case (int)eGuestsConfirmation.Maybe:
+                    sortStrategyMethod = userEvent => userEvent.MaybeCount;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void setFilterStrategyMethod(int i_TimeSelection)
+        {
+            switch (i_TimeSelection)
+            {
+                case (int)eTimeSelection.Today:
+                    filterStrategyMethod = fbEvent => fbEvent.StartTime.Date == DateTime.Now.Date;
+                    break;
+                case (int)eTimeSelection.InTheNext7Days:
+                    filterStrategyMethod = fbEvent => DateTime.Today.AddDays(7) >= fbEvent.StartTime &&
+                    (DateTime.Now <= fbEvent.StartTime || DateTime.Equals(fbEvent.StartTime, DateTime.Today));
+                    break;
+                case (int)eTimeSelection.ThisMonth:
+                    filterStrategyMethod = fbEvent => fbEvent.StartTime.Month == DateTime.Now.Month &&
+                    fbEvent.StartTime.Year == DateTime.Now.Year;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
