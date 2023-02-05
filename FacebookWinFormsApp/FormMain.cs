@@ -15,6 +15,7 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
+        private readonly FeaturesPanel r_FeaturePanel;
         public eTheme Theme { get; set; }
         public eTheme PrevTheme { get; set; }
 
@@ -25,9 +26,37 @@ namespace BasicFacebookFeatures
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
+            r_FeaturePanel = new FeaturesPanel();
+            initializeFeaturePanelComponent();
             Theme = eTheme.Classic;
             PrevTheme = eTheme.Classic;
             loadUserInfo();
+        }
+
+        private void initializeFeaturePanelComponent()
+        {
+            Controls.Add(r_FeaturePanel);
+            r_FeaturePanel.Controls.Add(new FeatureButton()
+            {
+                Location = new System.Drawing.Point(846, 18),
+                Margin = new System.Windows.Forms.Padding(3, 1, 3, 1),
+                Name = "buttonAstrologyHoroscopePost",
+                Size = new System.Drawing.Size(125, 89),
+                TabIndex = 59,
+                Text = "NEW Post Daily Compatibility Astrology Horoscope",
+                UseVisualStyleBackColor = true,
+                Command = new PostAstrologyHoroscopePostCommand()
+            });
+            r_FeaturePanel.Controls.Add(new FeatureButton()
+            {
+                Location = new System.Drawing.Point(764, 18),
+                Margin = new System.Windows.Forms.Padding(3, 2, 3, 2),
+                Name = "buttonPost",
+                Size = new System.Drawing.Size(67, 25),
+                TabIndex = 65,
+                Text = "NEW Post",
+                UseVisualStyleBackColor = true,
+            });
         }
 
         private enum eTab
@@ -114,9 +143,9 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
-            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
+            //FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
 
-            listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
+            //listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
         }
 
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
@@ -598,6 +627,57 @@ namespace BasicFacebookFeatures
                     }
                 default:
                     break;
+            }
+        }
+
+        private async void PostAstrologyHoroscopePost()
+        {
+            try
+            {
+                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(LoggedInUserSingelton.Instance.User.Birthday);
+
+                MessageBox.Show(astrologyHoroscopePost);
+                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(astrologyHoroscopePost);
+
+                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Posting to feed failed (No permissions)");
+            }
+        }
+
+        private void PostMessage()
+        {
+            try
+            {
+                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
+
+                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Posting to feed failed (No permissions)");
+            }
+        }
+
+        private class PostAstrologyHoroscopePostCommand : ICommand
+        {
+            public FormMain FormMain { get; set; }
+
+            public void Execute()
+            {
+                FormMain.PostAstrologyHoroscopePost();
+            }
+        }
+
+        private class PostMessageCommand : ICommand
+        {
+            public FormMain FormMain { get; set; }
+
+            public void Execute()
+            {
+                FormMain.PostMessage();
             }
         }
     }
