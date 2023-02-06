@@ -10,14 +10,14 @@ namespace BasicFacebookFeatures
     public class FeaturesPanel : Panel
     {
         private List<FeatureButton> m_FeaturesButtons;
-
+        //here missing the Show() func like guy  showed in the video that calls the OnClick() of the featurebutton
         public FeaturesPanel()
         {
             m_FeaturesButtons = new List<FeatureButton>();
-            Location = new System.Drawing.Point(349, 7);
+            Location = new System.Drawing.Point(450, 50);
             Name = "panelPostFeatures";
-            Size = new System.Drawing.Size(759, 209);
-            TabIndex = 87;
+            Size = new System.Drawing.Size(150, 250);
+            AutoSize = true;
         }
 
         public void Add(FeatureButton i_FeatureButton)

@@ -27,36 +27,33 @@ namespace BasicFacebookFeatures
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
             r_FeaturePanel = new FeaturesPanel();
-            initializeFeaturePanelComponent();
             Theme = eTheme.Classic;
             PrevTheme = eTheme.Classic;
             loadUserInfo();
+            initializeFeaturePanelComponent();
         }
 
         private void initializeFeaturePanelComponent()
         {
             Controls.Add(r_FeaturePanel);
-            r_FeaturePanel.Controls.Add(new FeatureButton()
+            r_FeaturePanel.Add(new FeatureButton()
             {
-                Location = new System.Drawing.Point(846, 18),
-                Margin = new System.Windows.Forms.Padding(3, 1, 3, 1),
-                Name = "buttonAstrologyHoroscopePost",
-                Size = new System.Drawing.Size(125, 89),
-                TabIndex = 59,
-                Text = "NEW Post Daily Compatibility Astrology Horoscope",
-                UseVisualStyleBackColor = true,
-                Command = new PostAstrologyHoroscopePostCommand()
-            });
-            r_FeaturePanel.Controls.Add(new FeatureButton()
-            {
-                Location = new System.Drawing.Point(764, 18),
-                Margin = new System.Windows.Forms.Padding(3, 2, 3, 2),
+                Location = new Point(30, 0),
                 Name = "buttonPost",
-                Size = new System.Drawing.Size(67, 25),
-                TabIndex = 65,
-                Text = "NEW Post",
+                Size = new Size(67, 25),
+                Text = "Post",
                 UseVisualStyleBackColor = true,
+                Command = new PostMessageCommand() { FormMain = this }
             });
+            r_FeaturePanel.Add(new FeatureButton()
+            {                
+                Location = new Point(0, 30),
+                Size = new Size(120, 75),
+                UseVisualStyleBackColor = true,
+                Text = "Post Daily Compatibility Astrology Horoscope",
+                Command = new PostAstrologyHoroscopePostCommand() { FormMain = this }
+            });
+
         }
 
         private enum eTab
@@ -185,37 +182,6 @@ namespace BasicFacebookFeatures
             r_FormLogIn.Show();
             this.Close();
             LoggedInUserSingelton.Instance.User = null;
-        }
-
-        private async void buttonAstrologyHoroscopePost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(LoggedInUserSingelton.Instance.User.Birthday);
-
-                MessageBox.Show(astrologyHoroscopePost);
-                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(astrologyHoroscopePost);
-                
-                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Posting to feed failed (No permissions)");
-            }
-        }
-
-        private void buttonPost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
-
-                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Posting to feed failed (No permissions)");
-            }
         }
 
         private void buttonEventsFilter_Click(object sender, EventArgs e)

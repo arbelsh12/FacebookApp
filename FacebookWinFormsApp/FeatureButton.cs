@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
 
         }
 
-        protected override void OnClick(EventArgs e)
+        protected override void OnClick(EventArgs e) //NOT in use, suppose to be called from the featurePanel "menu"
         {
             if (Command != null)
             {
