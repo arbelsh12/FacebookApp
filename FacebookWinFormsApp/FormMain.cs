@@ -141,9 +141,9 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
-            //FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
+            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
 
-            //listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
+            listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
         }
 
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
