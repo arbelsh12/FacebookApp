@@ -12,8 +12,9 @@ namespace BasicFacebookFeatures
             m_FeaturesButtons = new List<FeatureButton>();
             Location = new System.Drawing.Point(450, 45);
             Name = "panelPostFeatures";
-            Size = new System.Drawing.Size(150, 250);
+            Size = new System.Drawing.Size(400, 250);
             AutoSize = true;
+            BackColor = System.Drawing.Color.Red;
         }
 
         public void Add(FeatureButton i_FeatureButton)

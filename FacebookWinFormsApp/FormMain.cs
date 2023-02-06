@@ -54,7 +54,7 @@ namespace BasicFacebookFeatures
                 Size = new Size(67, 25),
                 Text = "Post",
                 UseVisualStyleBackColor = true,
-                CommandAction = PostMessage
+                CommandAction = postMessage
             });
             r_FeaturePanel.Add(new FeatureButton()
             {
@@ -63,9 +63,17 @@ namespace BasicFacebookFeatures
                 Size = new Size(120, 75),
                 UseVisualStyleBackColor = true,
                 Text = "Post Daily Compatibility Astrology Horoscope",
-                CommandAction = PostAstrologyHoroscopePost
+                CommandAction = postAstrologyHoroscopePost
             });
-
+            r_FeaturePanel.Add(new FeatureButton()
+            {
+                Location = new Point(295, 0),
+                Name = "buttonLog",
+                Size = new Size(67, 25),
+                UseVisualStyleBackColor = true,
+                Text = "Logout",
+                CommandAction = logoutFromApp
+            });
         }
 
         private void loadUserInfo()
@@ -597,7 +605,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private async void PostAstrologyHoroscopePost()
+        private async void postAstrologyHoroscopePost()
         {
             try
             {
@@ -614,18 +622,28 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void PostMessage()
+        private void postMessage()
         {
             try
             {
                 Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
 
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
+                textBoxPost.Clear();
             }
             catch (Exception)
             {
                 MessageBox.Show("Posting to feed failed (No permissions)");
             }
+        }
+
+        private void logoutFromApp()
+        {
+            FacebookService.LogoutWithUI();
+            this.Hide();
+            r_FormLogIn.Show();
+            this.Close();
+            LoggedInUserSingelton.Instance.User = null;
         }
     }
 }
