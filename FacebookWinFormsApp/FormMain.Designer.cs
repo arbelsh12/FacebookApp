@@ -40,7 +40,6 @@
             System.Windows.Forms.Label descriptionLabel2;
             System.Windows.Forms.Label idLabel2;
             System.Windows.Forms.Label nameLabel4;
-            this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.pictureBoxCover = new System.Windows.Forms.PictureBox();
             this.textBoxPost = new System.Windows.Forms.TextBox();
@@ -245,17 +244,6 @@
             nameLabel4.Size = new System.Drawing.Size(60, 20);
             nameLabel4.TabIndex = 4;
             nameLabel4.Text = "Name:";
-            // 
-            // buttonLogout
-            // 
-            this.buttonLogout.Location = new System.Drawing.Point(1086, 11);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(143, 35);
-            this.buttonLogout.TabIndex = 52;
-            this.buttonLogout.Text = "Logout";
-            this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // pictureBoxProfile
             // 
@@ -923,7 +911,6 @@
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.textBoxPost);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
@@ -960,7 +947,6 @@
         }
 
 		#endregion
-		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxCover;
         private System.Windows.Forms.TextBox textBoxPost;

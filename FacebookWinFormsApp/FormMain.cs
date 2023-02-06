@@ -184,15 +184,6 @@ namespace BasicFacebookFeatures
             fetchPostComments();
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
-        {
-			FacebookService.LogoutWithUI();
-            this.Hide();
-            r_FormLogIn.Show();
-            this.Close();
-            LoggedInUserSingelton.Instance.User = null;
-        }
-
         private void buttonEventsFilter_Click(object sender, EventArgs e)
         {
             if (comboBoxFilterTime.SelectedIndex == k_NotSelected && comboBoxSortByAttends.SelectedIndex == k_NotSelected)
