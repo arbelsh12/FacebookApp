@@ -10,18 +10,13 @@ namespace BasicFacebookFeatures
 {
     public class FeatureButton : Button
     {
-        public  ICommand Command { get; set; }
+        public  Action CommandAction { get; set; }
 
-        public FeatureButton()
+        public virtual void Selected()
         {
-
-        }
-
-        protected override void OnClick(EventArgs e) //NOT in use, suppose to be called from the featurePanel "menu"
-        {
-            if (Command != null)
+            if(CommandAction != null)
             {
-                Command.Execute();
+                CommandAction.Invoke();
             }
         }
     }

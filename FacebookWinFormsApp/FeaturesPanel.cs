@@ -10,7 +10,7 @@ namespace BasicFacebookFeatures
     public class FeaturesPanel : Panel
     {
         private List<FeatureButton> m_FeaturesButtons;
-        //here missing the Show() func like guy  showed in the video that calls the OnClick() of the featurebutton
+
         public FeaturesPanel()
         {
             m_FeaturesButtons = new List<FeatureButton>();

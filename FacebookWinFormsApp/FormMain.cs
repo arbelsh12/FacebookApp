@@ -43,7 +43,7 @@ namespace BasicFacebookFeatures
                 Size = new Size(67, 25),
                 Text = "Post",
                 UseVisualStyleBackColor = true,
-                Command = new PostMessageCommand() { FormMain = this }
+                CommandAction = PostMessage
             });
             r_FeaturePanel.Add(new FeatureButton()
             {                
@@ -51,7 +51,7 @@ namespace BasicFacebookFeatures
                 Size = new Size(120, 75),
                 UseVisualStyleBackColor = true,
                 Text = "Post Daily Compatibility Astrology Horoscope",
-                Command = new PostAstrologyHoroscopePostCommand() { FormMain = this }
+                CommandAction = PostAstrologyHoroscopePost
             });
 
         }
@@ -140,9 +140,9 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
-            //FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
+            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
 
-            //listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
+            listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
         }
 
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
@@ -624,26 +624,6 @@ namespace BasicFacebookFeatures
             catch (Exception)
             {
                 MessageBox.Show("Posting to feed failed (No permissions)");
-            }
-        }
-
-        private class PostAstrologyHoroscopePostCommand : ICommand
-        {
-            public FormMain FormMain { get; set; }
-
-            public void Execute()
-            {
-                FormMain.PostAstrologyHoroscopePost();
-            }
-        }
-
-        private class PostMessageCommand : ICommand
-        {
-            public FormMain FormMain { get; set; }
-
-            public void Execute()
-            {
-                FormMain.PostMessage();
             }
         }
     }
