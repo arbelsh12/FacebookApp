@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public class FeatureButton : Button
+    public class CommandButton : Button
     {
         public  Action CommandAction { get; set; }
 

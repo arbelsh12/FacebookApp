@@ -3,27 +3,26 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public class FeaturesPanel : Panel
+    public class CommandsPanel : Panel
     {
-        private List<FeatureButton> m_FeaturesButtons;
+        private List<CommandButton> m_FeaturesButtons;
 
-        public FeaturesPanel()
+        public CommandsPanel()
         {
-            m_FeaturesButtons = new List<FeatureButton>();
+            m_FeaturesButtons = new List<CommandButton>();
             Location = new System.Drawing.Point(450, 45);
             Name = "panelPostFeatures";
             Size = new System.Drawing.Size(400, 250);
             AutoSize = true;
-            BackColor = System.Drawing.Color.Red;
         }
 
-        public void Add(FeatureButton i_FeatureButton)
+        public void Add(CommandButton i_FeatureButton)
         {
             m_FeaturesButtons.Add(i_FeatureButton);
             Controls.Add(i_FeatureButton);
         }
 
-        public void Remove(FeatureButton i_FeatureButton)
+        public void Remove(CommandButton i_FeatureButton)
         {
             m_FeaturesButtons.Remove(i_FeatureButton);
             Controls.Remove(i_FeatureButton);

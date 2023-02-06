@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
-        private readonly FeaturesPanel r_FeaturePanel;
+        private readonly CommandsPanel r_FeaturePanel;
         public eTheme Theme { get; set; }
         public eTheme PrevTheme { get; set; }
 
@@ -26,11 +26,11 @@ namespace BasicFacebookFeatures
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
-            r_FeaturePanel = new FeaturesPanel();
+            r_FeaturePanel = new CommandsPanel();
             Theme = eTheme.Classic;
             PrevTheme = eTheme.Classic;
             loadUserInfo();
-            initializeFeaturePanelComponent();
+            initializeCommandsPanelComponent();
         }
 
         private enum eTab
@@ -44,10 +44,10 @@ namespace BasicFacebookFeatures
             Events
         }
 
-        private void initializeFeaturePanelComponent()
+        private void initializeCommandsPanelComponent()
         {
             Controls.Add(r_FeaturePanel);
-            r_FeaturePanel.Add(new FeatureButton()
+            r_FeaturePanel.Add(new CommandButton()
             {
                 Location = new Point(30, 0),
                 Name = "buttonPost",
@@ -56,7 +56,7 @@ namespace BasicFacebookFeatures
                 UseVisualStyleBackColor = true,
                 CommandAction = postMessage
             });
-            r_FeaturePanel.Add(new FeatureButton()
+            r_FeaturePanel.Add(new CommandButton()
             {
                 Location = new Point(0, 30),
                 Name = "buttonAstrologyPost",
@@ -65,10 +65,10 @@ namespace BasicFacebookFeatures
                 Text = "Post Daily Compatibility Astrology Horoscope",
                 CommandAction = postAstrologyHoroscopePost
             });
-            r_FeaturePanel.Add(new FeatureButton()
+            r_FeaturePanel.Add(new CommandButton()
             {
                 Location = new Point(295, 0),
-                Name = "buttonLog",
+                Name = "buttonLogout",
                 Size = new Size(67, 25),
                 UseVisualStyleBackColor = true,
                 Text = "Logout",
@@ -620,7 +620,6 @@ namespace BasicFacebookFeatures
                 Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
 
                 MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
-                textBoxPost.Clear();
             }
             catch (Exception)
             {
