@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
@@ -14,7 +10,7 @@ namespace BasicFacebookFeatures
         public FeaturesPanel()
         {
             m_FeaturesButtons = new List<FeatureButton>();
-            Location = new System.Drawing.Point(450, 50);
+            Location = new System.Drawing.Point(450, 45);
             Name = "panelPostFeatures";
             Size = new System.Drawing.Size(150, 250);
             AutoSize = true;

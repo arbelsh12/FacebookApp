@@ -1,9 +1,4 @@
-﻿using FacebookAppLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
@@ -12,7 +7,7 @@ namespace BasicFacebookFeatures
     {
         public  Action CommandAction { get; set; }
 
-        public virtual void Selected()
+        protected override void OnClick(EventArgs e)
         {
             if(CommandAction != null)
             {

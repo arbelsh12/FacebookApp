@@ -33,6 +33,17 @@ namespace BasicFacebookFeatures
             initializeFeaturePanelComponent();
         }
 
+        private enum eTab
+        {
+            FeedProfile,
+            Friends,
+            Albums,
+            LikedPages,
+            Groups,
+            SportTeams,
+            Events
+        }
+
         private void initializeFeaturePanelComponent()
         {
             Controls.Add(r_FeaturePanel);
@@ -46,25 +57,15 @@ namespace BasicFacebookFeatures
                 CommandAction = PostMessage
             });
             r_FeaturePanel.Add(new FeatureButton()
-            {                
+            {
                 Location = new Point(0, 30),
+                Name = "buttonAstrologyPost",
                 Size = new Size(120, 75),
                 UseVisualStyleBackColor = true,
                 Text = "Post Daily Compatibility Astrology Horoscope",
                 CommandAction = PostAstrologyHoroscopePost
             });
 
-        }
-
-        private enum eTab
-        {
-            FeedProfile,
-            Friends,
-            Albums,
-            LikedPages,
-            Groups,
-            SportTeams,
-            Events
         }
 
         private void loadUserInfo()
@@ -140,9 +141,9 @@ namespace BasicFacebookFeatures
 
         private void fetchUserPosts()
         {
-            FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
+            //FacebookObjectCollection<Post> posts = LoggedInUserSingelton.Instance.User.Posts;
 
-            listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
+            //listBoxUserPosts.Invoke(new Action(() => addPostsToListBox(posts)));
         }
 
         private void addPostsToListBox(FacebookObjectCollection<Post> i_Posts)
