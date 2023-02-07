@@ -49,7 +49,7 @@ namespace BasicFacebookFeatures
             Controls.Add(r_FeaturePanel);
             r_FeaturePanel.Add(new CommandButton()
             {
-                Location = new Point(30, 0),
+                Location = new Point(275, 70),
                 Name = "buttonPost",
                 Size = new Size(67, 25),
                 Text = "Post",
@@ -58,16 +58,16 @@ namespace BasicFacebookFeatures
             });
             r_FeaturePanel.Add(new CommandButton()
             {
-                Location = new Point(0, 30),
+                Location = new Point(233, 105),
                 Name = "buttonAstrologyPost",
-                Size = new Size(120, 75),
+                Size = new Size(110, 70),
                 UseVisualStyleBackColor = true,
                 Text = "Post Daily Compatibility Astrology Horoscope",
                 CommandAction = postAstrologyHoroscopePost
             });
             r_FeaturePanel.Add(new CommandButton()
             {
-                Location = new Point(295, 0),
+                Location = new Point(275, 5),
                 Name = "buttonLogout",
                 Size = new Size(67, 25),
                 UseVisualStyleBackColor = true,
@@ -471,13 +471,23 @@ namespace BasicFacebookFeatures
 
         private void fetchFriends()
         {
-            if(flowLayoutPanelFriends.Controls.Count == 0 || Theme != PrevTheme)
+            if (flowLayoutPanelFriends.Controls.Count != 0)
             {
-                if(flowLayoutPanelFriends.Controls.Count != 0)
-                {
-                    flowLayoutPanelFriends.Controls.Clear();
-                }
+                flowLayoutPanelFriends.Controls.Clear();
+            }
 
+            List<MockUser> friendsList = new List<MockUser>();
+
+            foreach (MockUser friend in LoggedInUserSingelton.Instance.MockFriends)
+            {
+                addGroupBoxToPanel(Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
+                friendsList.Add(friend);
+            }
+
+            mockUserBindingSource.DataSource = friendsList;
+
+            if (flowLayoutPanelFriends.Controls.Count == 0)
+            {
                 try
                 {
                     foreach (User friend in LoggedInUserSingelton.Instance.User.Friends)
@@ -488,16 +498,6 @@ namespace BasicFacebookFeatures
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-
-                if (flowLayoutPanelFriends.Controls.Count == 0)
-                {
-                    foreach (MockUser friend in LoggedInUserSingelton.Instance.MockData.Friends)
-                    {
-                        addGroupBoxToPanel(Theme, flowLayoutPanelFriends, friend.Name, friend.PictureURL);
-                    }
-
-                    mockUserBindingSource.DataSource = LoggedInUserSingelton.Instance.MockData.Friends;
                 }
             }
 
@@ -634,6 +634,32 @@ namespace BasicFacebookFeatures
             r_FormLogIn.Show();
             this.Close();
             LoggedInUserSingelton.Instance.User = null;
+        }
+
+        private void comboBoxFilterFriends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+
+            switch (comboBox.SelectedIndex)
+            {
+                case (int)User.eGender.female:
+                    {
+                        LoggedInUserSingelton.Instance.MockFriends.UpdateGenderFilter((int)User.eGender.female);
+                        break;
+                    }
+                case (int)User.eGender.male:
+                    {
+                        LoggedInUserSingelton.Instance.MockFriends.UpdateGenderFilter((int)User.eGender.male);
+                        break;
+                    }
+                default:
+                    {
+                        LoggedInUserSingelton.Instance.MockFriends.UpdateGenderFilter(LoggedInUserSingelton.Instance.MockFriends.AllGenders);
+                        break;
+                    }
+            }
+
+            fetchFriends();
         }
     }
 }
