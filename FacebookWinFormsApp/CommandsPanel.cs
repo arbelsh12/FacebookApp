@@ -5,27 +5,27 @@ namespace BasicFacebookFeatures
 {
     public class CommandsPanel : Panel
     {
-        private List<CommandButton> m_FeaturesButtons;
+        private List<CommandButton> m_CommandsButtons;
 
         public CommandsPanel()
         {
-            m_FeaturesButtons = new List<CommandButton>();
+            m_CommandsButtons = new List<CommandButton>();
             Location = new System.Drawing.Point(450, 45);
             Name = "panelPostFeatures";
             Size = new System.Drawing.Size(400, 250);
             AutoSize = true;
         }
 
-        public void Add(CommandButton i_FeatureButton)
+        public void Add(CommandButton i_CommandButton)
         {
-            m_FeaturesButtons.Add(i_FeatureButton);
-            Controls.Add(i_FeatureButton);
+            m_CommandsButtons.Add(i_CommandButton);
+            Controls.Add(i_CommandButton);
         }
 
-        public void Remove(CommandButton i_FeatureButton)
+        public void Remove(CommandButton i_CommandButton)
         {
-            m_FeaturesButtons.Remove(i_FeatureButton);
-            Controls.Remove(i_FeatureButton);
+            m_CommandsButtons.Remove(i_CommandButton);
+            Controls.Remove(i_CommandButton);
         }
     }
 }
