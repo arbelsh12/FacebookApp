@@ -10,9 +10,12 @@ namespace BasicFacebookFeatures
         public CommandsPanel()
         {
             m_CommandsButtons = new List<CommandButton>();
-            Location = new System.Drawing.Point(450, 45);
+           // Location = new System.Drawing.Point(536, 1);
+            Location = new System.Drawing.Point(335, 10);
             Name = "panelPostFeatures";
-            Size = new System.Drawing.Size(400, 250);
+            //Size = new System.Drawing.Size(366, 261);
+            Size = new System.Drawing.Size(300, 185);
+            //BackColor = System.Drawing.Color.Red;
             AutoSize = true;
         }
 

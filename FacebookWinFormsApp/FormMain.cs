@@ -49,7 +49,7 @@ namespace BasicFacebookFeatures
             Controls.Add(r_FeaturePanel);
             r_FeaturePanel.Add(new CommandButton()
             {
-                Location = new Point(30, 0),
+                Location = new Point(275, 70),
                 Name = "buttonPost",
                 Size = new Size(67, 25),
                 Text = "Post",
@@ -58,16 +58,16 @@ namespace BasicFacebookFeatures
             });
             r_FeaturePanel.Add(new CommandButton()
             {
-                Location = new Point(0, 30),
+                Location = new Point(233, 105),
                 Name = "buttonAstrologyPost",
-                Size = new Size(120, 75),
+                Size = new Size(110, 70),
                 UseVisualStyleBackColor = true,
                 Text = "Post Daily Compatibility Astrology Horoscope",
                 CommandAction = postAstrologyHoroscopePost
             });
             r_FeaturePanel.Add(new CommandButton()
             {
-                Location = new Point(295, 0),
+                Location = new Point(275, 5),
                 Name = "buttonLogout",
                 Size = new Size(67, 25),
                 UseVisualStyleBackColor = true,
