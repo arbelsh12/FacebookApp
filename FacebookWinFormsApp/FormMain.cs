@@ -15,6 +15,7 @@ namespace BasicFacebookFeatures
         private readonly Astrology r_Astrology;
         private readonly FilterEvents r_FilterEvents;
         private readonly FormLogIn r_FormLogIn;
+        private readonly CommandsPanel r_FeaturePanel;
         public eTheme Theme { get; set; }
         public eTheme PrevTheme { get; set; }
 
@@ -25,9 +26,11 @@ namespace BasicFacebookFeatures
             r_Astrology = new Astrology();
             r_FilterEvents = new FilterEvents();
             r_FormLogIn = i_FormLogin;
+            r_FeaturePanel = new CommandsPanel();
             Theme = eTheme.Classic;
             PrevTheme = eTheme.Classic;
             loadUserInfo();
+            initializeCommandsPanelComponent();
         }
 
         private enum eTab
@@ -39,6 +42,38 @@ namespace BasicFacebookFeatures
             Groups,
             SportTeams,
             Events
+        }
+
+        private void initializeCommandsPanelComponent()
+        {
+            Controls.Add(r_FeaturePanel);
+            r_FeaturePanel.Add(new CommandButton()
+            {
+                Location = new Point(30, 0),
+                Name = "buttonPost",
+                Size = new Size(67, 25),
+                Text = "Post",
+                UseVisualStyleBackColor = true,
+                CommandAction = postMessage
+            });
+            r_FeaturePanel.Add(new CommandButton()
+            {
+                Location = new Point(0, 30),
+                Name = "buttonAstrologyPost",
+                Size = new Size(120, 75),
+                UseVisualStyleBackColor = true,
+                Text = "Post Daily Compatibility Astrology Horoscope",
+                CommandAction = postAstrologyHoroscopePost
+            });
+            r_FeaturePanel.Add(new CommandButton()
+            {
+                Location = new Point(295, 0),
+                Name = "buttonLogout",
+                Size = new Size(67, 25),
+                UseVisualStyleBackColor = true,
+                Text = "Logout",
+                CommandAction = logoutFromApp
+            });
         }
 
         private void loadUserInfo()
@@ -147,46 +182,6 @@ namespace BasicFacebookFeatures
         private void listBoxUserPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
             fetchPostComments();
-        }
-
-        private void buttonLogout_Click(object sender, EventArgs e)
-        {
-			FacebookService.LogoutWithUI();
-            this.Hide();
-            r_FormLogIn.Show();
-            this.Close();
-            LoggedInUserSingelton.Instance.User = null;
-        }
-
-        private async void buttonAstrologyHoroscopePost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(LoggedInUserSingelton.Instance.User.Birthday);
-
-                MessageBox.Show(astrologyHoroscopePost);
-                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(astrologyHoroscopePost);
-                
-                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Posting to feed failed (No permissions)");
-            }
-        }
-
-        private void buttonPost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
-
-                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Posting to feed failed (No permissions)");
-            }
         }
 
         private void buttonEventsFilter_Click(object sender, EventArgs e)
@@ -599,6 +594,46 @@ namespace BasicFacebookFeatures
                 default:
                     break;
             }
+        }
+
+        private async void postAstrologyHoroscopePost()
+        {
+            try
+            {
+                string astrologyHoroscopePost = await r_Astrology.CreateHoroscopePost(LoggedInUserSingelton.Instance.User.Birthday);
+
+                MessageBox.Show(astrologyHoroscopePost);
+                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(astrologyHoroscopePost);
+
+                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Posting to feed failed (No permissions)");
+            }
+        }
+
+        private void postMessage()
+        {
+            try
+            {
+                Status postedStatus = LoggedInUserSingelton.Instance.User.PostStatus(textBoxPost.Text);
+
+                MessageBox.Show($"Post (ID {postedStatus.Id}) was posted succesfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Posting to feed failed (No permissions)");
+            }
+        }
+
+        private void logoutFromApp()
+        {
+            FacebookService.LogoutWithUI();
+            this.Hide();
+            r_FormLogIn.Show();
+            this.Close();
+            LoggedInUserSingelton.Instance.User = null;
         }
     }
 }
