@@ -40,12 +40,9 @@
             System.Windows.Forms.Label descriptionLabel2;
             System.Windows.Forms.Label idLabel2;
             System.Windows.Forms.Label nameLabel4;
-            this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.buttonAstrologyHoroscopePost = new System.Windows.Forms.Button();
             this.pictureBoxCover = new System.Windows.Forms.PictureBox();
             this.textBoxPost = new System.Windows.Forms.TextBox();
-            this.buttonPost = new System.Windows.Forms.Button();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.labelAlbums = new System.Windows.Forms.Label();
             this.pictureBoxSelectedAlbum = new System.Windows.Forms.PictureBox();
@@ -261,16 +258,6 @@
             nameLabel4.TabIndex = 4;
             nameLabel4.Text = "Name:";
             // 
-            // buttonLogout
-            // 
-            this.buttonLogout.Location = new System.Drawing.Point(629, 33);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(151, 23);
-            this.buttonLogout.TabIndex = 52;
-            this.buttonLogout.Text = "Logout";
-            this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
-            // 
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.Location = new System.Drawing.Point(21, 20);
@@ -280,17 +267,6 @@
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
-            // 
-            // buttonAstrologyHoroscopePost
-            // 
-            this.buttonAstrologyHoroscopePost.Location = new System.Drawing.Point(634, 15);
-            this.buttonAstrologyHoroscopePost.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.buttonAstrologyHoroscopePost.Name = "buttonAstrologyHoroscopePost";
-            this.buttonAstrologyHoroscopePost.Size = new System.Drawing.Size(94, 72);
-            this.buttonAstrologyHoroscopePost.TabIndex = 59;
-            this.buttonAstrologyHoroscopePost.Text = "Post Daily Compatibility Astrology Horoscope";
-            this.buttonAstrologyHoroscopePost.UseVisualStyleBackColor = true;
-            this.buttonAstrologyHoroscopePost.Click += new System.EventHandler(this.buttonAstrologyHoroscopePost_Click);
             // 
             // pictureBoxCover
             // 
@@ -310,24 +286,14 @@
             this.textBoxPost.Size = new System.Drawing.Size(263, 20);
             this.textBoxPost.TabIndex = 64;
             // 
-            // buttonPost
-            // 
-            this.buttonPost.Location = new System.Drawing.Point(573, 15);
-            this.buttonPost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(50, 20);
-            this.buttonPost.TabIndex = 65;
-            this.buttonPost.Text = "Post";
-            this.buttonPost.UseVisualStyleBackColor = true;
-            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
-            // 
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(4, 25);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxAlbums.ItemHeight = 20;
+            this.listBoxAlbums.Location = new System.Drawing.Point(7, 39);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(188, 108);
+            this.listBoxAlbums.Size = new System.Drawing.Size(280, 164);
             this.listBoxAlbums.TabIndex = 64;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
@@ -364,30 +330,29 @@
             // listBoxUserPosts
             // 
             this.listBoxUserPosts.FormattingEnabled = true;
-            this.listBoxUserPosts.Location = new System.Drawing.Point(16, 167);
-            this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxUserPosts.ItemHeight = 20;
+            this.listBoxUserPosts.Location = new System.Drawing.Point(25, 256);
+            this.listBoxUserPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxUserPosts.Name = "listBoxUserPosts";
-            this.listBoxUserPosts.Size = new System.Drawing.Size(274, 95);
+            this.listBoxUserPosts.Size = new System.Drawing.Size(409, 144);
             this.listBoxUserPosts.TabIndex = 72;
             this.listBoxUserPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxUserPosts_SelectedIndexChanged);
             // 
             // labelUserPosts
             // 
             this.labelUserPosts.AutoSize = true;
-            this.labelUserPosts.Location = new System.Drawing.Point(14, 150);
-            this.labelUserPosts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelUserPosts.Location = new System.Drawing.Point(21, 230);
             this.labelUserPosts.Name = "labelUserPosts";
-            this.labelUserPosts.Size = new System.Drawing.Size(65, 13);
+            this.labelUserPosts.Size = new System.Drawing.Size(98, 20);
             this.labelUserPosts.TabIndex = 74;
             this.labelUserPosts.Text = "User\'s Posts";
             // 
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
-            this.labelPostComments.Location = new System.Drawing.Point(298, 162);
-            this.labelPostComments.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPostComments.Location = new System.Drawing.Point(448, 249);
             this.labelPostComments.Name = "labelPostComments";
-            this.labelPostComments.Size = new System.Drawing.Size(80, 13);
+            this.labelPostComments.Size = new System.Drawing.Size(122, 20);
             this.labelPostComments.TabIndex = 75;
             this.labelPostComments.Text = "Post Comments";
             // 
@@ -463,26 +428,23 @@
             this.tabPageFeed.Controls.Add(this.labelGender);
             this.tabPageFeed.Controls.Add(this.labelBirth);
             this.tabPageFeed.Controls.Add(this.labelUserPosts);
-            this.tabPageFeed.Controls.Add(this.buttonAstrologyHoroscopePost);
             this.tabPageFeed.Controls.Add(this.labelPostComments);
             this.tabPageFeed.Controls.Add(this.listBoxUserPosts);
-            this.tabPageFeed.Controls.Add(this.textBoxPost);
-            this.tabPageFeed.Controls.Add(this.buttonPost);
-            this.tabPageFeed.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageFeed.Location = new System.Drawing.Point(4, 29);
+            this.tabPageFeed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageFeed.Name = "tabPageFeed";
-            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageFeed.Size = new System.Drawing.Size(850, 310);
+            this.tabPageFeed.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageFeed.Size = new System.Drawing.Size(1279, 483);
             this.tabPageFeed.TabIndex = 0;
             this.tabPageFeed.Text = "Feed & Profile";
             // 
             // flowLayoutPanelComments
             // 
             this.flowLayoutPanelComments.AutoScroll = true;
-            this.flowLayoutPanelComments.Location = new System.Drawing.Point(301, 179);
-            this.flowLayoutPanelComments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanelComments.Location = new System.Drawing.Point(451, 275);
+            this.flowLayoutPanelComments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanelComments.Name = "flowLayoutPanelComments";
-            this.flowLayoutPanelComments.Size = new System.Drawing.Size(220, 81);
+            this.flowLayoutPanelComments.Size = new System.Drawing.Size(330, 125);
             this.flowLayoutPanelComments.TabIndex = 86;
             // 
             // labelUserEmail
@@ -956,10 +918,10 @@
             "Classic",
             "Dark",
             "Facebook"});
-            this.comboBoxTheme.Location = new System.Drawing.Point(645, 131);
-            this.comboBoxTheme.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTheme.Location = new System.Drawing.Point(1048, 184);
+            this.comboBoxTheme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(135, 21);
+            this.comboBoxTheme.Size = new System.Drawing.Size(201, 28);
             this.comboBoxTheme.TabIndex = 81;
             this.comboBoxTheme.SelectedIndexChanged += new System.EventHandler(this.comboBoxTheme_SelectedIndexChanged);
             // 
@@ -967,10 +929,9 @@
             // 
             this.labelTheme.AutoSize = true;
             this.labelTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTheme.Location = new System.Drawing.Point(642, 111);
-            this.labelTheme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTheme.Location = new System.Drawing.Point(1043, 154);
             this.labelTheme.Name = "labelTheme";
-            this.labelTheme.Size = new System.Drawing.Size(159, 17);
+            this.labelTheme.Size = new System.Drawing.Size(234, 25);
             this.labelTheme.TabIndex = 82;
             this.labelTheme.Text = "Choose Your Theme!";
             // 
@@ -1000,17 +961,18 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(908, 522);
+            this.ClientSize = new System.Drawing.Size(1362, 804);
             this.Controls.Add(this.labelTheme);
             this.Controls.Add(this.comboBoxTheme);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.buttonLogout);
+            this.Controls.Add(this.textBoxPost);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook App";
@@ -1046,12 +1008,9 @@
         }
 
 		#endregion
-		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
-        private System.Windows.Forms.Button buttonAstrologyHoroscopePost;
         private System.Windows.Forms.PictureBox pictureBoxCover;
         private System.Windows.Forms.TextBox textBoxPost;
-        private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.Label labelAlbums;
         private System.Windows.Forms.PictureBox pictureBoxSelectedAlbum;
